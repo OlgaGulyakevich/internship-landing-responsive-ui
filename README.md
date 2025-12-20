@@ -1,8 +1,16 @@
 # Internship - International Exchange Programs Landing
 
-> Pixel-perfect responsive landing page for international exchange programs built with BEM methodology and Sass. Features interactive UI components (modals, accordions, Swiper sliders), mobile-first approach (320px-1440px+), and clean Vanilla JS implementation. Built with Vite.
+> Pixel-perfect responsive landing page for international exchange programs built with BEM methodology and Sass. Features interactive UI components (modals, accordions, Swiper sliders with tab-based content switching), mobile-first approach (320px-1440px+), and clean Vanilla JS implementation. Built with Vite.
 
 **⏱️ Completed in 4 weeks** as part of **HTML Academy Accelerator** graduation project.
+
+## Features
+
+- **Interactive Tabs with Dynamic Content**: News section uses JSON-based content loading for seamless tab switching
+- **Responsive Images**: Art direction for hero images, responsive srcset for content images
+- **Swiper Integration**: Multiple slider implementations with custom navigation and pagination
+- **BEM Methodology**: Strict adherence to BEM naming conventions
+- **Pixel Perfect**: Tested with BackstopJS for pixel-perfect layout matching
 
 
 Стартовый репозиторий для работы над проектом в «Акселераторе» профессии «Фронтенд-разработчик»
