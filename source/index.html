@@ -77,7 +77,159 @@
   <main class="main">
     <!-- === HERO SECTION === -->
     <section data-test="hero" class="hero">
-      <!-- Hero content will be added in next section -->
+      <h1 class="visually-hidden">Internship - Программа обмена студентами</h1>
+      <div class="hero__swiper swiper">
+        <div class="swiper-wrapper">
+
+          <!-- Slide 1 -->
+          <div class="swiper-slide hero__slide">
+            <!-- Background image -->
+            <picture class="hero__picture">
+              <source
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/hero/hero-1-desktop@1x.webp 1x, img/hero/hero-1-desktop@2x.webp 2x"
+              >
+              <source
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/hero/hero-1-tablet@1x.webp 1x, img/hero/hero-1-tablet@2x.webp 2x"
+              >
+              <source
+                type="image/webp"
+                srcset="img/hero/hero-1-mobile@1x.webp 1x, img/hero/hero-1-mobile@2x.webp 2x"
+              >
+              <img
+                class="hero__image"
+                src="img/hero/hero-1-mobile@1x.jpg"
+                srcset="img/hero/hero-1-mobile@2x.jpg 2x"
+                width="320"
+                height="568"
+                alt="Студенты за рубежом"
+              >
+            </picture>
+
+            <!-- Content block -->
+            <div class="hero__content">
+              <div class="container">
+                <h2 class="hero__title">
+                  Глобальный профессиональный опыт обучения за рубежом
+                </h2>
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <p>
+                  Погрузитесь в академическую программу, проходя практику в разных городах, ощущая настоящий студенческий стиль жизни!
+                </p>
+                <a class="hero__button button button--primary" href="#about">
+                  Подробнее
+                  <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                    <use href="/__spritemap#sprite-arrow-up-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide hero__slide">
+            <!-- Background image -->
+            <picture class="hero__picture">
+              <source
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/hero/hero-2-desktop@1x.webp 1x, img/hero/hero-2-desktop@2x.webp 2x"
+              >
+              <source
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/hero/hero-2-tablet@1x.webp 1x, img/hero/hero-2-tablet@2x.webp 2x"
+              >
+              <source
+                type="image/webp"
+                srcset="img/hero/hero-2-mobile@1x.webp 1x, img/hero/hero-2-mobile@2x.webp 2x"
+              >
+              <img
+                class="hero__image"
+                src="img/hero/hero-2-mobile@1x.jpg"
+                srcset="img/hero/hero-2-mobile@2x.jpg 2x"
+                width="320"
+                height="568"
+                alt="Программы обмена студентами"
+              >
+            </picture>
+
+            <!-- Content block -->
+            <div class="hero__content">
+              <div class="container">
+                <h2 class="hero__title">
+                  Волонтёрские программы – внесите свой вклад в общество
+                </h2>
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <p>
+                  Возможности для преподавания, органического сельского хозяйства, устойчивого образа жизни и других.
+                </p>
+                <a class="hero__button button button--primary" href="#programs">
+                  Подробнее
+                  <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                    <use href="/__spritemap#sprite-arrow-up-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide hero__slide">
+            <!-- Background image -->
+            <picture class="hero__picture">
+              <source
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/hero/hero-3-desktop@1x.webp 1x, img/hero/hero-3-desktop@2x.webp 2x"
+              >
+              <source
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/hero/hero-3-tablet@1x.webp 1x, img/hero/hero-3-tablet@2x.webp 2x"
+              >
+              <source
+                type="image/webp"
+                srcset="img/hero/hero-3-mobile@1x.webp 1x, img/hero/hero-3-mobile@2x.webp 2x"
+              >
+              <img
+                class="hero__image"
+                src="img/hero/hero-3-mobile@1x.jpg"
+                srcset="img/hero/hero-3-mobile@2x.jpg 2x"
+                width="320"
+                height="568"
+                alt="Глобальный профессиональный опыт"
+              >
+            </picture>
+
+            <!-- Content block -->
+            <div class="hero__content">
+              <div class="container">
+                <h2 class="hero__title">
+                  Программы стажировок в крупнейших компаниях мира
+                </h2>
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <p>
+                  Получите незаменимый опыт работы в ведущих мировых компаниях и государственных организациях.
+                </p>
+                <a class="hero__button button button--primary" href="#about">
+                  Подробнее
+                  <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                    <use href="/__spritemap#sprite-arrow-up-right"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Pagination (bullets) -->
+        <div class="hero__pagination swiper-pagination"></div>
+      </div>
     </section>
 
     <!-- === ABOUT SECTION === -->
