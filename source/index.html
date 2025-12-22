@@ -46,93 +46,185 @@
 
 <body class="page__body">
 
-  <!-- Header -->
+  <!-- ============================================ -->
+  <!-- HEADER                                       -->
+  <!-- ============================================ -->
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
         <!-- Logo -->
-        <a class="logo header__logo" >
+        <div class="header__logo logo">
           <img class="logo__image" src="img/logo-small.svg" width="30" height="30" alt="Internship - Программа обмена студентами">
-        </a>
+        </div>
 
         <!-- Burger Button -->
         <button class="header__burger" type="button" data-burger="toggle" aria-label="Открыть меню">
+          <span class="header__burger-text">Меню</span>
           <svg class="header__burger-icon header__burger-icon--open" width="18" height="18" aria-hidden="true">
             <use href="/__spritemap#sprite-burger"></use>
           </svg>
           <svg class="header__burger-icon header__burger-icon--close" width="18" height="18" aria-hidden="true">
             <use href="/__spritemap#sprite-close"></use>
           </svg>
-          <span class="visually-hidden">Открыть меню</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- ============================================ -->
+  <!-- MAIN CONTENT                                 -->
+  <!-- ============================================ -->
   <main class="main">
-    <!-- Hero Section -->
+    <!-- === HERO SECTION === -->
     <section data-test="hero" class="hero">
       <!-- Hero content will be added in next section -->
     </section>
 
-    <!-- About Section -->
+    <!-- === ABOUT SECTION === -->
     <section data-test="about" class="about">
       <!-- About content will be added in next section -->
     </section>
 
-    <!-- Programs Section -->
+    <!-- === PROGRAMS SECTION === -->
     <section data-test="programs" class="programs">
       <!-- Programs content will be added in next section -->
     </section>
 
-    <!-- Grant Section -->
+    <!-- === GRANT SECTION === -->
     <section data-test="grant" class="grant">
       <!-- Grant content will be added in next section -->
     </section>
 
-    <!-- News Section -->
+    <!-- === NEWS SECTION === -->
     <section data-test="news" class="news">
       <!-- News content will be added in next section -->
     </section>
 
-    <!-- FAQ Section -->
+    <!-- === FAQ SECTION === -->
     <section data-test="FAQ" class="faq">
       <!-- FAQ content will be added in next section -->
     </section>
 
-    <!-- Reviews Section -->
+    <!-- === REVIEWS SECTION === -->
     <section data-test="reviews" class="reviews">
       <!-- Reviews content will be added in next section -->
     </section>
 
-    <!-- Contacts Section -->
+    <!-- === CONTACTS SECTION === -->
     <section data-test="contacts" class="contacts">
       <!-- Contacts content will be added in next section -->
     </section>
 
-    <!-- Form Section -->
+    <!-- === FORM SECTION === -->
     <section data-test="form" class="form">
       <!-- Form content will be added in next section -->
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- ============================================ -->
+  <!-- FOOTER                                       -->
+  <!-- ============================================ -->
   <footer data-test="footer" class="footer">
     <!-- Footer content will be added in next section -->
   </footer>
 
-  <!-- Modal - Feedback -->
+  <!-- ============================================ -->
+  <!-- MODAL - FEEDBACK                             -->
+  <!-- ============================================ -->
   <div class="modal modal--feedback" role="dialog" aria-modal="true" aria-labelledby="modal-feedback-title" hidden>
     <!-- Modal content will be added in next section -->
   </div>
 
-  <!-- Burger Menu -->
+  <!-- ============================================ -->
+  <!-- NAVIGATION MENU                              -->
+  <!-- ============================================ -->
   <nav class="nav-menu" id="nav-menu" hidden>
-    <!-- Navigation menu content will be added in next section -->
+    <!-- Overlay -->
+    <div class="nav-menu__overlay"></div>
+
+    <!-- Content wrapper -->
+    <div class="nav-menu__content">
+      <!-- Navigation list -->
+      <ul class="nav-menu__list">
+        <!-- Simple link: О проекте -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#about">О проекте</a>
+        </li>
+
+        <!-- Expandable item: Программы -->
+        <li class="nav-menu__item nav-menu__item--expandable">
+          <button class="nav-menu__toggle" type="button" aria-expanded="false">
+            <span class="nav-menu__toggle-text">Программы</span>
+            <svg class="nav-menu__icon" width="12" height="12" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-down"></use>
+            </svg>
+          </button>
+
+          <ul class="nav-menu__submenu" hidden>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Стажировки</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Волонтёрство</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Учёба</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Религия</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Simple link: Как поехать -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#grant">Как поехать</a>
+        </li>
+
+        <!-- Simple link: Отзывы -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#reviews">Отзывы</a>
+        </li>
+
+        <!-- Expandable item: Новости -->
+        <li class="nav-menu__item nav-menu__item--expandable">
+          <button class="nav-menu__toggle" type="button" aria-expanded="false">
+            <span class="nav-menu__toggle-text">Новости</span>
+            <svg class="nav-menu__icon" width="12" height="12" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-down"></use>
+            </svg>
+          </button>
+
+          <ul class="nav-menu__submenu" hidden>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="all">Все</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="volunteer">Волонтёрство</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="internship">Стажировки</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="career">Карьера</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="travel">Путешествия</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Simple link: Контакты -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#contacts">Контакты</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
-  <!-- Scripts -->
+  <!-- ============================================ -->
+  <!-- SCRIPTS                                      -->
+  <!-- ============================================ -->
   <script type="module" src="js/main.js"></script>
 
 </body>

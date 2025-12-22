@@ -168,3 +168,31 @@
     display: none;
   }
 }
+
+// -----------------------------------------------------------------------------
+// Overlay Pattern (for modals and menus)
+// -----------------------------------------------------------------------------
+
+// Full-screen overlay with dark background
+// Used for modal windows and navigation menu
+@mixin overlay {
+  position: fixed;
+  inset: 0;
+  background-color: $color-overlay-menu;
+  z-index: $z-index-overlay;
+}
+
+// -----------------------------------------------------------------------------
+// Slide-in Animations
+// -----------------------------------------------------------------------------
+
+// Slide in from right (for navigation menu)
+// Element slides in from right side of screen
+@mixin slide-in-right {
+  transform: translateX(100%);
+  transition: transform $transition-normal;
+
+  &.is-open {
+    transform: translateX(0);
+  }
+}
