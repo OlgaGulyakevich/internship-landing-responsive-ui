@@ -1,31 +1,140 @@
 <!DOCTYPE html>
-<html lang="ru" data-validate="html">
+<html class="page" lang="ru">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship</title>
-    <link rel="stylesheet" href="sass/style.scss">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Программа обмена студентами - международный проект для обучения в ведущих университетах мира. Стань частью глобального сообщества студентов.">
+  <meta name="keywords" content="обмен студентами, обучение за рубежом, международная программа, стипендия, грант на обучение">
 
-  <body class="page-body">
-    <!-- пример использования спрайта -->
-    <img src="/__spritemap#sprite-logo-view" width="410" height="400" alt="Это спрайт">
-    <svg>
-      <use href="/__spritemap#sprite-user"></use>
-    </svg>
-    <!-- примеры требуемых атрибутов data-test="*" -->
-    <div data-test="hero">hero</div>
-    <div data-test="about">about</div>
-    <div data-test="programs">programs</div>
-    <div data-test="grant">grant</div>
-    <div data-test="news">news</div>
-    <div data-test="FAQ">FAQ</div>
-    <div data-test="reviews">reviews</div>
-    <div data-test="contacts">contacts</div>
-    <div data-test="form">form</div>
-    <div data-test="footer">footer</div>
-    <script type="module" src="js/main.js"></script>
-  </body>
+  <title>Internship - Программа обмена студентами</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/">
+  <meta property="og:title" content="Internship - Программа обмена студентами">
+  <meta property="og:description" content="Образование за рубежом с программой обмена студентами. Стань частью глобального сообщества студентов и открой для себя мир новых возможностей.">
+  <meta property="og:image" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/">
+  <meta name="twitter:title" content="Internship - Программа обмена студентами">
+  <meta name="twitter:description" content="Образование за рубежом с программой обмена студентами. Стань частью глобального сообщества студентов.">
+  <meta name="twitter:image" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/og-image.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://olgagulakevic.github.io/internship-landing-responsive-ui/">
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicons/favicon.ico" sizes="32x32" type="image/x-icon">
+  <link rel="icon" href="favicons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicons/favicon-96x96.png" sizes="96x96" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Font Preload -->
+  <link rel="preload" href="fonts/Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Manrope-Medium.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="sass/style.scss">
+</head>
+
+<body class="page__body">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <!-- Logo -->
+        <a class="logo header__logo" >
+          <img class="logo__image" src="img/logo-small.svg" width="30" height="30" alt="Internship - Программа обмена студентами">
+        </a>
+
+        <!-- Burger Button -->
+        <button class="header__burger" type="button" data-burger="toggle" aria-label="Открыть меню">
+          <svg class="header__burger-icon header__burger-icon--open" width="18" height="18" aria-hidden="true">
+            <use href="/__spritemap#sprite-burger"></use>
+          </svg>
+          <svg class="header__burger-icon header__burger-icon--close" width="18" height="18" aria-hidden="true">
+            <use href="/__spritemap#sprite-close"></use>
+          </svg>
+          <span class="visually-hidden">Открыть меню</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Hero Section -->
+    <section data-test="hero" class="hero">
+      <!-- Hero content will be added in next section -->
+    </section>
+
+    <!-- About Section -->
+    <section data-test="about" class="about">
+      <!-- About content will be added in next section -->
+    </section>
+
+    <!-- Programs Section -->
+    <section data-test="programs" class="programs">
+      <!-- Programs content will be added in next section -->
+    </section>
+
+    <!-- Grant Section -->
+    <section data-test="grant" class="grant">
+      <!-- Grant content will be added in next section -->
+    </section>
+
+    <!-- News Section -->
+    <section data-test="news" class="news">
+      <!-- News content will be added in next section -->
+    </section>
+
+    <!-- FAQ Section -->
+    <section data-test="FAQ" class="faq">
+      <!-- FAQ content will be added in next section -->
+    </section>
+
+    <!-- Reviews Section -->
+    <section data-test="reviews" class="reviews">
+      <!-- Reviews content will be added in next section -->
+    </section>
+
+    <!-- Contacts Section -->
+    <section data-test="contacts" class="contacts">
+      <!-- Contacts content will be added in next section -->
+    </section>
+
+    <!-- Form Section -->
+    <section data-test="form" class="form">
+      <!-- Form content will be added in next section -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer data-test="footer" class="footer">
+    <!-- Footer content will be added in next section -->
+  </footer>
+
+  <!-- Modal - Feedback -->
+  <div class="modal modal--feedback" role="dialog" aria-modal="true" aria-labelledby="modal-feedback-title" hidden>
+    <!-- Modal content will be added in next section -->
+  </div>
+
+  <!-- Burger Menu -->
+  <nav class="nav-menu" id="nav-menu" hidden>
+    <!-- Navigation menu content will be added in next section -->
+  </nav>
+
+  <!-- Scripts -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
 
 </html>
