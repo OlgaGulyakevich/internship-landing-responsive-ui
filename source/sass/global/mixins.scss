@@ -1,0 +1,170 @@
+// =============================================================================
+// MIXINS
+// Mobile-First approach: base styles for mobile (320px+)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Media Queries (Responsive Breakpoints)
+// -----------------------------------------------------------------------------
+
+// Tablet and up (768px+)
+// Used for styles that apply to tablet and desktop
+@mixin tablet {
+  @media (min-width: $tablet-min) {
+    @content;
+  }
+}
+
+// Desktop and up (1440px+)
+// Used for styles that apply only to desktop
+@mixin desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Overflow Prevention (HTML1-TEST-04)
+// -----------------------------------------------------------------------------
+
+// Prevents flex children from overflowing container
+// Use on flex containers to add min-width: 0 to all direct children
+// HTML1-TEST-04: Prevent flex children from overflowing container
+@mixin flex-no-overflow {
+  > * {
+    min-width: 0;
+  }
+}
+
+// Prevents grid children from overflowing container
+// Use on grid containers to add min-width: 0 to all direct children
+// HTML1-TEST-04: Prevent grid children from overflowing container
+@mixin grid-no-overflow {
+  > * {
+    min-width: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive Line Break Visibility
+// -----------------------------------------------------------------------------
+// Manage visibility of <br> elements on different breakpoints
+
+// Show <br> only on mobile (hide on tablet+)
+@mixin br-mobile {
+  display: block;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+// Show <br> only on tablet (hide on mobile and desktop)
+@mixin br-tablet {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+// Show <br> only on desktop
+@mixin br-desktop {
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+}
+
+// Show <br> on tablet+ (hide on mobile)
+@mixin br-not-mobile {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+// Show <br> on mobile and tablet (hide on desktop)
+@mixin br-not-desktop {
+  display: block;
+
+  @include desktop {
+    display: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive Text Wrapping
+// -----------------------------------------------------------------------------
+// Manage white-space on different breakpoints
+
+// Nowrap на tablet, normal на mobile/desktop
+@mixin nowrap-tablet {
+  white-space: normal;
+
+  @include tablet {
+    white-space: nowrap;
+  }
+
+  @include desktop {
+    white-space: normal;
+  }
+}
+
+// Nowrap on desktop
+@mixin nowrap-desktop {
+  @include desktop {
+    white-space: nowrap;
+  }
+}
+
+// Nowrap on mobile
+@mixin nowrap-mobile {
+  white-space: nowrap;
+
+  @include tablet {
+    white-space: normal;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive Visibility
+// -----------------------------------------------------------------------------
+// Manage display on different breakpoints
+
+// Hide on mobile
+@mixin hide-mobile {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+// Hide on tablet
+@mixin hide-tablet {
+  display: block;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: block;
+  }
+}
+
+// Hide on desktop
+@mixin hide-desktop {
+  display: block;
+
+  @include desktop {
+    display: none;
+  }
+}

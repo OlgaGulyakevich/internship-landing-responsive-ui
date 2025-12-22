@@ -1,0 +1,46 @@
+// =============================================================================
+// GLOBAL STYLES
+// =============================================================================
+// ALLOWED SELECTORS:
+// - *, *::before, *::after for box-sizing
+// - html and body
+// - img only for max-width and object-fit (without display)
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+// HTML1-TEST-03: Minimum width of the page
+// - min-width: minimum width of the frame
+// - margin/padding: 0 for resetting margins and paddings
+// - Centering the content through .container (margin: 0 auto)
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: $container-mobile;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size-text-regular-mobile;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-text-primary;
+  background-color: $color-bg-primary;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Images normalization (only max-width and object-fit)
+img {
+  max-width: 100%;
+  height: auto;
+}

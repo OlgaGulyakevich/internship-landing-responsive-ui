@@ -1,0 +1,142 @@
+// =============================================================================
+// PAGE WRAPPER STYLES
+// =============================================================================
+// ARCHITECTURE:
+// 1. .page - specific styles of the page (sticky footer layout)
+// 2. :where(.page) - reset styles of elements with LOW specificity
+// WHY :where()?
+// - :where() has specificity 0,0,0,0
+// - This allows components to easily override styles
+// =============================================================================
+
+// =============================================================================
+// 1. PAGE LAYOUT (high specificity for layout-specific styles)
+// =============================================================================
+
+.page {
+  // Sticky footer layout
+  .main {
+    flex: 1 0 auto;
+  }
+
+  .footer {
+    flex-shrink: 0;
+  }
+}
+
+// Prevent horizontal scroll from extended backgrounds
+.page main {
+  overflow-x: hidden;
+}
+
+// =============================================================================
+// 2. ELEMENT RESETS (low specificity through :where)
+// =============================================================================
+// We use :where() to reduce specificity of style resets.
+// This allows components to easily override these styles.
+
+// Typography elements
+// HTML1-TEST-04: Overflow - long words should be wrapped
+:where(.page) h1,
+:where(.page) h2,
+:where(.page) h3,
+:where(.page) h4,
+:where(.page) h5,
+:where(.page) h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit; // For old browsers
+  overflow-wrap: break-word;
+}
+
+:where(.page) p {
+  margin: 0;
+  padding: 0; // For old browsers
+  overflow-wrap: break-word;
+}
+
+// Other text elements (span, div)
+:where(.page) span,
+:where(.page) div {
+  overflow-wrap: break-word;
+}
+
+// Links
+:where(.page) a {
+  color: inherit;
+  text-decoration: none;
+  transition: color $transition-normal;
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+}
+
+// Images (additional styles to global)
+:where(.page) img {
+  display: block;
+}
+
+// Buttons
+:where(.page) button {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid $color-text-on-dark;
+    outline-offset: 2px;
+  }
+}
+
+// Forms
+:where(.page) input,
+:where(.page) textarea,
+:where(.page) select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+}
+
+:where(.page) fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+:where(.page) legend {
+  padding: 0;
+}
+
+// Lists
+:where(.page) ul,
+:where(.page) ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:where(.page) li {
+  margin: 0;
+  padding: 0;
+}
+
+// SVG
+:where(.page) svg {
+  display: block;
+  fill: currentColor;
+  max-width: 100%;
+  height: auto;
+}

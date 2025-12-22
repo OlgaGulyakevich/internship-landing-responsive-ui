@@ -2,3 +2,19 @@
 // ---------------------------------
 
 @import "vendor/normalize";
+
+// Global
+// ---------------------------------
+
+@import "global/variables";
+@import "global/typography";
+@import "global/mixins";
+@import "global/fonts";
+@import "global/responsive-text";
+@import "global/utility";
+@import "global/global";
+
+// Layout
+// ---------------------------------
+@import "layout/page";
+@import "layout/container";
