@@ -264,7 +264,90 @@
 
     <!-- === ABOUT SECTION === -->
     <section data-test="about" class="about">
-      <!-- About content will be added in next section -->
+      <div class="container">
+        <h2 class="about__title">О проекте «Стажировка»</h2>
+
+        <!-- Main content (Desktop: 2 columns) -->
+        <div class="about__content">
+          <!-- Column 1: Intro -->
+          <div class="about__intro">
+            <p>
+              «Стажировка» — совместный проект правительств и волонтёрских бригад.
+            </p>
+          </div>
+
+          <!-- Content area WITHOUT classes (cascading styling) -->
+          <!-- Column 2: Details + Button -->
+          <div class="about__details">
+            <h3>Наша цель</h3>
+            <p>
+              Наша деятельность направлена на повышение квалификации молодых специалистов на ранних и средних стадиях карьеры, предоставляя им инструменты для решения сложных проблем, с которыми сталкиваются в мире. Цель центра — наделить этих людей способностью инициировать значимые изменения.
+            </p>
+            <button class="about__button button button--primary" type="button" data-modal-target="feedback">
+              Подробнее о проекте
+              <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-up-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Advantages block -->
+        <!-- Content area WITHOUT classes (cascading styling) -->
+        <ul class="about__advantages">
+          <!-- Advantage 1 -->
+          <li class="about__advantage">
+            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
+              <use href="/__spritemap#sprite-star"></use>
+            </svg>
+            <div class="about__advantage-content">
+              <h4>БОЛЕЕ 250 ПРОГРАММ</h4>
+              <p>
+                учебных и рабочих, разной длительности от 3 месяцев до 1 года
+              </p>
+            </div>
+          </li>
+
+          <!-- Advantage 2 -->
+          <li class="about__advantage">
+            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
+              <use href="/__spritemap#sprite-star"></use>
+            </svg>
+            <div class="about__advantage-content">
+              <h4>БОЛЕЕ 3000 УЧАСТНИКОВ</h4>
+              <p>
+                уже успешно прошли программу от «Стажировка» и остались в разных странах
+              </p>
+            </div>
+          </li>
+
+          <!-- Advantage 3 -->
+          <li class="about__advantage">
+            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
+              <use href="/__spritemap#sprite-star"></use>
+            </svg>
+            <div class="about__advantage-content">
+              <h4>УЧАСТНИКИ ИЗ 60 СТРАН</h4>
+              <p>
+                студенты со всего мира приезжают на программу «Стажировки» от 3 месяцев до 1 года
+              </p>
+            </div>
+          </li>
+
+          <!-- Advantage 4 -->
+          <li class="about__advantage">
+            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
+              <use href="/__spritemap#sprite-star"></use>
+            </svg>
+            <div class="about__advantage-content">
+              <h4>ОТ 4 200 $ ДО 8 400 $</h4>
+              <p>
+                грант всем участникам для комфортного прохождения программы
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <!-- === PROGRAMS SECTION === -->
@@ -309,13 +392,6 @@
   <footer data-test="footer" class="footer">
     <!-- Footer content will be added in next section -->
   </footer>
-
-  <!-- ============================================ -->
-  <!-- MODAL - FEEDBACK                             -->
-  <!-- ============================================ -->
-  <div class="modal modal--feedback" role="dialog" aria-modal="true" aria-labelledby="modal-feedback-title" hidden>
-    <!-- Modal content will be added in next section -->
-  </div>
 
   <!-- ============================================ -->
   <!-- NAVIGATION MENU                              -->
@@ -403,6 +479,155 @@
       </ul>
     </div>
   </nav>
+
+  <!-- ============================================ -->
+  <!-- MODAL - FEEDBACK                             -->
+  <!-- ============================================ -->
+
+  <!-- Modal: Feedback Form "Напишите нам" -->
+  <div
+    class="modal modal--feedback"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-feedback-title"
+    hidden
+  >
+    <!-- Overlay for click-outside detection -->
+    <div class="modal__overlay"></div>
+
+    <!-- Modal content wrapper -->
+    <div class="modal__content">
+      <!-- Close button -->
+      <button
+        class="modal__close"
+        type="button"
+        aria-label="Закрыть модальное окно"
+      >
+        <svg width="12" height="12" aria-hidden="true">
+          <use href="/__spritemap#sprite-close"></use>
+        </svg>
+      </button>
+
+      <!-- Modal heading -->
+      <h2 class="modal__title" id="modal-feedback-title">
+        Напишите нам
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="modal__subtitle">
+        Оставьте ваши контакты, если у вас остались вопросы — мы на них ответим!
+      </p>
+
+      <!-- Feedback form -->
+      <form
+        class="modal__form"
+        method="post"
+        action="https://echo.htmlacademy.ru"
+      >
+        <fieldset>
+          <legend class="visually-hidden">Контактная информация</legend>
+
+          <!-- Field: Name -->
+          <div class="modal__field">
+            <label class="modal__label" for="feedback-name">
+              Имя
+            </label>
+            <input
+              class="modal__input"
+              type="text"
+              id="feedback-name"
+              name="name"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <!-- Field: Phone -->
+          <div class="modal__field">
+            <label class="modal__label" for="feedback-phone">
+              Телефон
+            </label>
+            <input
+              class="modal__input"
+              type="tel"
+              id="feedback-phone"
+              name="phone"
+              required
+              pattern="^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$"
+              autocomplete="tel"
+              data-phone-mask
+            />
+          </div>
+
+          <!-- Field: City -->
+          <div class="modal__field">
+            <label class="modal__label" for="feedback-city">
+              Выберите город
+            </label>
+            <select
+              class="modal__select"
+              id="feedback-city"
+              name="city"
+              required
+            >
+              <option value=""></option>
+              <option value="moscow">Москва</option>
+              <option value="saint-petersburg">Санкт-Петербург</option>
+              <option value="novosibirsk">Новосибирск</option>
+              <option value="yekaterinburg">Екатеринбург</option>
+              <option value="kazan">Казань</option>
+              <option value="nizhny-novgorod">Нижний Новгород</option>
+              <option value="chelyabinsk">Челябинск</option>
+              <option value="samara">Самара</option>
+              <option value="omsk">Омск</option>
+              <option value="rostov-on-don">Ростов-на-Дону</option>
+              <option value="ufa">Уфа</option>
+              <option value="krasnoyarsk">Красноярск</option>
+              <option value="voronezh">Воронеж</option>
+              <option value="perm">Пермь</option>
+              <option value="volgograd">Волгоград</option>
+              <option value="krasnodar">Краснодар</option>
+              <option value="saratov">Саратов</option>
+              <option value="tyumen">Тюмень</option>
+              <option value="tolyatti">Тольятти</option>
+              <option value="izhevsk">Ижевск</option>
+              <option value="barnaul">Барнаул</option>
+              <option value="other">Другой город</option>
+            </select>
+            <svg class="modal__select-icon" width="16" height="16" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-down"></use>
+            </svg>
+          </div>
+
+          <!-- Field: Consent checkbox -->
+          <div class="modal__field modal__field--checkbox">
+            <input
+              class="modal__checkbox visually-hidden"
+              type="checkbox"
+              id="feedback-consent"
+              name="consent"
+              value="agreed"
+              required
+            />
+            <label class="modal__checkbox-label" for="feedback-consent">
+              <span class="modal__checkbox-box"></span>
+              <span class="modal__checkbox-text">
+                Я согласен на обработку моих персональных данных
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit button -->
+          <button class="modal__submit button button--primary" type="submit">
+            Отправить
+            <svg class="button__icon" width="8" height="8" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-right"></use>
+            </svg>
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 
   <!-- ============================================ -->
   <!-- SCRIPTS                                      -->
