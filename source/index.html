@@ -123,8 +123,8 @@
                 </div>
 
                 <!-- Bottom section: paragraph + button -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
                 <div class="hero__bottom">
-                  <!-- Content area WITHOUT classes (cascading styling) -->
                   <p>
                     Погрузитесь в академическую программу, проходя практику в разных городах, ощущая настоящий студенческий стиль жизни!
                   </p>
@@ -181,8 +181,8 @@
                 </div>
 
                 <!-- Bottom section: paragraph + button -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
                 <div class="hero__bottom">
-                  <!-- Content area WITHOUT classes (cascading styling) -->
                   <p>
                     Возможности для преподавания, органического сельского хозяйства, устойчивого образа жизни и других.
                   </p>
@@ -239,8 +239,8 @@
                 </div>
 
                 <!-- Bottom section: paragraph + button -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
                 <div class="hero__bottom">
-                  <!-- Content area WITHOUT classes (cascading styling) -->
                   <p>
                     Получите незаменимый опыт работы в ведущих мировых компаниях и государственных организациях.
                   </p>
@@ -276,8 +276,8 @@
             </p>
           </div>
 
-          <!-- Content area WITHOUT classes (cascading styling) -->
           <!-- Column 2: Details + Button -->
+          <!-- Content area WITHOUT classes (cascading styling) -->
           <div class="about__details">
             <h3>Наша цель</h3>
             <p>
@@ -297,54 +297,34 @@
         <ul class="about__advantages">
           <!-- Advantage 1 -->
           <li class="about__advantage">
-            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
-              <use href="/__spritemap#sprite-star"></use>
-            </svg>
-            <div class="about__advantage-content">
-              <h4>БОЛЕЕ 250 ПРОГРАММ</h4>
-              <p>
-                учебных и рабочих, разной длительности от 3 месяцев до 1 года
-              </p>
-            </div>
+            <h4>БОЛЕЕ 250 ПРОГРАММ</h4>
+            <p>
+              учебных и рабочих, разной длительности от 3 месяцев до 1 года
+            </p>
           </li>
 
           <!-- Advantage 2 -->
           <li class="about__advantage">
-            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
-              <use href="/__spritemap#sprite-star"></use>
-            </svg>
-            <div class="about__advantage-content">
-              <h4>БОЛЕЕ 3000 УЧАСТНИКОВ</h4>
-              <p>
-                уже успешно прошли программу от «Стажировка» и остались в разных странах
-              </p>
-            </div>
+            <h4>БОЛЕЕ 3000 УЧАСТНИКОВ</h4>
+            <p>
+              уже успешно прошли программу от «Стажировка» и остались в разных странах
+            </p>
           </li>
 
           <!-- Advantage 3 -->
           <li class="about__advantage">
-            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
-              <use href="/__spritemap#sprite-star"></use>
-            </svg>
-            <div class="about__advantage-content">
-              <h4>УЧАСТНИКИ ИЗ 60 СТРАН</h4>
-              <p>
-                студенты со всего мира приезжают на программу «Стажировки» от 3 месяцев до 1 года
-              </p>
-            </div>
+            <h4>УЧАСТНИКИ ИЗ 60 СТРАН</h4>
+            <p>
+              студенты со всего мира приезжают на программу «Стажировки» от 3 месяцев до 1 года
+            </p>
           </li>
 
           <!-- Advantage 4 -->
           <li class="about__advantage">
-            <svg class="about__advantage-icon" width="18" height="22" aria-hidden="true">
-              <use href="/__spritemap#sprite-star"></use>
-            </svg>
-            <div class="about__advantage-content">
-              <h4>ОТ 4 200 $ ДО 8 400 $</h4>
-              <p>
-                грант всем участникам для комфортного прохождения программы
-              </p>
-            </div>
+            <h4>ОТ 4 200 $ ДО 8 400 $</h4>
+            <p>
+              грант всем участникам для комфортного прохождения программы
+            </p>
           </li>
         </ul>
       </div>
@@ -352,7 +332,269 @@
 
     <!-- === PROGRAMS SECTION === -->
     <section data-test="programs" class="programs">
-      <!-- Programs content will be added in next section -->
+      <div class="container programs__container">
+        <!-- Section title -->
+        <h2 class="programs__title">Программы</h2>
+
+        <!-- Button: All Programs (visible on all breakpoints, positioned via grid) -->
+        <a class="programs__all-button button button--primary" href="programs.html">
+          Все программы
+          <svg class="button__icon" width="8" height="8" aria-hidden="true">
+            <use href="/__spritemap#sprite-arrow-right"></use>
+          </svg>
+        </a>
+
+        <!-- Slider navigation arrows (mobile only, positioned via grid) -->
+        <div class="programs__arrows">
+          <button class="programs__arrow programs__arrow--prev" type="button" aria-label="Предыдущий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-left"></use>
+            </svg>
+          </button>
+          <button class="programs__arrow programs__arrow--next" type="button" aria-label="Следующий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Swiper slider container -->
+        <div class="programs__slider swiper">
+          <ul class="programs__list swiper-wrapper">
+            <!-- Slide 1: Internship (Стажировки) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-1-desktop@1x.webp 1x, img/programs/program-1-desktop@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-1-tablet@1x.webp 1x, img/programs/program-1-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/programs/program-1-mobile@1x.webp 1x, img/programs/program-1-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-1-desktop@1x.jpg 1x, img/programs/program-1-desktop@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-1-tablet@1x.jpg 1x, img/programs/program-1-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-1-mobile@1x.jpg"
+                    srcset="img/programs/program-1-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Стажировки"
+                  />
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Стажировки</h3>
+                  <p>
+                    Получите незаменимый опыт работы в крупнейших мировых компаниях.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#internship" aria-label="Подробнее о стажировках">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 2: Volunteer (Волонтёрство) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-2-desktop@1x.webp 1x, img/programs/program-2-desktop@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-2-tablet@1x.webp 1x, img/programs/program-2-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/programs/program-2-mobile@1x.webp 1x, img/programs/program-2-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-2-desktop@1x.jpg 1x, img/programs/program-2-desktop@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-2-tablet@1x.jpg 1x, img/programs/program-2-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-2-mobile@1x.jpg"
+                    srcset="img/programs/program-2-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Волонтёрство"
+                  />
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Волонтёрство</h3>
+                  <p>
+                    Помогайте другим и развивайте свои лидерские качества.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#volunteer" aria-label="Подробнее о волонтёрстве">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 3: Education (Учёба) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-3-desktop@1x.webp 1x, img/programs/program-3-desktop@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-3-tablet@1x.webp 1x, img/programs/program-3-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/programs/program-3-mobile@1x.webp 1x, img/programs/program-3-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-3-desktop@1x.jpg 1x, img/programs/program-3-desktop@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-3-tablet@1x.jpg 1x, img/programs/program-3-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-3-mobile@1x.jpg"
+                    srcset="img/programs/program-3-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Учёба"
+                  />
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Учёба</h3>
+                  <p>
+                    Получите образование и измените своё будущее.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#education" aria-label="Подробнее об учёбе">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 4: Religion (Религия) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-4-desktop@1x.webp 1x, img/programs/program-4-desktop@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-4-tablet@1x.webp 1x, img/programs/program-4-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/programs/program-4-mobile@1x.webp 1x, img/programs/program-4-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-4-desktop@1x.jpg 1x, img/programs/program-4-desktop@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-4-tablet@1x.jpg 1x, img/programs/program-4-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-4-mobile@1x.jpg"
+                    srcset="img/programs/program-4-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Религия"
+                  />
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Религия</h3>
+                  <p>
+                    Погрузитесь в духовное развитие и познание мира.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#religion" aria-label="Подробнее о религиозных программах">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slider controls: scrollbar + arrows (tablet/desktop only, positioned via grid) -->
+        <div class="programs__controls">
+          <!-- Swiper scrollbar -->
+          <div class="programs__scrollbar swiper-scrollbar"></div>
+
+          <!-- Navigation arrows (tablet/desktop) -->
+          <div class="programs__nav">
+            <button class="programs__nav-arrow programs__nav-arrow--prev" type="button" aria-label="Предыдущий слайд">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-left"></use>
+              </svg>
+            </button>
+            <button class="programs__nav-arrow programs__nav-arrow--next" type="button" aria-label="Следующий слайд">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- === GRANT SECTION === -->
