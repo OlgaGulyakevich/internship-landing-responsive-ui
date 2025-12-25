@@ -1118,7 +1118,221 @@
 
     <!-- === REVIEWS SECTION === -->
     <section data-test="reviews" class="reviews">
-      <!-- Reviews content will be added in next section -->
+      <div class="container">
+        <!-- Header: title + arrows (mobile only) -->
+        <div class="reviews__header">
+          <h2 class="reviews__title">Отзывы</h2>
+
+          <!-- Mobile arrows -->
+          <div class="reviews__arrows">
+            <button class="reviews__arrow reviews__arrow--prev" type="button" aria-label="Предыдущий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-left"></use>
+              </svg>
+            </button>
+            <button class="reviews__arrow reviews__arrow--next" type="button" aria-label="Следующий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Swiper slider -->
+        <div class="reviews__slider swiper">
+          <ul class="reviews__list swiper-wrapper">
+            <!-- Review 1 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <!-- Avatar -->
+                <picture class="review-card__avatar">
+                  <source
+                    type="image/webp"
+                    srcset="img/avatars/avatar-1@1x.webp 1x, img/avatars/avatar-1@2x.webp 2x"
+                  />
+                  <img
+                    src="img/avatars/avatar-1@1x.png"
+                    srcset="img/avatars/avatar-1@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Лола Алекс"
+                  />
+                </picture>
+
+                <!-- Info block (name + meta) -->
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Лола<br>Алекс</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Masa Art Challenge</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2022-09">Осень 2022</time>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review text -->
+                <blockquote class="review-card__quote">
+                  Я могу с уверенностью сказать, что это был один из самых незабываемых опытов в жизни!
+                </blockquote>
+
+                <p class="review-card__text">
+                  Я рекомендую программу «Стажировка» всем студентам, желающим получить незабываемые впечатления. Сочетание путешествий, общения и значимой работы действительно отличает её от других программ, и я чувствую огромную благодарность за предоставленную мне возможность.
+                </p>
+              </article>
+            </li>
+
+            <!-- Review 2 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <picture class="review-card__avatar">
+                  <source
+                    type="image/webp"
+                    srcset="img/avatars/avatar-2@1x.webp 1x, img/avatars/avatar-2@2x.webp 2x"
+                  />
+                  <img
+                    src="img/avatars/avatar-2@1x.png"
+                    srcset="img/avatars/avatar-2@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Давид Иванов"
+                  />
+                </picture>
+
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Давид<br>Иванов</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Volunteer Chance</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2022-06">Лето 2022</time>
+                    </div>
+                  </div>
+                </div>
+
+                <blockquote class="review-card__quote">
+                  Благодаря опыту стажировки я узнал так много нового о себе и об окружающем мире.
+                </blockquote>
+
+                <p class="review-card__text">
+                  Каждый день был возможностью оказать ощутимое влияние на жизнь других людей. Я бы очень рекомендовал эту волонтёрскую программу всем, кто ищет значимый и незабываемый опыт. Организация была на высшем уровне. Для меня было честью быть частью такой удивительной инициативы.
+                </p>
+              </article>
+            </li>
+
+            <!-- Review 3 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <picture class="review-card__avatar">
+                  <source
+                    type="image/webp"
+                    srcset="img/avatars/avatar-3@1x.webp 1x, img/avatars/avatar-3@2x.webp 2x"
+                  />
+                  <img
+                    src="img/avatars/avatar-3@1x.png"
+                    srcset="img/avatars/avatar-3@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Александр Смирнов"
+                  />
+                </picture>
+
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Александр<br>Смирнов</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Career Start</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2022-03">Весна 2022</time>
+                    </div>
+                  </div>
+                </div>
+
+            <!-- Review 4 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <picture class="review-card__avatar">
+                  <source
+                    type="image/webp"
+                    srcset="img/avatars/avatar-4@1x.webp 1x, img/avatars/avatar-4@2x.webp 2x"
+                  />
+                  <img
+                    src="img/avatars/avatar-4@1x.png"
+                    srcset="img/avatars/avatar-4@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Мария Петрова"
+                  />
+                </picture>
+
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Мария<br>Петрова</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Study Abroad Plus</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2023-01">Зима 2023</time>
+                    </div>
+                  </div>
+                </div>
+
+                <blockquote class="review-card__quote">
+                  Программа стажировки превзошла все мои ожидания и подарила бесценный опыт!
+                </blockquote>
+
+                <p class="review-card__text">
+                  Я получила возможность работать в международной компании, улучшить знание языка и завести друзей со всего мира. Организаторы позаботились обо всех деталях, что позволило мне сосредоточиться на обучении и личностном росте.
+                </p>
+              </article>
+            </li>
+
+
+                <blockquote class="review-card__quote">
+                  Эта стажировка стала настоящим трамплином для моей карьеры в IT-индустрии!
+                </blockquote>
+
+                <p class="review-card__text">
+                  Работа над реальными проектами в команде профессионалов дала мне навыки, которые невозможно получить в университете. Я благодарен программе «Стажировка» за возможность начать карьеру в ведущей технологической компании.
+                </p>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tablet/Desktop controls: scrollbar + arrows -->
+        <div class="reviews__controls">
+          <div class="reviews__scrollbar swiper-scrollbar"></div>
+
+          <div class="reviews__nav">
+            <button class="reviews__nav-arrow reviews__nav-arrow--prev" type="button" aria-label="Предыдущий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-left"></use>
+              </svg>
+            </button>
+            <button class="reviews__nav-arrow reviews__nav-arrow--next" type="button" aria-label="Следующий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- === CONTACTS SECTION === -->
