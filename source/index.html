@@ -675,7 +675,336 @@
 
     <!-- === NEWS SECTION === -->
     <section data-test="news" class="news">
-      <!-- News content will be added in next section -->
+      <div class="container">
+        <h2 class="news__title">Новости и материалы</h2>
+
+        <!-- Tabs navigation -->
+        <div class="news__tabs">
+          <button class="news__tab news__tab--active" type="button" data-tab="all">
+            Общее
+          </button>
+          <button class="news__tab" type="button" data-tab="volunteer">
+            Волонтёрство
+          </button>
+          <button class="news__tab" type="button" data-tab="internship">
+            Стажировки
+          </button>
+          <button class="news__tab" type="button" data-tab="career">
+            Карьера
+          </button>
+          <button class="news__tab" type="button" data-tab="travel">
+            Путешествия
+          </button>
+        </div>
+
+        <!-- Swiper slider container -->
+        <div class="news__slider swiper">
+          <!-- Template cards (examples from design) -->
+          <!-- Full content will be loaded from JSON via JS module -->
+          <ul class="news__list swiper-wrapper">
+            <!-- Card 1: General (LARGE on mobile/desktop) -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/01-internship-interview-desktop-wide@1x.webp 1x, img/news/tab-general/01-internship-interview-desktop-wide@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/01-internship-interview-tablet@1x.webp 1x, img/news/tab-general/01-internship-interview-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/news/tab-general/01-internship-interview-mobile@1x.webp 1x, img/news/tab-general/01-internship-interview-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/01-internship-interview-desktop-wide@1x.jpg 1x, img/news/tab-general/01-internship-interview-desktop-wide@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/01-internship-interview-tablet@1x.jpg 1x, img/news/tab-general/01-internship-interview-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/01-internship-interview-mobile@1x.jpg"
+                    srcset="img/news/tab-general/01-internship-interview-mobile@2x.jpg 2x"
+                    width="290"
+                    height="330"
+                    alt="Интервью с участницей программы стажировки"
+                  />
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-23">23/03/2023</time>
+                  <h3 class="news-card__title">Интервью с участницей программы стажировки</h3>
+                  <p>
+                    Саша рассказывает, как попала в программу и как прошла 6-месячная стажировка в ISOFound
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-1" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Card 2: General -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/02-travel-spring-desktop@1x.webp 1x, img/news/tab-general/02-travel-spring-desktop@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/02-travel-spring-tablet@1x.webp 1x, img/news/tab-general/02-travel-spring-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/news/tab-general/02-travel-spring-mobile@1x.webp 1x, img/news/tab-general/02-travel-spring-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/02-travel-spring-desktop@1x.jpg 1x, img/news/tab-general/02-travel-spring-desktop@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/02-travel-spring-tablet@1x.jpg 1x, img/news/tab-general/02-travel-spring-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/02-travel-spring-mobile@1x.jpg"
+                    srcset="img/news/tab-general/02-travel-spring-mobile@2x.jpg 2x"
+                    width="290"
+                    height="240"
+                    alt="Путешествуем по миру по самым посещаемым местам студентов проекта «Стажировка»"
+                  />
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-20">20/03/2023</time>
+                  <h3 class="news-card__title">Путешествуем по миру</h3>
+                  <p>
+                    Какие места посещают наши студенты весной
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-2" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Card 3: General -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/03-volunteer-program-desktop@1x.webp 1x, img/news/tab-general/03-volunteer-program-desktop@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/03-volunteer-program-tablet@1x.webp 1x, img/news/tab-general/03-volunteer-program-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/news/tab-general/03-volunteer-program-mobile@1x.webp 1x, img/news/tab-general/03-volunteer-program-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/03-volunteer-program-desktop@1x.jpg 1x, img/news/tab-general/03-volunteer-program-desktop@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/03-volunteer-program-tablet@1x.jpg 1x, img/news/tab-general/03-volunteer-program-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/03-volunteer-program-mobile@1x.jpg"
+                    srcset="img/news/tab-general/03-volunteer-program-mobile@2x.jpg 2x"
+                    width="290"
+                    height="330"
+                    alt="Новая программа волонтёрства для студентов проекта «Стажировка»"
+                  />
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-17">17/03/2023</time>
+                  <h3 class="news-card__title">Новая программа волонтёрства</h3>
+                  <p>
+                    Программа помощи детям длительностью 4 месяца
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-3" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+
+            <!-- Card 4: General -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <picture>
+                  <source
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/04-career-opportunities-desktop@1x.webp 1x, img/news/tab-general/04-career-opportunities-desktop@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/04-career-opportunities-tablet@1x.webp 1x, img/news/tab-general/04-career-opportunities-tablet@2x.webp 2x"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="img/news/tab-general/04-career-opportunities-mobile@1x.webp 1x, img/news/tab-general/04-career-opportunities-mobile@2x.webp 2x"
+                  />
+                  <source
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/04-career-opportunities-desktop@1x.jpg 1x, img/news/tab-general/04-career-opportunities-desktop@2x.jpg 2x"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/04-career-opportunities-tablet@1x.jpg 1x, img/news/tab-general/04-career-opportunities-tablet@2x.jpg 2x"
+                  />
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/04-career-opportunities-mobile@1x.jpg"
+                    srcset="img/news/tab-general/04-career-opportunities-mobile@2x.jpg 2x"
+                    width="290"
+                    height="240"
+                    alt="Построй свою карьеру: ведущие компании готовы трудоустроить выпускников проекта «Стажировка»"
+                  />
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-10">10/03/2023</time>
+                  <h3 class="news-card__title">Построй свою карьеру</h3>
+                  <p>
+                    Ведущие компании готовы трудоустроить выпускников стажировки
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-4" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+           <!-- Card 5: Internship -->
+           <li class="news__item swiper-slide" data-category="internship">
+                <article class="news-card">
+                   <picture>
+                    <source
+                      type="image/webp"
+                      media="(min-width: 1440px)"
+                      srcset="img/news/tab-internship/02-it-company-desktop@1x.webp 1x, img/news/tab-internship/02-it-company-desktop@2x.webp 2x"
+                    />
+                  </picture>
+
+                    <div class="news-card__content">
+                      <time class="news-card__date" datetime="2023-03-15">15/03/2023</time>
+                      <h3 class="news-card__title">Стажировка в Google</h3>
+                      <p>
+                        Открыт набор на программу стажировки в офисе Google в Дублине
+                      </p>
+                      <a class="news-card__link button button--icon-only" href="news.html#article-5" aria-label="Читать полностью">
+                        <svg width="8" height="8" aria-hidden="true">
+                          <use href="/__spritemap#sprite-arrow-up-right"></use>
+                        </svg>
+                      </a>
+                    </div>
+                        </article>
+                      </li>
+
+
+            <!-- Card 6: Travel -->
+            <li class="news__item swiper-slide" data-category="travel">
+              <article class="news-card">
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="img/news/tab-travel/02-spain-exchange@1x.webp 1x, img/news/tab-travel/02-spain-exchange@2x.webp 2x"
+                  />
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-travel/02-spain-exchange@1x.jpg"
+                    srcset="img/news/tab-travel/02-spain-exchange@2x.jpg 2x"
+                    width="604"
+                    height="400"
+                    alt="Обмен студентами в Испании: открыт набор на программу обмена студентами в Испании"
+                  />
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-05">05/03/2023</time>
+                  <h3 class="news-card__title">Обмен студентами в Испании</h3>
+                  <p>
+                    Топ-5 городов для обмена студентами в Испании
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-6" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Controls: arrows + custom pagination (4 buttons) -->
+        <div class="news__controls">
+          <!-- Left arrow -->
+          <button class="news__arrow news__arrow--prev" type="button" aria-label="Предыдущий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-left"></use>
+            </svg>
+          </button>
+
+          <!-- Custom pagination (4 buttons with special logic) -->
+          <div class="news__pagination">
+            <button class="news__pagination-button news__pagination-button--active" type="button" data-page="1" aria-label="Перейти к странице 1">
+              1
+            </button>
+            <button class="news__pagination-button" type="button" data-page="2" aria-label="Перейти к странице 2">
+              2
+            </button>
+            <button class="news__pagination-button" type="button" data-page="3" aria-label="Перейти к странице 3">
+              3
+            </button>
+            <button class="news__pagination-button" type="button" data-page="4" aria-label="Перейти к странице 4">
+              4
+            </button>
+          </div>
+
+          <!-- Right arrow -->
+          <button class="news__arrow news__arrow--next" type="button" aria-label="Следующий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- === FAQ SECTION === -->
