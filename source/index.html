@@ -79,10 +79,10 @@
     <section data-test="hero" class="hero">
       <h1 class="visually-hidden">Internship - Программа обмена студентами</h1>
       <div class="hero__swiper swiper">
-        <div class="swiper-wrapper">
+        <ul class="swiper-wrapper">
 
           <!-- Slide 1 -->
-          <div class="swiper-slide hero__slide">
+          <li class="swiper-slide hero__slide">
             <!-- Background image -->
             <picture class="hero__picture">
               <source
@@ -137,10 +137,10 @@
                 </div>
               </div>
             </div>
-          </div>
+          </li>
 
           <!-- Slide 2 -->
-          <div class="swiper-slide hero__slide">
+          <li class="swiper-slide hero__slide">
             <!-- Background image -->
             <picture class="hero__picture">
               <source
@@ -195,10 +195,10 @@
                 </div>
               </div>
             </div>
-          </div>
+          </li>
 
           <!-- Slide 3 -->
-          <div class="swiper-slide hero__slide">
+          <li class="swiper-slide hero__slide">
             <!-- Background image -->
             <picture class="hero__picture">
               <source
@@ -253,9 +253,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </li>
 
-        </div>
+        </ul>
 
         <!-- Pagination (bullets) -->
         <div class="hero__pagination swiper-pagination"></div>
@@ -599,7 +599,78 @@
 
     <!-- === GRANT SECTION === -->
     <section data-test="grant" class="grant">
-      <!-- Grant content will be added in next section -->
+      <div class="container">
+        <h2 class="grant__title">Как поехать</h2>
+
+        <!-- Content wrapper for desktop 2-column layout -->
+        <div class="grant__content">
+          <!-- Column 1 (desktop): Intro + Image -->
+          <div class="grant__intro">
+            <!-- Intro paragraph (CMS, no class) -->
+            <p>
+              Свяжитесь с координатором, чтобы узнать полную информацию. Вы получите актуальные сведения о доступных программах и городах, в которых можете пройти программу.
+            </p>
+
+            <!-- Adaptive image (can be any size) -->
+            <picture>
+              <source
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/grant/grant-direction-desktop@1x.webp 1x, img/grant/grant-direction-desktop@2x.webp 2x"
+              />
+              <source
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/grant/grant-direction-tablet@1x.webp 1x, img/grant/grant-direction-tablet@2x.webp 2x"
+              />
+              <source
+                type="image/webp"
+                srcset="img/grant/grant-direction-mobile@1x.webp 1x, img/grant/grant-direction-mobile@2x.webp 2x"
+              />
+              <source
+                media="(min-width: 1440px)"
+                srcset="img/grant/grant-direction-desktop@1x.jpg 1x, img/grant/grant-direction-desktop@2x.jpg 2x"
+              />
+              <source
+                media="(min-width: 768px)"
+                srcset="img/grant/grant-direction-tablet@1x.jpg 1x, img/grant/grant-direction-tablet@2x.jpg 2x"
+              />
+              <img
+                class="grant__image"
+                src="img/grant/grant-direction-mobile@1x.jpg"
+                srcset="img/grant/grant-direction-mobile@2x.jpg 2x"
+                width="XX"
+                height="XX"
+                alt="Указатели направлений в разные страны"
+              />
+            </picture>
+          </div>
+
+          <!-- Column 2 (desktop): Requirements list -->
+          <div class="grant__requirements">
+            <h3 class="grant__subtitle">
+              Чтобы получить грант на обучение, вам нужно:
+            </h3>
+
+            <!-- Ordered list with CSS counters (auto-numbering) -->
+            <!-- Number of items can be changed from CMS -->
+            <ol class="grant__list">
+              <li class="grant__list-item">
+                Быть в возрасте от 16 до 30 лет
+              </li>
+              <li class="grant__list-item">
+                Иметь оконченное среднее образование
+              </li>
+              <li class="grant__list-item">
+                Иметь документально подтверждённое отсутствие судимости и пройти консульскую проверку
+              </li>
+              <li class="grant__list-item">
+                За последние 2 года быть не больше 3х месяцев подряд непрерывно в одной стране
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- === NEWS SECTION === -->
