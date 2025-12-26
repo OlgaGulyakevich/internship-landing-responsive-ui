@@ -188,11 +188,8 @@
 
 // Slide in from right (for navigation menu)
 // Element slides in from right side of screen
+// Note: Apply .is-open class to trigger the slide-in animation
 @mixin slide-in-right {
   transform: translateX(100%);
   transition: transform $transition-normal;
-
-  &.is-open {
-    transform: translateX(0);
-  }
 }

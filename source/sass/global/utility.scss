@@ -45,11 +45,12 @@
   display: block;
 }
 
-// Open state (for burger menu)
+// Open state (for burger menu and slide-in elements)
 .is-open {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  transform: translateX(0);
 }
 
 // Disabled state (for links and other interactive elements)

@@ -52,8 +52,8 @@ $color-success: #316dc2;
 
 // Overlay Colors
 // -----------------------------------------------------------------------------
-$color-overlay-photo: rgba(49, 109, 194, 0.2);
-$color-overlay-menu: rgba(13, 29, 51, 0.4);
+$color-overlay-photo: rgb(49, 109, 194, 0.2);
+$color-overlay-menu: rgb(13, 29, 51, 0.4);
 
 // Aliases for backward compatibility
 // -----------------------------------------------------------------------------
@@ -135,10 +135,10 @@ $transition-slow: 300ms ease-in-out;
 // SHADOWS
 // =============================================================================
 
-$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-$shadow-focus: 0 0 0 3px rgba(49, 109, 194, 0.3);
+$shadow-sm: 0 1px 2px rgb(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgb(0, 0, 0, 0.07);
+$shadow-lg: 0 10px 15px rgb(0, 0, 0, 0.1);
+$shadow-focus: 0 0 0 3px rgb(49, 109, 194, 0.3);
 
 // =============================================================================
 // Z-INDEX SCALE
@@ -197,10 +197,8 @@ $border-width: 1px;
 
 $mobile-min: 320px;
 $mobile-max: 767px;
-
 $tablet-min: 768px;
 $tablet-max: 1439px;
-
 $desktop-min: 1440px;
 
 // Media Query Breakpoints

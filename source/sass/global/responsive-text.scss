@@ -53,11 +53,11 @@
   @include nowrap-desktop;
 }
 
-  // -----------------------------------------------------------------------------
-  // Text No-Wrap (All breakpoints)
-  // Prevent text wrapping on all screen sizes
-  // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Text No-Wrap (All breakpoints)
+// Prevent text wrapping on all screen sizes
+// -----------------------------------------------------------------------------
 
-  .text-nowrap {
-    white-space: nowrap;
-  }
+.text-nowrap {
+  white-space: nowrap;
+}
