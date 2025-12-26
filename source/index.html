@@ -1,31 +1,1957 @@
 <!DOCTYPE html>
-<html lang="ru" data-validate="html">
+<html class="page" lang="ru">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship</title>
-    <link rel="stylesheet" href="sass/style.scss">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Программа обмена студентами - международный проект для обучения в ведущих университетах мира. Стань частью глобального сообщества студентов.">
+  <meta name="keywords" content="обмен студентами, обучение за рубежом, международная программа, стипендия, грант на обучение">
 
-  <body class="page-body">
-    <!-- пример использования спрайта -->
-    <img src="/__spritemap#sprite-logo-view" width="410" height="400" alt="Это спрайт">
-    <svg>
-      <use href="/__spritemap#sprite-user"></use>
-    </svg>
-    <!-- примеры требуемых атрибутов data-test="*" -->
-    <div data-test="hero">hero</div>
-    <div data-test="about">about</div>
-    <div data-test="programs">programs</div>
-    <div data-test="grant">grant</div>
-    <div data-test="news">news</div>
-    <div data-test="FAQ">FAQ</div>
-    <div data-test="reviews">reviews</div>
-    <div data-test="contacts">contacts</div>
-    <div data-test="form">form</div>
-    <div data-test="footer">footer</div>
-    <script type="module" src="js/main.js"></script>
-  </body>
+  <title>Internship - Программа обмена студентами</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/">
+  <meta property="og:title" content="Internship - Программа обмена студентами">
+  <meta property="og:description" content="Образование за рубежом с программой обмена студентами. Стань частью глобального сообщества студентов и открой для себя мир новых возможностей.">
+  <meta property="og:image" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/">
+  <meta name="twitter:title" content="Internship - Программа обмена студентами">
+  <meta name="twitter:description" content="Образование за рубежом с программой обмена студентами. Стань частью глобального сообщества студентов.">
+  <meta name="twitter:image" content="https://olgagulakevic.github.io/internship-landing-responsive-ui/og-image.jpg">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://olgagulakevic.github.io/internship-landing-responsive-ui/">
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicons/favicon.ico" sizes="32x32" type="image/x-icon">
+  <link rel="icon" href="favicons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicons/favicon-96x96.png" sizes="96x96" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Font Preload -->
+  <link rel="preload" href="fonts/Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="fonts/Manrope-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="sass/style.scss">
+</head>
+
+<body class="page__body">
+
+  <!-- ============================================ -->
+  <!-- HEADER                                       -->
+  <!-- ============================================ -->
+  <header class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <!-- Logo -->
+        <div class="header__logo logo">
+          <img class="logo__image" src="img/logo-small.svg" width="30" height="30" alt="Internship - Программа обмена студентами">
+        </div>
+
+        <!-- Burger Button -->
+        <button class="header__burger" type="button" data-burger="toggle" aria-label="Открыть меню">
+          <span class="header__burger-text">Меню</span>
+          <svg class="header__burger-icon header__burger-icon--open" width="18" height="18" aria-hidden="true">
+            <use href="/__spritemap#sprite-burger"></use>
+          </svg>
+          <svg class="header__burger-icon header__burger-icon--close" width="18" height="18" aria-hidden="true">
+            <use href="/__spritemap#sprite-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================ -->
+  <!-- MAIN CONTENT                                 -->
+  <!-- ============================================ -->
+  <main class="main">
+    <!-- === HERO SECTION === -->
+    <section class="hero" data-test="hero">
+      <h1 class="visually-hidden">Internship - Программа обмена студентами</h1>
+      <div class="hero__swiper swiper">
+        <ul class="swiper-wrapper">
+
+          <!-- Slide 1 -->
+          <li class="swiper-slide hero__slide">
+            <!-- Background image -->
+            <picture class="hero__picture">
+              <source
+                width="1440"
+                height="800"
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/hero/hero-1-desktop@1x.webp 1x, img/hero/hero-1-desktop@2x.webp 2x"
+              >
+              <source
+                width="768"
+                height="1024"
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/hero/hero-1-tablet@1x.webp 1x, img/hero/hero-1-tablet@2x.webp 2x"
+              >
+              <source
+                width="320"
+                height="568"
+                type="image/webp"
+                srcset="img/hero/hero-1-mobile@1x.webp 1x, img/hero/hero-1-mobile@2x.webp 2x"
+              >
+              <img
+                class="hero__image"
+                src="img/hero/hero-1-mobile@1x.jpg"
+                srcset="img/hero/hero-1-mobile@2x.jpg 2x"
+                width="320"
+                height="568"
+                alt="Студенты за рубежом"
+              >
+            </picture>
+
+            <!-- Content block -->
+            <div class="hero__content">
+              <div class="container">
+                <!-- Top section: pagination + title -->
+                <div class="hero__top">
+                  <!-- Pagination wrapper (left notch) -->
+                  <div class="hero__pagination-wrapper"></div>
+
+                  <h2 class="hero__title">
+                    Глобальный профессиональный опыт обучения за рубежом
+                  </h2>
+                </div>
+
+                <!-- Bottom section: paragraph + button -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="hero__bottom">
+                  <p>
+                    Погрузитесь в академическую программу, проходя практику в разных городах, ощущая настоящий студенческий стиль жизни!
+                  </p>
+                  <a class="hero__button button button--primary" href="#about">
+                    Подробнее
+                    <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Slide 2 -->
+          <li class="swiper-slide hero__slide">
+            <!-- Background image -->
+            <picture class="hero__picture">
+              <source
+                width="1440"
+                height="800"
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/hero/hero-2-desktop@1x.webp 1x, img/hero/hero-2-desktop@2x.webp 2x"
+              >
+              <source
+                width="768"
+                height="1024"
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/hero/hero-2-tablet@1x.webp 1x, img/hero/hero-2-tablet@2x.webp 2x"
+              >
+              <source
+                width="320"
+                height="568"
+                type="image/webp"
+                srcset="img/hero/hero-2-mobile@1x.webp 1x, img/hero/hero-2-mobile@2x.webp 2x"
+              >
+              <img
+                class="hero__image"
+                src="img/hero/hero-2-mobile@1x.jpg"
+                srcset="img/hero/hero-2-mobile@2x.jpg 2x"
+                width="320"
+                height="568"
+                alt="Программы обмена студентами"
+              >
+            </picture>
+
+            <!-- Content block -->
+            <div class="hero__content">
+              <div class="container">
+                <!-- Top section: pagination + title -->
+                <div class="hero__top">
+                  <!-- Pagination wrapper (left notch) -->
+                  <div class="hero__pagination-wrapper"></div>
+
+                  <h2 class="hero__title">
+                    Волонтёрские программы – внесите свой вклад в общество
+                  </h2>
+                </div>
+
+                <!-- Bottom section: paragraph + button -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="hero__bottom">
+                  <p>
+                    Возможности для преподавания, органического сельского хозяйства, устойчивого образа жизни и других.
+                  </p>
+                  <a class="hero__button button button--primary" href="#programs">
+                    Подробнее
+                    <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Slide 3 -->
+          <li class="swiper-slide hero__slide">
+            <!-- Background image -->
+            <picture class="hero__picture">
+              <source
+                width="1440"
+                height="800"
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/hero/hero-3-desktop@1x.webp 1x, img/hero/hero-3-desktop@2x.webp 2x"
+              >
+              <source
+                width="768"
+                height="1024"
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/hero/hero-3-tablet@1x.webp 1x, img/hero/hero-3-tablet@2x.webp 2x"
+              >
+              <source
+                width="320"
+                height="568"
+                type="image/webp"
+                srcset="img/hero/hero-3-mobile@1x.webp 1x, img/hero/hero-3-mobile@2x.webp 2x"
+              >
+              <img
+                class="hero__image"
+                src="img/hero/hero-3-mobile@1x.jpg"
+                srcset="img/hero/hero-3-mobile@2x.jpg 2x"
+                width="320"
+                height="568"
+                alt="Глобальный профессиональный опыт"
+              >
+            </picture>
+
+            <!-- Content block -->
+            <div class="hero__content">
+              <div class="container">
+                <!-- Top section: pagination + title -->
+                <div class="hero__top">
+                  <!-- Pagination wrapper (left notch) -->
+                  <div class="hero__pagination-wrapper"></div>
+
+                  <h2 class="hero__title">
+                    Программы стажировок в крупнейших компаниях мира
+                  </h2>
+                </div>
+
+                <!-- Bottom section: paragraph + button -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="hero__bottom">
+                  <p>
+                    Получите незаменимый опыт работы в ведущих мировых компаниях и государственных организациях.
+                  </p>
+                  <a class="hero__button button button--primary" href="#about">
+                    Подробнее
+                    <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+        <!-- Pagination (bullets) -->
+        <div class="hero__pagination swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- === ABOUT SECTION === -->
+    <section class="about" data-test="about">
+      <div class="container">
+        <h2 class="about__title">О проекте «Стажировка»</h2>
+
+        <!-- Main content (Desktop: 2 columns) -->
+        <div class="about__content">
+          <!-- Column 1: Intro -->
+          <div class="about__intro">
+            <p>
+              «Стажировка» — совместный проект правительств и волонтёрских бригад.
+            </p>
+          </div>
+
+          <!-- Column 2: Details + Button -->
+          <!-- Content area WITHOUT classes (cascading styling) -->
+          <div class="about__details">
+            <h3>Наша цель</h3>
+            <p>
+              Наша деятельность направлена на повышение квалификации молодых специалистов на ранних и средних стадиях карьеры, предоставляя им инструменты для решения сложных проблем, с которыми сталкиваются в мире. Цель центра — наделить этих людей способностью инициировать значимые изменения.
+            </p>
+            <button class="about__button button button--primary" type="button" data-modal-target="feedback">
+              Подробнее о проекте
+              <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-up-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Advantages block -->
+        <!-- Content area WITHOUT classes (cascading styling) -->
+        <ul class="about__advantages">
+          <!-- Advantage 1 -->
+          <li class="about__advantage">
+            <h4>БОЛЕЕ 250 ПРОГРАММ</h4>
+            <p>
+              учебных и рабочих, разной длительности от 3 месяцев до 1 года
+            </p>
+          </li>
+
+          <!-- Advantage 2 -->
+          <li class="about__advantage">
+            <h4>БОЛЕЕ 3000 УЧАСТНИКОВ</h4>
+            <p>
+              уже успешно прошли программу от «Стажировка» и остались в разных странах
+            </p>
+          </li>
+
+          <!-- Advantage 3 -->
+          <li class="about__advantage">
+            <h4>УЧАСТНИКИ ИЗ 60 СТРАН</h4>
+            <p>
+              студенты со всего мира приезжают на программу «Стажировки» от 3 месяцев до 1 года
+            </p>
+          </li>
+
+          <!-- Advantage 4 -->
+          <li class="about__advantage">
+            <h4>ОТ 4 200 $ ДО 8 400 $</h4>
+            <p>
+              грант всем участникам для комфортного прохождения программы
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- === PROGRAMS SECTION === -->
+    <section class="programs" data-test="programs">
+      <div class="container programs__container">
+        <!-- Section title -->
+        <h2 class="programs__title">Программы</h2>
+
+        <!-- Button: All Programs (visible on all breakpoints, positioned via grid) -->
+        <a class="programs__all-button button button--primary" href="programs.html">
+          Все программы
+          <svg class="button__icon" width="8" height="8" aria-hidden="true">
+            <use href="/__spritemap#sprite-arrow-right"></use>
+          </svg>
+        </a>
+
+        <!-- Slider navigation arrows (mobile only, positioned via grid) -->
+        <div class="programs__arrows">
+          <button class="programs__arrow programs__arrow--prev" type="button" aria-label="Предыдущий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-left"></use>
+            </svg>
+          </button>
+          <button class="programs__arrow programs__arrow--next" type="button" aria-label="Следующий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Swiper slider container -->
+        <div class="programs__slider swiper">
+          <ul class="programs__list swiper-wrapper">
+            <!-- Slide 1: Internship (Стажировки) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    width="392"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-1-desktop@1x.webp 1x, img/programs/program-1-desktop@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-1-tablet@1x.webp 1x, img/programs/program-1-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="400"
+                    type="image/webp"
+                    srcset="img/programs/program-1-mobile@1x.webp 1x, img/programs/program-1-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="392"
+                    height="420"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-1-desktop@1x.jpg 1x, img/programs/program-1-desktop@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="420"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-1-tablet@1x.jpg 1x, img/programs/program-1-tablet@2x.jpg 2x">
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-1-mobile@1x.jpg"
+                    srcset="img/programs/program-1-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Стажировки">
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Стажировки</h3>
+                  <p>
+                    Получите незаменимый опыт работы в крупнейших мировых компаниях.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#internship" aria-label="Подробнее о стажировках">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 2: Volunteer (Волонтёрство) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    width="392"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-2-desktop@1x.webp 1x, img/programs/program-2-desktop@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-2-tablet@1x.webp 1x, img/programs/program-2-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="400"
+                    type="image/webp"
+                    srcset="img/programs/program-2-mobile@1x.webp 1x, img/programs/program-2-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="392"
+                    height="420"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-2-desktop@1x.jpg 1x, img/programs/program-2-desktop@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="420"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-2-tablet@1x.jpg 1x, img/programs/program-2-tablet@2x.jpg 2x">
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-2-mobile@1x.jpg"
+                    srcset="img/programs/program-2-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Волонтёрство">
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Волонтёрство</h3>
+                  <p>
+                    Помогайте другим и развивайте свои лидерские качества.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#volunteer" aria-label="Подробнее о волонтёрстве">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 3: Education (Учёба) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    width="392"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-3-desktop@1x.webp 1x, img/programs/program-3-desktop@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-3-tablet@1x.webp 1x, img/programs/program-3-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="400"
+                    type="image/webp"
+                    srcset="img/programs/program-3-mobile@1x.webp 1x, img/programs/program-3-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="392"
+                    height="420"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-3-desktop@1x.jpg 1x, img/programs/program-3-desktop@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="420"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-3-tablet@1x.jpg 1x, img/programs/program-3-tablet@2x.jpg 2x">
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-3-mobile@1x.jpg"
+                    srcset="img/programs/program-3-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Учёба">
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Учёба</h3>
+                  <p>
+                    Получите образование и измените своё будущее.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#education" aria-label="Подробнее об учёбе">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 4: Religion (Религия) -->
+            <li class="programs__item swiper-slide">
+              <article class="program-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    width="392"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-4-desktop@1x.webp 1x, img/programs/program-4-desktop@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="420"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-4-tablet@1x.webp 1x, img/programs/program-4-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="400"
+                    type="image/webp"
+                    srcset="img/programs/program-4-mobile@1x.webp 1x, img/programs/program-4-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="392"
+                    height="420"
+                    media="(min-width: 1440px)"
+                    srcset="img/programs/program-4-desktop@1x.jpg 1x, img/programs/program-4-desktop@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="420"
+                    media="(min-width: 768px)"
+                    srcset="img/programs/program-4-tablet@1x.jpg 1x, img/programs/program-4-tablet@2x.jpg 2x">
+                  <img
+                    class="program-card__image"
+                    src="img/programs/program-4-mobile@1x.jpg"
+                    srcset="img/programs/program-4-mobile@2x.jpg 2x"
+                    width="290"
+                    height="400"
+                    alt="Религия">
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="program-card__content">
+                  <h3 class="program-card__title">Религия</h3>
+                  <p>
+                    Погрузитесь в духовное развитие и познание мира.
+                  </p>
+                  <a class="program-card__link button button--icon-only" href="programs.html#religion" aria-label="Подробнее о религиозных программах">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slider controls: scrollbar + arrows (tablet/desktop only, positioned via grid) -->
+        <div class="programs__controls">
+          <!-- Swiper scrollbar -->
+          <div class="programs__scrollbar swiper-scrollbar"></div>
+
+          <!-- Navigation arrows (tablet/desktop) -->
+          <div class="programs__nav">
+            <button class="programs__nav-arrow programs__nav-arrow--prev" type="button" aria-label="Предыдущий слайд">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-left"></use>
+              </svg>
+            </button>
+            <button class="programs__nav-arrow programs__nav-arrow--next" type="button" aria-label="Следующий слайд">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- === GRANT SECTION === -->
+    <section class="grant" data-test="grant">
+      <div class="container">
+        <h2 class="grant__title">Как поехать</h2>
+
+        <!-- Content wrapper for desktop 2-column layout -->
+        <div class="grant__content">
+          <!-- Column 1 (desktop): Intro + Image -->
+          <div class="grant__intro">
+            <!-- Intro paragraph (CMS, no class) -->
+            <p>
+              Свяжитесь с координатором, чтобы узнать полную информацию. Вы получите актуальные сведения о доступных программах и городах, в которых можете пройти программу.
+            </p>
+
+            <!-- Adaptive image (can be any size) -->
+            <picture>
+              <source
+                width="498"
+                height="363"
+                type="image/webp"
+                media="(min-width: 1440px)"
+                srcset="img/grant/grant-direction-desktop@1x.webp 1x, img/grant/grant-direction-desktop@2x.webp 2x">
+              <source
+                width="678"
+                height="375"
+                type="image/webp"
+                media="(min-width: 768px)"
+                srcset="img/grant/grant-direction-tablet@1x.webp 1x, img/grant/grant-direction-tablet@2x.webp 2x">
+              <source
+                width="290"
+                height="200"
+                type="image/webp"
+                srcset="img/grant/grant-direction-mobile@1x.webp 1x, img/grant/grant-direction-mobile@2x.webp 2x">
+              <source
+                type="image/jpeg"
+                width="498"
+                height="363"
+                media="(min-width: 1440px)"
+                srcset="img/grant/grant-direction-desktop@1x.jpg 1x, img/grant/grant-direction-desktop@2x.jpg 2x">
+              <source
+                type="image/jpeg"
+                width="678"
+                height="375"
+                media="(min-width: 768px)"
+                srcset="img/grant/grant-direction-tablet@1x.jpg 1x, img/grant/grant-direction-tablet@2x.jpg 2x">
+              <img
+                class="grant__image"
+                src="img/grant/grant-direction-mobile@1x.jpg"
+                srcset="img/grant/grant-direction-mobile@2x.jpg 2x"
+                width="290"
+                height="200"
+                alt="Указатели направлений в разные страны">
+            </picture>
+          </div>
+
+          <!-- Column 2 (desktop): Requirements list -->
+          <div class="grant__requirements">
+            <h3 class="grant__subtitle">
+              Чтобы получить грант на обучение, вам нужно:
+            </h3>
+
+            <!-- Ordered list with CSS counters (auto-numbering) -->
+            <!-- Number of items can be changed from CMS -->
+            <ol class="grant__list">
+              <li class="grant__list-item">
+                Быть в возрасте от 16 до 30 лет
+              </li>
+              <li class="grant__list-item">
+                Иметь оконченное среднее образование
+              </li>
+              <li class="grant__list-item">
+                Иметь документально подтверждённое отсутствие судимости и пройти консульскую проверку
+              </li>
+              <li class="grant__list-item">
+                За последние 2 года быть не больше 3х месяцев подряд непрерывно в одной стране
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- === NEWS SECTION === -->
+    <section class="news" data-test="news">
+      <div class="container">
+        <h2 class="news__title">Новости и материалы</h2>
+
+        <!-- Tabs navigation -->
+        <div class="news__tabs">
+          <button class="news__tab news__tab--active" type="button" data-tab="all">
+            Общее
+          </button>
+          <button class="news__tab" type="button" data-tab="volunteer">
+            Волонтёрство
+          </button>
+          <button class="news__tab" type="button" data-tab="internship">
+            Стажировки
+          </button>
+          <button class="news__tab" type="button" data-tab="career">
+            Карьера
+          </button>
+          <button class="news__tab" type="button" data-tab="travel">
+            Путешествия
+          </button>
+        </div>
+
+        <!-- Swiper slider container -->
+        <div class="news__slider swiper">
+          <!-- Template cards (examples from design) -->
+          <!-- Full content will be loaded from JSON via JS module -->
+          <ul class="news__list swiper-wrapper">
+            <!-- Card 1: General (LARGE on mobile/desktop) -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <!-- Background image -->
+                <picture>
+                  <source
+                    width="604"
+                    height="400"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/01-internship-interview-desktop-wide@1x.webp 1x, img/news/tab-general/01-internship-interview-desktop-wide@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="350"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/01-internship-interview-tablet@1x.webp 1x, img/news/tab-general/01-internship-interview-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="330"
+                    type="image/webp"
+                    srcset="img/news/tab-general/01-internship-interview-mobile@1x.webp 1x, img/news/tab-general/01-internship-interview-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="604"
+                    height="400"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/01-internship-interview-desktop-wide@1x.jpg 1x, img/news/tab-general/01-internship-interview-desktop-wide@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="350"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/01-internship-interview-tablet@1x.jpg 1x, img/news/tab-general/01-internship-interview-tablet@2x.jpg 2x">
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/01-internship-interview-mobile@1x.jpg"
+                    srcset="img/news/tab-general/01-internship-interview-mobile@2x.jpg 2x"
+                    width="290"
+                    height="330"
+                    alt="Интервью с участницей программы стажировки">
+                </picture>
+
+                <!-- Content block with SVG mask (applied via CSS) -->
+                <!-- Content area WITHOUT classes (cascading styling) -->
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-23">23/03/2023</time>
+                  <h3 class="news-card__title">Интервью с участницей программы стажировки</h3>
+                  <p>
+                    Саша рассказывает, как попала в программу и как прошла 6-месячная стажировка в ISOFound
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-1" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Card 2: General -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <picture>
+                  <source
+                    width="286"
+                    height="400"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/02-travel-spring-desktop@1x.webp 1x, img/news/tab-general/02-travel-spring-desktop@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="350"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/02-travel-spring-tablet@1x.webp 1x, img/news/tab-general/02-travel-spring-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="240"
+                    type="image/webp"
+                    srcset="img/news/tab-general/02-travel-spring-mobile@1x.webp 1x, img/news/tab-general/02-travel-spring-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="286"
+                    height="400"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/02-travel-spring-desktop@1x.jpg 1x, img/news/tab-general/02-travel-spring-desktop@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="350"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/02-travel-spring-tablet@1x.jpg 1x, img/news/tab-general/02-travel-spring-tablet@2x.jpg 2x">
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/02-travel-spring-mobile@1x.jpg"
+                    srcset="img/news/tab-general/02-travel-spring-mobile@2x.jpg 2x"
+                    width="290"
+                    height="240"
+                    alt="Путешествуем по миру по самым посещаемым местам студентов проекта «Стажировка»">
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-20">20/03/2023</time>
+                  <h3 class="news-card__title">Путешествуем по миру</h3>
+                  <p>
+                    Какие места посещают наши студенты весной
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-2" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Card 3: General -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <picture>
+                  <source
+                    width="286"
+                    height="400"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/03-volunteer-program-desktop@1x.webp 1x, img/news/tab-general/03-volunteer-program-desktop@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="350"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/03-volunteer-program-tablet@1x.webp 1x, img/news/tab-general/03-volunteer-program-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="330"
+                    type="image/webp"
+                    srcset="img/news/tab-general/03-volunteer-program-mobile@1x.webp 1x, img/news/tab-general/03-volunteer-program-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="286"
+                    height="400"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/03-volunteer-program-desktop@1x.jpg 1x, img/news/tab-general/03-volunteer-program-desktop@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="350"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/03-volunteer-program-tablet@1x.jpg 1x, img/news/tab-general/03-volunteer-program-tablet@2x.jpg 2x">
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/03-volunteer-program-mobile@1x.jpg"
+                    srcset="img/news/tab-general/03-volunteer-program-mobile@2x.jpg 2x"
+                    width="290"
+                    height="330"
+                    alt="Новая программа волонтёрства для студентов проекта «Стажировка»">
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-17">17/03/2023</time>
+                  <h3 class="news-card__title">Новая программа волонтёрства</h3>
+                  <p>
+                    Программа помощи детям длительностью 4 месяца
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-3" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+
+            <!-- Card 4: General -->
+            <li class="news__item swiper-slide" data-category="general">
+              <article class="news-card">
+                <picture>
+                  <source
+                    width="286"
+                    height="400"
+                    type="image/webp"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/04-career-opportunities-desktop@1x.webp 1x, img/news/tab-general/04-career-opportunities-desktop@2x.webp 2x">
+                  <source
+                    width="324"
+                    height="350"
+                    type="image/webp"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/04-career-opportunities-tablet@1x.webp 1x, img/news/tab-general/04-career-opportunities-tablet@2x.webp 2x">
+                  <source
+                    width="290"
+                    height="330"
+                    type="image/webp"
+                    srcset="img/news/tab-general/04-career-opportunities-mobile@1x.webp 1x, img/news/tab-general/04-career-opportunities-mobile@2x.webp 2x">
+                  <source
+                    type="image/jpeg"
+                    width="286"
+                    height="400"
+                    media="(min-width: 1440px)"
+                    srcset="img/news/tab-general/04-career-opportunities-desktop@1x.jpg 1x, img/news/tab-general/04-career-opportunities-desktop@2x.jpg 2x">
+                  <source
+                    type="image/jpeg"
+                    width="324"
+                    height="350"
+                    media="(min-width: 768px)"
+                    srcset="img/news/tab-general/04-career-opportunities-tablet@1x.jpg 1x, img/news/tab-general/04-career-opportunities-tablet@2x.jpg 2x">
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-general/04-career-opportunities-mobile@1x.jpg"
+                    srcset="img/news/tab-general/04-career-opportunities-mobile@2x.jpg 2x"
+                    width="290"
+                    height="240"
+                    alt="Построй свою карьеру: ведущие компании готовы трудоустроить выпускников проекта «Стажировка»">
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-10">10/03/2023</time>
+                  <h3 class="news-card__title">Построй свою карьеру</h3>
+                  <p>
+                    Ведущие компании готовы трудоустроить выпускников стажировки
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-4" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+
+            <!-- Card 5: Internship -->
+            <li class="news__item swiper-slide" data-category="internship">
+              <article class="news-card">
+                <picture>
+                    <source
+                      width="604"
+                      height="400"
+                      type="image/webp"
+                      srcset="img/news/tab-internship/02-it-company@1x.webp 1x, img/news/tab-internship/02-it-company@2x.webp 2x">
+                      <img
+                      class="news-card__image"
+                      src="img/news/tab-internship/02-it-company@1x.jpg"
+                      srcset="img/news/tab-internship/02-it-company@2x.jpg 2x"
+                      width="604"
+                      height="400"
+                      alt="Стажировка в Google: открыт набор на программу стажировки в офисе Google в Дублине">
+                  </picture>
+
+                    <div class="news-card__content">
+                      <time class="news-card__date" datetime="2023-03-15">15/03/2023</time>
+                      <h3 class="news-card__title">Стажировка в Google</h3>
+                      <p>
+                        Открыт набор на программу стажировки в офисе Google в Дублине
+                      </p>
+                      <a class="news-card__link button button--icon-only" href="news.html#article-5" aria-label="Читать полностью">
+                        <svg width="8" height="8" aria-hidden="true">
+                          <use href="/__spritemap#sprite-arrow-up-right"></use>
+                        </svg>
+                      </a>
+                    </div>
+                        </article>
+                      </li>
+
+
+            <!-- Card 6: Travel -->
+            <li class="news__item swiper-slide" data-category="travel">
+              <article class="news-card">
+                <picture>
+                  <source
+                    width="604"
+                    height="400"
+                    type="image/webp"
+                    srcset="img/news/tab-travel/02-spain-exchange@1x.webp 1x, img/news/tab-travel/02-spain-exchange@2x.webp 2x">
+                  <img
+                    class="news-card__image"
+                    src="img/news/tab-travel/02-spain-exchange@1x.jpg"
+                    srcset="img/news/tab-travel/02-spain-exchange@2x.jpg 2x"
+                    width="604"
+                    height="400"
+                    alt="Обмен студентами в Испании: открыт набор на программу обмена студентами в Испании">
+                </picture>
+
+                <div class="news-card__content">
+                  <time class="news-card__date" datetime="2023-03-05">05/03/2023</time>
+                  <h3 class="news-card__title">Обмен студентами в Испании</h3>
+                  <p>
+                    Топ-5 городов для обмена студентами в Испании
+                  </p>
+                  <a class="news-card__link button button--icon-only" href="news.html#article-6" aria-label="Читать полностью">
+                    <svg width="8" height="8" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-up-right"></use>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Controls: arrows + custom pagination (4 buttons) -->
+        <div class="news__controls">
+          <!-- Left arrow -->
+          <button class="news__arrow news__arrow--prev" type="button" aria-label="Предыдущий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-left"></use>
+            </svg>
+          </button>
+
+          <!-- Custom pagination (4 buttons with special logic) -->
+          <div class="news__pagination">
+            <button class="news__pagination-button news__pagination-button--active" type="button" data-page="1" aria-label="Перейти к странице 1">
+              1
+            </button>
+            <button class="news__pagination-button" type="button" data-page="2" aria-label="Перейти к странице 2">
+              2
+            </button>
+            <button class="news__pagination-button" type="button" data-page="3" aria-label="Перейти к странице 3">
+              3
+            </button>
+            <button class="news__pagination-button" type="button" data-page="4" aria-label="Перейти к странице 4">
+              4
+            </button>
+          </div>
+
+          <!-- Right arrow -->
+          <button class="news__arrow news__arrow--next" type="button" aria-label="Следующий слайд">
+            <svg width="10" height="10" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- === FAQ SECTION === -->
+    <section class="faq" data-test="FAQ">
+      <div class="container">
+        <h2 class="faq__title">Вопросы и ответы</h2>
+
+        <ul class="faq__list">
+          <!-- FAQ Item 1 -->
+          <li class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__question-text">Кто организатор? Какие сроки у программы?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <svg class="faq__icon-plus" width="16" height="16">
+                  <use href="/__spritemap#sprite-plus"></use>
+                </svg>
+                <svg class="faq__icon-minus" width="18" height="2">
+                  <use href="/__spritemap#sprite-minus"></use>
+                </svg>
+              </span>
+            </button>
+            <div class="faq__answer" hidden>
+              <p>
+                Организатором программы является проект «Стажировка» в сотрудничестве с образовательными учреждениями. Сроки программы обмена могут варьироваться от одного семестра до года.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ Item 2 -->
+          <li class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__question-text">Что такое грант на обучение?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <svg class="faq__icon-plus" width="18" height="18">
+                  <use href="/__spritemap#sprite-plus"></use>
+                </svg>
+                <svg class="faq__icon-minus" width="18" height="2">
+                  <use href="/__spritemap#sprite-minus"></use>
+                </svg>
+              </span>
+            </button>
+            <div class="faq__answer" hidden>
+              <p>
+                Грант на обучение — это финансовая поддержка, которую предоставляет организатор программы обмена студентами для оплаты учебных расходов.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ Item 3 - OPEN BY DEFAULT -->
+          <li class="faq__item faq__item--active">
+            <button class="faq__question" type="button" aria-expanded="true">
+              <span class="faq__question-text">Как определяется стоимость программы?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <svg class="faq__icon-plus" width="18" height="18">
+                  <use href="/__spritemap#sprite-plus"></use>
+                </svg>
+                <svg class="faq__icon-minus" width="18" height="2">
+                  <use href="/__spritemap#sprite-minus"></use>
+                </svg>
+              </span>
+            </button>
+            <div class="faq__answer">
+              <p>
+                Полная стоимость определяется организаторами в зависимости от направления. В большинстве случаев грант «Стажировка» не покрывает полную стоимость программы, и поэтому предусматривается определённая доля личного участия.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ Item 4 -->
+          <li class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__question-text">Признаётся ли учёба в рамках проекта для дальнейшего обучения?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <svg class="faq__icon-plus" width="18" height="18">
+                  <use href="/__spritemap#sprite-plus"></use>
+                </svg>
+                <svg class="faq__icon-minus" width="18" height="2">
+                  <use href="/__spritemap#sprite-minus"></use>
+                </svg>
+              </span>
+            </button>
+            <div class="faq__answer" hidden>
+              <p>
+                Студенты, участвующие в проекте, могут использовать полученные знания и навыки в своей будущей профессиональной деятельности или продолжить обучение в высших учебных заведениях. Кроме того, многие университеты и колледжи предоставляют кредиты за участие в программе обмена студентами.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ Item 5 -->
+          <li class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__question-text">Как выглядит полный процесс регистрации на программу «Стажировка»?</span>
+              <span class="faq__icon" aria-hidden="true">
+                <svg class="faq__icon-plus" width="18" height="18">
+                  <use href="/__spritemap#sprite-plus"></use>
+                </svg>
+                <svg class="faq__icon-minus" width="18" height="2">
+                  <use href="/__spritemap#sprite-minus"></use>
+                </svg>
+              </span>
+            </button>
+            <div class="faq__answer" hidden>
+              <p>
+                Процесс регистрации на программу обмена включает выбор университета-партнера и программы обмена, общение с координатором программы, заполнение заявления и предоставление необходимых документов, прохождение интервью, оформление визы, жилья и страховки, обучение по безопасности за границей и подписание договора об участии в программе. Подробнее можно узнать позвонив в центр.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- === REVIEWS SECTION === -->
+    <section class="reviews" data-test="reviews">
+      <div class="container">
+        <!-- Header: title + arrows (mobile only) -->
+        <div class="reviews__header">
+          <h2 class="reviews__title">Отзывы</h2>
+
+          <!-- Mobile arrows -->
+          <div class="reviews__arrows">
+            <button class="reviews__arrow reviews__arrow--prev" type="button" aria-label="Предыдущий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-left"></use>
+              </svg>
+            </button>
+            <button class="reviews__arrow reviews__arrow--next" type="button" aria-label="Следующий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Swiper slider -->
+        <div class="reviews__slider swiper">
+          <ul class="reviews__list swiper-wrapper">
+            <!-- Review 1 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <!-- Avatar -->
+                <picture class="review-card__avatar">
+                  <source
+                    width="120"
+                    height="120"
+                    type="image/webp"
+                    srcset="img/avatars/avatar-1@1x.webp 1x, img/avatars/avatar-1@2x.webp 2x">
+                  <img
+                    src="img/avatars/avatar-1@1x.png"
+                    srcset="img/avatars/avatar-1@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Лола Алекс">
+                </picture>
+
+                <!-- Info block (name + meta) -->
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Лола<br>Алекс</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Masa Art Challenge</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2022-09">Осень 2022</time>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Content area (cascading styling from .review-card) -->
+                <blockquote>
+                  Я могу с уверенностью сказать, что это был один из самых незабываемых опытов в жизни!
+                </blockquote>
+
+                <p>
+                  Я рекомендую программу «Стажировка» всем студентам, желающим получить незабываемые впечатления. Сочетание путешествий, общения и значимой работы действительно отличает её от других программ, и я чувствую огромную благодарность за предоставленную мне возможность.
+                </p>
+              </article>
+            </li>
+
+            <!-- Review 2 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <picture class="review-card__avatar">
+                  <source
+                    width="120"
+                    height="120"
+                    type="image/webp"
+                    srcset="img/avatars/avatar-2@1x.webp 1x, img/avatars/avatar-2@2x.webp 2x">
+                  <img
+                    src="img/avatars/avatar-2@1x.png"
+                    srcset="img/avatars/avatar-2@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Давид Иванов">
+                </picture>
+
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Давид<br>Иванов</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Volunteer Chance</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2022-06">Лето 2022</time>
+                    </div>
+                  </div>
+                </div>
+
+                <blockquote>
+                  Благодаря опыту стажировки я узнал так много нового о себе и об окружающем мире.
+                </blockquote>
+
+                <p>
+                  Каждый день был возможностью оказать ощутимое влияние на жизнь других людей. Я бы очень рекомендовал эту волонтёрскую программу всем, кто ищет значимый и незабываемый опыт. Организация была на высшем уровне. Для меня было честью быть частью такой удивительной инициативы.
+                </p>
+              </article>
+            </li>
+
+            <!-- Review 3 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <picture class="review-card__avatar">
+                  <source
+                    width="120"
+                    height="120"
+                    type="image/webp"
+                    srcset="img/avatars/avatar-3@1x.webp 1x, img/avatars/avatar-3@2x.webp 2x">
+                  <img
+                    src="img/avatars/avatar-3@1x.png"
+                    srcset="img/avatars/avatar-3@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Александр Смирнов">
+                </picture>
+
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Александр<br>Смирнов</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Career Start</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2022-03">Весна 2022</time>
+                    </div>
+                  </div>
+                </div>
+
+                <blockquote>
+                  Эта стажировка стала настоящим трамплином для моей карьеры в IT-индустрии!
+                </blockquote>
+
+                <p>
+                  Работа над реальными проектами в команде профессионалов дала мне навыки, которые невозможно получить в университете. Я благодарен программе «Стажировка» за возможность начать карьеру в ведущей технологической компании.
+                </p>
+              </article>
+            </li>
+
+            <!-- Review 4 -->
+            <li class="reviews__item swiper-slide">
+              <article class="review-card">
+                <picture class="review-card__avatar">
+                  <source
+                    width="120"
+                    height="120"
+                    type="image/webp"
+                    srcset="img/avatars/avatar-4@1x.webp 1x, img/avatars/avatar-4@2x.webp 2x">
+                  <img
+                    src="img/avatars/avatar-4@1x.png"
+                    srcset="img/avatars/avatar-4@2x.png 2x"
+                    width="120"
+                    height="120"
+                    alt="Мария Петрова">
+                </picture>
+
+                <div class="review-card__info">
+                  <h3 class="review-card__name">Мария<br>Петрова</h3>
+
+                  <div class="review-card__meta">
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ПРОГРАММА</span>
+                      <span class="review-card__program">Study Abroad Plus</span>
+                    </div>
+                    <div class="review-card__meta-item">
+                      <span class="review-card__label">ДАТА</span>
+                      <time class="review-card__date" datetime="2023-01">Зима 2023</time>
+                    </div>
+                  </div>
+                </div>
+
+                <blockquote>
+                  Программа стажировки превзошла все мои ожидания и подарила бесценный опыт!
+                </blockquote>
+
+                <p>
+                  Я получила возможность работать в международной компании, улучшить знание языка и завести друзей со всего мира. Организаторы позаботились обо всех деталях, что позволило мне сосредоточиться на обучении и личностном росте.
+                </p>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tablet/Desktop controls: scrollbar + arrows -->
+        <div class="reviews__controls">
+          <div class="reviews__scrollbar swiper-scrollbar"></div>
+
+          <div class="reviews__nav">
+            <button class="reviews__nav-arrow reviews__nav-arrow--prev" type="button" aria-label="Предыдущий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-left"></use>
+              </svg>
+            </button>
+            <button class="reviews__nav-arrow reviews__nav-arrow--next" type="button" aria-label="Следующий отзыв">
+              <svg width="10" height="10" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- === CONTACTS SECTION === -->
+    <section class="contacts" data-test="contacts">
+      <div class="container">
+        <div class="contacts__header">
+          <h2 class="contacts__title">Контакты</h2>
+
+          <ul class="contacts__info">
+            <li class="contacts__info-item">
+              <span class="contacts__label">ЦЕНТРАЛЬНЫЙ ОФИС</span>
+              <address class="contacts__address">
+                г. Новосибирск, ул. Щетинкина 68, культурный центр
+              </address>
+            </li>
+
+            <li class="contacts__info-item">
+              <span class="contacts__label">ТЕЛЕФОН</span>
+              <a class="contacts__phone" href="tel:+79638768767676">+7 963 876 876 76</a>
+            </li>
+
+            <li class="contacts__info-item">
+              <span class="contacts__label">EMAIL</span>
+              <a class="contacts__email" href="mailto:Info@stazh.ru">Info@stazh.ru</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contacts__map">
+          <picture>
+            <source
+              width="1240"
+              height="486"
+              type="image/webp"
+              media="(min-width: 1440px)"
+              srcset="img/map/map-desktop@1x.webp 1x, img/map/map-desktop@2x.webp 2x">
+            <source
+              width="1240"
+              height="486"
+              type="image/jpeg"
+              media="(min-width: 1440px)"
+              srcset="img/map/map-desktop@1x.jpg 1x, img/map/map-desktop@2x.jpg 2x">
+
+            <source
+              width="678"
+              height="500"
+              type="image/webp"
+              media="(min-width: 768px)"
+              srcset="img/map/map-tablet@1x.webp 1x, img/map/map-tablet@2x.webp 2x">
+            <source
+              width="678"
+              height="500"
+              type="image/jpeg"
+              media="(min-width: 768px)"
+              srcset="img/map/map-tablet@1x.jpg 1x, img/map/map-tablet@2x.jpg 2x">
+
+            <source
+              width="290"
+              height="240"
+              type="image/webp"
+              srcset="img/map/map-mobile@1x.webp 1x, img/map/map-mobile@2x.webp 2x">
+            <img
+              src="img/map/map-mobile@1x.jpg"
+              srcset="img/map/map-mobile@2x.jpg 2x"
+              width="290"
+              height="240"
+              alt="Карта с расположением офиса в Новосибирске по адресу ул. Щетинкина 68">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- === FORM SECTION === -->
+    <section class="form" data-test="form">
+      <div class="container">
+        <div class="form__wrapper">
+          <div class="form__content">
+            <h2 class="form__title">Напишите нам</h2>
+            <p class="form__description">
+              Оставьте ваши контакты, если у вас остались вопросы — мы на них ответим!
+            </p>
+
+            <form class="form__form" method="post" action="https://echo.htmlacademy.ru">
+              <fieldset class="form__fieldset">
+                <legend class="visually-hidden">Контактная форма</legend>
+
+                <label class="form__label" for="form-name">Имя</label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="form-name"
+                  name="name"
+                  minlength="2"
+                  maxlength="50"
+                  autocomplete="name"
+                  required>
+
+                <label class="form__label" for="form-phone">Телефон</label>
+                <input
+                  class="form__input"
+                  type="tel"
+                  id="form-phone"
+                  name="phone"
+                  pattern="^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$"
+                  autocomplete="tel"
+                  data-phone-mask="true"
+                  required>
+
+                <label class="form__label" for="form-message">Ваше сообщение</label>
+                <textarea
+                  class="form__textarea"
+                  id="form-message"
+                  name="message"
+                  minlength="2"
+                  maxlength="1000"
+                  rows="5"
+                  required
+                ></textarea>
+
+                <label class="form__label" for="form-city">Выберите город</label>
+                <div class="form__select-wrapper">
+                  <select class="form__select" id="form-city" name="city" required>
+                    <option value="">Выберите город</option>
+                    <option value="moscow">Москва</option>
+                    <option value="saint-petersburg">Санкт-Петербург</option>
+                    <option value="novosibirsk">Новосибирск</option>
+                    <option value="yekaterinburg">Екатеринбург</option>
+                    <option value="kazan">Казань</option>
+                    <option value="nizhny-novgorod">Нижний Новгород</option>
+                    <option value="chelyabinsk">Челябинск</option>
+                    <option value="samara">Самара</option>
+                    <option value="omsk">Омск</option>
+                    <option value="rostov-on-don">Ростов-на-Дону</option>
+                    <option value="ufa">Уфа</option>
+                    <option value="krasnoyarsk">Красноярск</option>
+                    <option value="voronezh">Воронеж</option>
+                    <option value="perm">Пермь</option>
+                    <option value="volgograd">Волгоград</option>
+                    <option value="krasnodar">Краснодар</option>
+                    <option value="saratov">Саратов</option>
+                    <option value="tyumen">Тюмень</option>
+                    <option value="tolyatti">Тольятти</option>
+                    <option value="izhevsk">Ижевск</option>
+                    <option value="barnaul">Барнаул</option>
+                    <option value="other">Другой город</option>
+                  </select>
+                  <svg class="form__select-icon" width="16" height="16" aria-hidden="true">
+                    <use href="/__spritemap#sprite-arrow-down"></use>
+                  </svg>
+                </div>
+
+                <div class="form__checkbox-wrapper">
+                  <input
+                    class="form__checkbox visually-hidden"
+                    type="checkbox"
+                    id="form-agreement"
+                    name="agreement"
+                    required>
+                  <label class="form__checkbox-label" for="form-agreement">
+                    Я согласен на обработку моих персональных данных
+                  </label>
+                </div>
+              </fieldset>
+
+              <button class="form__submit" type="submit">
+                <span class="form__submit-text">Отправить</span>
+                <svg class="form__submit-icon" width="8" height="6" aria-hidden="true">
+                  <use href="/__spritemap#sprite-check"></use>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================ -->
+  <!-- FOOTER                                       -->
+  <!-- ============================================ -->
+  <footer class="footer" data-test="footer">
+    <div class="container">
+      <!-- Logo -->
+      <div class="footer__logo logo">
+        <img
+          class="logo__image"
+          src="img/logo-small.svg"
+          width="30"
+          height="30"
+          alt="Internship - Программа обмена студентами">
+      </div>
+
+      <!-- Navigation (anchor links) -->
+      <nav class="footer__nav" aria-label="Навигация в подвале">
+        <ul class="footer__nav-list">
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="#about">О проекте</a>
+          </li>
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="#programs">Программы</a>
+          </li>
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="#grant">Как поехать</a>
+          </li>
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="#reviews">Отзывы</a>
+          </li>
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="#news">Новости</a>
+          </li>
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="#contacts">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Privacy policy link -->
+      <a class="footer__privacy-link" href="/privacy-policy.html">
+        Политика конфиденциальности
+      </a>
+
+      <!-- Copyright -->
+      <p class="footer__copyright">
+        Стажировка © 2023 Все права защищены
+      </p>
+
+      <!-- Social links -->
+      <ul class="footer__social">
+        <li class="footer__social-item">
+          <a
+            class="footer__social-link"
+            href="https://vk.com/htmlacademy"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="VKontakte"
+          >
+            <svg width="12" height="7" aria-hidden="true">
+              <use href="/__spritemap#sprite-vk"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="footer__social-item">
+          <a
+            class="footer__social-link"
+            href="https://ok.ru/htmlacademy"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Одноклассники"
+          >
+            <svg width="7" height="12" aria-hidden="true">
+              <use href="/__spritemap#sprite-ok"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="footer__social-item">
+          <a
+            class="footer__social-link"
+            href="https://reddit.com/r/htmlacademy"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Reddit"
+          >
+            <svg width="11" height="11" aria-hidden="true">
+              <use href="/__spritemap#sprite-reddit"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ============================================ -->
+  <!-- NAVIGATION MENU                              -->
+  <!-- ============================================ -->
+  <nav class="nav-menu" id="nav-menu" hidden aria-label="Главное меню">
+    <!-- Overlay -->
+    <div class="nav-menu__overlay"></div>
+
+    <!-- Content wrapper -->
+    <div class="nav-menu__content">
+      <!-- Navigation list -->
+      <ul class="nav-menu__list">
+        <!-- Simple link: ABOUT -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#about">О проекте</a>
+        </li>
+
+        <!-- Expandable item: PROGRAMS -->
+        <li class="nav-menu__item nav-menu__item--expandable">
+          <button class="nav-menu__toggle" type="button" aria-expanded="false">
+            <span class="nav-menu__toggle-text">Программы</span>
+            <svg class="nav-menu__icon" width="12" height="12" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-down"></use>
+            </svg>
+          </button>
+
+          <ul class="nav-menu__submenu" hidden>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Стажировки</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Волонтёрство</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Учёба</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#programs">Религия</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Simple link: HOW TO GO -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#grant">Как поехать</a>
+        </li>
+
+        <!-- Simple link: REVIEWS -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#reviews">Отзывы</a>
+        </li>
+
+        <!-- Expandable item: NEWS -->
+        <li class="nav-menu__item nav-menu__item--expandable">
+          <button class="nav-menu__toggle" type="button" aria-expanded="false">
+            <span class="nav-menu__toggle-text">Новости</span>
+            <svg class="nav-menu__icon" width="12" height="12" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-down"></use>
+            </svg>
+          </button>
+
+          <ul class="nav-menu__submenu" hidden>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="all">Все</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="volunteer">Волонтёрство</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="internship">Стажировки</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="career">Карьера</a>
+            </li>
+            <li class="nav-menu__subitem">
+              <a class="nav-menu__sublink" href="#news" data-tab="travel">Путешествия</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Simple link: CONTACTS -->
+        <li class="nav-menu__item">
+          <a class="nav-menu__link" href="#contacts">Контакты</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- MODAL - FEEDBACK                             -->
+  <!-- ============================================ -->
+
+  <!-- Modal: Feedback Form "Напишите нам" -->
+  <div
+    class="modal modal--feedback"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-feedback-title"
+    hidden
+  >
+    <!-- Overlay for click-outside detection -->
+    <div class="modal__overlay"></div>
+
+    <!-- Modal content wrapper -->
+    <div class="modal__content">
+      <!-- Close button -->
+      <button
+        class="modal__close"
+        type="button"
+        aria-label="Закрыть модальное окно"
+      >
+        <svg width="12" height="12" aria-hidden="true">
+          <use href="/__spritemap#sprite-close"></use>
+        </svg>
+      </button>
+
+      <!-- Modal heading -->
+      <h2 class="modal__title" id="modal-feedback-title">
+        Напишите нам
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="modal__subtitle">
+        Оставьте ваши контакты, если у вас остались вопросы — мы на них ответим!
+      </p>
+
+      <!-- Feedback form -->
+      <form
+        class="modal__form"
+        method="post"
+        action="https://echo.htmlacademy.ru"
+      >
+        <fieldset>
+          <legend class="visually-hidden">Контактная информация</legend>
+
+          <!-- Field: Name -->
+          <div class="modal__field">
+            <label class="modal__label" for="feedback-name">
+              Имя
+            </label>
+            <input
+              class="modal__input"
+              type="text"
+              id="feedback-name"
+              name="name"
+              minlength="2"
+              maxlength="50"
+              required
+              autocomplete="name">
+          </div>
+
+          <!-- Field: Phone -->
+          <div class="modal__field">
+            <label class="modal__label" for="feedback-phone">
+              Телефон
+            </label>
+            <input
+              class="modal__input"
+              type="tel"
+              id="feedback-phone"
+              name="phone"
+              required
+              pattern="^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$"
+              autocomplete="tel"
+              data-phone-mask="true">
+          </div>
+
+          <!-- Field: City -->
+          <div class="modal__field">
+            <label class="modal__label" for="feedback-city">
+              Выберите город
+            </label>
+            <select
+              class="modal__select"
+              id="feedback-city"
+              name="city"
+              required
+            >
+              <option value="">Выберите город</option>
+              <option value="moscow">Москва</option>
+              <option value="saint-petersburg">Санкт-Петербург</option>
+              <option value="novosibirsk">Новосибирск</option>
+              <option value="yekaterinburg">Екатеринбург</option>
+              <option value="kazan">Казань</option>
+              <option value="nizhny-novgorod">Нижний Новгород</option>
+              <option value="chelyabinsk">Челябинск</option>
+              <option value="samara">Самара</option>
+              <option value="omsk">Омск</option>
+              <option value="rostov-on-don">Ростов-на-Дону</option>
+              <option value="ufa">Уфа</option>
+              <option value="krasnoyarsk">Красноярск</option>
+              <option value="voronezh">Воронеж</option>
+              <option value="perm">Пермь</option>
+              <option value="volgograd">Волгоград</option>
+              <option value="krasnodar">Краснодар</option>
+              <option value="saratov">Саратов</option>
+              <option value="tyumen">Тюмень</option>
+              <option value="tolyatti">Тольятти</option>
+              <option value="izhevsk">Ижевск</option>
+              <option value="barnaul">Барнаул</option>
+              <option value="other">Другой город</option>
+            </select>
+            <svg class="modal__select-icon" width="16" height="16" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-down"></use>
+            </svg>
+          </div>
+
+          <!-- Field: Consent checkbox -->
+          <div class="modal__field modal__field--checkbox">
+            <input
+              class="modal__checkbox visually-hidden"
+              type="checkbox"
+              id="feedback-consent"
+              name="consent"
+              value="agreed"
+              required>
+            <label class="modal__checkbox-label" for="feedback-consent">
+              <span class="modal__checkbox-box"></span>
+              <span class="modal__checkbox-text">
+                Я согласен на обработку моих персональных данных
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit button -->
+          <button class="modal__submit button button--primary" type="submit">
+            Отправить
+            <svg class="button__icon" width="8" height="6" aria-hidden="true">
+              <use href="/__spritemap#sprite-check"></use>
+            </svg>
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- NOTIFICATION MODAL (Form Submit Result)      -->
+  <!-- ============================================ -->
+  <div class="notification-modal notification-modal--hidden" id="notification-modal">
+    <div class="notification-modal__overlay"></div>
+    <div class="notification-modal__content">
+      <button class="notification-modal__close" type="button" aria-label="Закрыть уведомление">
+        <svg width="12" height="12" aria-hidden="true">
+          <use href="/__spritemap#sprite-close"></use>
+        </svg>
+      </button>
+
+      <!-- Icon container (success or error) -->
+      <div class="notification-modal__icon" aria-hidden="true">
+        <svg class="notification-modal__icon-success" width="64" height="64">
+          <use href="/__spritemap#sprite-check"></use>
+        </svg>
+        <svg class="notification-modal__icon-error" width="64" height="64">
+          <use href="/__spritemap#sprite-close"></use>
+        </svg>
+      </div>
+
+      <h2 class="notification-modal__title" id="notification-title">Уведомление</h2>
+
+      <p class="notification-modal__message" id="notification-message">
+        <!-- Dynamically filled with JS -->
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SCRIPTS                                      -->
+  <!-- ============================================ -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
 
 </html>

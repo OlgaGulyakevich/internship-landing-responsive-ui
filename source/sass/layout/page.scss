@@ -57,6 +57,12 @@
   overflow-wrap: break-word;
 }
 
+:where(.page) blockquote {
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+}
+
 // Other text elements (span, div)
 :where(.page) span,
 :where(.page) div {
