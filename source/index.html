@@ -1402,7 +1402,109 @@
 
     <!-- === FORM SECTION === -->
     <section data-test="form" class="form">
-      <!-- Form content will be added in next section -->
+      <div class="container">
+        <div class="form__wrapper">
+          <div class="form__content">
+            <h2 class="form__title">Напишите нам</h2>
+            <p class="form__description">
+              Оставьте ваши контакты, если у вас остались вопросы — мы на них ответим!
+            </p>
+
+            <form class="form__form" method="post" action="https://echo.htmlacademy.ru">
+              <fieldset class="form__fieldset">
+                <legend class="visually-hidden">Контактная форма</legend>
+
+                <label class="form__label" for="form-name">Имя</label>
+                <input
+                  class="form__input"
+                  type="text"
+                  id="form-name"
+                  name="name"
+                  minlength="2"
+                  maxlength="50"
+                  autocomplete="name"
+                  required
+                />
+
+                <label class="form__label" for="form-phone">Телефон</label>
+                <input
+                  class="form__input"
+                  type="tel"
+                  id="form-phone"
+                  name="phone"
+                  pattern="^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$"
+                  autocomplete="tel"
+                  data-phone-mask
+                  required
+                />
+
+                <label class="form__label" for="form-message">Ваше сообщение</label>
+                <textarea
+                  class="form__textarea"
+                  id="form-message"
+                  name="message"
+                  minlength="2"
+                  maxlength="1000"
+                  rows="5"
+                  required
+                ></textarea>
+
+                <label class="form__label" for="form-city">Выберите город</label>
+                <div class="form__select-wrapper">
+                  <select class="form__select" id="form-city" name="city" required>
+                    <option value=""></option>
+                    <option value="moscow">Москва</option>
+                    <option value="saint-petersburg">Санкт-Петербург</option>
+                    <option value="novosibirsk">Новосибирск</option>
+                    <option value="yekaterinburg">Екатеринбург</option>
+                    <option value="kazan">Казань</option>
+                    <option value="nizhny-novgorod">Нижний Новгород</option>
+                    <option value="chelyabinsk">Челябинск</option>
+                    <option value="samara">Самара</option>
+                    <option value="omsk">Омск</option>
+                    <option value="rostov-on-don">Ростов-на-Дону</option>
+                    <option value="ufa">Уфа</option>
+                    <option value="krasnoyarsk">Красноярск</option>
+                    <option value="voronezh">Воронеж</option>
+                    <option value="perm">Пермь</option>
+                    <option value="volgograd">Волгоград</option>
+                    <option value="krasnodar">Краснодар</option>
+                    <option value="saratov">Саратов</option>
+                    <option value="tyumen">Тюмень</option>
+                    <option value="tolyatti">Тольятти</option>
+                    <option value="izhevsk">Ижевск</option>
+                    <option value="barnaul">Барнаул</option>
+                    <option value="other">Другой город</option>
+                  </select>
+                  <svg class="form__select-icon" width="16" height="16" aria-hidden="true">
+                    <use href="/__spritemap#sprite-arrow-down"></use>
+                  </svg>
+                </div>
+
+                <div class="form__checkbox-wrapper">
+                  <input
+                    class="form__checkbox visually-hidden"
+                    type="checkbox"
+                    id="form-agreement"
+                    name="agreement"
+                    required
+                  />
+                  <label class="form__checkbox-label" for="form-agreement">
+                    Я согласен на обработку моих персональных данных
+                  </label>
+                </div>
+              </fieldset>
+
+              <button class="form__submit" type="submit">
+                <span class="form__submit-text">Отправить</span>
+                <svg class="form__submit-icon" width="8" height="6" aria-hidden="true">
+                  <use href="/__spritemap#sprite-check"></use>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -1557,6 +1659,8 @@
               type="text"
               id="feedback-name"
               name="name"
+              minlength="2"
+              maxlength="50"
               required
               autocomplete="name"
             />
@@ -1640,12 +1744,44 @@
           <!-- Submit button -->
           <button class="modal__submit button button--primary" type="submit">
             Отправить
-            <svg class="button__icon" width="8" height="8" aria-hidden="true">
-              <use href="/__spritemap#sprite-arrow-right"></use>
+            <svg class="button__icon" width="8" height="6" aria-hidden="true">
+              <use href="/__spritemap#sprite-check"></use>
             </svg>
           </button>
         </fieldset>
       </form>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- NOTIFICATION MODAL (Form Submit Result)      -->
+  <!-- ============================================ -->
+  <div class="notification-modal notification-modal--hidden" id="notification-modal">
+    <div class="notification-modal__overlay"></div>
+    <div class="notification-modal__content">
+      <button class="notification-modal__close" type="button" aria-label="Закрыть уведомление">
+        <svg width="12" height="12" aria-hidden="true">
+          <use href="/__spritemap#sprite-close"></use>
+        </svg>
+      </button>
+
+      <!-- Icon container (success or error) -->
+      <div class="notification-modal__icon" aria-hidden="true">
+        <svg class="notification-modal__icon-success" width="64" height="64">
+          <use href="/__spritemap#sprite-check"></use>
+        </svg>
+        <svg class="notification-modal__icon-error" width="64" height="64">
+          <use href="/__spritemap#sprite-close"></use>
+        </svg>
+      </div>
+
+      <h2 class="notification-modal__title" id="notification-title">
+        <!-- Dynamically filled with JS -->
+      </h2>
+
+      <p class="notification-modal__message" id="notification-message">
+        <!-- Dynamically filled with JS -->
+      </p>
     </div>
   </div>
 
