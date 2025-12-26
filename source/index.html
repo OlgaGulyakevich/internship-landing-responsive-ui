@@ -1175,12 +1175,12 @@
                   </div>
                 </div>
 
-                <!-- Review text -->
-                <blockquote class="review-card__quote">
+                <!-- Content area (cascading styling from .review-card) -->
+                <blockquote>
                   Я могу с уверенностью сказать, что это был один из самых незабываемых опытов в жизни!
                 </blockquote>
 
-                <p class="review-card__text">
+                <p>
                   Я рекомендую программу «Стажировка» всем студентам, желающим получить незабываемые впечатления. Сочетание путешествий, общения и значимой работы действительно отличает её от других программ, и я чувствую огромную благодарность за предоставленную мне возможность.
                 </p>
               </article>
@@ -1218,11 +1218,11 @@
                   </div>
                 </div>
 
-                <blockquote class="review-card__quote">
+                <blockquote>
                   Благодаря опыту стажировки я узнал так много нового о себе и об окружающем мире.
                 </blockquote>
 
-                <p class="review-card__text">
+                <p>
                   Каждый день был возможностью оказать ощутимое влияние на жизнь других людей. Я бы очень рекомендовал эту волонтёрскую программу всем, кто ищет значимый и незабываемый опыт. Организация была на высшем уровне. Для меня было честью быть частью такой удивительной инициативы.
                 </p>
               </article>
@@ -1260,6 +1260,16 @@
                   </div>
                 </div>
 
+                <blockquote>
+                  Эта стажировка стала настоящим трамплином для моей карьеры в IT-индустрии!
+                </blockquote>
+
+                <p>
+                  Работа над реальными проектами в команде профессионалов дала мне навыки, которые невозможно получить в университете. Я благодарен программе «Стажировка» за возможность начать карьеру в ведущей технологической компании.
+                </p>
+              </article>
+            </li>
+
             <!-- Review 4 -->
             <li class="reviews__item swiper-slide">
               <article class="review-card">
@@ -1292,23 +1302,12 @@
                   </div>
                 </div>
 
-                <blockquote class="review-card__quote">
+                <blockquote>
                   Программа стажировки превзошла все мои ожидания и подарила бесценный опыт!
                 </blockquote>
 
-                <p class="review-card__text">
+                <p>
                   Я получила возможность работать в международной компании, улучшить знание языка и завести друзей со всего мира. Организаторы позаботились обо всех деталях, что позволило мне сосредоточиться на обучении и личностном росте.
-                </p>
-              </article>
-            </li>
-
-
-                <blockquote class="review-card__quote">
-                  Эта стажировка стала настоящим трамплином для моей карьеры в IT-индустрии!
-                </blockquote>
-
-                <p class="review-card__text">
-                  Работа над реальными проектами в команде профессионалов дала мне навыки, которые невозможно получить в университете. Я благодарен программе «Стажировка» за возможность начать карьеру в ведущей технологической компании.
                 </p>
               </article>
             </li>
@@ -1337,7 +1336,68 @@
 
     <!-- === CONTACTS SECTION === -->
     <section data-test="contacts" class="contacts">
-      <!-- Contacts content will be added in next section -->
+      <div class="container">
+        <div class="contacts__header">
+          <h2 class="contacts__title">Контакты</h2>
+
+          <ul class="contacts__info">
+            <li class="contacts__info-item">
+              <span class="contacts__label">ЦЕНТРАЛЬНЫЙ ОФИС</span>
+              <address class="contacts__address">
+                г. Новосибирск, ул. Щетинкина 68, культурный центр
+              </address>
+            </li>
+
+            <li class="contacts__info-item">
+              <span class="contacts__label">ТЕЛЕФОН</span>
+              <a class="contacts__phone" href="tel:+79638768767676">+7 963 876 876 76</a>
+            </li>
+
+            <li class="contacts__info-item">
+              <span class="contacts__label">EMAIL</span>
+              <a class="contacts__email" href="mailto:Info@stazh.ru">Info@stazh.ru</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contacts__map">
+          <picture>
+            <source
+              type="image/webp"
+              media="(min-width: 1440px)"
+              srcset="img/map/map-desktop@1x.webp 1x, img/map/map-desktop@2x.webp 2x"
+            />
+            <source
+              type="image/jpeg"
+              media="(min-width: 1440px)"
+              srcset="img/map/map-desktop@1x.jpg 1x, img/map/map-desktop@2x.jpg 2x"
+            />
+
+            <source
+              type="image/webp"
+              media="(min-width: 768px)"
+              srcset="img/map/map-tablet@1x.webp 1x, img/map/map-tablet@2x.webp 2x"
+            />
+            <source
+              type="image/jpeg"
+              media="(min-width: 768px)"
+              srcset="img/map/map-tablet@1x.jpg 1x, img/map/map-tablet@2x.jpg 2x"
+            />
+
+            <source
+              type="image/webp"
+              srcset="img/map/map-mobile@1x.webp 1x, img/map/map-mobile@2x.webp 2x"
+            />
+            <img
+              src="img/map/map-mobile@1x.jpg"
+              srcset="img/map/map-mobile@2x.jpg 2x"
+              width="290"
+              height="335"
+              alt="Карта с расположением офиса в Новосибирске по адресу ул. Щетинкина 68"
+            />
+          </picture>
+        </div>
+      </div>
     </section>
 
     <!-- === FORM SECTION === -->
