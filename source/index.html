@@ -1930,17 +1930,11 @@
       </button>
 
       <!-- Icon container (success or error) -->
-      <div class="notification-modal__icon" aria-hidden="true">
-        <svg class="notification-modal__icon-success" width="64" height="64">
-          <use href="/__spritemap#sprite-check"></use>
-        </svg>
-        <svg class="notification-modal__icon-error" width="64" height="64">
-          <use href="/__spritemap#sprite-close"></use>
-        </svg>
+      <div class="notification-modal__icon notification-modal__icon--success" aria-hidden="true">
+        <!-- Icon is ::before in CSS (HTML1-IMG-01: Decorative icon) -->
       </div>
 
       <h2 class="notification-modal__title" id="notification-title">Уведомление</h2>
-
       <p class="notification-modal__message" id="notification-message">
         <!-- Dynamically filled with JS -->
       </p>

@@ -14,13 +14,15 @@
 
 html {
   height: 100%;
+  overflow-x: hidden; // HTML1-TEST-03: Prevent horizontal scroll
   scroll-behavior: smooth;
 }
 
 // HTML1-TEST-03: Minimum width of the page
-// - min-width: minimum width of the frame
+// - min-width: minimum width of the frame (320px)
 // - margin/padding: 0 for resetting margins and paddings
 // - Centering the content through .container (margin: 0 auto)
+// - overflow-x: hidden on html AND body (multi-layer protection)
 body {
   display: flex;
   flex-direction: column;
@@ -34,7 +36,7 @@ body {
   line-height: $line-height-text-regular-mobile;
   color: $color-text-primary;
   background-color: $color-bg-primary;
-  overflow-x: hidden;
+  overflow-x: hidden; // HTML1-TEST-03: Additional protection (after html)
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
