@@ -36,7 +36,6 @@ $letter-spacing-h4: 0;
 $font-size-h5: 26px;
 $line-height-h5: 30px;
 $letter-spacing-h5: 0.26px; // 1%
-$text-transform-h5: uppercase;
 $font-size-h6: 24px;
 $line-height-h6: 26px;
 $letter-spacing-h6: 0;
@@ -61,11 +60,9 @@ $line-height-text-xxsmall: 12px;
 $font-size-caption: 12px;
 $line-height-caption: 12px;
 $letter-spacing-caption: 0.12px; // 1%
-$text-transform-caption: uppercase;
 $font-size-button: 14px;
 $line-height-button: 14px;
 $letter-spacing-button: 0.28px; // 2%
-$text-transform-button: uppercase;
 
 // =============================================================================
 // TABLET TYPOGRAPHY (768px - 1023px)
@@ -84,7 +81,6 @@ $line-height-h4-tablet: 26px;
 $font-size-h5-tablet: 20px;
 $line-height-h5-tablet: 22px;
 $letter-spacing-h5-tablet: 0.2px; // 1%
-
 $font-size-h6-tablet: 20px;
 $line-height-h6-tablet: 24px;
 
@@ -122,7 +118,6 @@ $line-height-h4-mobile: 18px;
 $font-size-h5-mobile: 16px;
 $line-height-h5-mobile: 20px;
 $letter-spacing-h5-mobile: 0.16px; // 1%
-
 $font-size-h6-mobile: 16px;
 $line-height-h6-mobile: 18px;
 
@@ -141,3 +136,32 @@ $line-height-text-xsmall-mobile: 14px;
 $font-size-button-mobile: 12px;
 $line-height-button-mobile: 12px;
 $letter-spacing-button-mobile: 0.24px; // 2%
+
+// =============================================================================
+// TYPOGRAPHY MIXINS
+// =============================================================================
+// Mixins for headings
+// Mobile-first: base styles → tablet → desktop
+// =============================================================================
+
+// Heading 2 (h2)
+// -----------------------------------------------------------------------------
+// Usage: @include heading-2;
+// NOTE: margin: 0 is already in page.scss through :where(.page) h2
+@mixin heading-2() {
+  font-family: $font-family;
+  font-size: $font-size-h2-mobile;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-h2-mobile;
+  letter-spacing: $letter-spacing-h2;
+
+  @include tablet {
+    font-size: $font-size-h2-tablet;
+    line-height: $line-height-h2-tablet;
+  }
+
+  @include desktop {
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+  }
+}

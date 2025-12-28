@@ -17,8 +17,12 @@ $color-text-accent: #316dc2;
 // -----------------------------------------------------------------------------
 $color-button-primary: #316dc2;
 $color-button-on-dark: #ffffff;
+$color-button-on-dark-active: #ffffffb3;
+$color-button-on-light-active: rgba(#316dc2, 0.7);
 $color-button-pressed: #275699;
 $color-button-disabled: #a9afb7;
+$color-button-icon-disabled: #ffffffb3;
+
 
 // Background Colors
 // -----------------------------------------------------------------------------
@@ -42,6 +46,7 @@ $color-form-disabled: #a9afb7;
 // -----------------------------------------------------------------------------
 $border-color-default: $color-text-on-dark; // #FFFFFF
 $border-color-error: $color-form-error; // #FF5E66
+$border-color-scrollbar: #316dc2;
 
 // States Colors
 // -----------------------------------------------------------------------------

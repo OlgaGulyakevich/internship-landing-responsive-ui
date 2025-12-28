@@ -53,17 +53,17 @@
     <div class="container">
       <div class="header__wrapper">
         <!-- Logo -->
-        <div class="header__logo logo">
-          <img class="logo__image" src="img/logo-small.svg" width="30" height="30" alt="Internship - Программа обмена студентами">
+        <div class="header__logo">
+          <img src="img/sprite/logo-big.svg" width="52" height="52" alt="Internship - Программа обмена студентами">
         </div>
 
         <!-- Burger Button -->
-        <button class="header__burger" type="button" data-burger="toggle" aria-label="Открыть меню">
-          <span class="header__burger-text">Меню</span>
-          <svg class="header__burger-icon header__burger-icon--open" width="18" height="18" aria-hidden="true">
+        <button class="header__burger button button--primary" type="button" data-burger="toggle" aria-label="Открыть меню">
+          Меню
+          <svg class="header__burger-icon header__burger-icon--open button__icon" width="18" height="18" aria-hidden="true">
             <use href="/__spritemap#sprite-burger"></use>
           </svg>
-          <svg class="header__burger-icon header__burger-icon--close" width="18" height="18" aria-hidden="true">
+          <svg class="header__burger-icon header__burger-icon--close button__icon" width="18" height="18" aria-hidden="true">
             <use href="/__spritemap#sprite-close"></use>
           </svg>
         </button>
@@ -358,7 +358,7 @@
         <a class="programs__all-button button button--primary" href="programs.html">
           Все программы
           <svg class="button__icon" width="8" height="8" aria-hidden="true">
-            <use href="/__spritemap#sprite-arrow-right"></use>
+            <use href="/__spritemap#sprite-arrow-up-right"></use>
           </svg>
         </a>
 
@@ -1575,10 +1575,10 @@
                 </div>
               </fieldset>
 
-              <button class="form__submit" type="submit">
-                <span class="form__submit-text">Отправить</span>
-                <svg class="form__submit-icon" width="8" height="6" aria-hidden="true">
-                  <use href="/__spritemap#sprite-check"></use>
+              <button class="form__submit button button--primary-on-blue" type="submit">
+                Отправить
+                <svg class="button__icon" width="8" height="8" aria-hidden="true">
+                  <use href="/__spritemap#sprite-arrow-up-right"></use>
                 </svg>
               </button>
             </form>
@@ -1594,12 +1594,11 @@
   <footer class="footer" data-test="footer">
     <div class="container">
       <!-- Logo -->
-      <div class="footer__logo logo">
+      <div class="footer__logo">
         <img
-          class="logo__image"
-          src="img/logo-small.svg"
-          width="30"
-          height="30"
+          src="img/sprite/logo-big.svg"
+          width="52"
+          height="52"
           alt="Internship - Программа обмена студентами">
       </div>
 
@@ -1661,7 +1660,7 @@
             aria-label="Одноклассники"
           >
             <svg width="7" height="12" aria-hidden="true">
-              <use href="/__spritemap#sprite-ok"></use>
+              <use href="/__spritemap#sprite-odnoklassniki"></use>
             </svg>
           </a>
         </li>
@@ -1908,8 +1907,8 @@
           <!-- Submit button -->
           <button class="modal__submit button button--primary" type="submit">
             Отправить
-            <svg class="button__icon" width="8" height="6" aria-hidden="true">
-              <use href="/__spritemap#sprite-check"></use>
+            <svg class="button__icon" width="8" height="8" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-up-right"></use>
             </svg>
           </button>
         </fieldset>

@@ -1,0 +1,356 @@
+// =============================================================================
+// BUTTON COMPONENT
+// =============================================================================
+// Reusable button component with different variants
+// Features:
+// - On light background: white bg → hover → blue bg + icon swap (up-right → right)
+// - On blue background: blue bg → hover → white bg + icon swap (up-right → right)
+// - All colors invert on hover (bg, text, icon)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Base Button
+// -----------------------------------------------------------------------------
+// Base styles for all buttons (mobile-first)
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 4px;
+  padding-left: 21px;
+  border: 1px solid transparent; // HTML1-TEST-08: prevent layout shift on hover
+  border-radius: 50px;
+  background-color: transparent;
+  font-family: $font-family;
+  font-size: $font-size-button-mobile; // 12px
+  font-weight: $font-weight-medium; // 500
+  line-height: $line-height-button-mobile; // 12px
+  letter-spacing: $letter-spacing-button-mobile; // 0.24px
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color $transition-slow, color $transition-slow, border-color $transition-slow;
+
+
+  // Tablet
+  @include tablet {
+    gap: 30px;
+    padding-left: 31px;
+    font-size: $font-size-button; // 14px
+    line-height: $line-height-button; // 14px
+    letter-spacing: $letter-spacing-button; // 0.28px
+  }
+
+
+  // Disable text selection
+  -webkit-tap-highlight-color: transparent;
+
+  // Icon in circle (SVG with .button__icon class)
+  .button__icon {
+    flex-shrink: 0;
+    display: block;
+    width: 34px;
+    height: 34px;
+    padding: 13px;
+    border-radius: 50%;
+    fill: none;
+    overflow: visible;
+    transition: background-color $transition-slow, color $transition-slow, transform $transition-slow;
+
+    // Tablet
+    @include tablet {
+      width: 46px;
+      height: 46px;
+      padding: 19px;
+    }
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 1; // Keep full opacity, use colors instead
+
+    .button__icon {
+      color: $color-button-disabled;
+      background-color: $color-disabled;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Primary Button (Transparent Background)
+// -----------------------------------------------------------------------------
+.button--primary {
+  background-color: transparent;
+  color: $color-button-primary;
+  border-color: $color-button-primary;
+
+  .button__icon {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+  }
+
+  // Hover state - full inversion + icon rotation
+  &:hover {
+    background-color: $color-button-primary; // Blue bg
+    color: $color-button-on-dark; // White text
+
+
+    .button__icon {
+      background-color: $color-button-on-dark; // White circle
+      color: $color-button-primary; // Blue icon
+      transform: rotate(45deg); // Rotate arrow from up-right to right
+    }
+  }
+
+  // Focus state
+  &:focus {
+    .button__icon {
+      transform: rotate(45deg);
+    }
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-primary-blue;
+    color: $color-button-on-dark-active;
+
+    .button__icon {
+      background-color: $color-bg-secondary;
+      color: $color-button-on-light-active;
+      transform: rotate(45deg);
+    }
+
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: transparent;
+    color: $color-disabled;
+    border-color: $color-disabled;
+
+    .button__icon {
+      background-color: $color-disabled;
+      color: $color-button-icon-disabled;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Primary Button (Blue Background)
+// -----------------------------------------------------------------------------
+.button--primary-on-blue {
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  border-color: $color-button-on-dark;
+
+  .button__icon {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+  // Hover state - full inversion + icon rotation
+  &:hover {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+
+    .button__icon {
+      background-color: $color-button-primary;
+      color: $color-button-on-dark;
+      transform: rotate(45deg);
+    }
+  }
+
+
+  // Focus state
+  &:focus {
+    .button__icon {
+      transform: rotate(45deg);
+    }
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+
+    .button__icon {
+      background-color: $color-primary-blue;
+      color: $color-button-on-dark-active;
+      transform: rotate(45deg);
+    }
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: $color-button-primary;
+    color: $color-disabled;
+    border-color: $color-disabled;
+
+    .button__icon {
+      background-color: $color-disabled;
+      color: $color-button-icon-disabled;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Secondary Button (Icon Only)
+// -----------------------------------------------------------------------------
+.button--icon-only {
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent; // HTML1-TEST-08: prevent layout shift
+  border-radius: 50%;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    stroke: currentColor;
+    transition: transform $transition-slow;
+  }
+
+  // Hover state
+  &:hover {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+    border-color: $color-button-on-dark;
+
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+
+  // Focus state
+  &:focus {
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+    border-color: $color-button-on-dark;
+
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: $color-disabled;
+    color: $color-button-icon-disabled;
+    border-color: $color-disabled;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Slider Control Buttons (Arrows Left/Right)
+// -----------------------------------------------------------------------------
+// Кнопки
+// Note: These use the slider-arrow mixin from mixins.scss
+.button--slider-arrow {
+
+  // Additional button-specific styles if needed
+  // TODO: Verify if any additional styles are needed beyond the mixin
+}
+
+// -----------------------------------------------------------------------------
+// FAQ Accordion Buttons (Plus/Minus)
+// -----------------------------------------------------------------------------
+// Кнопки для FAQ аккордеона (mobile-first)
+.button--faq {
+  padding: 0;
+  width: 40px; // TODO: Verify size from Figma (mobile)
+  height: 40px; // TODO: Verify size from Figma (mobile)
+  border: 2px solid transparent; // HTML1-TEST-08: prevent layout shift
+  border-radius: 50%;
+  background-color: $color-primary-blue; // TODO: Verify - blue circle
+  color: $color-bg-secondary; // TODO: Verify - white icon
+
+  svg {
+    width: 18px; // TODO: Verify icon size from Figma (mobile)
+    height: 18px; // TODO: Verify icon size from Figma (mobile)
+    stroke: currentColor;
+    // stroke-width убран - используется значение из SVG файла
+  }
+
+  // Tablet
+  @include tablet {
+    width: 42px; // TODO: Verify from Figma (tablet)
+    height: 42px; // TODO: Verify from Figma (tablet)
+
+    svg {
+      width: 19px; // TODO: Verify from Figma (tablet)
+      height: 19px; // TODO: Verify from Figma (tablet)
+    }
+  }
+
+  // Desktop
+  @include desktop {
+    width: 44px; // TODO: Verify from Figma (desktop)
+    height: 44px; // TODO: Verify from Figma (desktop)
+
+    svg {
+      width: 20px; // TODO: Verify from Figma (desktop)
+      height: 20px; // TODO: Verify from Figma (desktop)
+    }
+  }
+
+  // Hover & Focus state
+  &:hover,
+  &:focus {
+    background-color: transparent; // TODO: Verify - white/transparent bg
+    color: $color-primary-blue; // Blue icon
+    border-color: $color-primary-blue; // Blue border outline
+    outline: none;
+  }
+
+  // Active state (same as default)
+  &:active {
+    background-color: $color-primary-blue;
+    color: $color-bg-secondary;
+    border-color: transparent;
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: rgba($color-form-disabled, 0.3); // TODO: Get exact color from Figma
+    color: $color-form-disabled;
+    border-color: transparent;
+  }
+
+  // Open state (when accordion is expanded)
+  // Icon changes from plus to minus via HTML/JS
+  &.is-open {
+    background-color: $color-bg-secondary; // White circle
+    color: $color-primary-blue; // Blue minus icon
+
+    &:hover,
+    &:focus {
+      background-color: transparent; // Transparent circle
+      color: $color-bg-secondary; // White minus icon
+      border-color: $color-bg-secondary; // White border
+    }
+
+    &:active {
+      background-color: $color-bg-secondary; // White circle
+      color: $color-primary-blue; // Blue minus icon
+      border-color: transparent;
+    }
+  }
+}
