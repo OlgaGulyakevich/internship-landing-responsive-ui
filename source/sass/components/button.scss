@@ -73,12 +73,14 @@
     cursor: not-allowed;
     pointer-events: none;
     opacity: 1; // Keep full opacity, use colors instead
-
-    .button__icon {
-      color: $color-button-disabled;
-      background-color: $color-disabled;
-    }
   }
+}
+
+// Disabled state icon
+.button:disabled .button__icon,
+.button.is-disabled .button__icon {
+  color: $color-button-disabled;
+  background-color: $color-disabled;
 }
 
 // -----------------------------------------------------------------------------
@@ -124,7 +126,6 @@
       color: $color-button-on-light-active;
       transform: rotate(45deg);
     }
-
   }
 
   // Disabled state
@@ -133,12 +134,14 @@
     background-color: transparent;
     color: $color-disabled;
     border-color: $color-disabled;
-
-    .button__icon {
-      background-color: $color-disabled;
-      color: $color-button-icon-disabled;
-    }
   }
+}
+
+// Primary button disabled state icon
+.button--primary:disabled .button__icon,
+.button--primary.is-disabled .button__icon {
+  background-color: $color-disabled;
+  color: $color-button-icon-disabled;
 }
 
 // -----------------------------------------------------------------------------
@@ -192,12 +195,14 @@
     background-color: $color-button-primary;
     color: $color-disabled;
     border-color: $color-disabled;
-
-    .button__icon {
-      background-color: $color-disabled;
-      color: $color-button-icon-disabled;
-    }
   }
+}
+
+// Primary button on blue disabled state icon
+.button--primary-on-blue:disabled .button__icon,
+.button--primary-on-blue.is-disabled .button__icon {
+  background-color: $color-disabled;
+  color: $color-button-icon-disabled;
 }
 
 // -----------------------------------------------------------------------------
@@ -260,97 +265,222 @@
 // -----------------------------------------------------------------------------
 // Slider Control Buttons (Arrows Left/Right)
 // -----------------------------------------------------------------------------
-// Кнопки
-// Note: These use the slider-arrow mixin from mixins.scss
+// Navigation arrows for sliders (programs, news, reviews)
 .button--slider-arrow {
-
-  // Additional button-specific styles if needed
-  // TODO: Verify if any additional styles are needed beyond the mixin
-}
-
-// -----------------------------------------------------------------------------
-// FAQ Accordion Buttons (Plus/Minus)
-// -----------------------------------------------------------------------------
-// Кнопки для FAQ аккордеона (mobile-first)
-.button--faq {
   padding: 0;
-  width: 40px; // TODO: Verify size from Figma (mobile)
-  height: 40px; // TODO: Verify size from Figma (mobile)
-  border: 2px solid transparent; // HTML1-TEST-08: prevent layout shift
+  width: 22px;
+  height: 22px;
+  border: 1px solid transparent;
   border-radius: 50%;
-  background-color: $color-primary-blue; // TODO: Verify - blue circle
-  color: $color-bg-secondary; // TODO: Verify - white icon
+  background-color: transparent;
+  color: $color-button-primary;
 
   svg {
-    width: 18px; // TODO: Verify icon size from Figma (mobile)
-    height: 18px; // TODO: Verify icon size from Figma (mobile)
+    width: 10px;
+    height: 10px;
     stroke: currentColor;
-    // stroke-width убран - используется значение из SVG файла
+    transition: transform $transition-slow;
   }
 
-  // Tablet
-  @include tablet {
-    width: 42px; // TODO: Verify from Figma (tablet)
-    height: 42px; // TODO: Verify from Figma (tablet)
 
-    svg {
-      width: 19px; // TODO: Verify from Figma (tablet)
-      height: 19px; // TODO: Verify from Figma (tablet)
-    }
+  // Hover state
+  &:hover {
+    color: $color-button-on-light-active;
   }
 
-  // Desktop
-  @include desktop {
-    width: 44px; // TODO: Verify from Figma (desktop)
-    height: 44px; // TODO: Verify from Figma (desktop)
-
-    svg {
-      width: 20px; // TODO: Verify from Figma (desktop)
-      height: 20px; // TODO: Verify from Figma (desktop)
-    }
-  }
-
-  // Hover & Focus state
-  &:hover,
+  // Focus state
   &:focus {
-    background-color: transparent; // TODO: Verify - white/transparent bg
-    color: $color-primary-blue; // Blue icon
-    border-color: $color-primary-blue; // Blue border outline
-    outline: none;
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
   }
 
-  // Active state (same as default)
+  // Active state
   &:active {
-    background-color: $color-primary-blue;
-    color: $color-bg-secondary;
-    border-color: transparent;
+    background-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
   }
 
   // Disabled state
   &:disabled,
   &.is-disabled {
-    background-color: rgba($color-form-disabled, 0.3); // TODO: Get exact color from Figma
-    color: $color-form-disabled;
-    border-color: transparent;
+    background-color: transparent;
+    color: $color-disabled;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FAQ Accordion Buttons (Plus/Minus)
+// -----------------------------------------------------------------------------
+
+.button__faq {
+  flex-shrink: 0;
+  display: block;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent; // HTML1-TEST-08: prevent layout shift
+  border-radius: 50%;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  transition: background-color $transition-slow, color $transition-slow, transform $transition-slow;
+}
+
+.button--accordion {
+  justify-content: space-between;
+  padding: 22px 17px;
+  border-radius: 14px;
+  border-width: 2px;
+  background-color: transparent;
+  color: $color-button-primary;
+  border-color: $color-button-primary;
+
+  // Default closed state - hide minus icon
+  .button__faq--minus {
+    display: none;
   }
 
-  // Open state (when accordion is expanded)
-  // Icon changes from plus to minus via HTML/JS
-  &.is-open {
-    background-color: $color-bg-secondary; // White circle
-    color: $color-primary-blue; // Blue minus icon
+  // Hover and focus states (closed)
+  &:hover,
+  &:focus {
+    background-color: $color-button-on-dark;
 
-    &:hover,
-    &:focus {
-      background-color: transparent; // Transparent circle
-      color: $color-bg-secondary; // White minus icon
-      border-color: $color-bg-secondary; // White border
-    }
-
-    &:active {
-      background-color: $color-bg-secondary; // White circle
-      color: $color-primary-blue; // Blue minus icon
-      border-color: transparent;
+    .button__faq--plus {
+      background-color: $color-button-on-dark;
+      color: $color-button-primary;
+      border-color: $color-button-primary;
     }
   }
+
+  // Active state (closed)
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-pressed;
+
+    .button__faq--plus {
+      background-color: $color-button-pressed;
+      color: $color-button-on-dark-active;
+      border-color: $color-button-pressed;
+    }
+  }
+
+  // Open state (using aria-expanded attribute)
+  &[aria-expanded="true"] {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+  }
+
+  // Hover and focus states (open)
+  &[aria-expanded="true"]:hover,
+  &[aria-expanded="true"]:focus {
+    background-color: $color-button-primary;
+  }
+
+  // Active state (open)
+  &[aria-expanded="true"]:active {
+    background-color: $color-button-pressed;
+    color: $color-button-on-dark;
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: transparent;
+    color: $color-disabled;
+    border-color: $color-disabled;
+  }
+}
+
+// Accordion button FAQ icons - hide plus, show minus when open
+.button--accordion[aria-expanded="true"] .button__faq--plus {
+  display: none;
+}
+
+.button--accordion[aria-expanded="true"] .button__faq--minus {
+  display: block;
+  background-color: $color-button-on-dark;
+  color: $color-button-primary;
+  border-color: $color-button-on-dark;
+}
+
+// Accordion button FAQ minus icon - hover/focus state when open
+.button--accordion[aria-expanded="true"]:hover .button__faq--minus,
+.button--accordion[aria-expanded="true"]:focus .button__faq--minus {
+  background-color: transparent;
+  color: $color-button-on-dark;
+  border-color: $color-button-on-dark;
+}
+
+// Accordion button FAQ minus icon - active state when open
+.button--accordion[aria-expanded="true"]:active .button__faq--minus {
+  background-color: $color-button-on-dark;
+  color: $color-button-pressed;
+  border-color: $color-button-on-dark;
+}
+
+// Accordion button disabled state icon
+.button--accordion:disabled .button__faq--plus,
+.button--accordion.is-disabled .button__faq--plus {
+  background-color: $color-disabled;
+  color: $color-button-icon-disabled;
+  border-color: $color-disabled;
+}
+
+
+// -----------------------------------------------------------------------------
+// Pagination Buttons (Numbered navigation)
+// -----------------------------------------------------------------------------
+// Numbered page navigation buttons (1, 2, 3, 4) in News section
+.button--pagination {
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  border: 2px solid transparent; // HTML1-TEST-08: prevent layout shift on hover
+  border-radius: 50%;
+  background-color: transparent;
+  color: $color-button-pagination; //
+  font-weight: $font-weight-regular;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: normal;
+
+  // Tablet
+  @include tablet {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+
+  // Hover state
+  &:hover {
+    font-weight: $font-weight-medium;
+    background-color: transparent;
+    color: $color-button-primary;
+    border-color: $color-button-primary;
+  }
+
+  // Focus state
+  &:focus {
+    font-weight: $font-weight-medium;
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+    border-color: $color-button-primary;
+  }
+
+  // Active state
+  &:active {
+    font-weight: $font-weight-medium;
+    background-color: $color-button-pressed;
+    color: $color-button-on-dark;
+    border-color: $color-button-pressed;
+  }
+}
+
+// Pagination button active state (current page)
+.button--pagination.is-active {
+  font-weight: $font-weight-medium;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  border-color: $color-button-primary;
 }

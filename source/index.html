@@ -364,12 +364,12 @@
 
         <!-- Slider navigation arrows (mobile only, positioned via grid) -->
         <div class="programs__arrows">
-          <button class="programs__arrow programs__arrow--prev" type="button" aria-label="Предыдущий слайд">
+          <button class="button button--slider-arrow programs__arrow programs__arrow--prev" type="button" aria-label="Предыдущий слайд">
             <svg width="10" height="10" aria-hidden="true">
               <use href="/__spritemap#sprite-arrow-left"></use>
             </svg>
           </button>
-          <button class="programs__arrow programs__arrow--next" type="button" aria-label="Следующий слайд">
+          <button class="button button--slider-arrow programs__arrow programs__arrow--next" type="button" aria-label="Следующий слайд">
             <svg width="10" height="10" aria-hidden="true">
               <use href="/__spritemap#sprite-arrow-right"></use>
             </svg>
@@ -624,12 +624,12 @@
 
           <!-- Navigation arrows (tablet/desktop) -->
           <div class="programs__nav">
-            <button class="programs__nav-arrow programs__nav-arrow--prev" type="button" aria-label="Предыдущий слайд">
+            <button class="button button--slider-arrow programs__nav-arrow programs__nav-arrow--prev" type="button" aria-label="Предыдущий слайд">
               <svg width="10" height="10" aria-hidden="true">
                 <use href="/__spritemap#sprite-arrow-left"></use>
               </svg>
             </button>
-            <button class="programs__nav-arrow programs__nav-arrow--next" type="button" aria-label="Следующий слайд">
+            <button class="button button--slider-arrow programs__nav-arrow programs__nav-arrow--next" type="button" aria-label="Следующий слайд">
               <svg width="10" height="10" aria-hidden="true">
                 <use href="/__spritemap#sprite-arrow-right"></use>
               </svg>
@@ -1054,7 +1054,7 @@
         <!-- Controls: arrows + custom pagination (4 buttons) -->
         <div class="news__controls">
           <!-- Left arrow -->
-          <button class="news__arrow news__arrow--prev" type="button" aria-label="Предыдущий слайд">
+          <button class="button button--slider-arrow news__arrow news__arrow--prev" type="button" aria-label="Предыдущий слайд">
             <svg width="10" height="10" aria-hidden="true">
               <use href="/__spritemap#sprite-arrow-left"></use>
             </svg>
@@ -1062,22 +1062,22 @@
 
           <!-- Custom pagination (4 buttons with special logic) -->
           <div class="news__pagination">
-            <button class="news__pagination-button news__pagination-button--active" type="button" data-page="1" aria-label="Перейти к странице 1">
+            <button class="button button--pagination news__pagination-button news__pagination-button--active" type="button" data-page="1" aria-label="Перейти к странице 1">
               1
             </button>
-            <button class="news__pagination-button" type="button" data-page="2" aria-label="Перейти к странице 2">
+            <button class="button button--pagination news__pagination-button" type="button" data-page="2" aria-label="Перейти к странице 2">
               2
             </button>
-            <button class="news__pagination-button" type="button" data-page="3" aria-label="Перейти к странице 3">
+            <button class="button button--pagination news__pagination-button" type="button" data-page="3" aria-label="Перейти к странице 3">
               3
             </button>
-            <button class="news__pagination-button" type="button" data-page="4" aria-label="Перейти к странице 4">
+            <button class="button button--pagination news__pagination-button" type="button" data-page="4" aria-label="Перейти к странице 4">
               4
             </button>
           </div>
 
           <!-- Right arrow -->
-          <button class="news__arrow news__arrow--next" type="button" aria-label="Следующий слайд">
+          <button class="button button--slider-arrow news__arrow news__arrow--next" type="button" aria-label="Следующий слайд">
             <svg width="10" height="10" aria-hidden="true">
               <use href="/__spritemap#sprite-arrow-right"></use>
             </svg>
@@ -1094,16 +1094,16 @@
         <ul class="faq__list">
           <!-- FAQ Item 1 -->
           <li class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span class="faq__question-text">Кто организатор? Какие сроки у программы?</span>
+            <button class="faq__question button button--accordion" type="button" aria-expanded="false">
+              Кто организатор? Какие сроки у программы?
               <span class="faq__icon" aria-hidden="true">
-                <svg class="faq__icon-plus" width="16" height="16">
+                <svg class="button__faq button__faq--plus" width="18" height="18">
                   <use href="/__spritemap#sprite-plus"></use>
                 </svg>
-                <svg class="faq__icon-minus" width="18" height="2">
+                <svg class="button__faq button__faq--minus" width="18" height="2">
                   <use href="/__spritemap#sprite-minus"></use>
                 </svg>
-              </span>
+                </span>
             </button>
             <div class="faq__answer" hidden>
               <p>
@@ -1114,13 +1114,13 @@
 
           <!-- FAQ Item 2 -->
           <li class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span class="faq__question-text">Что такое грант на обучение?</span>
+            <button class="faq__question button button--accordion" type="button" aria-expanded="false">
+              Что такое грант на обучение?
               <span class="faq__icon" aria-hidden="true">
-                <svg class="faq__icon-plus" width="18" height="18">
+                <svg class="button__faq button__faq--plus" width="18" height="18">
                   <use href="/__spritemap#sprite-plus"></use>
                 </svg>
-                <svg class="faq__icon-minus" width="18" height="2">
+                <svg class="button__faq button__faq--minus" width="18" height="2">
                   <use href="/__spritemap#sprite-minus"></use>
                 </svg>
               </span>
@@ -1134,13 +1134,13 @@
 
           <!-- FAQ Item 3 - OPEN BY DEFAULT -->
           <li class="faq__item faq__item--active">
-            <button class="faq__question" type="button" aria-expanded="true">
-              <span class="faq__question-text">Как определяется стоимость программы?</span>
+            <button class="faq__question button button--accordion" type="button" aria-expanded="true">
+              Как определяется стоимость программы?
               <span class="faq__icon" aria-hidden="true">
-                <svg class="faq__icon-plus" width="18" height="18">
+                <svg class="button__faq button__faq--plus" width="18" height="18">
                   <use href="/__spritemap#sprite-plus"></use>
                 </svg>
-                <svg class="faq__icon-minus" width="18" height="2">
+                <svg class="button__faq button__faq--minus" width="18" height="2">
                   <use href="/__spritemap#sprite-minus"></use>
                 </svg>
               </span>
@@ -1154,13 +1154,13 @@
 
           <!-- FAQ Item 4 -->
           <li class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span class="faq__question-text">Признаётся ли учёба в рамках проекта для дальнейшего обучения?</span>
+            <button class="faq__question button button--accordion" type="button" aria-expanded="false">
+              Признаётся ли учёба в рамках проекта для дальнейшего обучения?
               <span class="faq__icon" aria-hidden="true">
-                <svg class="faq__icon-plus" width="18" height="18">
+                <svg class="button__faq button__faq--plus" width="18" height="18">
                   <use href="/__spritemap#sprite-plus"></use>
                 </svg>
-                <svg class="faq__icon-minus" width="18" height="2">
+                <svg class="button__faq button__faq--minus" width="18" height="2">
                   <use href="/__spritemap#sprite-minus"></use>
                 </svg>
               </span>
@@ -1174,13 +1174,13 @@
 
           <!-- FAQ Item 5 -->
           <li class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span class="faq__question-text">Как выглядит полный процесс регистрации на программу «Стажировка»?</span>
+            <button class="faq__question button button--accordion" type="button" aria-expanded="false">
+              Как выглядит полный процесс регистрации на программу «Стажировка»?
               <span class="faq__icon" aria-hidden="true">
-                <svg class="faq__icon-plus" width="18" height="18">
+                <svg class="button__faq button__faq--plus" width="18" height="18">
                   <use href="/__spritemap#sprite-plus"></use>
                 </svg>
-                <svg class="faq__icon-minus" width="18" height="2">
+                <svg class="button__faq button__faq--minus" width="18" height="2">
                   <use href="/__spritemap#sprite-minus"></use>
                 </svg>
               </span>
@@ -1204,12 +1204,12 @@
 
           <!-- Mobile arrows -->
           <div class="reviews__arrows">
-            <button class="reviews__arrow reviews__arrow--prev" type="button" aria-label="Предыдущий отзыв">
+            <button class="button button--slider-arrow reviews__arrow reviews__arrow--prev" type="button" aria-label="Предыдущий отзыв">
               <svg width="10" height="10" aria-hidden="true">
                 <use href="/__spritemap#sprite-arrow-left"></use>
               </svg>
             </button>
-            <button class="reviews__arrow reviews__arrow--next" type="button" aria-label="Следующий отзыв">
+            <button class="button button--slider-arrow reviews__arrow reviews__arrow--next" type="button" aria-label="Следующий отзыв">
               <svg width="10" height="10" aria-hidden="true">
                 <use href="/__spritemap#sprite-arrow-right"></use>
               </svg>
@@ -1398,12 +1398,12 @@
           <div class="reviews__scrollbar swiper-scrollbar"></div>
 
           <div class="reviews__nav">
-            <button class="reviews__nav-arrow reviews__nav-arrow--prev" type="button" aria-label="Предыдущий отзыв">
+            <button class="button button--slider-arrow reviews__nav-arrow reviews__nav-arrow--prev" type="button" aria-label="Предыдущий отзыв">
               <svg width="10" height="10" aria-hidden="true">
                 <use href="/__spritemap#sprite-arrow-left"></use>
               </svg>
             </button>
-            <button class="reviews__nav-arrow reviews__nav-arrow--next" type="button" aria-label="Следующий отзыв">
+            <button class="button button--slider-arrow reviews__nav-arrow reviews__nav-arrow--next" type="button" aria-label="Следующий отзыв">
               <svg width="10" height="10" aria-hidden="true">
                 <use href="/__spritemap#sprite-arrow-right"></use>
               </svg>
