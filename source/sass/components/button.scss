@@ -20,7 +20,7 @@
   padding: 4px;
   padding-left: 21px;
   border: 1px solid transparent; // HTML1-TEST-08: prevent layout shift on hover
-  border-radius: 50px;
+  border-radius: 30px;
   background-color: transparent;
   font-family: $font-family;
   font-size: $font-size-button-mobile; // 12px
@@ -437,7 +437,7 @@
   border: 2px solid transparent; // HTML1-TEST-08: prevent layout shift on hover
   border-radius: 50%;
   background-color: transparent;
-  color: $color-button-pagination; //
+  color: $color-button-pagination;
   font-weight: $font-weight-regular;
   font-size: 14px;
   line-height: 14px;

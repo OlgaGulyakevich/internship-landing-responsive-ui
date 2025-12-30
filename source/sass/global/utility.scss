@@ -23,12 +23,11 @@
 // Scroll Lock
 // -----------------------------------------------------------------------------
 
-// Scroll lock (for open burger menu)
+// Scroll lock (for modals, not used for burger menu)
+// Burger menu allows scrolling - better UX for dropdown-style menus
 .scroll-lock {
   overflow: hidden;
   touch-action: none;
-  -webkit-overflow-scrolling: auto;
-  padding-right: var(--scrollbar-width, 0);
 }
 
 // -----------------------------------------------------------------------------

@@ -14,7 +14,7 @@
 
 html {
   height: 100%;
-  overflow-x: hidden; // HTML1-TEST-03: Prevent horizontal scroll
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -30,13 +30,13 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   font-family: $font-family;
   font-size: $font-size-text-regular-mobile;
   font-weight: $font-weight-regular;
   line-height: $line-height-text-regular-mobile;
   color: $color-text-primary;
   background-color: $color-bg-primary;
-  overflow-x: hidden; // HTML1-TEST-03: Additional protection (after html)
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

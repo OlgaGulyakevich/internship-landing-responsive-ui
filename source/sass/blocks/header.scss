@@ -1,0 +1,170 @@
+// =============================================================================
+// HEADER BLOCK
+// =============================================================================
+// Transparent header with logo and burger button
+// Features:
+// - Transparent background (hero background visible through it)
+// - Fixed positioning on all breakpoints
+// - Logo on the left, burger button on the right
+// - Same layout on mobile/tablet/desktop
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Header Container
+// -----------------------------------------------------------------------------
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+}
+
+// -----------------------------------------------------------------------------
+// Header Wrapper (Flexbox Layout)
+// -----------------------------------------------------------------------------
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include flex-no-overflow;
+  padding-top: $section-padding-xs;
+  padding-bottom: $section-padding-xs;
+
+  @include tablet {
+    padding-top: $section-padding-sm;
+    padding-bottom: $section-padding-sm;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Logo
+// -----------------------------------------------------------------------------
+.header__logo {
+  flex-shrink: 0;
+  transition: opacity $transition-slow;
+  // No z-index - stays below overlay (z-index: 250)
+
+  img {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Burger Button
+// -----------------------------------------------------------------------------
+// Standalone burger button (no button component inheritance)
+.header__burger {
+  position: relative;
+  z-index: $z-index-header; // Above overlay and logo
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  @include flex-no-overflow;
+  max-width: 290px;
+  padding: 4px;
+  padding-left: 21px;
+  border: 1px solid $color-button-primary;
+  border-radius: $radius-base;
+  background-color: $color-bg-secondary;
+  color: $color-button-primary;
+  font-size: 14px;
+  font-weight: $font-weight-medium;
+  line-height: 14px;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color $transition-slow, color $transition-slow, border-color $transition-slow, width $transition-slow, margin-left $transition-slow;
+
+  // Hover state - invert colors (like button--primary, but no rotation)
+  &:hover {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+    border-color: $color-button-primary;
+  }
+
+  // Focus visible state (keyboard navigation)
+  &:focus-visible {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+    border-color: $color-button-primary;
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
+  }
+
+  // Active state (pressed)
+  &:active {
+    background-color: $color-primary-blue;
+    color: $color-button-on-dark-active;
+    border-color: $color-primary-blue;
+  }
+}
+
+// When menu is open (.is-active class) - expand to menu width
+.header__burger.is-active {
+  width: 290px;
+  margin-left: -190px; // Pull left to cover logo on mobile (290px - 100px button default)
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  border-color: $color-button-primary;
+
+  @include tablet {
+    width: 286px;
+    margin-left: 0; // Enough space on tablet, no overlap needed
+  }
+}
+
+// Burger icon circle
+.header__burger-icon {
+  flex-shrink: 0;
+  display: block;
+  width: 46px;
+  height: 46px;
+  padding: 13px;
+  border-radius: 50%;
+  background-color: $color-button-primary;
+  color: $color-bg-secondary;
+  fill: none;
+  overflow: visible;
+  transition: background-color $transition-slow, color $transition-slow;
+}
+
+// Icon color inversion on hover/focus-visible
+.header__burger:hover .header__burger-icon,
+.header__burger:focus-visible .header__burger-icon {
+  background-color: $color-button-on-dark;
+  color: $color-button-primary;
+}
+
+// Icon color on active (pressed)
+.header__burger:active .header__burger-icon {
+  background-color: $color-bg-secondary;
+  color: $color-button-on-light-active;
+}
+
+// Icon color when menu is open (.is-active)
+.header__burger.is-active .header__burger-icon {
+  background-color: $color-button-on-dark;
+  color: $color-button-primary;
+}
+
+// Show burger icon by default, hide close icon
+.header__burger-icon--open {
+  display: block;
+}
+
+.header__burger-icon--close {
+  display: none;
+}
+
+// When menu is active, swap icons
+.header__burger.is-active .header__burger-icon--open {
+  display: none;
+}
+
+.header__burger.is-active .header__burger-icon--close {
+  display: block;
+}
