@@ -1,0 +1,327 @@
+// =============================================================================
+// HERO BLOCK (Promo Slider)
+// =============================================================================
+// Fullscreen hero slider with background images
+// Features:
+// - Fixed height per breakpoint (568px mobile, 1024px tablet, 800px desktop)
+// - Overlay on images for better content readability
+// - White content block with SVG mask (unusual shape)
+// - Content positioned at bottom with dynamic height (min-content)
+// - Custom pagination styles (overriding Swiper defaults)
+// - Swiper integration (loop, pagination bullets)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Hero Container
+// -----------------------------------------------------------------------------
+.hero {
+  position: relative;
+  height: 568px; 
+
+  @include tablet {
+    height: 1024px; 
+  }
+
+  @include desktop {
+    height: 800px; 
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Swiper Container
+// -----------------------------------------------------------------------------
+.hero__swiper {
+  height: 100%;
+}
+
+// Override Swiper default gap with high specificity
+.hero .hero__swiper .swiper-wrapper {
+  gap: 0 !important;
+  column-gap: 0 !important;
+  row-gap: 0 !important;
+}
+
+// Force no spacing on slides with high specificity
+.hero .hero__swiper .swiper-slide {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+// -----------------------------------------------------------------------------
+// Hero Slide
+// -----------------------------------------------------------------------------
+.hero__slide {
+  position: relative;
+  height: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// Picture Container
+// -----------------------------------------------------------------------------
+.hero__picture {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  // Overlay for better content readability
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: $color-overlay-photo; 
+    z-index: 1;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Hero Image
+// -----------------------------------------------------------------------------
+.hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+// -----------------------------------------------------------------------------
+// Content Container (White Block with SVG Mask)
+// -----------------------------------------------------------------------------
+.hero__content {
+  position: absolute;
+  bottom: $section-padding-xs;
+  left: $container-padding-mobile;
+  z-index: 10;
+  width: 305px;  
+  height: min-content; // Dynamic height based on content
+  max-width: calc(100% - #{$container-padding-mobile});
+  padding: 10px 14px;
+  background-color: $color-bg-secondary;
+
+  // SVG mask for unusual shape
+  // Webkit prefix for Safari support
+  // Absolute path from source root for Vite
+  -webkit-mask-image: url("/img/masks/hero-content-mask-mobile.svg");
+  -webkit-mask-size: 100% 100%; 
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: top left;
+  mask-image: url("/img/masks/hero-content-mask-mobile.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: top left;
+
+  @include tablet {
+    bottom: $section-padding-lg;
+    left: $container-padding-tablet;
+    width: 659px;  
+    max-width: calc(100% - #{$container-padding-tablet});
+    padding: 14px 40px 35px;
+    -webkit-mask-image: url("/img/masks/hero-content-mask-tablet.svg");
+    mask-image: url("/img/masks/hero-content-mask-tablet.svg");
+  }
+
+  @include desktop {
+    left: $container-padding-desktop;
+    width: 968px;  
+    max-width: calc(100% - #{$container-padding-desktop});
+    padding: 14px 50px 35px;
+    -webkit-mask-image: url("/img/masks/hero-content-mask-desktop.svg");
+    mask-image: url("/img/masks/hero-content-mask-desktop.svg");
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Top Section (Pagination + Title)
+// -----------------------------------------------------------------------------
+.hero__top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $gap-md; 
+  margin-bottom: 16px;
+  @include flex-no-overflow;
+
+  @include tablet {
+    gap: $gap-xl;
+    margin-bottom: 24px;
+  }
+
+  @include desktop {
+    gap: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Hero Title
+// -----------------------------------------------------------------------------
+.hero__title {
+  max-width: 261px;
+  font-size: $font-size-h1-mobile;
+  line-height: $line-height-h1-mobile;
+  color: $color-text-accent; 
+
+  @include tablet {
+    max-width: 560px;
+    font-size: $font-size-h1-tablet;
+    line-height: $line-height-h1-tablet;
+  }
+
+  @include desktop {
+    max-width: 830px;
+    font-size: $font-size-h1-desktop;
+    line-height: $line-height-h1-desktop;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Pagination Wrapper (Container for bullets inside hero__content)
+// -----------------------------------------------------------------------------
+
+.hero__pagination-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 1px;
+  padding-bottom: 10px;
+
+  @include tablet {
+    margin-left: -20px;
+    padding-bottom: 13px;
+  }
+
+  @include desktop {
+    margin-left: -30px;
+    padding-bottom: 13px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Bottom Section (Paragraph + Button)
+// -----------------------------------------------------------------------------
+.hero__bottom {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start;
+  gap: 25px;
+  @include flex-no-overflow;
+
+  @include tablet {
+    flex-direction: row; 
+    align-items: flex-end;
+    gap: 30px;
+  }
+
+  p {
+    max-width: 239px;
+    font-size: $font-size-text-big-mobile; 
+    line-height: $line-height-text-regular-mobile; 
+    color: $color-text-primary; 
+
+    @include tablet {
+      max-width: 285px;
+    }
+
+  
+    @include desktop {
+      max-width: 446px;
+      line-height: 26px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Hero Button
+// -----------------------------------------------------------------------------
+.hero__button {
+  flex-shrink: 0;
+
+  @include tablet {
+    align-self: flex-start; 
+  }
+
+  @include desktop {
+    align-self: center; 
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Pagination (Custom Bullets - Override Swiper Defaults)
+// -----------------------------------------------------------------------------
+// Pagination is inside .hero__pagination-wrapper with static positioning
+// Override Swiper's default absolute positioning and transforms
+.hero .hero__swiper .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
+  position: static;
+  display: flex;
+  gap: 12px;
+  inset: auto;
+  transform: none;
+}
+
+// Pagination bullet (default state)
+.hero .hero__pagination .swiper-pagination-bullet.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin: 0; // Override Swiper default margin
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid $color-button-primary;
+  cursor: pointer;
+  opacity: 1;
+  transition: border-color $transition-normal, background-color $transition-normal, opacity $transition-normal;
+
+  @include tablet {
+    width: 12px;
+    height: 12px;
+  }
+
+  // States
+  &:hover {
+    border-color: $color-button-on-dark;
+    background-color: $color-button-pagination;
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    border-color: $color-button-primary;
+    background-color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+    opacity: 1;
+  }
+
+  &:active {
+    border-color: $color-button-pressed;
+    background-color: $color-button-pressed;
+    opacity: 1;
+  }
+}
+
+// Pagination bullet active state
+.hero .hero__pagination .swiper-pagination-bullet-active.swiper-pagination-bullet-active {
+  background-color: $color-button-pressed;
+  border: 2px solid $color-button-pressed;
+
+  // States
+  &:hover {
+    border-color: $color-button-on-dark;
+    background-color: $color-button-pagination;
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    border-color: $color-button-primary;
+    background-color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+    opacity: 1;
+  }
+
+  &:active {
+    border-color: $color-button-pressed;
+    background-color: $color-button-pressed;
+    opacity: 1;
+  }
+}
+

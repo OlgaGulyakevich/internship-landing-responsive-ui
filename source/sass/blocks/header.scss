@@ -17,6 +17,7 @@
   top: 0;
   left: 0;
   right: 0;
+  // No z-index - allows children (burger, logo) to have independent z-index
   background-color: transparent;
 }
 
@@ -41,9 +42,10 @@
 // Logo
 // -----------------------------------------------------------------------------
 .header__logo {
+  position: relative;
+  z-index: 10; // Above hero content, below nav-menu overlay
   flex-shrink: 0;
   transition: opacity $transition-slow;
-  // No z-index - stays below overlay (z-index: 250)
 
   img {
     width: 52px;
@@ -57,13 +59,13 @@
 // Standalone burger button (no button component inheritance)
 .header__burger {
   position: relative;
-  z-index: $z-index-header; // Above overlay and logo
+  z-index: $z-index-header; // 300 - Above nav-menu overlay (250) and logo
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
   @include flex-no-overflow;
-  max-width: 290px;
+  width: fit-content;
   padding: 4px;
   padding-left: 21px;
   border: 1px solid $color-button-primary;
@@ -91,7 +93,7 @@
     background-color: $color-button-primary;
     color: $color-button-on-dark;
     border-color: $color-button-primary;
-    outline: 2px solid $color-button-on-dark;
+    outline: 2px solid $color-button-primary;
     outline-offset: 2px;
   }
 

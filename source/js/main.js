@@ -7,8 +7,12 @@
 import burgerMenu from './modules/burger-menu.js';
 import { initSmoothScroll } from './modules/smooth-scroll.js';
 
+// Sliders
+import heroSlider from './sliders/hero-slider.js';
+
 // Initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   burgerMenu.init();
   initSmoothScroll();
+  heroSlider.init();
 });

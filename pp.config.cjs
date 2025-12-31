@@ -102,8 +102,15 @@ module.exports = {
   "report": ["browser", "json"],
   "engine": "puppeteer",
   "engineOptions": {
-    "args": ["--no-sandbox"],
-    "gotoParameters": {"waitUntil": ["load", "networkidle0"], timeout: 30000},
+    "headless": "new",
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu"
+    ],
+    "gotoParameters": {"waitUntil": ["load", "networkidle0"], timeout: 60000},
+    "timeout": 60000,
   },
   "asyncCaptureLimit": 10,
   "asyncCompareLimit": 50,

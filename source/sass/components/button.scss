@@ -47,23 +47,33 @@
   // Disable text selection
   -webkit-tap-highlight-color: transparent;
 
-  // Icon in circle (SVG with .button__icon class)
+  // Icon wrapper (span.button__icon contains SVG)
   .button__icon {
     flex-shrink: 0;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 34px;
     height: 34px;
-    padding: 13px;
     border-radius: 50%;
-    fill: none;
     overflow: visible;
-    transition: background-color $transition-slow, color $transition-slow, transform $transition-slow;
+    transition: background-color $transition-slow;
 
     // Tablet
     @include tablet {
       width: 46px;
       height: 46px;
-      padding: 19px;
+    }
+
+    // SVG inside wrapper - no border-radius!
+    svg {
+      flex-shrink: 0;
+      display: block;
+      width: 8px;
+      height: 8px;
+      fill: none;
+      color: inherit;
+      transition: color $transition-slow, transform $transition-slow;
     }
   }
 
@@ -87,6 +97,7 @@
 // Primary Button (Transparent Background)
 // -----------------------------------------------------------------------------
 .button--primary {
+  width: fit-content;
   background-color: transparent;
   color: $color-button-primary;
   border-color: $color-button-primary;
@@ -105,13 +116,16 @@
     .button__icon {
       background-color: $color-button-on-dark; // White circle
       color: $color-button-primary; // Blue icon
-      transform: rotate(45deg); // Rotate arrow from up-right to right
+
+      svg {
+        transform: rotate(45deg); // Rotate arrow from up-right to right
+      }
     }
   }
 
   // Focus state
   &:focus {
-    .button__icon {
+    .button__icon svg {
       transform: rotate(45deg);
     }
   }
@@ -124,7 +138,10 @@
     .button__icon {
       background-color: $color-bg-secondary;
       color: $color-button-on-light-active;
-      transform: rotate(45deg);
+
+      svg {
+        transform: rotate(45deg);
+      }
     }
   }
 
@@ -148,6 +165,7 @@
 // Primary Button (Blue Background)
 // -----------------------------------------------------------------------------
 .button--primary-on-blue {
+  width: fit-content;
   background-color: $color-button-primary;
   color: $color-button-on-dark;
   border-color: $color-button-on-dark;
@@ -165,14 +183,17 @@
     .button__icon {
       background-color: $color-button-primary;
       color: $color-button-on-dark;
-      transform: rotate(45deg);
+
+      svg {
+        transform: rotate(45deg);
+      }
     }
   }
 
 
   // Focus state
   &:focus {
-    .button__icon {
+    .button__icon svg {
       transform: rotate(45deg);
     }
   }
@@ -185,7 +206,10 @@
     .button__icon {
       background-color: $color-primary-blue;
       color: $color-button-on-dark-active;
-      transform: rotate(45deg);
+
+      svg {
+        transform: rotate(45deg);
+      }
     }
   }
 

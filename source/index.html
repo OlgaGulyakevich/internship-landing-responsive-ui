@@ -78,11 +78,11 @@
     <!-- === HERO SECTION === -->
     <section class="hero" data-test="hero">
       <h1 class="visually-hidden">Internship - Программа обмена студентами</h1>
-      <div class="hero__swiper swiper">
-        <ul class="swiper-wrapper">
+      <div class="hero__swiper swiper" aria-roledescription="carousel" aria-label="Главный слайдер">
+        <ul class="swiper-wrapper" role="list">
 
           <!-- Slide 1 -->
-          <li class="swiper-slide hero__slide">
+          <li class="swiper-slide hero__slide" role="group" aria-roledescription="slide" aria-label="1 из 3">
             <!-- Background image -->
             <picture class="hero__picture">
               <source
@@ -117,36 +117,36 @@
 
             <!-- Content block -->
             <div class="hero__content">
-              <div class="container">
-                <!-- Top section: pagination + title -->
-                <div class="hero__top">
-                  <!-- Pagination wrapper (left notch) -->
-                  <div class="hero__pagination-wrapper"></div>
+              <!-- Top section: pagination + title -->
+              <div class="hero__top">
+                <!-- Pagination wrapper (left notch) -->
+                <div class="hero__pagination-wrapper"></div>
 
-                  <h2 class="hero__title">
-                    Глобальный профессиональный опыт обучения за рубежом
-                  </h2>
-                </div>
+                <h2 class="hero__title">
+                  Глобальный профессиональный опыт обучения за&nbsp;рубежом
+                </h2>
+              </div>
 
-                <!-- Bottom section: paragraph + button -->
-                <!-- Content area WITHOUT classes (cascading styling) -->
-                <div class="hero__bottom">
-                  <p>
-                    Погрузитесь в академическую программу, проходя практику в разных городах, ощущая настоящий студенческий стиль жизни!
-                  </p>
-                  <a class="hero__button button button--primary" href="#about">
-                    Подробнее
-                    <svg class="button__icon" width="8" height="8" aria-hidden="true">
+              <!-- Bottom section: paragraph + button -->
+              <!-- Content area WITHOUT classes (cascading styling) -->
+              <div class="hero__bottom">
+                <p>
+                  Погрузитесь в академическую программу, проходя практику в&nbsp;разных городах, ощущая настоящий студенческий стиль жизни!
+                </p>
+                <a class="hero__button button button--primary" href="#about">
+                  Подробнее
+                  <span class="button__icon">
+                    <svg width="8" height="8" aria-hidden="true">
                       <use href="/__spritemap#sprite-arrow-up-right"></use>
                     </svg>
-                  </a>
-                </div>
+                  </span>
+                </a>
               </div>
             </div>
           </li>
 
           <!-- Slide 2 -->
-          <li class="swiper-slide hero__slide">
+          <li class="swiper-slide hero__slide" role="group" aria-roledescription="slide" aria-label="2 из 3">
             <!-- Background image -->
             <picture class="hero__picture">
               <source
@@ -181,36 +181,36 @@
 
             <!-- Content block -->
             <div class="hero__content">
-              <div class="container">
-                <!-- Top section: pagination + title -->
-                <div class="hero__top">
-                  <!-- Pagination wrapper (left notch) -->
-                  <div class="hero__pagination-wrapper"></div>
+              <!-- Top section: pagination + title -->
+              <div class="hero__top">
+                <!-- Pagination wrapper (left notch) -->
+                <div class="hero__pagination-wrapper"></div>
 
-                  <h2 class="hero__title">
-                    Волонтёрские программы – внесите свой вклад в общество
-                  </h2>
-                </div>
+                <h2 class="hero__title">
+                  Волонтёрские программы – внесите свой вклад в&nbsp;общество
+                </h2>
+              </div>
 
-                <!-- Bottom section: paragraph + button -->
-                <!-- Content area WITHOUT classes (cascading styling) -->
-                <div class="hero__bottom">
-                  <p>
-                    Возможности для преподавания, органического сельского хозяйства, устойчивого образа жизни и других.
-                  </p>
-                  <a class="hero__button button button--primary" href="#programs">
-                    Подробнее
-                    <svg class="button__icon" width="8" height="8" aria-hidden="true">
+              <!-- Bottom section: paragraph + button -->
+              <!-- Content area WITHOUT classes (cascading styling) -->
+              <div class="hero__bottom">
+                <p>
+                  Возможности для преподавания, органического сельского хозяйства, устойчивого образа жизни и других.
+                </p>
+                <a class="hero__button button button--primary" href="#programs">
+                  Подробнее
+                  <span class="button__icon">
+                    <svg width="8" height="8" aria-hidden="true">
                       <use href="/__spritemap#sprite-arrow-up-right"></use>
                     </svg>
-                  </a>
-                </div>
+                  </span>
+                </a>
               </div>
             </div>
           </li>
 
           <!-- Slide 3 -->
-          <li class="swiper-slide hero__slide">
+          <li class="swiper-slide hero__slide" role="group" aria-roledescription="slide" aria-label="3 из 3">
             <!-- Background image -->
             <picture class="hero__picture">
               <source
@@ -245,30 +245,30 @@
 
             <!-- Content block -->
             <div class="hero__content">
-              <div class="container">
-                <!-- Top section: pagination + title -->
-                <div class="hero__top">
-                  <!-- Pagination wrapper (left notch) -->
-                  <div class="hero__pagination-wrapper"></div>
+              <!-- Top section: pagination + title -->
+              <div class="hero__top">
+                <!-- Pagination wrapper (left notch) -->
+                <div class="hero__pagination-wrapper"></div>
 
-                  <h2 class="hero__title">
-                    Программы стажировок в крупнейших компаниях мира
-                  </h2>
-                </div>
+                <h2 class="hero__title">
+                  Программы стажировок в&nbsp;крупнейших компаниях мира
+                </h2>
+              </div>
 
-                <!-- Bottom section: paragraph + button -->
-                <!-- Content area WITHOUT classes (cascading styling) -->
-                <div class="hero__bottom">
-                  <p>
-                    Получите незаменимый опыт работы в ведущих мировых компаниях и государственных организациях.
-                  </p>
-                  <a class="hero__button button button--primary" href="#about">
-                    Подробнее
-                    <svg class="button__icon" width="8" height="8" aria-hidden="true">
+              <!-- Bottom section: paragraph + button -->
+              <!-- Content area WITHOUT classes (cascading styling) -->
+              <div class="hero__bottom">
+                <p>
+                  Получите незаменимый опыт работы в&nbsp;ведущих мировых компаниях и&nbsp;государственных организациях.
+                </p>
+                <a class="hero__button button button--primary" href="#programs">
+                  Подробнее
+                  <span class="button__icon">
+                    <svg width="8" height="8" aria-hidden="true">
                       <use href="/__spritemap#sprite-arrow-up-right"></use>
                     </svg>
-                  </a>
-                </div>
+                  </span>
+                </a>
               </div>
             </div>
           </li>
@@ -277,6 +277,11 @@
 
         <!-- Pagination (bullets) -->
         <div class="hero__pagination swiper-pagination"></div>
+
+        <!-- Screen reader announcements -->
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true">
+          Слайд <span class="hero__current-slide">1</span> из 3
+        </div>
       </div>
     </section>
 
@@ -303,9 +308,11 @@
             </p>
             <button class="about__button button button--primary" type="button" data-modal-target="feedback">
               Подробнее о проекте
-              <svg class="button__icon" width="8" height="8" aria-hidden="true">
-                <use href="/__spritemap#sprite-arrow-up-right"></use>
-              </svg>
+              <span class="button__icon">
+                <svg width="8" height="8" aria-hidden="true">
+                  <use href="/__spritemap#sprite-arrow-up-right"></use>
+                </svg>
+              </span>
             </button>
           </div>
         </div>
@@ -357,9 +364,11 @@
         <!-- Button: All Programs (visible on all breakpoints, positioned via grid) -->
         <a class="programs__all-button button button--primary" href="programs.html">
           Все программы
-          <svg class="button__icon" width="8" height="8" aria-hidden="true">
-            <use href="/__spritemap#sprite-arrow-up-right"></use>
-          </svg>
+          <span class="button__icon">
+            <svg width="8" height="8" aria-hidden="true">
+              <use href="/__spritemap#sprite-arrow-up-right"></use>
+            </svg>
+          </span>
         </a>
 
         <!-- Slider navigation arrows (mobile only, positioned via grid) -->
@@ -1577,9 +1586,11 @@
 
               <button class="form__submit button button--primary-on-blue" type="submit">
                 Отправить
-                <svg class="button__icon" width="8" height="8" aria-hidden="true">
-                  <use href="/__spritemap#sprite-arrow-up-right"></use>
-                </svg>
+                <span class="button__icon">
+                  <svg width="8" height="8" aria-hidden="true">
+                    <use href="/__spritemap#sprite-arrow-up-right"></use>
+                  </svg>
+                </span>
               </button>
             </form>
           </div>
@@ -1904,9 +1915,11 @@
           <!-- Submit button -->
           <button class="modal__submit button button--primary" type="submit">
             Отправить
-            <svg class="button__icon" width="8" height="8" aria-hidden="true">
-              <use href="/__spritemap#sprite-arrow-up-right"></use>
-            </svg>
+            <span class="button__icon">
+              <svg width="8" height="8" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-up-right"></use>
+              </svg>
+            </span>
           </button>
         </fieldset>
       </form>
