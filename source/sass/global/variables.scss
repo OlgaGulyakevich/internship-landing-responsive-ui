@@ -12,6 +12,7 @@ $color-text-primary: #484848;
 $color-text-on-dark: #ffffff;
 $color-text-secondary-dark: #f0efe9;
 $color-text-accent: #316dc2;
+$color-text-label: rgb(109, 109, 109); 
 
 // Button Colors
 // -----------------------------------------------------------------------------
@@ -24,6 +25,7 @@ $color-button-disabled: #a9afb7;
 $color-button-icon-disabled: rgb(255, 255, 255, 0.7);
 $color-button-scrollbar: rgb(49, 109, 194, 0.2);
 $color-button-pagination: rgb(49, 109, 194, 0.7);
+$color-button-select: #484848;
 
 
 // Background Colors
@@ -32,16 +34,12 @@ $color-bg-primary: #f0efe9;
 $color-bg-secondary: #ffffff;
 $color-bg-accent: #316dc2;
 
-// Icon Colors
-// -----------------------------------------------------------------------------
-$color-icon-primary: #316dc2;
-$color-icon-on-blue: #ffffff;
-
 // Form Colors
 // -----------------------------------------------------------------------------
 $color-form-on-dark: #ffffff;
 $color-form-on-light: #484848;
 $color-form-error: #ff5e66;
+$color-form-error-bg: rgba(255, 94, 102, 0.2);
 $color-form-disabled: #a9afb7;
 
 // Border Colors
@@ -49,6 +47,7 @@ $color-form-disabled: #a9afb7;
 $border-color-default: $color-text-on-dark; // #FFFFFF
 $border-color-error: $color-form-error; // #FF5E66
 $border-color-scrollbar: #316dc2;
+$border-input: rgba(72, 72, 72, 0.3);
 
 // States Colors
 // -----------------------------------------------------------------------------
@@ -106,7 +105,8 @@ $section-padding-xs: 20px;
 $section-padding-sm: 30px;
 $section-padding-md: 50px;
 $section-padding-lg: 60px;
-$section-padding-xl: 80px;
+$section-padding-xl: 70px;
+
 
 // =============================================================================
 // BORDER RADIUS
@@ -147,8 +147,8 @@ $shadow-focus: 0 0 0 3px rgb(49, 109, 194, 0.3);
 
 $z-index-dropdown: 100;
 $z-index-overlay: 200;
-$z-index-modal: 300;
 $z-index-header: 300;
+$z-index-modal: 350;
 $z-index-toast: 400;
 
 

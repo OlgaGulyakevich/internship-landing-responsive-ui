@@ -64,18 +64,8 @@
       width: 46px;
       height: 46px;
     }
-
-    // SVG inside wrapper - no border-radius!
-    svg {
-      flex-shrink: 0;
-      display: block;
-      width: 8px;
-      height: 8px;
-      fill: none;
-      color: inherit;
-      transition: color $transition-slow, transform $transition-slow;
-    }
   }
+
 
   // Disabled state
   &:disabled,
@@ -84,6 +74,17 @@
     pointer-events: none;
     opacity: 1; // Keep full opacity, use colors instead
   }
+}
+
+// SVG inside button icon wrapper
+.button--primary .button__icon svg {
+  flex-shrink: 0;
+  display: block;
+  width: 8px;
+  height: 8px;
+  fill: none;
+  color: inherit;
+  transition: color $transition-slow, transform $transition-slow;
 }
 
 // Disabled state icon
@@ -111,38 +112,22 @@
   &:hover {
     background-color: $color-button-primary; // Blue bg
     color: $color-button-on-dark; // White text
-
-
-    .button__icon {
-      background-color: $color-button-on-dark; // White circle
-      color: $color-button-primary; // Blue icon
-
-      svg {
-        transform: rotate(45deg); // Rotate arrow from up-right to right
-      }
-    }
   }
 
-  // Focus state
-  &:focus {
-    .button__icon svg {
-      transform: rotate(45deg);
-    }
+  &:hover .button__icon {
+    background-color: $color-button-on-dark; // White circle
+    color: $color-button-primary; // Blue icon
   }
 
   // Active state
   &:active {
     background-color: $color-primary-blue;
     color: $color-button-on-dark-active;
+  }
 
-    .button__icon {
-      background-color: $color-bg-secondary;
-      color: $color-button-on-light-active;
-
-      svg {
-        transform: rotate(45deg);
-      }
-    }
+  &:active .button__icon {
+    background-color: $color-bg-secondary;
+    color: $color-button-on-light-active;
   }
 
   // Disabled state
@@ -159,6 +144,13 @@
 .button--primary.is-disabled .button__icon {
   background-color: $color-disabled;
   color: $color-button-icon-disabled;
+}
+
+// SVG transformations for interactive states
+.button--primary:hover .button__icon svg,
+.button--primary:focus .button__icon svg,
+.button--primary:active .button__icon svg {
+  transform: rotate(45deg);
 }
 
 // -----------------------------------------------------------------------------
@@ -179,38 +171,22 @@
   &:hover {
     background-color: $color-button-on-dark;
     color: $color-button-primary;
-
-    .button__icon {
-      background-color: $color-button-primary;
-      color: $color-button-on-dark;
-
-      svg {
-        transform: rotate(45deg);
-      }
-    }
   }
 
-
-  // Focus state
-  &:focus {
-    .button__icon svg {
-      transform: rotate(45deg);
-    }
+  &:hover .button__icon {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
   }
 
   // Active state
   &:active {
     background-color: $color-button-on-dark;
     color: $color-button-on-light-active;
+  }
 
-    .button__icon {
-      background-color: $color-primary-blue;
-      color: $color-button-on-dark-active;
-
-      svg {
-        transform: rotate(45deg);
-      }
-    }
+  &:active .button__icon {
+    background-color: $color-primary-blue;
+    color: $color-button-on-dark-active;
   }
 
   // Disabled state
@@ -229,6 +205,13 @@
   color: $color-button-icon-disabled;
 }
 
+// SVG transformations for interactive states
+.button--primary-on-blue:hover .button__icon svg,
+.button--primary-on-blue:focus .button__icon svg,
+.button--primary-on-blue:active .button__icon svg {
+  transform: rotate(45deg);
+}
+
 // -----------------------------------------------------------------------------
 // Secondary Button (Icon Only)
 // -----------------------------------------------------------------------------
@@ -241,29 +224,11 @@
   background-color: $color-button-primary;
   color: $color-button-on-dark;
 
-  svg {
-    width: 10px;
-    height: 10px;
-    stroke: currentColor;
-    transition: transform $transition-slow;
-  }
-
   // Hover state
   &:hover {
     background-color: $color-button-on-dark;
     color: $color-button-primary;
     border-color: $color-button-on-dark;
-
-    svg {
-      transform: rotate(45deg);
-    }
-  }
-
-  // Focus state
-  &:focus {
-    svg {
-      transform: rotate(45deg);
-    }
   }
 
   // Active state
@@ -271,10 +236,6 @@
     background-color: $color-button-on-dark;
     color: $color-button-on-light-active;
     border-color: $color-button-on-dark;
-
-    svg {
-      transform: rotate(45deg);
-    }
   }
 
   // Disabled state
@@ -284,6 +245,19 @@
     color: $color-button-icon-disabled;
     border-color: $color-disabled;
   }
+}
+
+.button--icon-only svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+  transition: transform $transition-slow;
+}
+
+.button--icon-only:hover svg,
+.button--icon-only:focus svg,
+.button--icon-only:active svg {
+  transform: rotate(45deg);
 }
 
 // -----------------------------------------------------------------------------
@@ -298,14 +272,6 @@
   border-radius: 50%;
   background-color: transparent;
   color: $color-button-primary;
-
-  svg {
-    width: 10px;
-    height: 10px;
-    stroke: currentColor;
-    transition: transform $transition-slow;
-  }
-
 
   // Hover state
   &:hover {
@@ -330,6 +296,13 @@
     background-color: transparent;
     color: $color-disabled;
   }
+}
+
+.button--slider-arrow svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+  transition: transform $transition-slow;
 }
 
 // -----------------------------------------------------------------------------

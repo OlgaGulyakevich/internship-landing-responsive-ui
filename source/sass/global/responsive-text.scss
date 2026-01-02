@@ -53,6 +53,15 @@
   @include nowrap-desktop;
 }
 
+// Nowrap on mobile and tablet
+.nowrap-mobile-tablet {
+  white-space: nowrap;
+
+  @include desktop {
+    white-space: normal;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Text No-Wrap (All breakpoints)
 // Prevent text wrapping on all screen sizes

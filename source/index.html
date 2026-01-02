@@ -78,8 +78,8 @@
     <!-- === HERO SECTION === -->
     <section class="hero" data-test="hero">
       <h1 class="visually-hidden">Internship - Программа обмена студентами</h1>
-      <div class="hero__swiper swiper" aria-roledescription="carousel" aria-label="Главный слайдер">
-        <ul class="swiper-wrapper" role="list">
+      <div class="hero__swiper swiper" aria-roledescription="carousel">
+        <ul class="swiper-wrapper">
 
           <!-- Slide 1 -->
           <li class="swiper-slide hero__slide" role="group" aria-roledescription="slide" aria-label="1 из 3">
@@ -288,14 +288,13 @@
     <!-- === ABOUT SECTION === -->
     <section class="about" id="about" data-test="about">
       <div class="container">
-        <h2 class="about__title">О проекте «Стажировка»</h2>
-
-        <!-- Main content (Desktop: 2 columns) -->
+        <!-- Main content (Desktop: 2 columns, Mobile/Tablet: 1 column) -->
         <div class="about__content">
-          <!-- Column 1: Intro -->
+          <!-- Column 1: Title + Intro -->
           <div class="about__intro">
+            <h2 class="about__title">О проекте «Стажировка»</h2>
             <p>
-              «Стажировка» — совместный проект правительств и волонтёрских бригад.
+              «Стажировка» — совместный проект правительств и&nbsp;волонтёрских бригад.
             </p>
           </div>
 
@@ -304,7 +303,7 @@
           <div class="about__details">
             <h3>Наша цель</h3>
             <p>
-              Наша деятельность направлена на повышение квалификации молодых специалистов на ранних и средних стадиях карьеры, предоставляя им инструменты для решения сложных проблем, с которыми сталкиваются в мире. Цель центра — наделить этих людей способностью инициировать значимые изменения.
+              Наша деятельность направлена на&nbsp;повышение квалификации молодых специалистов на ранних и средних стадиях карьеры, предоставляя им&nbsp;инструменты для решения сложных проблем, с&nbsp;которыми сталкиваются в мире. Цель центра — наделить этих людей способностью инициировать значимые изменения.
             </p>
             <button class="about__button button button--primary" type="button" data-modal-target="feedback">
               Подробнее о проекте
@@ -324,7 +323,7 @@
           <li class="about__advantage">
             <h4>БОЛЕЕ 250 ПРОГРАММ</h4>
             <p>
-              учебных и рабочих, разной длительности от 3 месяцев до 1 года
+              учебных и рабочих, разной длительностью от&nbsp;3&nbsp;месяцев до&nbsp;1&nbsp;года
             </p>
           </li>
 
@@ -332,23 +331,26 @@
           <li class="about__advantage">
             <h4>БОЛЕЕ 3000 УЧАСТНИКОВ</h4>
             <p>
-              уже успешно прошли программу от «Стажировка» и остались в разных странах
+              уже успешно прошли программу от&nbsp;«Стажировка»<br class="br-not-mobile"> и&nbsp;остались в&nbsp;разных<br class="br-tablet"> странах
             </p>
           </li>
 
           <!-- Advantage 3 -->
           <li class="about__advantage">
-            <h4>УЧАСТНИКИ ИЗ 60 СТРАН</h4>
+            <h4>УЧАСТНИКИ ИЗ&nbsp;60&nbsp;СТРАН</h4>
             <p>
-              студенты со всего мира приезжают на программу «Стажировки» от 3 месяцев до 1 года
+              студенты со всего мира приезжают на&nbsp;программу <span class="nowrap-mobile-tablet">«Стажировки»<br class="br-desktop"> от 3 месяцев</span> до&nbsp;1&nbsp;года
             </p>
           </li>
 
           <!-- Advantage 4 -->
           <li class="about__advantage">
-            <h4>ОТ 4 200 $ ДО 8 400 $</h4>
+            <h4>
+              <span class="text-nowrap">ОТ 4 200 $</span><br>
+              <span class="text-nowrap">ДО 8 400 $</span>
+            </h4>
             <p>
-              грант всем участникам для комфортного прохождения программы
+              грант&nbsp;всем&nbsp;участникам для&nbsp;комфортного <span class="nowrap-desktop ">прохождения программы</span>
             </p>
           </li>
         </ul>
@@ -1542,7 +1544,7 @@
                 <label class="form__label" for="form-city">Выберите город</label>
                 <div class="form__select-wrapper">
                   <select class="form__select" id="form-city" name="city" required>
-                    <option value="">Выберите город</option>
+                    <option value="" hidden></option>
                     <option value="moscow">Москва</option>
                     <option value="saint-petersburg">Санкт-Петербург</option>
                     <option value="novosibirsk">Новосибирск</option>
@@ -1782,11 +1784,10 @@
 
   <!-- Modal: Feedback Form "Напишите нам" -->
   <div
-    class="modal modal--feedback"
+    class="modal modal--feedback is-open"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-feedback-title"
-    hidden
   >
     <!-- Overlay for click-outside detection -->
     <div class="modal__overlay"></div>
@@ -1811,7 +1812,7 @@
 
       <!-- Subtitle -->
       <p class="modal__subtitle">
-        Оставьте ваши контакты, если у вас остались вопросы — мы на них ответим!
+        Оставьте ваши контакты,<br class="br-mobile"> если у вас остались вопросы —<br class="br-mobile">  мы на них ответим!
       </p>
 
       <!-- Feedback form -->
@@ -1836,7 +1837,8 @@
               minlength="2"
               maxlength="50"
               required
-              autocomplete="name">
+              autocomplete="name"
+              placeholder=" ">
           </div>
 
           <!-- Field: Phone -->
@@ -1850,9 +1852,10 @@
               id="feedback-phone"
               name="phone"
               required
-              pattern="^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$"
+              pattern="^[\d+\s]{10,}$"
+              title="Введите корректный номер телефона (минимум 10 символов)"
               autocomplete="tel"
-              data-phone-mask="true">
+              placeholder=" ">
           </div>
 
           <!-- Field: City -->
@@ -1860,39 +1863,41 @@
             <label class="modal__label" for="feedback-city">
               Выберите город
             </label>
-            <select
-              class="modal__select"
-              id="feedback-city"
-              name="city"
-              required
-            >
-              <option value="">Выберите город</option>
-              <option value="moscow">Москва</option>
-              <option value="saint-petersburg">Санкт-Петербург</option>
-              <option value="novosibirsk">Новосибирск</option>
-              <option value="yekaterinburg">Екатеринбург</option>
-              <option value="kazan">Казань</option>
-              <option value="nizhny-novgorod">Нижний Новгород</option>
-              <option value="chelyabinsk">Челябинск</option>
-              <option value="samara">Самара</option>
-              <option value="omsk">Омск</option>
-              <option value="rostov-on-don">Ростов-на-Дону</option>
-              <option value="ufa">Уфа</option>
-              <option value="krasnoyarsk">Красноярск</option>
-              <option value="voronezh">Воронеж</option>
-              <option value="perm">Пермь</option>
-              <option value="volgograd">Волгоград</option>
-              <option value="krasnodar">Краснодар</option>
-              <option value="saratov">Саратов</option>
-              <option value="tyumen">Тюмень</option>
-              <option value="tolyatti">Тольятти</option>
-              <option value="izhevsk">Ижевск</option>
-              <option value="barnaul">Барнаул</option>
-              <option value="other">Другой город</option>
-            </select>
-            <svg class="modal__select-icon" width="16" height="16" aria-hidden="true">
-              <use href="/__spritemap#sprite-arrow-down"></use>
-            </svg>
+            <div class="modal__select-wrapper">
+              <select
+                class="modal__select"
+                id="feedback-city"
+                name="city"
+                required
+              >
+                <option value="" hidden></option>
+                <option value="moscow">Москва</option>
+                <option value="saint-petersburg">Санкт-Петербург</option>
+                <option value="novosibirsk">Новосибирск</option>
+                <option value="yekaterinburg">Екатеринбург</option>
+                <option value="kazan">Казань</option>
+                <option value="nizhny-novgorod">Нижний Новгород</option>
+                <option value="chelyabinsk">Челябинск</option>
+                <option value="samara">Самара</option>
+                <option value="omsk">Омск</option>
+                <option value="rostov-on-don">Ростов-на-Дону</option>
+                <option value="ufa">Уфа</option>
+                <option value="krasnoyarsk">Красноярск</option>
+                <option value="voronezh">Воронеж</option>
+                <option value="perm">Пермь</option>
+                <option value="volgograd">Волгоград</option>
+                <option value="krasnodar">Краснодар</option>
+                <option value="saratov">Саратов</option>
+                <option value="tyumen">Тюмень</option>
+                <option value="tolyatti">Тольятти</option>
+                <option value="izhevsk">Ижевск</option>
+                <option value="barnaul">Барнаул</option>
+                <option value="other">Другой город</option>
+              </select>
+              <svg class="modal__select-icon" width="16" height="16" aria-hidden="true">
+                <use href="/__spritemap#sprite-arrow-down"></use>
+              </svg>
+            </div>
           </div>
 
           <!-- Field: Consent checkbox -->

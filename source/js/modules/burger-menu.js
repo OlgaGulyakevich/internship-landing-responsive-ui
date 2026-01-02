@@ -19,19 +19,49 @@ const burgerMenu = (() => {
     return;
   }
 
-  // Toggle menu open/close
-  const toggleMenu = () => {
-    const isOpen = menu.classList.contains('is-open');
-
-    if (isOpen) {
+  // Handle ESC key
+  function handleEscKey(evt) {
+    if (evt.key === 'Escape' && menu.classList.contains('is-open')) {
       closeMenu();
-    } else {
-      openMenu();
     }
-  };
+  }
+
+  // Handle click outside menu
+  function handleOutsideClick(evt) {
+    // Close if clicked outside menu and burger button
+    if (!menu.contains(evt.target) && !burger.contains(evt.target)) {
+      closeMenu();
+    }
+  }
+
+  // Close menu
+  function closeMenu() {
+    burger.classList.remove('is-active');
+    menu.classList.remove('is-open');
+
+    // Reset all submenus to closed state
+    toggleButtons.forEach((button) => {
+      button.setAttribute('aria-expanded', 'false');
+      const submenu = button.nextElementSibling;
+      if (submenu && submenu.classList.contains('nav-menu__submenu')) {
+        submenu.setAttribute('hidden', '');
+      }
+    });
+
+    // Wait for animations to complete before hiding (longest animation: 400ms)
+    setTimeout(() => {
+      menu.setAttribute('hidden', '');
+      menu.style.height = ''; // Reset height
+    }, 400);
+
+    // Remove event listeners
+    overlay.removeEventListener('click', closeMenu);
+    document.removeEventListener('keydown', handleEscKey);
+    document.removeEventListener('click', handleOutsideClick);
+  }
 
   // Open menu
-  const openMenu = () => {
+  function openMenu() {
     // Step 1: Set menu height to cover full page (including scrollable area)
     const pageHeight = Math.max(
       document.body.scrollHeight,
@@ -55,51 +85,21 @@ const burgerMenu = (() => {
     overlay.addEventListener('click', closeMenu);
     document.addEventListener('keydown', handleEscKey);
     document.addEventListener('click', handleOutsideClick);
-  };
+  }
 
-  // Close menu
-  const closeMenu = () => {
-    burger.classList.remove('is-active');
-    menu.classList.remove('is-open');
+  // Toggle menu open/close
+  function toggleMenu() {
+    const isOpen = menu.classList.contains('is-open');
 
-    // Reset all submenus to closed state
-    toggleButtons.forEach((button) => {
-      button.setAttribute('aria-expanded', 'false');
-      const submenu = button.nextElementSibling;
-      if (submenu && submenu.classList.contains('nav-menu__submenu')) {
-        submenu.setAttribute('hidden', '');
-      }
-    });
-
-    // Wait for animations to complete before hiding (longest animation: 400ms)
-    setTimeout(() => {
-      menu.setAttribute('hidden', '');
-      menu.style.height = ''; // Reset height
-    }, 400);
-
-    // Remove event listeners
-    overlay.removeEventListener('click', closeMenu);
-    document.removeEventListener('keydown', handleEscKey);
-    document.removeEventListener('click', handleOutsideClick);
-  };
-
-  // Handle ESC key
-  const handleEscKey = (evt) => {
-    if (evt.key === 'Escape') {
+    if (isOpen) {
       closeMenu();
+    } else {
+      openMenu();
     }
-  };
-
-  // Handle click outside menu
-  const handleOutsideClick = (evt) => {
-    // Close if clicked outside menu and burger button
-    if (!menu.contains(evt.target) && !burger.contains(evt.target)) {
-      closeMenu();
-    }
-  };
+  }
 
   // Toggle submenu (accordion)
-  const toggleSubmenu = (button) => {
+  function toggleSubmenu(button) {
     const isExpanded = button.getAttribute('aria-expanded') === 'true';
     const submenu = button.nextElementSibling;
 
@@ -116,7 +116,7 @@ const burgerMenu = (() => {
     } else {
       submenu.removeAttribute('hidden');
     }
-  };
+  }
 
   // Initialize
   const init = () => {

@@ -16,14 +16,14 @@
 // -----------------------------------------------------------------------------
 .hero {
   position: relative;
-  height: 568px; 
+  height: 568px;
 
   @include tablet {
-    height: 1024px; 
+    height: 1024px;
   }
 
   @include desktop {
-    height: 800px; 
+    height: 800px;
   }
 }
 
@@ -35,17 +35,17 @@
 }
 
 // Override Swiper default gap with high specificity
-.hero .hero__swiper .swiper-wrapper {
-  gap: 0 !important;
-  column-gap: 0 !important;
-  row-gap: 0 !important;
+.hero.hero .hero__swiper.hero__swiper .swiper-wrapper.swiper-wrapper {
+  gap: 0;
+  column-gap: 0;
+  row-gap: 0;
 }
 
 // Force no spacing on slides with high specificity
-.hero .hero__swiper .swiper-slide {
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100% !important;
+.hero.hero .hero__swiper.hero__swiper .swiper-slide.swiper-slide {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 // -----------------------------------------------------------------------------
@@ -70,7 +70,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: $color-overlay-photo; 
+    background-color: $color-overlay-photo;
     z-index: 1;
   }
 }
@@ -94,7 +94,7 @@
   bottom: $section-padding-xs;
   left: $container-padding-mobile;
   z-index: 10;
-  width: 305px;  
+  width: 305px;
   height: min-content; // Dynamic height based on content
   max-width: calc(100% - #{$container-padding-mobile});
   padding: 10px 14px;
@@ -103,10 +103,6 @@
   // SVG mask for unusual shape
   // Webkit prefix for Safari support
   // Absolute path from source root for Vite
-  -webkit-mask-image: url("/img/masks/hero-content-mask-mobile.svg");
-  -webkit-mask-size: 100% 100%; 
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: top left;
   mask-image: url("/img/masks/hero-content-mask-mobile.svg");
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
@@ -115,19 +111,17 @@
   @include tablet {
     bottom: $section-padding-lg;
     left: $container-padding-tablet;
-    width: 659px;  
+    width: 659px;
     max-width: calc(100% - #{$container-padding-tablet});
     padding: 14px 40px 35px;
-    -webkit-mask-image: url("/img/masks/hero-content-mask-tablet.svg");
     mask-image: url("/img/masks/hero-content-mask-tablet.svg");
   }
 
   @include desktop {
     left: $container-padding-desktop;
-    width: 968px;  
+    width: 968px;
     max-width: calc(100% - #{$container-padding-desktop});
     padding: 14px 50px 35px;
-    -webkit-mask-image: url("/img/masks/hero-content-mask-desktop.svg");
     mask-image: url("/img/masks/hero-content-mask-desktop.svg");
   }
 }
@@ -139,8 +133,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $gap-md; 
+  gap: $gap-md;
   margin-bottom: 16px;
+
   @include flex-no-overflow;
 
   @include tablet {
@@ -161,7 +156,7 @@
   max-width: 261px;
   font-size: $font-size-h1-mobile;
   line-height: $line-height-h1-mobile;
-  color: $color-text-accent; 
+  color: $color-text-accent;
 
   @include tablet {
     max-width: 560px;
@@ -202,28 +197,27 @@
 // -----------------------------------------------------------------------------
 .hero__bottom {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: flex-start;
   gap: 25px;
+
   @include flex-no-overflow;
 
   @include tablet {
-    flex-direction: row; 
+    flex-direction: row;
     align-items: flex-end;
     gap: 30px;
   }
 
   p {
     max-width: 239px;
-    font-size: $font-size-text-big-mobile; 
-    line-height: $line-height-text-regular-mobile; 
-    color: $color-text-primary; 
+    font-size: $font-size-text-big-mobile;
+    line-height: $line-height-text-regular-mobile;
+    color: $color-text-primary;
 
     @include tablet {
       max-width: 285px;
     }
-
-  
     @include desktop {
       max-width: 446px;
       line-height: 26px;
@@ -238,11 +232,11 @@
   flex-shrink: 0;
 
   @include tablet {
-    align-self: flex-start; 
+    align-self: flex-start;
   }
 
   @include desktop {
-    align-self: center; 
+    align-self: center;
   }
 }
 
@@ -324,4 +318,3 @@
     opacity: 1;
   }
 }
-

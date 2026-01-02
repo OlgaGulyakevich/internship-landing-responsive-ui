@@ -17,6 +17,7 @@
   top: 0;
   left: 0;
   right: 0;
+
   // No z-index - allows children (burger, logo) to have independent z-index
   background-color: transparent;
 }
@@ -28,7 +29,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   @include flex-no-overflow;
+
   padding-top: $section-padding-xs;
   padding-bottom: $section-padding-xs;
 
@@ -64,7 +67,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+
   @include flex-no-overflow;
+
   width: fit-content;
   padding: 4px;
   padding-left: 21px;

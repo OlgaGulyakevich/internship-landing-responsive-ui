@@ -1,0 +1,281 @@
+// =============================================================================
+// ABOUT SECTION (About project)
+// =============================================================================
+// Features:
+// - Section title
+// - 2-column layout (Desktop): Intro text + Details with button
+// - Advantages grid: 4 cards with star decorations (CSS ::before)
+// - Responsive: 1×4 mobile, 2×2 tablet/desktop
+// - Cascading content area (CMS) - no classes on h3, p
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.about {
+  padding-top: $section-padding-md; // 50px
+  padding-bottom: $section-padding-md;
+
+  @include desktop {
+    padding-top: $section-padding-xl; // 70px
+    padding-bottom: $section-padding-lg; // 60px
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Content Layout (1 column mobile/tablet, 2 columns desktop)
+// -----------------------------------------------------------------------------
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 41px;
+
+  @include tablet {
+    margin-bottom: 60px;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 702px 498px;
+
+    @include grid-no-overflow;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Intro Column (Left on Desktop) - Title + Paragraph
+// -----------------------------------------------------------------------------
+.about__title {
+  @include heading-2;
+
+  margin-bottom: 15px;
+  text-align: left;
+  color: $color-text-accent;
+  margin-left: 1px;
+
+
+  @include tablet {
+    margin-bottom: 30px;
+    margin-left: 0;
+  }
+
+  @include desktop {
+    margin-bottom: 29px;
+  }
+}
+
+// Intro paragraph
+.about__intro p {
+  font-size: 16px;
+  line-height: 22px;
+
+
+  @include tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  @include desktop {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Details Column (Right on Desktop) - Cascading Content
+// -----------------------------------------------------------------------------
+.about__details {
+  // Cascading content area (CMS) - NO classes on h3, p
+
+  // h3 - Subheading "Наша цель"
+  h3 {
+    margin-bottom: 20px;
+    font-size: $font-size-h3-mobile;
+    line-height: $line-height-h3-mobile;
+    color: $color-text-accent;
+
+    @include tablet {
+      margin-bottom: 30px;
+      font-size: $font-size-h3-tablet;
+      line-height: $line-height-h3-tablet;
+    }
+
+    @include desktop {
+      margin-bottom: 40px;
+      font-size: $font-size-h3-desktop;
+      line-height: $line-height-h3-desktop;
+    }
+  }
+
+  // p - Description paragraph
+  p {
+    margin-bottom: 30px;
+    font-size: $font-size-text-regular-mobile;
+    line-height: $line-height-text-regular-mobile;
+
+    @include tablet {
+      margin-bottom: 40px;
+      font-size: $font-size-text-regular-tablet;
+      line-height: $line-height-text-regular-tablet;
+      width: 73%;
+    }
+
+    @include desktop {
+      margin-bottom: 50px;
+      font-size: $font-size-text-regular;
+      line-height: $line-height-text-regular;
+      width: 100%;
+    }
+  }
+}
+
+// Button
+.about__button {
+  gap: 20px;
+  width: 223px;
+  padding-left: 20px;
+
+
+  @include tablet {
+    width: 279px;
+    height: 56px;
+    gap: 30px;
+    padding-left: 30px;
+  }
+
+  @include desktop {
+    padding-left: 30px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Advantages Grid (4 Cards with Star Decorations)
+// -----------------------------------------------------------------------------
+.about__advantages {
+  display: grid;
+  grid-template-columns: 250px;
+  justify-content: center;
+  gap: 21px;
+  padding: 40px 20px 38px;
+  border-radius: 20px;
+  border: 1px solid $color-bg-accent;
+  background-color: $color-bg-accent;
+  width: 290px;
+  margin: 0 auto;
+
+  @include grid-no-overflow;
+
+
+  @include tablet {
+    grid-template-columns: repeat(2, 253px);
+    gap: 54px 52px;
+    padding: 71px 50px 50px 70px;
+    width: 678px;
+    margin: 0;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(2, 484px);
+    justify-content: normal;
+    padding: 71px 119px 50px;
+    width: 1240px;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Advantage Card (with Star Decoration)
+// -----------------------------------------------------------------------------
+.about__advantage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 15px 20px;
+  background-color: $color-bg-accent;
+  border: 1px solid $color-bg-secondary;
+  border-radius: 16px;
+
+  @include flex-no-overflow;
+
+  @include tablet {
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+
+  @include desktop {
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    padding: 30px 40px;
+  }
+
+  &::before {
+    position: absolute;
+    top: -22px;
+    left: -21px;
+    content: "";
+    width: 42px;
+    height: 42px;
+    padding: 10px 12px;
+    background-image: url("/img/sprite/star.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $color-bg-accent;
+
+    @include tablet {
+      top: -23px;
+      left: -21px;
+    }
+
+    @include desktop {
+      top: -23px;
+    }
+  }
+}
+
+
+// Pixel Perfect fixes
+.about__advantage:nth-child(2) {
+  @include desktop {
+    gap: 26px;
+  }
+}
+
+
+// Advantage title
+.about__advantage h4 {
+  font-size: $font-size-h5-mobile;
+  line-height: $line-height-h5-mobile;
+  letter-spacing: $letter-spacing-h5-mobile;
+  text-transform: uppercase;
+  color: $color-text-on-dark;
+
+  @include tablet {
+    font-size: $font-size-h5-tablet;
+    line-height: $line-height-h5-tablet;
+    letter-spacing: $letter-spacing-h5-tablet;
+  }
+
+  @include desktop {
+    font-size: $font-size-h5-desktop;
+    line-height: $line-height-h5-desktop;
+    letter-spacing: $letter-spacing-h5-desktop;
+    min-width: 171px;
+  }
+}
+
+// Advantage description (cascading - no class)
+.about__advantage p {
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  font-weight: $font-weight-light;
+  color: $color-text-on-dark;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+}

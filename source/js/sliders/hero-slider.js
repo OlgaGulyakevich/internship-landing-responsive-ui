@@ -37,8 +37,8 @@ const heroSlider = (() => {
       // Disable touch/drag on desktop by default
       allowTouchMove: window.innerWidth < 1440,
 
-      // Speed 
-      speed: 300,
+      // Speed
+      speed: 600,
 
       // Effect: Fade
       effect: 'fade',
@@ -70,7 +70,7 @@ const heroSlider = (() => {
       },
       // Callbacks
       on: {
-        init: function(swiper) {
+        init: function() {
           setTimeout(() => {
             // Get original pagination and all slide wrappers (excluding clones)
             const paginationEl = document.querySelector('.hero__pagination');
@@ -92,7 +92,7 @@ const heroSlider = (() => {
 
             // 3. Add click handlers and accessibility attributes to all bullets (original + clones)
             const allPaginations = document.querySelectorAll('.hero__pagination, .hero__pagination--clone');
-            allPaginations.forEach(pagination => {
+            allPaginations.forEach((pagination) => {
               const bullets = pagination.querySelectorAll('.swiper-pagination-bullet');
               bullets.forEach((bullet, index) => {
                 // Accessibility attributes
@@ -117,12 +117,12 @@ const heroSlider = (() => {
           }, 100);
         },
 
-        slideChange: function(swiper) {
+        slideChange: function(swiperInstance) {
           // Synchronize active bullet across all pagination instances
-          const realIndex = swiper.realIndex;
+          const realIndex = swiperInstance.realIndex;
           const allPaginations = document.querySelectorAll('.hero__pagination, .hero__pagination--clone');
 
-          allPaginations.forEach(pagination => {
+          allPaginations.forEach((pagination) => {
             const bullets = pagination.querySelectorAll('.swiper-pagination-bullet');
             bullets.forEach((bullet, index) => {
               if (index === realIndex) {

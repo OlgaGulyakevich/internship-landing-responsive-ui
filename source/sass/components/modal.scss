@@ -1,0 +1,475 @@
+// =============================================================================
+// MODAL COMPONENT ("Напишите нам")
+// =============================================================================
+// Features:
+// - Fullscreen overlay (dark rgba)
+// - Centered content box with close button
+// - Form with validation states (default, error, disabled)
+// - Custom checkbox styling (::before + ::after)
+// - Custom select styling with arrow icon
+// - Phone input with +7 suggestion on focus
+// - Transparent placeholder for validation
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Modal Container (Hidden by Default)
+// -----------------------------------------------------------------------------
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-index-modal; // 300
+  display: none; // Hidden by default
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity $transition-slow;
+
+  // Hidden attribute support
+  &[hidden] {
+    display: none;
+  }
+}
+
+// Visible state (JS adds .is-open class)
+.modal.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+// -----------------------------------------------------------------------------
+// Modal Overlay (Dark Background)
+// -----------------------------------------------------------------------------
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: $color-overlay-menu; 
+  cursor: pointer;
+}
+
+// -----------------------------------------------------------------------------
+// Modal Content Box
+// -----------------------------------------------------------------------------
+.modal__content {
+  position: relative;
+  width: 290px;
+  max-width: calc(100% - 30px); // 15px margin on each side
+  max-height: calc(100vh - 40px); // Allow scrolling if content too tall
+  padding: 40px 15px;
+  overflow-y: auto;
+  background-color: $color-bg-secondary; 
+  border-radius: 16px;
+
+  @include tablet {
+    width: 510px;
+    padding: 60px 80px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Close Button
+// -----------------------------------------------------------------------------
+.modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px; // 44px min touch target achieved with padding
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: $color-button-primary; 
+  cursor: pointer;
+  transition: background-color $transition-slow, border-color $transition-slow, color $transition-slow;
+
+  @include tablet {
+    top: 15px;
+    right: 15px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+
+    @include tablet {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // Hover state
+  &:hover {
+    background-color: $color-bg-secondary; 
+    border-color: $color-button-primary; 
+  }
+
+  // Focus visible state
+  &:focus-visible {
+    background-color: $color-button-primary; 
+    color: $color-button-on-dark; 
+    border-color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-button-pressed;
+    color: $color-button-on-dark;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Modal Title (h2)
+// -----------------------------------------------------------------------------
+.modal__title {
+  margin-bottom: 15px;
+  font-size: $font-size-h3-mobile;
+  line-height: $line-height-h4-mobile;
+  color: $color-text-accent; 
+  text-align: center;
+
+  @include tablet {
+    margin-bottom: 20px;
+    font-size: $font-size-h3-tablet;
+    line-height: $line-height-h3-tablet;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Modal Subtitle (Description)
+// -----------------------------------------------------------------------------
+.modal__subtitle {
+  margin-bottom: 25px;
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-text-primary;
+  text-align: center;
+
+  @include tablet {
+    margin-bottom: 30px;
+    max-width: 350px;
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Container
+// -----------------------------------------------------------------------------
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  @include tablet {
+    gap: 20px;
+  }
+
+  // Fieldset also needs flex layout for gaps to work
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @include tablet {
+      gap: 20px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Field Container
+// -----------------------------------------------------------------------------
+.modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include tablet {
+    gap: 10px;
+  }
+
+  // Checkbox field - row layout
+  &--checkbox {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Label
+// -----------------------------------------------------------------------------
+.modal__label {
+  color: $color-text-label;
+  cursor: pointer;
+
+  @include tablet {
+    line-height: 18px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Input Styles (text, tel, email)
+// -----------------------------------------------------------------------------
+.modal__input {
+  width: 100%;
+  padding: 15px 20px;
+  max-height: 44px;
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 14px;
+  color: $color-text-primary;
+  background-color: $color-bg-secondary; 
+  border: 1px solid $border-input; 
+  border-radius: 8px;
+  transition: border-color $transition-slow;
+
+
+  @include tablet {
+    max-height: 66px;
+  }
+
+  // Without placeholder (per spec)
+  &::placeholder {
+    color: transparent;
+  }
+
+  // Hover and Active States
+  &:hover,
+  &:active {
+    border-color: $color-form-on-light; 
+  }
+
+  // Focus state
+  &:focus {
+    border-color: $color-form-on-light; 
+    outline: none;
+  }
+
+  // Valid state (after user interaction)
+  &:valid:not(:placeholder-shown) {
+    border-color: $color-button-primary; 
+  }
+
+  // Invalid state (only after blur, not while typing)
+  &:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: $color-form-error; 
+    background-color: $color-form-error-bg;
+  }
+
+  // Disabled state
+  &:disabled {
+    background-color: $color-disabled; 
+    border-color: $color-disabled;
+    color: $color-form-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Select Dropdown (Custom Styled)
+// -----------------------------------------------------------------------------
+.modal__select-wrapper {
+  position: relative;
+}
+
+.modal__select {
+  width: 100%;
+  padding: 15px 20px;
+  padding-right: 40px; // Space for arrow icon
+  font-size: 14px;
+  line-height: 14px;
+  color: $color-text-primary;
+  background-color: $color-bg-secondary;
+  border: 1px solid $border-input;
+  border-radius: 8px;
+  appearance: none; 
+  cursor: pointer;
+  transition: border-color $transition-slow;
+
+  // Hover and Active States
+    &:hover,
+    &:active {
+      border-color: $color-form-on-light; 
+  }
+
+  // Focus state
+  &:focus {
+    border-color: $color-form-on-light;
+    outline: none;
+  }
+
+  // Invalid state - triggered via JS class
+  &.is-invalid {
+    border-color: $color-form-error;
+    background-color: $color-form-error-bg;
+  }
+
+  // Disabled state
+  &:disabled {
+    background-color: $color-disabled;
+    border-color: $color-disabled;
+    color: $color-form-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Custom arrow icon
+.modal__select-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none; // Click passes through to select
+  color: $color-button-select;
+  transition: transform $transition-slow, color $transition-slow;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  // Change icon color when select is hovered or active
+  .modal__select:hover + &,
+  .modal__select:active + & {
+    color: $color-form-on-light;
+  }
+
+  // Rotate on focus (optional enhancement)
+  .modal__select:focus + & {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Checkbox (Custom Styled via ::before and ::after)
+// -----------------------------------------------------------------------------
+.modal__checkbox {
+  // Visually hidden (natively accessible)
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.modal__checkbox-label {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding-left: 32px; // Space for custom checkbox
+  color: $color-text-label;
+  cursor: pointer;
+
+  @include tablet {
+    line-height: 18px;
+  }
+
+  // Custom checkbox box (::before)
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background-color: $color-button-primary;
+    border: 2px solid $color-button-primary;
+    border-radius: 2px;
+    transition: background-color $transition-slow, border-color $transition-slow;
+  }
+
+  // Checkmark (::after) - CSS галочка
+  &::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    width: 6px;
+    height: 9px;
+    border: solid $color-button-on-dark;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity $transition-slow, border-color $transition-slow, background-color $transition-slow;
+  }
+}
+
+// Hover state
+.modal__checkbox:hover:not(:disabled) + .modal__checkbox-label::before {
+  border-color: $color-button-on-dark;
+}
+
+// Active state
+.modal__checkbox:active:not(:disabled) + .modal__checkbox-label::before {
+  border-color: $color-button-primary;
+}
+
+// Checked state - show blue background and white checkmark
+.modal__checkbox:checked + .modal__checkbox-label::before {
+  background-color: $color-button-primary; // Blue
+  border-color: $color-button-primary;
+}
+
+.modal__checkbox:checked + .modal__checkbox-label::after {
+  opacity: 1; // Show checkmark
+}
+
+// Focus visible state
+.modal__checkbox:focus-visible + .modal__checkbox-label::before {
+  outline: 2px solid $color-button-primary;
+  outline-offset: 2px;
+}
+
+// Disabled state
+.modal__checkbox:disabled + .modal__checkbox-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.modal__checkbox:disabled + .modal__checkbox-label::before {
+  background-color: $color-disabled;
+  border-color: $color-disabled;
+}
+
+.modal__checkbox:disabled + .modal__checkbox-label::after {
+  border-color: $color-button-icon-disabled;
+}
+
+// Error state - triggered via JS class after form submission
+.modal__checkbox.is-invalid + .modal__checkbox-label::before {
+  border-color: $color-form-error; // Red
+}
+
+// -----------------------------------------------------------------------------
+// Submit Button
+// -----------------------------------------------------------------------------
+.modal__submit {
+  margin-top: 25px;
+  width: 100%; // Full width on mobile
+
+  @include tablet {
+    margin-top: 30px;
+    width: fit-content; // Auto width on tablet+
+    align-self: center;
+  }
+}
