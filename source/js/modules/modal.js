@@ -10,9 +10,12 @@
  * - Scroll lock when modal open
  * - Form submission via POST
  * - Close modal after successful submit
+ * - Show notification on success/error
  *
  * @module modal
  */
+
+import notificationModal from './notification-modal.js';
 
 const modal = (() => {
   // =========================================================================
@@ -105,7 +108,8 @@ const modal = (() => {
       modalEl.setAttribute('aria-modal', 'false');
     }, 300);
 
-    // Unlock scroll
+    // Remove padding and unlock scroll
+    document.body.style.paddingRight = '';
     document.body.style.overflow = '';
 
     // Remove event listeners
@@ -132,6 +136,10 @@ const modal = (() => {
     requestAnimationFrame(() => {
       modalEl.classList.add('is-open');
     });
+
+    // Calculate scrollbar width and add padding to prevent layout shift
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
 
     // Lock scroll
     document.body.style.overflow = 'hidden';
@@ -215,12 +223,16 @@ const modal = (() => {
 
         // Reset form after successful submit
         form.reset();
-        // TODO: Show success notification if notification modal exists
+
+        // Show success notification
+        notificationModal.showSuccess('Ваша заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
       } else {
-        // TODO: Show error notification (server error)
+        // Show error notification (server error)
+        notificationModal.showError('Ошибка сервера. Пожалуйста, попробуйте отправить форму позже.');
       }
     } catch (error) {
-      // TODO: Show error notification (network error)
+      // Show error notification (network error)
+      notificationModal.showError('Ошибка соединения. Проверьте подключение к интернету и попробуйте снова.');
     }
   };
 

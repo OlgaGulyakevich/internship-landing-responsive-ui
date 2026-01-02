@@ -7,6 +7,7 @@
 import burgerMenu from './modules/burger-menu.js';
 import { initSmoothScroll } from './modules/smooth-scroll.js';
 import modal from './modules/modal.js';
+import notificationModal from './modules/notification-modal.js';
 
 // Sliders
 import heroSlider from './sliders/hero-slider.js';
@@ -17,4 +18,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   heroSlider.init();
   modal.init();
+  notificationModal.init();
 });

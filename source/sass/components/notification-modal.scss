@@ -1,0 +1,223 @@
+// =============================================================================
+// NOTIFICATION MODAL (Form Submit Result)
+// =============================================================================
+// Features:
+// - Fullscreen overlay (dark rgba)
+// - Centered small content box with close button
+// - CSS icons: success checkmark (::before), error X (::before + ::after)
+// - Auto-close after 5 seconds
+// - Manual close via overlay, ESC, or close button
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Modal Container (Hidden by Default)
+// -----------------------------------------------------------------------------
+.notification-modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-index-modal; // 300
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-slow, visibility $transition-slow;
+}
+
+// Visible state (JS removes --hidden modifier)
+.notification-modal:not(.notification-modal--hidden) {
+  opacity: 1;
+  visibility: visible;
+}
+
+// -----------------------------------------------------------------------------
+// Modal Overlay (Dark Background)
+// -----------------------------------------------------------------------------
+.notification-modal__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: $color-overlay-menu;
+  cursor: pointer;
+}
+
+// -----------------------------------------------------------------------------
+// Modal Content Box
+// -----------------------------------------------------------------------------
+.notification-modal__content {
+  position: relative;
+  width: 280px;
+  max-width: calc(100% - 30px);
+  padding: 40px 20px 30px;
+  background-color: $color-bg-secondary;
+  border-radius: 16px;
+  text-align: center;
+
+  @include tablet {
+    width: 400px;
+    padding: 50px 40px 40px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Close Button
+// -----------------------------------------------------------------------------
+.notification-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: $color-button-primary;
+  cursor: pointer;
+  transition: background-color $transition-slow, border-color $transition-slow, color $transition-slow;
+
+  @include tablet {
+    top: 15px;
+    right: 15px;
+  }
+
+  svg {
+    width: 12px;
+    height: 12px;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+
+    @include tablet {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  // Hover state
+  &:hover {
+    background-color: $color-bg-accent;
+    border-color: $color-button-primary;
+    color: $color-button-on-dark;
+  }
+
+  // Focus visible state
+  &:focus-visible {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+    border-color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-button-pressed;
+    color: $color-button-on-dark;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Icon Container (Success/Error)
+// -----------------------------------------------------------------------------
+.notification-modal__icon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+
+  @include tablet {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 25px;
+  }
+}
+
+// Success state (green checkmark via CSS)
+.notification-modal__icon--success {
+  background-color: rgba(46, 204, 113, 0.1); // Light green background
+
+  // Checkmark via ::before (rotated border)
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 10px;
+    height: 18px;
+    border: solid $color-success;
+    border-width: 0 3px 3px 0;
+
+    @include tablet {
+      width: 12px;
+      height: 22px;
+      border-width: 0 4px 4px 0;
+    }
+  }
+}
+
+// Error state (red X via CSS)
+.notification-modal__icon--error {
+  background-color: rgba(231, 76, 60, 0.1); // Light red background
+
+  // X icon via ::before and ::after (two diagonal lines)
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 24px;
+    background-color: $color-form-error;
+    border-radius: 2px;
+
+    @include tablet {
+      width: 4px;
+      height: 32px;
+    }
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Title
+// -----------------------------------------------------------------------------
+.notification-modal__title {
+  margin-bottom: 10px;
+  font-size: $font-size-h4-mobile;
+  line-height: $line-height-h4-mobile;
+  color: $color-text-accent;
+
+  @include tablet {
+    margin-bottom: 15px;
+    font-size: $font-size-h4-tablet;
+    line-height: $line-height-h4-tablet;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Message
+// -----------------------------------------------------------------------------
+.notification-modal__message {
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-text-primary;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+}

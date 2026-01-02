@@ -407,7 +407,7 @@
     width: 6px;
     height: 9px;
     border: solid $color-button-on-dark;
-    border-width: 0 2px 2px 0;
+    border-width: 0 1px 1px 0;
     transform: rotate(45deg);
     opacity: 0;
     transition: opacity $transition-slow, border-color $transition-slow, background-color $transition-slow;
@@ -416,13 +416,9 @@
 
 // Hover state
 .modal__checkbox:hover:not(:disabled) + .modal__checkbox-label::before {
-  border-color: $color-button-on-dark;
-}
-
-// Active state
-.modal__checkbox:active:not(:disabled) + .modal__checkbox-label::before {
   border-color: $color-button-primary;
 }
+
 
 // Checked state - show blue background and white checkmark
 .modal__checkbox:checked + .modal__checkbox-label::before {
@@ -465,11 +461,10 @@
 // -----------------------------------------------------------------------------
 .modal__submit {
   margin-top: 25px;
-  width: 100%; // Full width on mobile
+  width: fit-content;
+  align-self: center;
 
   @include tablet {
     margin-top: 30px;
-    width: fit-content; // Auto width on tablet+
-    align-self: center;
   }
 }
