@@ -8,5 +8,6 @@
     'htmlacademy/attr-req-value': [true, {
         ignore: ['alt', 'data-form-validate', 'data-required', 'data-on-input-validate']
     }],
+    "no-surrounding-whitespace": false
   }
 }

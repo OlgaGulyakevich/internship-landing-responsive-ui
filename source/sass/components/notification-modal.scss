@@ -54,7 +54,7 @@
   text-align: center;
 
   @include tablet {
-    width: 400px;
+    width: 350px;
     padding: 50px 40px 40px;
   }
 }
@@ -139,7 +139,7 @@
 
 // Success state (green checkmark via CSS)
 .notification-modal__icon--success {
-  background-color: rgba(46, 204, 113, 0.1); // Light green background
+  background-color: rgb(46, 204, 113, 0.1); // Light green background
 
   // Checkmark via ::before (rotated border)
   &::before {
@@ -163,7 +163,7 @@
 
 // Error state (red X via CSS)
 .notification-modal__icon--error {
-  background-color: rgba(231, 76, 60, 0.1); // Light red background
+  background-color: rgb(231, 76, 60, 0.1); // Light red background
 
   // X icon via ::before and ::after (two diagonal lines)
   &::before,

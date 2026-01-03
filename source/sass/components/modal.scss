@@ -43,7 +43,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: $color-overlay-menu; 
+  background-color: $color-overlay-menu;
   cursor: pointer;
 }
 
@@ -57,7 +57,7 @@
   max-height: calc(100vh - 40px); // Allow scrolling if content too tall
   padding: 40px 15px;
   overflow-y: auto;
-  background-color: $color-bg-secondary; 
+  background-color: $color-bg-secondary;
   border-radius: 16px;
 
   @include tablet {
@@ -82,7 +82,7 @@
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 50%;
-  color: $color-button-primary; 
+  color: $color-button-primary;
   cursor: pointer;
   transition: background-color $transition-slow, border-color $transition-slow, color $transition-slow;
 
@@ -106,14 +106,14 @@
 
   // Hover state
   &:hover {
-    background-color: $color-bg-secondary; 
-    border-color: $color-button-primary; 
+    background-color: $color-bg-secondary;
+    border-color: $color-button-primary;
   }
 
   // Focus visible state
   &:focus-visible {
-    background-color: $color-button-primary; 
-    color: $color-button-on-dark; 
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
     border-color: $color-button-primary;
     outline: 2px solid $color-button-primary;
     outline-offset: 2px;
@@ -133,7 +133,7 @@
   margin-bottom: 15px;
   font-size: $font-size-h3-mobile;
   line-height: $line-height-h4-mobile;
-  color: $color-text-accent; 
+  color: $color-text-accent;
   text-align: center;
 
   @include tablet {
@@ -228,8 +228,8 @@
   font-size: 14px;
   line-height: 14px;
   color: $color-text-primary;
-  background-color: $color-bg-secondary; 
-  border: 1px solid $border-input; 
+  background-color: $color-bg-secondary;
+  border: 1px solid $border-input;
   border-radius: 8px;
   transition: border-color $transition-slow;
 
@@ -246,29 +246,29 @@
   // Hover and Active States
   &:hover,
   &:active {
-    border-color: $color-form-on-light; 
+    border-color: $color-form-on-light;
   }
 
   // Focus state
   &:focus {
-    border-color: $color-form-on-light; 
+    border-color: $color-form-on-light;
     outline: none;
   }
 
   // Valid state (after user interaction)
   &:valid:not(:placeholder-shown) {
-    border-color: $color-button-primary; 
+    border-color: $color-button-primary;
   }
 
   // Invalid state (only after blur, not while typing)
   &:invalid:not(:focus):not(:placeholder-shown) {
-    border-color: $color-form-error; 
+    border-color: $color-form-error;
     background-color: $color-form-error-bg;
   }
 
   // Disabled state
   &:disabled {
-    background-color: $color-disabled; 
+    background-color: $color-disabled;
     border-color: $color-disabled;
     color: $color-form-disabled;
     cursor: not-allowed;
@@ -292,26 +292,20 @@
   background-color: $color-bg-secondary;
   border: 1px solid $border-input;
   border-radius: 8px;
-  appearance: none; 
+  appearance: none;
   cursor: pointer;
   transition: border-color $transition-slow;
 
   // Hover and Active States
-    &:hover,
-    &:active {
-      border-color: $color-form-on-light; 
+  &:hover,
+  &:active {
+    border-color: $color-form-on-light;
   }
 
   // Focus state
   &:focus {
     border-color: $color-form-on-light;
     outline: none;
-  }
-
-  // Invalid state - triggered via JS class
-  &.is-invalid {
-    border-color: $color-form-error;
-    background-color: $color-form-error-bg;
   }
 
   // Disabled state
@@ -321,6 +315,12 @@
     color: $color-form-disabled;
     cursor: not-allowed;
   }
+}
+
+// Invalid state - triggered via JS class
+.modal__select.is-invalid {
+  border-color: $color-form-error;
+  background-color: $color-form-error-bg;
 }
 
 // Custom arrow icon

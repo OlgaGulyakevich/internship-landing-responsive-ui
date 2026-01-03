@@ -218,6 +218,7 @@
     @include tablet {
       max-width: 285px;
     }
+
     @include desktop {
       max-width: 446px;
       line-height: 26px;

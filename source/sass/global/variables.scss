@@ -12,7 +12,7 @@ $color-text-primary: #484848;
 $color-text-on-dark: #ffffff;
 $color-text-secondary-dark: #f0efe9;
 $color-text-accent: #316dc2;
-$color-text-label: rgb(109, 109, 109); 
+$color-text-label: rgb(109, 109, 109);
 
 // Button Colors
 // -----------------------------------------------------------------------------
@@ -39,7 +39,7 @@ $color-bg-accent: #316dc2;
 $color-form-on-dark: #ffffff;
 $color-form-on-light: #484848;
 $color-form-error: #ff5e66;
-$color-form-error-bg: rgba(255, 94, 102, 0.2);
+$color-form-error-bg: rgb(255, 94, 102, 0.2);
 $color-form-disabled: #a9afb7;
 
 // Border Colors
@@ -47,7 +47,7 @@ $color-form-disabled: #a9afb7;
 $border-color-default: $color-text-on-dark; // #FFFFFF
 $border-color-error: $color-form-error; // #FF5E66
 $border-color-scrollbar: #316dc2;
-$border-input: rgba(72, 72, 72, 0.3);
+$border-input: rgb(72, 72, 72, 0.3);
 
 // States Colors
 // -----------------------------------------------------------------------------
