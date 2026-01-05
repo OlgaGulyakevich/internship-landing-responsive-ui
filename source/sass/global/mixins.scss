@@ -90,6 +90,19 @@
   }
 }
 
+// Show <br> on mobile and desktop (hide on tablet)
+@mixin br-not-tablet {
+  display: block;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: block;
+  }
+}
+
 // Show <br> on mobile and tablet (hide on desktop)
 @mixin br-not-desktop {
   display: block;

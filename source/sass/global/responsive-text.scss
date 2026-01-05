@@ -28,10 +28,16 @@
   @include br-not-mobile;
 }
 
+// Show <br> on mobile and desktop (not tablet)
+.br-not-tablet {
+  @include br-not-tablet;
+}
+
 // Show <br> on mobile and tablet (not desktop)
 .br-not-desktop {
   @include br-not-desktop;
 }
+
 
 // -----------------------------------------------------------------------------
 // Text Wrapping

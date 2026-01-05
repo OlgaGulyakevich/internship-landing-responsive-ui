@@ -19,7 +19,7 @@
   padding-bottom: $section-padding-md;
 
   @include tablet {
-    padding-top: 50px;
+    padding-top: $section-padding-md;
   }
 
   @include desktop {
