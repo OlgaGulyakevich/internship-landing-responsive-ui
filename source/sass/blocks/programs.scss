@@ -1,0 +1,317 @@
+// =============================================================================
+// PROGRAMS SECTION
+// =============================================================================
+// LAYOUT:
+// Mobile: Grid 1×1 (title+arrows | slider | button)
+// Tablet/Desktop: Grid 2×2 (title+button | slider | scrollbar+arrows)
+// SLIDER:
+// - Swiper.js with scrollbar pagination
+// - Mobile: 1 slide visible
+// - Tablet: 2.2 slides visible
+// - Desktop: 3 slides visible, allowTouchMove: false
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.programs {
+  padding-top: 55px;
+  padding-bottom: $section-padding-md;
+
+  @include tablet {
+    padding-top: 50px;
+  }
+
+  @include desktop {
+    padding-top: 61px;
+    padding-bottom: $section-padding-lg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Grid Container (responsive layout)
+// -----------------------------------------------------------------------------
+.programs__container {
+  display: grid;
+  grid-template-areas:
+    "title  arrows"
+    "slider slider"
+    "button button";
+  grid-template-columns: 1fr auto;
+
+  @include tablet {
+    grid-template-areas:
+      "title    button"
+      "slider   slider"
+      "controls controls";
+    gap: 40px;
+  }
+
+  @include desktop {
+    grid-template-areas:
+      "title    button"
+      "slider   slider"
+      "controls controls";
+    gap: 42px 30px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Title
+// -----------------------------------------------------------------------------
+.programs__title {
+  grid-area: title;
+  align-self: center;
+
+  @include heading-2;
+
+  color: $color-text-accent;
+  margin-bottom: 35px;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Mobile Navigation Arrows (visible only on mobile)
+// -----------------------------------------------------------------------------
+.programs__arrows {
+  grid-area: arrows;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  @include tablet {
+    display: none; // Hidden on tablet/desktop
+  }
+}
+
+.programs__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: $color-button-primary;
+  cursor: pointer;
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  &:hover {
+    color: $color-button-on-light-active;
+  }
+
+  &:focus {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+
+  &:focus-visible {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-button-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// "All Programs" Button
+// -----------------------------------------------------------------------------
+.programs__all-button {
+  grid-area: button;
+  justify-content: space-between;
+  min-width: 205px;
+  margin-top: 30px;
+  padding-left: 31px;
+
+
+  @include tablet {
+    justify-self: end;
+    min-width: 234px;
+    gap: 29px;
+    margin-top: 0;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Slider Container
+// -----------------------------------------------------------------------------
+
+// High specificity to override Swiper and container defaults
+.programs .programs__slider.swiper.swiper-horizontal {
+  grid-area: slider;
+
+  @include grid-no-overflow;
+
+  width: 100%;
+  position: relative;
+  margin: 0; // Reset Swiper default margin
+  padding: 0; // Reset on mobile
+  overflow: visible; // Show partial 3rd slide
+
+  @include tablet {
+    // Reset container padding to show partial overflow (2.2 slides visible)
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @include desktop {
+    // Desktop: center 3 slides - let Swiper handle with slidesPerView: 3
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+
+// Swiper slide - fixed widths for slidesPerView: 'auto'
+// High specificity using Swiper class
+.programs__slider .programs__item.swiper-slide {
+  width: 290px;
+
+  @include tablet {
+    width: 324px;
+  }
+
+  @include desktop {
+    width: 392px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Slider Controls (scrollbar + arrows, tablet/desktop only)
+// -----------------------------------------------------------------------------
+.programs__controls {
+  display: none; // Hidden on mobile
+
+  @include tablet {
+    grid-area: controls;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    @include grid-no-overflow;
+  }
+
+  @include desktop {
+    gap: 30px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Scrollbar (using mixin from global/mixins.scss)
+// -----------------------------------------------------------------------------
+// High specificity using Swiper classes to override defaults
+.programs__scrollbar.swiper-scrollbar.swiper-scrollbar-horizontal {
+  @include slider-scrollbar;
+
+  position: static; // Override for flex layout
+  flex: 1;
+
+  // Fixed width on tablet/desktop
+  @include tablet {
+    width: 562px;
+    max-width: 562px;
+  }
+
+  @include desktop {
+    width: 1136px;
+    max-width: 1136px;
+  }
+}
+
+// Draggable element (active part of progress bar)
+// Width set dynamically via JS (programs-slider.js setTranslate event)
+// Tablet: 326px, Desktop: 392px
+
+
+// -----------------------------------------------------------------------------
+// Navigation Arrows (tablet/desktop)
+// -----------------------------------------------------------------------------
+.programs__nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.programs__nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: $color-button-primary;
+  cursor: pointer;
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  &:hover {
+    color: $color-button-on-light-active;
+  }
+
+  &:focus {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+
+  &:focus-visible {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-button-disabled;
+    cursor: not-allowed;
+  }
+}

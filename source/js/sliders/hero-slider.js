@@ -16,6 +16,7 @@ import { Pagination, Keyboard, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import { BREAKPOINTS, SLIDER_DEFAULTS, HERO_SLIDER } from '../config/slider-constants.js';
 
 const heroSlider = (() => {
   const swiperContainer = document.querySelector('.hero__swiper');
@@ -35,10 +36,10 @@ const heroSlider = (() => {
       spaceBetween: 0,
 
       // Disable touch/drag on desktop by default
-      allowTouchMove: window.innerWidth < 1440,
+      allowTouchMove: window.innerWidth < BREAKPOINTS.DESKTOP,
 
       // Speed
-      speed: 600,
+      speed: SLIDER_DEFAULTS.SPEED,
 
       // Effect: Fade
       effect: 'fade',
@@ -64,7 +65,7 @@ const heroSlider = (() => {
       // Responsive breakpoints
       breakpoints: {
         // Desktop (1440px and up)
-        1440: {
+        [BREAKPOINTS.DESKTOP]: {
           allowTouchMove: false, // Disable swipe on desktop
         },
       },
@@ -114,7 +115,7 @@ const heroSlider = (() => {
                 });
               });
             });
-          }, 100);
+          }, HERO_SLIDER.INIT_DELAY);
         },
 
         slideChange: function(swiperInstance) {
@@ -144,7 +145,7 @@ const heroSlider = (() => {
 
     // Update allowTouchMove on window resize
     const handleResize = () => {
-      if (window.innerWidth >= 1440) {
+      if (window.innerWidth >= BREAKPOINTS.DESKTOP) {
         swiper.allowTouchMove = false;
       } else {
         swiper.allowTouchMove = true;

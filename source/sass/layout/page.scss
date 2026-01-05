@@ -97,7 +97,7 @@
   cursor: pointer;
 
   &:focus-visible {
-    outline: 2px solid $color-text-on-dark;
+    outline: 2px solid $color-button-primary;
     outline-offset: 2px;
   }
 }

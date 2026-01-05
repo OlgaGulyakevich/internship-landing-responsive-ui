@@ -11,12 +11,14 @@ import notificationModal from './modules/notification-modal.js';
 
 // Sliders
 import heroSlider from './sliders/hero-slider.js';
+import { initProgramsSlider } from './sliders/programs-slider.js';
 
 // Initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   burgerMenu.init();
   initSmoothScroll();
   heroSlider.init();
+  initProgramsSlider();
   modal.init();
   notificationModal.init();
 });
