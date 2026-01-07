@@ -12,6 +12,7 @@ import notificationModal from './modules/notification-modal.js';
 // Sliders
 import heroSlider from './sliders/hero-slider.js';
 import { initProgramsSlider } from './sliders/programs-slider.js';
+import { initNewsSlider } from './sliders/news-slider.js';
 
 // Initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   heroSlider.init();
   initProgramsSlider();
+  initNewsSlider();
   modal.init();
   notificationModal.init();
 });
