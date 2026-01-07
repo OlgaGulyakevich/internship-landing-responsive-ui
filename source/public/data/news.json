@@ -27,6 +27,90 @@
       "description": "Ведущие компании готовы трудоустроить выпускников стажировки",
       "image": "news/tab-general/04-career-opportunities",
       "link": "#"
+    },
+    {
+      "date": "07/03/2023",
+      "title": "Летняя программа в Италии",
+      "description": "Изучение языка и культуры в солнечной Италии",
+      "image": "news/tab-general/07-italy-summer",
+      "link": "#"
+    },
+    {
+      "date": "05/03/2023",
+      "title": "Экологический проект в горах",
+      "description": "Команда волонтёров очистила горные тропы от мусора",
+      "image": "news/tab-general/08-eco-mountains",
+      "link": "#"
+    },
+    {
+      "date": "03/03/2023",
+      "title": "Культурный обмен в Испании",
+      "description": "Студенты провели две недели в Барселоне",
+      "image": "news/tab-general/09-spain-exchange",
+      "link": "#"
+    },
+    {
+      "date": "01/03/2023",
+      "title": "Стажировка в IT-компании",
+      "description": "Опыт работы в международной технологической компании",
+      "image": "news/tab-general/10-it-company",
+      "link": "#"
+    },
+    {
+      "date": "28/02/2023",
+      "title": "Карьерные консультации",
+      "description": "Эксперты помогут составить резюме и подготовиться к собеседованию",
+      "image": "news/tab-general/11-career-consulting",
+      "link": "#"
+    },
+    {
+      "date": "26/02/2023",
+      "title": "Волонтёры в приюте для животных",
+      "description": "Наши студенты помогают ухаживать за бездомными животными",
+      "image": "news/tab-general/12-animal-shelter",
+      "link": "#"
+    },
+    {
+      "date": "24/02/2023",
+      "title": "Приключения в Азии",
+      "description": "Группа студентов посетила Таиланд и Вьетнам",
+      "image": "news/tab-general/13-asia-adventure",
+      "link": "#"
+    },
+    {
+      "date": "22/02/2023",
+      "title": "Помощь пожилым людям",
+      "description": "Волонтёрская программа поддержки одиноких пенсионеров",
+      "image": "news/tab-general/14-elderly-care",
+      "link": "#"
+    },
+    {
+      "date": "20/02/2023",
+      "title": "Финансовый сектор открывает двери",
+      "description": "Стажировка в ведущем банке страны",
+      "image": "news/tab-general/15-finance-sector",
+      "link": "#"
+    },
+    {
+      "date": "18/02/2023",
+      "title": "Истории успеха выпускников",
+      "description": "Как стажировка помогла построить успешную карьеру",
+      "image": "news/tab-general/16-success-stories",
+      "link": "#"
+    },
+    {
+      "date": "16/02/2023",
+      "title": "Networking-встреча с работодателями",
+      "description": "Знакомство с представителями топовых компаний",
+      "image": "news/tab-general/17-networking-event",
+      "link": "#"
+    },
+    {
+      "date": "14/02/2023",
+      "title": "Маркетинг и аналитика",
+      "description": "Студенты прошли стажировку в отделе маркетинга",
+      "image": "news/tab-general/18-marketing-analytics",
+      "link": "#"
     }
   ],
   "volunteer": [

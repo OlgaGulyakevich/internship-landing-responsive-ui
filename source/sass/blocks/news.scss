@@ -197,23 +197,70 @@
 // =============================================================================
 
 // =============================================================================
-// CARD SIZES FOR SWIPER GRID WITH fill: 'row'
+// CARD SIZES FOR SWIPER GRID WITH fill: 'column'
 // =============================================================================
-// With fill: 'row' and rows: 2, Swiper fills:
-// - Row 1 (TOP): cards 1, 2, 3 (first half of total)
-// - Row 2 (BOTTOM): cards 4, 5, 6 (second half of total)
+// With fill: 'column' and rows: 2, Swiper fills columns first:
+// - Column 1: cards 1 (top), 2 (bottom)
+// - Column 2: cards 3 (top), 4 (bottom)
+// - etc.
 //
-// Mobile/Tablet: TOP row cards are LARGE, BOTTOM row cards are SMALL
-// Desktop: Different layout - every 3rd card is large (3n+1)
+// Result:
+// - ODD cards (1,3,5,7...) = TOP row
+// - EVEN cards (2,4,6,8...) = BOTTOM row
+//
+// Mobile: odd = large (330px), even = small (240px)
+// Tablet: all same height (350px)
+// Desktop: all same height (400px), every 3n+1 is wide (604px)
 // =============================================================================
 
 // -----------------------------------------------------------------------------
-// MOBILE/TABLET: TOP ROW - Large cards (first 3 cards)
-// Formula: nth-child(-n+3) → 1, 2, 3
-// These appear in the TOP position on each page
+// MOBILE: Card sizes controlled by JS class (news__item--large / news__item--small)
+// With fill: 'row', first half of cards = top row, second half = bottom row
+// JS adds appropriate class based on position in reordered array
 // -----------------------------------------------------------------------------
-.news__item:nth-child(-n+3) .news-card {
-  // Mobile: large card height
+
+// Default (small) card styles for mobile
+.news__item .news-card {
+  // Mobile: small card height (bottom row default)
+  height: 240px;
+
+  @include tablet {
+    // Tablet: all cards same height per design
+    height: 350px;
+  }
+
+  @include desktop {
+    // Desktop: standard height
+    height: 400px;
+  }
+}
+
+.news__item .news-card__content {
+  // Mobile: small card content mask (bottom row default)
+  max-width: 279px;
+  min-height: 130px;
+  mask-image: url("/img/masks/news-card-mask-mobile.svg");
+
+  @include tablet {
+    // Tablet: standard content size
+    max-width: 256px;
+    min-height: 177px;
+    mask-image: url("/img/masks/news-card-mask-tablet.svg");
+  }
+
+  @include desktop {
+    // Desktop: standard content
+    max-width: 218px;
+    min-height: 185px;
+    mask-image: url("/img/masks/news-card-mask-desktop.svg");
+  }
+}
+
+// -----------------------------------------------------------------------------
+// MOBILE: Large cards (top row) - controlled by .news__item--large class
+// -----------------------------------------------------------------------------
+.news__item--large .news-card {
+  // Mobile: large card height for top row
   height: 330px;
 
   @include tablet {
@@ -222,13 +269,13 @@
   }
 
   @include desktop {
-    // Desktop: reset, different formula handles large cards
+    // Desktop: standard height
     height: 400px;
   }
 }
 
-.news__item:nth-child(-n+3) .news-card__content {
-  // Mobile: large card content
+.news__item--large .news-card__content {
+  // Mobile: large card content mask
   max-width: 279px;
   min-height: 160px;
   mask-image: url("/img/masks/news-card-mask-mobile-large.svg");
@@ -241,30 +288,10 @@
   }
 
   @include desktop {
-    // Desktop: reset to standard
+    // Desktop: standard content
     max-width: 218px;
     min-height: 185px;
     mask-image: url("/img/masks/news-card-mask-desktop.svg");
-  }
-}
-
-// -----------------------------------------------------------------------------
-// MOBILE/TABLET: BOTTOM ROW - Small cards (last 3 cards)
-// Formula: nth-child(n+4) → 4, 5, 6, 7...
-// These appear in the BOTTOM position on each page
-// -----------------------------------------------------------------------------
-.news__item:nth-child(n+4) .news-card {
-  // Mobile: small card height
-  height: 240px;
-
-  @include tablet {
-    // Tablet: all cards same height per design
-    height: 350px;
-  }
-
-  @include desktop {
-    // Desktop: standard height
-    height: 400px;
   }
 }
 
@@ -303,7 +330,7 @@
   display: flex;
   @include flex-no-overflow;
   align-items: center;
-  justify-content: center; // Center on all breakpoints
+  justify-content: space-between;
   gap: 20px;
 
   @include desktop {
@@ -373,10 +400,10 @@
 // -----------------------------------------------------------------------------
 .news__pagination {
   position: relative;
-  width: 182px !important; // Exact: 4 buttons × 48px + 3 gaps × 10px = 192px + adjust
+  width: 180px !important; // Exact: 4 buttons × 48px + 3 gaps × 10px = 192px + adjust
   overflow: hidden; // Hide buttons outside visible area
   display: flex;
-  justify-content: flex-start; // Align wrapper to the left to prevent clipping
+  justify-content: center;
 }
 
 // Inner wrapper that slides
