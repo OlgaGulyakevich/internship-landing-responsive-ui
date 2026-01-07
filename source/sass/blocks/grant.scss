@@ -163,6 +163,7 @@
   @include tablet {
     font-size: $font-size-h3-tablet;
     line-height: $line-height-h3-tablet;
+    white-space: nowrap;
   }
 
   @include desktop {

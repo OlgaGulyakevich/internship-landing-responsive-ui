@@ -20,6 +20,8 @@
   border-radius: 12px;
   overflow: hidden;
 
+
+
   @include tablet {
     max-width: 324px; // Tablet: match design width
     height: 350px;
@@ -70,6 +72,7 @@
   min-height: 130px;
   padding-bottom: 10px;
   padding-top: 28px;
+  padding-right: 26px;
   background-color: $color-bg-primary;
 
   // SVG mask - mobile default
@@ -82,6 +85,7 @@
     max-width: 256px;
     min-height: 177px;
     padding-bottom: 15px;
+    padding-right: 34px;
     mask-image: url("/img/masks/news-card-mask-tablet.svg");
   }
 
@@ -130,6 +134,7 @@
   @include desktop {
     font-size: 24px;
     line-height: 26px;
+    max-width: 180px;
   }
 }
 
@@ -152,7 +157,12 @@
   @include tablet {
     gap: 16px;
   }
+
+  @include desktop {
+    gap: 10px;
+  }
 }
+
 
 // -----------------------------------------------------------------------------
 // Description (cascading styling, no class in HTML)
@@ -163,6 +173,7 @@
   line-height: 14px;
   color: $color-text-primary;
   max-width: 200px;
+  margin-right: auto;
 
 
   @include tablet {
@@ -173,6 +184,7 @@
 
   @include desktop {
     line-height: 18px;
+    max-width: 210px;
   }
 }
 

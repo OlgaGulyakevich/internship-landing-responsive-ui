@@ -75,7 +75,7 @@
   }
 
   @include desktop {
-    gap: 30px;
+    gap: 25px;
     margin-bottom: 40px;
   }
 }
@@ -100,6 +100,11 @@
     font-size: 14px;
     line-height: 14px;
     letter-spacing: 0.28px;
+
+    @include desktop {
+      padding: 14px 7px;
+      min-width: 123px;
+    }
   }
 
   &:hover {
@@ -143,7 +148,7 @@
   }
 
   @include desktop {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     overflow: hidden;
     // Ensure slider takes full container width for 3 cards + gaps
     // 604px + 286px + 286px + 32px×2 = 1240px
@@ -237,21 +242,21 @@
 
 .news__item .news-card__content {
   // Mobile: small card content mask (bottom row default)
-  max-width: 279px;
+  // max-width: 279px;
   min-height: 130px;
   mask-image: url("/img/masks/news-card-mask-mobile.svg");
 
   @include tablet {
     // Tablet: standard content size
-    max-width: 256px;
+    // max-width: 256px;
     min-height: 177px;
     mask-image: url("/img/masks/news-card-mask-tablet.svg");
   }
 
   @include desktop {
     // Desktop: standard content
-    max-width: 218px;
-    min-height: 185px;
+    // max-width: 256px;
+    min-height: 175px;
     mask-image: url("/img/masks/news-card-mask-desktop.svg");
   }
 }
@@ -296,6 +301,15 @@
 }
 
 // -----------------------------------------------------------------------------
+// TABLET: First card uses special large mask
+// -----------------------------------------------------------------------------
+.news__item:first-child .news-card__content {
+  @include tablet {
+    mask-image: url("/img/masks/news-card-mask-tablet-large.svg");
+  }
+}
+
+// -----------------------------------------------------------------------------
 // DESKTOP: Every 3n+1 card is large (first card of each 3-card page)
 // Formula: nth-child(3n+1) → 1, 4, 7, 10...
 // This overrides the mobile/tablet rules on desktop
@@ -321,7 +335,30 @@
     min-height: 185px;
     mask-image: url("/img/masks/news-card-mask-desktop-large.svg");
   }
+
+  .news-card__title {
+    max-width: 410px;
+  }
+
+  p {
+    max-width: 100%;
+  }
 }
+
+.news__item:nth-child(3n+2) .news-card__content {
+  @include desktop {
+    // max-width: 256px;
+    // min-height: 175px;
+    mask-image: url("/img/masks/news-card-mask-desktop-second.svg");
+  }
+}
+
+.news__item:nth-child(3) .news-card__content {
+  @include desktop {
+    padding-right: 33px;
+  }
+}
+
 
 // -----------------------------------------------------------------------------
 // Controls (arrows + pagination)
@@ -404,6 +441,17 @@
   overflow: hidden; // Hide buttons outside visible area
   display: flex;
   justify-content: center;
+  align-items: center;
+  // Reset Swiper default positioning
+  top: 0 !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+
+
+  @include desktop {
+    width: 200px !important;
+  }
 }
 
 // Inner wrapper that slides
@@ -412,6 +460,10 @@
   gap: 10px;
   transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Fast but smooth slide
   will-change: transform; // Optimize animation
+
+  @include desktop {
+    gap: 20px;
+  }
 }
 
 // Swiper pagination bullets (custom styled as numbered buttons)
