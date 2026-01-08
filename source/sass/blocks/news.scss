@@ -50,7 +50,7 @@
 .news__tabs {
   display: flex;
   @include flex-no-overflow;
-  gap: 10px;
+  gap: 9px;
   margin-bottom: 20px;
   margin-right: -15px; // Mobile: show part of next tab (negative container padding)
   padding: 4px 15px 4px 0; // Padding for outline visibility (top/bottom), right for overflow
@@ -131,27 +131,27 @@
 .news__tab--active {
   border-color: $color-button-primary;
   color: $color-button-primary;
+  min-width: 75px;
+
+  // @include tablet {
+  //   min-width: 123px;
+  // }
 }
 
 // -----------------------------------------------------------------------------
 // Slider Container
 // -----------------------------------------------------------------------------
 .news__slider.swiper {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   // Mobile: vertical slider needs overflow hidden to clip slides
   overflow: hidden;
 
   @include tablet {
-    margin-bottom: 40px;
-    // Tablet: hide overflow to prevent showing partial next page
-    overflow: hidden;
+    margin-bottom: 30px;
   }
 
   @include desktop {
     margin-bottom: 40px;
-    overflow: hidden;
-    // Ensure slider takes full container width for 3 cards + gaps
-    // 604px + 286px + 286px + 32px×2 = 1240px
     width: 100%;
   }
 }
@@ -165,8 +165,8 @@
   height: 590px;
 
   @include tablet {
-    // Tablet Grid: 2 rows × 350px + 20px gap = 720px
-    height: 720px;
+    // Tablet Grid: 2 rows × 350px + 30px gap = 730px
+    height: 730px;
   }
 
   @include desktop {
@@ -184,6 +184,13 @@
 .news__item {
   // Mobile: full width
   width: 100%;
+
+    // Mobile wide (430px+): fixed width for centered slides
+    // @media (min-width: 430px) and (max-width: 767px) {
+    //   width: 330px !important; // Фиксированная ширина
+    //   flex-shrink: 0;
+    // }
+
 
   @include tablet {
     width: 324px;
@@ -335,12 +342,16 @@
     min-height: 185px;
     mask-image: url("/img/masks/news-card-mask-desktop-large.svg");
   }
+}
 
-  .news-card__title {
+.news__item:nth-child(3n+1) .news-card__content .news-card__title {
+  @include desktop {
     max-width: 410px;
   }
+}
 
-  p {
+.news__item:nth-child(3n+1) .news-card__content p {
+  @include desktop {
     max-width: 100%;
   }
 }
@@ -437,10 +448,9 @@
 // -----------------------------------------------------------------------------
 .news__pagination {
   position: relative;
-  width: 180px !important; // Exact: 4 buttons × 48px + 3 gaps × 10px = 192px + adjust
+  width: 152px !important;
   overflow: hidden; // Hide buttons outside visible area
   display: flex;
-  justify-content: center;
   align-items: center;
   // Reset Swiper default positioning
   top: 0 !important;
@@ -448,16 +458,15 @@
   left: auto !important;
   right: auto !important;
 
-
-  @include desktop {
-    width: 200px !important;
+  @include tablet {
+    width: 188px !important;
   }
 }
 
 // Inner wrapper that slides
 .news__pagination-wrapper {
   display: flex;
-  gap: 10px;
+  gap: 16px;
   transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Fast but smooth slide
   will-change: transform; // Optimize animation
 
@@ -472,13 +481,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 32px;
-  height: 32px;
-  padding: 0 8px !important; // Override Swiper inline styles
+  width: 26px;
+  height: 26px;
+  padding: 6px 9px !important; // Override Swiper inline styles
   margin: 0 !important; // Override Swiper inline styles
   font-size: 14px;
-  line-height: 20px;
-  font-weight: 500;
+  line-height: 14px;
   color: $color-button-pagination;
   background-color: transparent;
   border: 2px solid transparent;
@@ -489,6 +497,15 @@
   transition: background-color 0.4s ease,
               color 0.4s ease,
               border-color 0.4s ease;
+
+  @include tablet {
+    width: 32px;
+    height: 32px;
+    padding: 6px 11px !important; // Override Swiper inline styles
+    font-size: 16px;
+    line-height: 20px;
+  }
+
 
   &:hover {
     background-color: transparent;

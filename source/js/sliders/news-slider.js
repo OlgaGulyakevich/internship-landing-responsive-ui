@@ -202,7 +202,6 @@ export function initNewsSlider() {
 
   // ===========================================
   // CUSTOM ARROW NAVIGATION (moves by pages)
-  // Per _SPEC.md advanced task (lines 233-237):
   // - Arrows move by pages (groups of slides) - fast browsing
   // - Pagination moves by 1 slide - fine control
   // ===========================================
@@ -245,7 +244,7 @@ export function initNewsSlider() {
   }
 
   /**
-   * Updates pagination with sliding window per _SPEC.md (lines 197-232).
+   * Updates pagination with sliding window
    *
    * Behavior:
    * - If ≤4 slides: show all buttons
@@ -300,7 +299,7 @@ export function initNewsSlider() {
       paginationEl.appendChild(wrapper);
     }
 
-    // Calculate start index for visible window per _SPEC.md
+    // Calculate start index for visible window
     let startIndex;
 
     if (currentSlide <= 2) {
@@ -317,9 +316,11 @@ export function initNewsSlider() {
     // Ensure startIndex is valid
     startIndex = Math.max(0, Math.min(startIndex, totalSlides - MAX_VISIBLE_PAGINATION));
 
-    // Calculate transform offset
-    // Button width: 32px min + padding, gap: 10px (from CSS)
-    const buttonWidth = 42; // Approximate button width including gap
+    // Calculate transform offset based on breakpoint
+    // Mobile: button 26px + gap 16px = 42px
+    // Tablet/Desktop: button 32px + gap 20px = 52px
+    const width = window.innerWidth;
+    const buttonWidth = width >= BREAKPOINTS.TABLET ? 52 : 42;
     const offset = startIndex * buttonWidth;
 
     wrapper.style.transform = `translateX(-${offset}px)`;

@@ -15,12 +15,10 @@
 .news-card {
   position: relative;
   width: 100%;
-  max-width: 290px; // Mobile: prevent stretching beyond design
+  // max-width: 290px; // Mobile: prevent stretching beyond design
   height: 240px;
   border-radius: 12px;
   overflow: hidden;
-
-
 
   @include tablet {
     max-width: 324px; // Tablet: match design width
@@ -54,6 +52,14 @@
   object-position: center;
 }
 
+// .news__item:nth-child(9) .news-card__image {
+//   object-position: center -12px;
+
+//   @include tablet {
+//     object-position: center;
+//   }
+// }
+
 // -----------------------------------------------------------------------------
 // Content Area with SVG Mask
 // -----------------------------------------------------------------------------
@@ -70,7 +76,7 @@
   width: 100%;
   max-width: 279px;
   min-height: 130px;
-  padding-bottom: 10px;
+  padding-bottom: 9px;
   padding-top: 28px;
   padding-right: 26px;
   background-color: $color-bg-primary;
@@ -122,12 +128,12 @@
   line-height: 18px;
   color: $color-text-accent;
   max-width: 190px;
-  // margin-bottom: 16px;
   padding: 16px 0;
 
   @include tablet {
     font-size: 20px;
     line-height: 24px;
+    padding: 16px 0;
     max-width: 200px;
   }
 

@@ -4,6 +4,8 @@
 // Shared configuration for all sliders: programs, news, reviews, hero
 // Matches CSS breakpoints and design specifications
 
+import { Pagination } from "swiper/modules";
+
 // Breakpoints (matches CSS media queries)
 export const BREAKPOINTS = {
   TABLET: 768,
@@ -35,7 +37,9 @@ export const HERO_SLIDER = {
 
 // News slider specific configuration (will be added later)
 export const NEWS_SLIDER = {
-  // Future configuration
+  PAGINATION: {
+    MAX_VISIBLE: 4,
+  },
 };
 
 // Reviews slider specific configuration (will be added later)
