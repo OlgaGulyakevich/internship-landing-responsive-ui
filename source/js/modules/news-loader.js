@@ -17,6 +17,7 @@
 // =============================================================================
 
 import { BREAKPOINTS } from '../config/slider-constants.js';
+import { updateNewsPagination } from '../sliders/news-slider.js';
 
 /**
  * Maps tab button data-tab values to JSON category keys.
@@ -435,8 +436,22 @@ function renderCards(items, category) {
 
   // Update Swiper if initialized
   if (swiperInstance) {
+    // Update Swiper to recognize new slides
     swiperInstance.update();
+
+    // Reset to first slide without animation (after update knows about new slides)
     swiperInstance.slideTo(0, 0);
+
+    // Force Swiper to recalculate progress and slide classes
+    // This ensures isEnd/isBeginning flags are correct for arrows
+    swiperInstance.updateProgress();
+    swiperInstance.updateSlidesClasses();
+
+    // Update pagination window after Swiper fully updates
+    // Use requestAnimationFrame to ensure activeIndex is stable
+    requestAnimationFrame(() => {
+      updateNewsPagination();
+    });
   }
 }
 

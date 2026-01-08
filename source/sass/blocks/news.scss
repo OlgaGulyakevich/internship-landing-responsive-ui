@@ -341,7 +341,7 @@
   gap: 20px;
 
   @include desktop {
-    gap: 40px; 
+    gap: 40px;
   }
 }
 
@@ -411,6 +411,7 @@
   overflow: hidden; // Hide buttons outside visible area
   display: flex;
   align-items: center;
+  gap: 16px; // Gap for bullets when no wrapper (≤4 bullets)
   // Reset Swiper default positioning
   top: 0 !important;
   bottom: auto !important;
@@ -419,6 +420,7 @@
 
   @include tablet {
     width: 188px !important;
+    gap: 20px;
   }
 }
 

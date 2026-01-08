@@ -61,6 +61,138 @@ function getSwiperSlidesPerPage() {
 }
 
 /**
+ * Reference to the Swiper instance for external access
+ * @type {Swiper|null}
+ */
+let swiperInstance = null;
+
+/**
+ * References to navigation elements
+ */
+let prevArrow = null;
+let nextArrow = null;
+
+/**
+ * Updates arrow disabled states based on current slider position.
+ * @param {Swiper} swiper - Swiper instance
+ */
+function updateArrowStates(swiper) {
+  if (!prevArrow || !nextArrow) return;
+
+  const isBeginning = swiper.isBeginning;
+  const isEnd = swiper.isEnd;
+
+  prevArrow.classList.toggle('swiper-button-disabled', isBeginning);
+  prevArrow.disabled = isBeginning;
+
+  nextArrow.classList.toggle('swiper-button-disabled', isEnd);
+  nextArrow.disabled = isEnd;
+}
+
+/**
+ * Updates pagination with sliding window
+ *
+ * Behavior:
+ * - If ≤4 slides: show all buttons
+ * - If >4 slides: show 4 buttons with sliding window
+ *
+ * Sliding window logic:
+ * - Slides 1-3: show buttons 1,2,3,4
+ * - Slide 4: show buttons 2,3,4,5
+ * - Slide N (middle): show N-2, N-1, N, N+1
+ * - Last slides: show last 4 buttons
+ *
+ * @param {Swiper} swiper - Swiper instance
+ */
+function updatePaginationWindow(swiper) {
+  const paginationEl = swiper.pagination.el;
+  if (!paginationEl) return;
+
+  const bullets = paginationEl.querySelectorAll('.swiper-pagination-bullet');
+  const totalSlides = bullets.length;
+
+  // If no bullets or only 1, nothing to do
+  if (totalSlides <= 1) {
+    return;
+  }
+
+  const currentSlide = swiper.activeIndex;
+  let wrapper = paginationEl.querySelector('.news__pagination-wrapper');
+
+  // If 4 or fewer slides, show all buttons and center them
+  if (totalSlides <= MAX_VISIBLE_PAGINATION) {
+    // Remove wrapper if it exists (unwrap bullets back to paginationEl)
+    if (wrapper) {
+      // Move bullets back to pagination container
+      while (wrapper.firstChild) {
+        paginationEl.appendChild(wrapper.firstChild);
+      }
+      wrapper.remove();
+    }
+
+    // Show all bullets
+    bullets.forEach((bullet) => {
+      bullet.style.display = 'flex';
+    });
+
+    // Center pagination when bullets are few
+    paginationEl.style.justifyContent = 'center';
+    return;
+  }
+
+  // More than 4 slides: use sliding window (left-aligned)
+  paginationEl.style.justifyContent = 'flex-start';
+
+  // Wrap bullets in a sliding container
+  if (!wrapper) {
+    wrapper = document.createElement('div');
+    wrapper.className = 'news__pagination-wrapper';
+    paginationEl.appendChild(wrapper);
+  }
+
+  // Ensure all bullets are inside wrapper
+  const bulletsArray = Array.from(bullets);
+  bulletsArray.forEach((bullet) => {
+    if (bullet.parentElement !== wrapper) {
+      wrapper.appendChild(bullet);
+    }
+  });
+
+  // Calculate start index for visible window
+  let startIndex;
+
+  if (currentSlide <= 2) {
+    // Slides 1-3: show buttons 1,2,3,4
+    startIndex = 0;
+  } else if (currentSlide >= totalSlides - 2) {
+    // Last 2 slides: show last 4 buttons
+    startIndex = totalSlides - MAX_VISIBLE_PAGINATION;
+  } else {
+    // Middle slides: current - 2
+    startIndex = currentSlide - 2;
+  }
+
+  // Ensure startIndex is valid
+  startIndex = Math.max(0, Math.min(startIndex, totalSlides - MAX_VISIBLE_PAGINATION));
+
+  // Calculate transform offset based on breakpoint
+  // Mobile: button 26px + gap 16px = 42px
+  // Tablet/Desktop: button 32px + gap 20px = 52px
+  const width = window.innerWidth;
+  const buttonWidth = width >= BREAKPOINTS.TABLET ? 52 : 42;
+  const offset = startIndex * buttonWidth;
+
+  wrapper.style.transform = `translateX(-${offset}px)`;
+
+  // Show all bullets (visibility handled by parent overflow)
+  // Re-query bullets in case they were moved to wrapper
+  const allBullets = paginationEl.querySelectorAll('.swiper-pagination-bullet');
+  allBullets.forEach((bullet) => {
+    bullet.style.display = 'flex';
+  });
+}
+
+/**
  * Initializes News slider with Swiper.
  *
  * Navigation logic per _SPEC.md (lines 233-237):
@@ -80,12 +212,13 @@ export function initNewsSlider() {
     return null;
   }
 
-  // Custom navigation buttons (arrows)
-  const prevArrow = document.querySelector('.news__arrow--prev');
-  const nextArrow = document.querySelector('.news__arrow--next');
+  // Store references to navigation elements at module level
+  prevArrow = document.querySelector('.news__arrow--prev');
+  nextArrow = document.querySelector('.news__arrow--next');
+  const paginationEl = document.querySelector('.news__pagination');
 
   // Swiper configuration
-  const swiper = new Swiper(sliderElement, {
+  swiperInstance = new Swiper(sliderElement, {
     modules: [Navigation, Pagination, Grid, Keyboard, A11y],
 
     // Core settings
@@ -148,15 +281,23 @@ export function initNewsSlider() {
     },
 
     // ===========================================
-    // PAGINATION (moves 1 slide at a time - fine control)
-    // Renders numbered buttons 1, 2, 3...
+    // PAGINATION - CUSTOM
+    // Using custom renderCustom to manually create numbered bullets
+    // Swiper's 'total' parameter accounts for slidesPerView + Grid mode,
+    // ensuring only navigable positions get bullets
     // ===========================================
     pagination: {
       el: '.news__pagination',
       clickable: true,
-      renderBullet: (index, className) => {
-        const pageNumber = index + 1;
-        return `<button class="${className}" type="button" aria-label="Перейти к слайду ${pageNumber}">${pageNumber}</button>`;
+      type: 'custom',
+      renderCustom: function (swiper, current, total) {
+        // Generate numbered bullets for all navigable positions
+        let bullets = '';
+        for (let i = 1; i <= total; i++) {
+          const isActive = i === current ? 'swiper-pagination-bullet-active' : '';
+          bullets += `<button class="swiper-pagination-bullet ${isActive}" type="button" aria-label="Перейти к слайду ${i}" data-slide-index="${i - 1}">${i}</button>`;
+        }
+        return bullets;
       },
     },
 
@@ -208,128 +349,52 @@ export function initNewsSlider() {
   if (prevArrow) {
     prevArrow.addEventListener('click', () => {
       const pageSize = getSwiperSlidesPerPage();
-      const targetIndex = Math.max(0, swiper.activeIndex - pageSize);
-      swiper.slideTo(targetIndex);
+      const targetIndex = Math.max(0, swiperInstance.activeIndex - pageSize);
+      swiperInstance.slideTo(targetIndex);
     });
   }
 
   if (nextArrow) {
     nextArrow.addEventListener('click', () => {
       const pageSize = getSwiperSlidesPerPage();
-      const totalSlides = swiper.slides.length;
+      const totalSlides = swiperInstance.slides.length;
 
       // Allow scrolling to the last slide, even if page is incomplete
       const maxIndex = totalSlides - 1;
-      const targetIndex = Math.min(maxIndex, swiper.activeIndex + pageSize);
+      const targetIndex = Math.min(maxIndex, swiperInstance.activeIndex + pageSize);
 
-      swiper.slideTo(targetIndex);
+      swiperInstance.slideTo(targetIndex);
     });
   }
 
-  /**
-   * Updates arrow disabled states based on current slider position.
-   * @param {Swiper} swiperInstance - Swiper instance
-   */
-  function updateArrowStates(swiperInstance) {
-    if (!prevArrow || !nextArrow) return;
+  // ===========================================
+  // CUSTOM PAGINATION CLICK HANDLER
+  // With type: 'custom', Swiper doesn't handle clicks automatically
+  // All bullets created are guaranteed to be navigable (based on Swiper's total)
+  // ===========================================
+  if (paginationEl) {
+    paginationEl.addEventListener('click', (e) => {
+      const bullet = e.target.closest('.swiper-pagination-bullet');
+      if (!bullet) return;
 
-    const isBeginning = swiperInstance.isBeginning;
-    const isEnd = swiperInstance.isEnd;
-
-    prevArrow.classList.toggle('swiper-button-disabled', isBeginning);
-    prevArrow.disabled = isBeginning;
-
-    nextArrow.classList.toggle('swiper-button-disabled', isEnd);
-    nextArrow.disabled = isEnd;
-  }
-
-  /**
-   * Updates pagination with sliding window
-   *
-   * Behavior:
-   * - If ≤4 slides: show all buttons
-   * - If >4 slides: show 4 buttons with sliding window
-   *
-   * Sliding window logic:
-   * - Slides 1-3: show buttons 1,2,3,4
-   * - Slide 4: show buttons 2,3,4,5
-   * - Slide N (middle): show N-2, N-1, N, N+1
-   * - Last slides: show last 4 buttons
-   *
-   * @param {Swiper} swiperInstance - Swiper instance
-   */
-  function updatePaginationWindow(swiperInstance) {
-    const paginationEl = swiperInstance.pagination.el;
-    if (!paginationEl) return;
-
-    const bullets = paginationEl.querySelectorAll('.swiper-pagination-bullet');
-    const totalSlides = bullets.length;
-
-    // If no bullets or only 1, nothing to do
-    if (totalSlides <= 1) {
-      return;
-    }
-
-    const currentSlide = swiperInstance.activeIndex;
-
-    // If 4 or fewer slides, show all buttons
-    if (totalSlides <= MAX_VISIBLE_PAGINATION) {
-      bullets.forEach((bullet) => {
-        bullet.style.display = 'flex';
-      });
-      // Remove wrapper transform if exists
-      const wrapper = paginationEl.querySelector('.news__pagination-wrapper');
-      if (wrapper) {
-        wrapper.style.transform = 'translateX(0)';
+      const slideIndex = parseInt(bullet.getAttribute('data-slide-index'), 10);
+      if (!isNaN(slideIndex)) {
+        swiperInstance.slideTo(slideIndex);
       }
-      return;
-    }
-
-    // Wrap bullets in a sliding container (only once)
-    let wrapper = paginationEl.querySelector('.news__pagination-wrapper');
-    if (!wrapper) {
-      wrapper = document.createElement('div');
-      wrapper.className = 'news__pagination-wrapper';
-
-      // Move all bullets into wrapper
-      bullets.forEach((bullet) => {
-        wrapper.appendChild(bullet);
-      });
-
-      paginationEl.appendChild(wrapper);
-    }
-
-    // Calculate start index for visible window
-    let startIndex;
-
-    if (currentSlide <= 2) {
-      // Slides 1-3: show buttons 1,2,3,4
-      startIndex = 0;
-    } else if (currentSlide >= totalSlides - 2) {
-      // Last 2 slides: show last 4 buttons
-      startIndex = totalSlides - MAX_VISIBLE_PAGINATION;
-    } else {
-      // Middle slides: current - 2
-      startIndex = currentSlide - 2;
-    }
-
-    // Ensure startIndex is valid
-    startIndex = Math.max(0, Math.min(startIndex, totalSlides - MAX_VISIBLE_PAGINATION));
-
-    // Calculate transform offset based on breakpoint
-    // Mobile: button 26px + gap 16px = 42px
-    // Tablet/Desktop: button 32px + gap 20px = 52px
-    const width = window.innerWidth;
-    const buttonWidth = width >= BREAKPOINTS.TABLET ? 52 : 42;
-    const offset = startIndex * buttonWidth;
-
-    wrapper.style.transform = `translateX(-${offset}px)`;
-
-    // Show all bullets (visibility handled by parent overflow)
-    bullets.forEach((bullet) => {
-      bullet.style.display = 'flex';
     });
   }
 
-  return swiper;
+  return swiperInstance;
+}
+
+/**
+ * Updates news pagination window manually.
+ * Call this after updating Swiper content (e.g., when switching tabs).
+ * @public
+ */
+export function updateNewsPagination() {
+  if (swiperInstance) {
+    updatePaginationWindow(swiperInstance);
+    updateArrowStates(swiperInstance);
+  }
 }
