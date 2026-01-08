@@ -182,8 +182,7 @@ function generatePictureHTML(imagePath, title, isLarge) {
                     srcset="img/${imagePath}@2x.jpg 2x"
                     width="290"
                     height="${mobileHeight}"
-                    alt="${title}"
-                    loading="lazy">
+                    alt="${title}">
                 </picture>`;
 }
 
@@ -289,17 +288,6 @@ function formatDateISO(dateStr) {
 // - Tablet (2 cols × 2 rows): [1,2,5,6,9,10...] top, [3,4,7,8,11,12...] bottom
 // - Desktop (no grid): sequential order
 // =============================================================================
-
-/**
- * Default card indices for first page of each breakpoint (1-based).
- * These are the cards that should appear on page 1 for pixel-perfect.
- * @type {Object}
- */
-const FIRST_PAGE_CARDS = {
-  mobile: [1, 2],      // Card 1 top, Card 2 bottom
-  tablet: [1, 2, 3, 4], // Top: 1,2 | Bottom: 3,4
-  desktop: [1, 2, 3],   // Left to right: 1, 2, 3
-};
 
 /**
  * Reorders cards array for Swiper Grid fill: 'row' to achieve sequential visual order.
