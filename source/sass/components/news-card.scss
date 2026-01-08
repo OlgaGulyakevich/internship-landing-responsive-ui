@@ -15,18 +15,17 @@
 .news-card {
   position: relative;
   width: 100%;
-  // max-width: 290px; // Mobile: prevent stretching beyond design
   height: 240px;
   border-radius: 12px;
   overflow: hidden;
 
   @include tablet {
-    max-width: 324px; // Tablet: match design width
+    max-width: 324px;
     height: 350px;
   }
 
   @include desktop {
-    max-width: 286px; // Desktop: standard card width
+    max-width: 286px;
     height: 400px;
   }
 }
@@ -51,14 +50,6 @@
   object-fit: cover;
   object-position: center;
 }
-
-// .news__item:nth-child(9) .news-card__image {
-//   object-position: center -12px;
-
-//   @include tablet {
-//     object-position: center;
-//   }
-// }
 
 // -----------------------------------------------------------------------------
 // Content Area with SVG Mask
@@ -115,9 +106,6 @@
   white-space: nowrap;
   color: $color-text-accent;
   padding-right: 5px;
-  // margin-top: 28px;
-  // margin-bottom: 16px;
-
 }
 
 // -----------------------------------------------------------------------------
@@ -194,7 +182,7 @@
   }
 }
 
-// Параграф в первой карточке новостей (отдельное правило)
+// Description in the first news card (separate rule)
 .news__item:nth-child(1) .news-card__content p {
   @include desktop {
     max-width: 400px;
@@ -205,5 +193,5 @@
 // Icon Button Link (BEM Mix with .button--icon-only)
 // -----------------------------------------------------------------------------
 .news-card__link {
-  flex-shrink: 0; // Button stays fixed size
+  flex-shrink: 0; 
 }

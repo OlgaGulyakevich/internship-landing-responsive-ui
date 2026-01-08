@@ -38,7 +38,7 @@ export const HERO_SLIDER = {
 // News slider specific configuration (will be added later)
 export const NEWS_SLIDER = {
   PAGINATION: {
-    MAX_VISIBLE: 4,
+    MAX_VISIBLE_PAGINATION: 4,
   },
 };
 
