@@ -1,0 +1,110 @@
+// =============================================================================
+// NEWS TAB COMPONENT
+// =============================================================================
+// FEATURES:
+// - Horizontal scrollable tabs on mobile (overflow-x with hidden scrollbar)
+// - Centered layout on tablet/desktop
+// - Active state with border and color change
+// - All interactive states (hover, focus, active)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Tabs Container
+// -----------------------------------------------------------------------------
+.news__tabs {
+  display: flex;
+
+  @include flex-no-overflow;
+
+  gap: 9px;
+  margin-bottom: 20px;
+  margin-right: -15px; // Mobile: show part of next tab (negative container padding)
+  padding: 4px 15px 4px 0; // Padding for outline visibility (top/bottom), right for overflow
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide scrollbar
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include tablet {
+    margin-right: 0;
+    padding: 0;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 30px;
+    overflow-x: visible;
+  }
+
+  @include desktop {
+    gap: 25px;
+    margin-bottom: 40px;
+  }
+}
+
+.news__tab {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  font-size: $font-size-button-mobile;
+  line-height: $line-height-button-mobile;
+  letter-spacing: $letter-spacing-button-mobile;
+  font-weight: $font-weight-medium;
+  color: $color-button-tab;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: $radius-news-tab;
+  cursor: pointer;
+  transition: border-color $transition-normal, color $transition-normal, background-color $transition-normal;
+
+  @include tablet {
+    padding: 14px 20px;
+    font-size: $font-size-button;
+    line-height: $line-height-button;
+    letter-spacing: $letter-spacing-button;
+
+    @include desktop {
+      padding: 14px 7px;
+      min-width: 123px;
+    }
+  }
+
+  &:hover {
+    color: $color-button-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:focus {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+
+  &:active {
+    color: $color-button-pressed;
+  }
+}
+
+.news__tab--active {
+  border-color: $color-button-primary;
+  color: $color-button-primary;
+  min-width: 75px;
+
+  @include tablet {
+    min-width: 96px;
+  }
+
+  @include desktop {
+    min-width: 123px;
+  }
+}

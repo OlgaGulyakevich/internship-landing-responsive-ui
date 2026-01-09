@@ -9,6 +9,8 @@ import { initSmoothScroll } from './modules/smooth-scroll.js';
 import modal from './modules/modal.js';
 import notificationModal from './modules/notification-modal.js';
 import { initNewsLoader, setSwiperInstance } from './modules/news-loader.js';
+import accordion from './modules/accordion.js';
+import { initNavMenuNavigation } from './modules/nav-menu-navigation.js';
 
 // Sliders
 import heroSlider from './sliders/hero-slider.js';
@@ -20,7 +22,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   burgerMenu.init();
   initSmoothScroll();
   heroSlider.init();
-  initProgramsSlider();
+
+  // Initialize Programs slider and save instance for navigation
+  const programsSwiper = initProgramsSlider();
 
   // IMPORTANT: Load news from JSON FIRST (replaces fallback HTML)
   // This must happen BEFORE Swiper initialization to ensure correct card order
@@ -32,6 +36,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     setSwiperInstance(newsSwiper);
   }
 
+  // Initialize nav menu navigation (Programs slider + News tabs)
+  // Must be called AFTER sliders are initialized
+  if (programsSwiper) {
+    initNavMenuNavigation(programsSwiper);
+  }
+
+  accordion.init();
   modal.init();
   notificationModal.init();
 });

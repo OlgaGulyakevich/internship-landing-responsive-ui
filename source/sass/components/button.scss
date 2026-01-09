@@ -331,6 +331,13 @@
   color: $color-button-primary;
   border-color: $color-button-primary;
 
+  // Smooth transitions for open/close states
+  transition:
+    background-color $transition-normal,
+    color $transition-normal,
+    border-color $transition-normal,
+    border-radius $transition-normal;
+
   // Default closed state - hide minus icon
   .button__faq--minus {
     display: none;
@@ -376,6 +383,7 @@
   &[aria-expanded="true"]:active {
     background-color: $color-button-pressed;
     color: $color-button-on-dark;
+    border-color: $color-button-pressed;
   }
 
   // Disabled state
