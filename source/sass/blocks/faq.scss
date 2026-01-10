@@ -2,19 +2,8 @@
 // FAQ SECTION (Вопросы и ответы)
 // =============================================================================
 // Accordion component with expandable Q&A items
-//
-// STRUCTURE:
-// - .faq__item - accordion item container
-// - .faq__question - button with question text + icon (button--accordion)
-// - .faq__answer - expandable content area
-//
-// STATE:
-// - Default: closed, light bg, blue border, + icon
-// - Active (.faq__item--active): open, blue bg, white text, - icon
-// - 3rd item open by default (aria-expanded="true" + no hidden attribute)
-//
 // ANIMATION:
-// - Max 300ms transition (per spec)
+// - Max 300ms transition
 // - Grid-based height animation for smooth expand/collapse
 // =============================================================================
 
@@ -37,16 +26,16 @@
 .faq__title {
   @include heading-2;
 
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: $color-text-accent;
   text-align: center;
 
   @include tablet {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   @include desktop {
-    margin-bottom: 40px;
+    margin-bottom: 71px;
   }
 }
 
@@ -56,13 +45,11 @@
 .faq__list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  gap: 6px;
 
   @include desktop {
-    gap: 10px;
+    max-width: 1028px;
+    margin: 0 auto;
   }
 }
 
@@ -70,7 +57,7 @@
 // FAQ Item (Accordion Card)
 // -----------------------------------------------------------------------------
 .faq__item {
-  border-radius: 14px;
+  border-radius: $radius-faq-item;
   overflow: hidden; // Ensure border-radius applies to children
 }
 
@@ -82,20 +69,22 @@
 .faq__question {
   width: 100%;
   text-align: left;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: 400;
+  font-size: $font-size-h4-mobile;
+  line-height: $line-height-h4-mobile;
+  text-transform: none;
+  padding: 22px 15px 20px 14px;
+  letter-spacing: normal;
 
   @include tablet {
-    font-size: 20px;
-    line-height: 24px;
-    padding: 30px 20px;
+    font-size: $font-size-h4-tablet;
+    line-height: $line-height-h4-tablet;
+    padding: 30px;
   }
 
   @include desktop {
-    font-size: 28px;
-    line-height: 28px;
-    padding: 40px 30px;
+    font-size: $font-size-h4-desktop;
+    line-height: $line-height-h4-desktop;
+    padding: 40px;
   }
 }
 
@@ -103,6 +92,15 @@
 .faq__item--active .faq__question {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  padding: 20px 15px 20px 14px;
+
+  @include tablet {
+    padding: 32px 32px 20px 30px;
+  }
+
+  @include desktop {
+    padding: 45px 40px 20px;
+  }
 }
 
 // Icon container (plus/minus wrapper)
@@ -127,12 +125,12 @@
   opacity: 0; // Start invisible
   transform: translateY(-10px); // Start slightly above
   overflow: hidden;
-  background-color: $color-button-primary; // Blue background when open
-  color: $color-button-on-dark; // White text
-  border: 2px solid transparent; // Prevent layout shift on active state
-  border-top: none; // No top border (connects to button)
-  border-bottom-left-radius: 14px; // Bottom corners only (connects to button)
-  border-bottom-right-radius: 14px;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  border: 2px solid transparent;
+  border-top: none;
+  border-bottom-left-radius: $radius-faq-item;
+  border-bottom-right-radius: $radius-faq-item;
 
   // Animate height, opacity, and transform together
   transition:
@@ -166,30 +164,34 @@
 
 // Answer content padding
 .faq__answer p {
-  padding: 0 17px 22px;
-  margin: 0;
-  font-size: 14px;
-  line-height: 20px;
+  padding: 0;
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
   color: $color-button-on-dark;
+  transition: padding $transition-normal;
 
   @include tablet {
-    padding: 0 20px 30px;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
   }
 
   @include desktop {
-    padding: 0 30px 40px;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: $font-size-text-regular;
+    line-height: $line-height-text-regular;
   }
 }
 
-// -----------------------------------------------------------------------------
-// TODO: Verify in Figma
-// -----------------------------------------------------------------------------
-// TODO: Check exact spacing values (gaps, padding) against Figma
-// TODO: Verify font sizes match design tokens
-// TODO: Check border-radius matches design (currently 14px)
-// TODO: Verify transition duration (currently 300ms max per spec)
-// TODO: Check if answer text needs max-width or different alignment
+// Активное состояние - возвращаем padding
+.faq__item--active .faq__answer p {
+  padding: 0 22px 20px 15px;
+
+  // margin-top: -3px;
+
+  @include tablet {
+    padding: 0 52px 32px 30px;
+  }
+
+  @include desktop {
+    padding: 0 42px 42px;
+  }
+}
