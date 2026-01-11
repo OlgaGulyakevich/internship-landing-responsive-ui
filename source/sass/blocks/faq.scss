@@ -190,7 +190,7 @@
   transition: padding 0.15s ease;
 
   @include tablet {
-    padding: 0 30px 32px 30px;
+    padding: 0 30px 32px;
   }
 
   @include desktop {

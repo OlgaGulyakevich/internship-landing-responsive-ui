@@ -118,7 +118,7 @@ export function initNewsSlider() {
       // -----------------------------------------
       [BREAKPOINTS.DESKTOP]: {
         direction: 'horizontal',
-        slidesPerView: 'auto', // Use CSS widths (604px for 1st, 286px for others)
+        slidesPerView: 'auto', // Use CSS widths (604px for 1st, 286px for others) for responsive layout
         slidesPerGroup: 1, // Pagination moves 1 card
         spaceBetween: SLIDER_DEFAULTS.SPACING.DESKTOP,
         grid: {

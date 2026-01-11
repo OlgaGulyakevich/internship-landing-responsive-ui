@@ -1,29 +1,18 @@
 // =============================================================================
 // NEWS PAGINATION COMPONENT
 // =============================================================================
-// FEATURES:
-// - Custom numbered pagination bullets (1, 2, 3, 4...)
-// - Sliding window animation when >4 bullets (shows max 4 at once)
-// - All interactive states (hover, focus, active)
-// - Controlled by news-pagination.js via inline styles
-// =============================================================================
-// NOTE: Primary styles (width, overflow, positioning) set via inline JS (news-pagination.js)
-// CSS provides fallback and structural styles only
+// Custom numbered pagination with sliding window (max 4 visible)
+// Controlled by news-pagination.js
 // =============================================================================
 
-// -----------------------------------------------------------------------------
 // Pagination Container
-// -----------------------------------------------------------------------------
-// JS applies inline styles to override Swiper library
 .news__pagination {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-// -----------------------------------------------------------------------------
-// Direct Bullets (≤4 slides, no wrapper)
-// -----------------------------------------------------------------------------
+// Direct bullets (≤4 slides)
 .news__pagination > .swiper-pagination-bullet {
   margin: 0 8px;
 
@@ -32,16 +21,12 @@
   }
 }
 
-// -----------------------------------------------------------------------------
-// Sliding Wrapper (>4 slides)
-// -----------------------------------------------------------------------------
-// Created dynamically by JS when pagination has more than 4 bullets
+// Sliding wrapper (>4 slides, created by JS)
 .news__pagination-wrapper {
   display: flex;
   flex-shrink: 0;
   gap: 16px;
   width: max-content;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 
   @include tablet {
@@ -55,10 +40,8 @@
   flex-shrink: 0;
 }
 
-// -----------------------------------------------------------------------------
-// Pagination Bullets (Numbered Buttons)
-// -----------------------------------------------------------------------------
-// Double class for higher specificity to override Swiper defaults
+// Pagination bullets (numbered buttons)
+// Double class for specificity to override Swiper defaults
 .news__pagination.news__pagination .swiper-pagination-bullet {
   display: inline-flex;
   align-items: center;
@@ -107,15 +90,13 @@
   }
 }
 
-// Override Swiper inline styles on bullets with attribute selector
+// Override Swiper inline styles
 .news__pagination.news__pagination .swiper-pagination-bullet[style] {
   padding: 0;
   margin: 0;
 }
 
-// -----------------------------------------------------------------------------
-// Active Bullet State
-// -----------------------------------------------------------------------------
+// Active bullet state
 .news__pagination.news__pagination .swiper-pagination-bullet-active {
   background-color: $color-button-primary;
   color: $color-button-on-dark;

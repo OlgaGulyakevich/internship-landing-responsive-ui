@@ -44,6 +44,10 @@ export const NEWS_SLIDER = {
       MOBILE: 42, // 26px button + 16px gap
       TABLET: 52, // 32px button + 20px gap (also used on desktop)
     },
+    CONTAINER_WIDTH: {
+      MOBILE: 152, // 4 buttons × 26px + 3 gaps × 16px = 152px
+      TABLET: 188, // 4 buttons × 32px + 3 gaps × 20px = 188px
+    },
   },
   SLIDES_PER_PAGE: {
     MOBILE: 1, // 1 Swiper slide = 2 visual cards (1 col × 2 rows)
