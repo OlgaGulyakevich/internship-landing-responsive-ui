@@ -13,6 +13,7 @@
 // -----------------------------------------------------------------------------
 .review-card {
   display: grid;
+
   @include grid-no-overflow;
 
   height: 100%; // Stretch to full slide height (equal height cards)
@@ -25,19 +26,19 @@
 
   grid-template-areas:
     "avatar name"
-    "info info"
-    "quote quote"
-    "text text";
+    "info   info"
+    "quote  quote"
+    "text   text";
   grid-template-columns: 60px 1fr;
 
   @include tablet {
     gap: 30px 15px;
-    padding: 51px 50px 50px 50px;
+    padding: 51px 50px 50px;
 
     grid-template-areas:
-      "avatar name info"
-      "quote quote quote"
-      "text text text";
+      "avatar name  info"
+      "quote  quote quote"
+      "text   text  text";
     grid-template-columns: 90px auto 1fr;
   }
 
@@ -85,18 +86,20 @@
 .review-card__info {
   grid-area: info;
   display: flex;
+
   @include flex-no-overflow;
+
   gap: 26px;
 
   @include tablet {
     margin-top: -1px;
     align-items: center;
     justify-content: flex-end;
-    gap: 27px
+    gap: 27px;
   }
 
   @include desktop {
-    margin-top: 0px;
+    margin-top: 0;
     gap: 26px;
   }
 }
@@ -141,7 +144,7 @@
 // Styles for the second card (pixel perfect fix)
 .reviews__item:nth-child(2) .review-card__name {
   @include desktop {
-    margin-top: 0px;
+    margin-top: 0;
   }
 }
 
@@ -232,7 +235,7 @@
 // Styles for the first card (pixel perfect fix)
 .reviews__item:first-child .review-card blockquote {
   @include desktop {
-    margin-top: 0px;
+    margin-top: 0;
   }
 }
 
@@ -251,12 +254,6 @@
   }
 
   @include desktop {
-   line-height: $line-height-text-regular;
-  }
-}
-
-// Styles for the first card (pixel perfect fix)
-.reviews__item:first-child .review-card p {
-  @include desktop {
+    line-height: $line-height-text-regular;
   }
 }

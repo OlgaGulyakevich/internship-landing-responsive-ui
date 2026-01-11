@@ -1,5 +1,5 @@
 // =============================================================================
-// FAQ SECTION 
+// FAQ SECTION
 // =============================================================================
 // Accordion component with expandable Q&A items
 // ANIMATION:
@@ -92,6 +92,7 @@
 .faq__item--active .faq__question {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+
   // Padding stays the same to prevent layout shift
 }
 
@@ -160,6 +161,7 @@
   font-size: $font-size-text-regular-mobile;
   line-height: $line-height-text-regular-mobile;
   color: $color-button-on-dark;
+
   // No transition on padding to prevent layout shift
 
   @include tablet {

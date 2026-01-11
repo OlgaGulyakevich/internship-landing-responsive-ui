@@ -45,7 +45,7 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  @media (min-resolution: 2dppx) {
+  @media (resolution >= 2dppx) {
     background-image: url("/img/form/form-mobile@2x.jpg");
   }
 
@@ -71,7 +71,7 @@
     border-radius: 16px; // TODO: Verify
     padding: 50px; // TODO: Verify padding
 
-    @media (min-resolution: 2dppx) {
+    @media (resolution >= 2dppx) {
       background-image: url("/img/form/form-tablet@2x.jpg");
     }
   }
@@ -80,7 +80,7 @@
     background-image: url("/img/form/form-desktop@1x.jpg");
     padding: 60px; // TODO: Verify
 
-    @media (min-resolution: 2dppx) {
+    @media (resolution >= 2dppx) {
       background-image: url("/img/form/form-desktop@2x.jpg");
     }
   }
@@ -309,7 +309,7 @@
   }
 
   // Hide empty option text
-  option[value=""] {
+  [value=""] {
     display: none;
   }
 }

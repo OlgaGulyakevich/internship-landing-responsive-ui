@@ -1,8 +1,3 @@
-// https://swiperjs.com/get-started#installation
-// import Swiper from "swiper";
-// import {Navigation, Pagination} from "swiper/modules";
-// import 'swiper/css';
-
 // Modules
 import burgerMenu from './modules/burger-menu.js';
 import { initSmoothScroll } from './modules/smooth-scroll.js';

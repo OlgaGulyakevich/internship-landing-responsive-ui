@@ -58,8 +58,8 @@
     grid-template-columns: auto 1fr auto;
     gap: 30px 20px; // TODO: Verify row-gap column-gap
     grid-template-areas:
-      "logo nav nav"
-      "privacy privacy social"
+      "logo      nav       nav"
+      "privacy   privacy   social"
       "copyright copyright social";
   }
 
@@ -68,7 +68,7 @@
     grid-template-columns: auto 1fr auto;
     gap: 40px 30px; // TODO: Verify
     grid-template-areas:
-      "logo nav social"
+      "logo      nav     social"
       "copyright privacy .";
   }
 }

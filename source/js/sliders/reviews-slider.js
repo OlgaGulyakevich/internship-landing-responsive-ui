@@ -41,17 +41,16 @@ export function initReviewsSlider() {
    */
   const setDragWidth = () => {
     const dragEl = document.querySelector('.reviews__scrollbar .swiper-scrollbar-drag');
-    if (!dragEl) return;
+    if (!dragEl) {
+      return;
+    }
 
     const width = window.innerWidth;
-    let scrollbarWidth;
     let dragWidth;
 
     if (width >= BREAKPOINTS.DESKTOP) {
-      scrollbarWidth = REVIEWS_SLIDER.SCROLLBAR.DESKTOP.WIDTH;
       dragWidth = REVIEWS_SLIDER.SCROLLBAR.DESKTOP.DRAG_WIDTH;
     } else if (width >= BREAKPOINTS.TABLET) {
-      scrollbarWidth = REVIEWS_SLIDER.SCROLLBAR.TABLET.WIDTH;
       dragWidth = REVIEWS_SLIDER.SCROLLBAR.TABLET.DRAG_WIDTH;
     } else {
       // Mobile: no scrollbar
@@ -68,7 +67,9 @@ export function initReviewsSlider() {
    */
   const updateDragPosition = (swiperInstance) => {
     const dragEl = document.querySelector('.reviews__scrollbar .swiper-scrollbar-drag');
-    if (!dragEl) return;
+    if (!dragEl) {
+      return;
+    }
 
     const width = window.innerWidth;
     let scrollbarWidth;
