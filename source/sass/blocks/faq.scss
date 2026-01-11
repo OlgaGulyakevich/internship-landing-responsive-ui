@@ -1,5 +1,5 @@
 // =============================================================================
-// FAQ SECTION (Вопросы и ответы)
+// FAQ SECTION 
 // =============================================================================
 // Accordion component with expandable Q&A items
 // ANIMATION:
@@ -92,15 +92,7 @@
 .faq__item--active .faq__question {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  padding: 20px 15px 20px 14px;
-
-  @include tablet {
-    padding: 32px 32px 20px 30px;
-  }
-
-  @include desktop {
-    padding: 45px 40px 20px;
-  }
+  // Padding stays the same to prevent layout shift
 }
 
 // Icon container (plus/minus wrapper)
@@ -168,7 +160,7 @@
   font-size: $font-size-text-regular-mobile;
   line-height: $line-height-text-regular-mobile;
   color: $color-button-on-dark;
-  transition: padding $transition-normal;
+  // No transition on padding to prevent layout shift
 
   @include tablet {
     font-size: $font-size-text-regular-tablet;

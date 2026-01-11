@@ -1,0 +1,266 @@
+// =============================================================================
+// FOOTER (Подвал)
+// =============================================================================
+// Footer with logo, navigation, privacy link, copyright, and social links
+// LAYOUT:
+// - Mobile: vertical column (logo, nav, privacy, copyright, social)
+// - Tablet: logo + nav (row 1), privacy/copyright + social (row 2-3)
+// - Desktop: logo + nav + social (row 1), copyright + privacy (row 2)
+// =============================================================================
+
+// TODO: Check in Figma:
+// - Section padding per breakpoint
+// - Grid gaps
+// - Logo size (matches header)
+// - Nav link font-size, spacing, hover colors
+// - Social icon sizes and spacing
+// - Privacy link underline, font-size
+// - Copyright font-size, color
+// - All interactive state colors
+
+// -----------------------------------------------------------------------------
+// Footer Container
+// -----------------------------------------------------------------------------
+.footer {
+  padding-top: $section-padding-md; // TODO: Verify
+  padding-bottom: $section-padding-md;
+  background-color: $color-bg-primary; // TODO: Verify (white or light gray?)
+
+  @include tablet {
+    padding-top: $section-padding-lg; // TODO: Verify
+  }
+
+  @include desktop {
+    padding-top: $section-padding-lg; // TODO: Verify
+    padding-bottom: $section-padding-lg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Grid Container (Adaptive Layout)
+// -----------------------------------------------------------------------------
+.footer .container {
+  display: grid;
+  gap: 24px; // 24px - TODO: Verify
+
+  @include grid-no-overflow; // ✅ HTML1-TEST-04
+
+  // Mobile: vertical column
+  grid-template-areas:
+    "logo"
+    "nav"
+    "privacy"
+    "copyright"
+    "social";
+
+  @include tablet {
+    // Tablet: logo + nav (row 1), privacy/copyright + social (rows 2-3)
+    grid-template-columns: auto 1fr auto;
+    gap: 30px 20px; // TODO: Verify row-gap column-gap
+    grid-template-areas:
+      "logo nav nav"
+      "privacy privacy social"
+      "copyright copyright social";
+  }
+
+  @include desktop {
+    // Desktop: logo + nav + social (row 1), copyright + privacy (row 2)
+    grid-template-columns: auto 1fr auto;
+    gap: 40px 30px; // TODO: Verify
+    grid-template-areas:
+      "logo nav social"
+      "copyright privacy .";
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Logo (div, not a link)
+// -----------------------------------------------------------------------------
+.footer__logo {
+  grid-area: logo;
+  flex-shrink: 0;
+
+  img {
+    display: block;
+    width: 52px; // TODO: Verify (matches header logo)
+    height: 52px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation
+// -----------------------------------------------------------------------------
+.footer__nav {
+  grid-area: nav;
+}
+
+.footer__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; // TODO: Verify gap between links
+
+  @include flex-no-overflow; // ✅ HTML1-TEST-04
+
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px 24px; // TODO: Verify row-gap column-gap
+  }
+
+  @include desktop {
+    gap: 20px 30px; // TODO: Verify
+  }
+}
+
+.footer__nav-item {
+  // No additional styles needed
+}
+
+.footer__nav-link {
+  font-size: $font-size-text-regular-mobile; // TODO: Verify
+  line-height: $line-height-text-regular-mobile;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary; // TODO: Verify
+  text-decoration: none;
+  transition: color $transition-normal;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet; // TODO: Verify
+    line-height: $line-height-text-regular-tablet;
+  }
+
+  @include desktop {
+    font-size: $font-size-text-regular; // TODO: Verify
+    line-height: $line-height-text-regular;
+  }
+
+  &:hover {
+    color: $color-primary-blue; // TODO: Verify hover color
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    opacity: 0.8; // TODO: Verify active state
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Privacy Policy Link
+// -----------------------------------------------------------------------------
+.footer__privacy-link {
+  grid-area: privacy;
+  align-self: start; // Align to top of grid cell
+  font-size: 12px; // TODO: Verify
+  line-height: 14px;
+  color: red; // TODO: Verify
+  text-decoration: underline;
+  text-underline-offset: 4px; // TODO: Verify
+  transition: color $transition-normal;
+
+  @include tablet {
+    font-size: 14px; // TODO: Verify
+    line-height: 16px;
+  }
+
+  @include desktop {
+    font-size: $font-size-text-small; // TODO: Verify
+    line-height: $line-height-text-small;
+  }
+
+  &:hover {
+    color: $color-primary-blue; // TODO: Verify
+    text-decoration-color: $color-primary-blue;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Copyright
+// -----------------------------------------------------------------------------
+.footer__copyright {
+  grid-area: copyright;
+  margin: 0;
+  font-size: 12px; // TODO: Verify
+  line-height: 14px;
+  color: red; // TODO: Verify
+
+  @include tablet {
+    font-size: 14px; // TODO: Verify
+    line-height: 16px;
+  }
+
+  @include desktop {
+    font-size: $font-size-text-small; // TODO: Verify
+    line-height: $line-height-text-small;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Social Links
+// -----------------------------------------------------------------------------
+.footer__social {
+  grid-area: social;
+  display: flex;
+  gap: 12px; // TODO: Verify gap between social icons
+
+  @include flex-no-overflow; // ✅ HTML1-TEST-04
+
+  @include tablet {
+    gap: 16px; // TODO: Verify
+    justify-self: end; // Align to right on tablet
+  }
+
+  @include desktop {
+    gap: 20px; // TODO: Verify
+  }
+}
+
+.footer__social-item {
+  // No additional styles needed
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; // Min touch target (accessibility)
+  height: 44px;
+  border-radius: 50%;
+  background-color: $color-button-on-dark; // TODO: Verify (white or light?)
+  border: 1px solid red; // TODO: Verify
+  color: blue; // TODO: Verify icon color
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background-color: blue; // TODO: Verify
+    border-color: blue;
+    color: $color-button-on-dark; // Invert icon color
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: $color-button-on-light-active; // TODO: Verify
+    border-color: $color-button-on-light-active;
+    opacity: 0.9;
+  }
+}

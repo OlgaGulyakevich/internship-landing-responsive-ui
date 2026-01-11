@@ -1,0 +1,203 @@
+// =============================================================================
+// CONTACTS SECTION (Контакты)
+// =============================================================================
+// Contact information with address, phone, email and map
+// LAYOUT:
+// - Mobile: vertical layout (title, then contact items stacked)
+// - Tablet: title on top, contact items in horizontal row (3 columns)
+// - Desktop: title + contact items in same row (flex row)
+// =============================================================================
+
+// TODO: Check in Figma:
+// - Section padding per breakpoint
+// - Title margin-bottom (mobile/tablet/desktop)
+// - Header gap between title and info
+// - Info gap between items
+// - Label font-size, letter-spacing, color
+// - Address/phone/email font-size, line-height, color
+// - Link hover/focus/active colors
+// - Map margin-top
+// - Map border-radius
+// - Map image sizes
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.contacts {
+  padding-top: $section-padding-md; // TODO: Verify
+  padding-bottom: $section-padding-md;
+  background-color: $color-primary-blue;
+  color: $color-button-on-dark;
+
+  @include tablet {
+    padding-top: $section-padding-lg; // TODO: Verify
+  }
+
+  @include desktop {
+    padding-top: $section-padding-lg; // TODO: Verify
+    padding-bottom: $section-padding-lg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Header (title + contact info)
+// -----------------------------------------------------------------------------
+.contacts__header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; // 24px - TODO: Verify
+  margin-bottom: 30px; // TODO: Verify spacing before map
+
+  @include flex-no-overflow; // ✅ HTML1-TEST-04
+
+  @include tablet {
+    margin-bottom: 40px; // TODO: Verify
+  }
+
+  @include desktop {
+    flex-direction: row; // Title + info in same row
+    align-items: flex-start;
+    gap: 40px; // TODO: Verify gap between title and info
+    margin-bottom: 50px; // TODO: Verify
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Title
+// -----------------------------------------------------------------------------
+.contacts__title {
+  @include heading-2;
+
+  color: $color-button-on-dark;
+
+  @include desktop {
+    flex-shrink: 0; // Prevent title from shrinking
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Contact Info List
+// -----------------------------------------------------------------------------
+.contacts__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // 16px - TODO: Verify
+
+  @include flex-no-overflow; // ✅ HTML1-TEST-04
+
+  @include tablet {
+    flex-direction: row; // 3 columns horizontal
+    flex-wrap: wrap; // In case of long texts
+    gap: 16px; // TODO: Verify gap between items
+  }
+
+  @include desktop {
+    flex-wrap: nowrap; // Force single row on desktop
+    gap: 40px; // TODO: Verify gap between items
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Contact Info Item
+// -----------------------------------------------------------------------------
+.contacts__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; // 4px - TODO: Verify gap between label and content
+
+  @include tablet {
+    flex: 1; // Equal width columns
+    min-width: 0; // Allow text wrapping
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Contact Label (ЦЕНТРАЛЬНЫЙ ОФИС, ТЕЛЕФОН, EMAIL)
+// -----------------------------------------------------------------------------
+.contacts__label {
+  font-size: 10px; // TODO: Verify
+  line-height: 10px; // TODO: Verify
+  letter-spacing: 0.2px; // TODO: Verify
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  color: $color-button-on-dark; // TODO: Verify (maybe secondary color?)
+
+  @include tablet {
+    font-size: 12px; // TODO: Verify
+    line-height: 12px; // TODO: Verify
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Address
+// -----------------------------------------------------------------------------
+.contacts__address {
+  font-style: normal; // Reset italic from address element
+  font-size: $font-size-text-regular-mobile; // TODO: Verify
+  line-height: $line-height-text-regular-mobile; // TODO: Verify
+  color: $color-button-on-dark;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet; // TODO: Verify
+    line-height: $line-height-text-regular-tablet; // TODO: Verify
+  }
+
+  @include desktop {
+    font-size: $font-size-text-regular; // TODO: Verify
+    line-height: $line-height-text-regular; // TODO: Verify
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Phone & Email Links
+// -----------------------------------------------------------------------------
+.contacts__phone,
+.contacts__email {
+  font-size: $font-size-text-regular-mobile; // TODO: Verify
+  line-height: $line-height-text-regular-mobile; // TODO: Verify
+  color: $color-button-on-dark;
+  text-decoration: none;
+  transition: color $transition-normal;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet; // TODO: Verify
+    line-height: $line-height-text-regular-tablet; // TODO: Verify
+  }
+
+  @include desktop {
+    font-size: $font-size-text-regular; // TODO: Verify
+    line-height: $line-height-text-regular; // TODO: Verify
+  }
+
+  &:hover {
+    color: $color-text-accent; // TODO: Verify hover color
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-on-dark; // TODO: Verify
+    outline-offset: 2px;
+  }
+
+  &:active {
+    opacity: 0.8; // TODO: Verify active state
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Map Container
+// -----------------------------------------------------------------------------
+.contacts__map {
+  width: 100%;
+
+  picture {
+    display: block;
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px; // TODO: Verify border-radius
+  }
+}

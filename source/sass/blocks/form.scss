@@ -1,0 +1,425 @@
+// =============================================================================
+// FORM SECTION (Напишите нам)
+// =============================================================================
+// Contact form with background image (art direction)
+// FEATURES:
+// - Mobile: background on section
+// - Tablet/Desktop: background on wrapper with border-radius
+// - Custom select with icon
+// - Custom checkbox
+// - Form validation (required, pattern, minlength, etc.)
+// - No placeholders (per spec)
+// - Phone mask (JS controlled via data-phone-mask)
+// =============================================================================
+
+// TODO: Check in Figma:
+// - Section padding per breakpoint
+// - Wrapper border-radius
+// - Content padding
+// - Title margin-bottom
+// - Description margin-bottom
+// - Fieldset gap between fields
+// - Label font-size, letter-spacing, color, margin-bottom
+// - Input/textarea/select padding, border-radius, font-size
+// - Input heights
+// - Textarea rows/height
+// - Select icon size and position
+// - Checkbox size and position
+// - Checkbox label padding-left
+// - Submit button margin-top
+// - Focus/invalid/disabled colors
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.form {
+  padding-top: $section-padding-md; // TODO: Verify
+  padding-bottom: $section-padding-md;
+
+  // Light gray background
+  background-color: #f0efed;
+
+  // Mobile: background image on section
+  background-image: url("/img/form/form-mobile@1x.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (min-resolution: 2dppx) {
+    background-image: url("/img/form/form-mobile@2x.jpg");
+  }
+
+  @include tablet {
+    padding-top: $section-padding-lg; // TODO: Verify
+    padding-bottom: $section-padding-lg;
+
+    // Tablet+: remove background image from section (moves to wrapper)
+    background-image: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Wrapper (background container on tablet/desktop)
+// -----------------------------------------------------------------------------
+.form__wrapper {
+  @include tablet {
+    // Tablet/Desktop: background image on wrapper
+    background-image: url("/img/form/form-tablet@1x.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 16px; // TODO: Verify
+    padding: 50px; // TODO: Verify padding
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("/img/form/form-tablet@2x.jpg");
+    }
+  }
+
+  @include desktop {
+    background-image: url("/img/form/form-desktop@1x.jpg");
+    padding: 60px; // TODO: Verify
+
+    @media (min-resolution: 2dppx) {
+      background-image: url("/img/form/form-desktop@2x.jpg");
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Content Container
+// -----------------------------------------------------------------------------
+.form__content {
+  max-width: 500px; // TODO: Verify max width of form
+
+  @include tablet {
+    max-width: 350px; // TODO: Verify
+  }
+
+  @include desktop {
+    max-width: 400px; // TODO: Verify
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Title
+// -----------------------------------------------------------------------------
+.form__title {
+  @include heading-2;
+
+  margin-bottom: 16px; // TODO: Verify
+  color: $color-button-on-dark;
+
+  @include tablet {
+    margin-bottom: 20px; // TODO: Verify
+  }
+
+  @include desktop {
+    margin-bottom: 24px; // TODO: Verify
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Description
+// -----------------------------------------------------------------------------
+.form__description {
+  margin-bottom: 24px; // TODO: Verify
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-button-on-dark;
+
+  @include tablet {
+    margin-bottom: 30px; // TODO: Verify
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+
+  @include desktop {
+    margin-bottom: 40px; // TODO: Verify
+    font-size: $font-size-text-regular;
+    line-height: $line-height-text-regular;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Fieldset
+// -----------------------------------------------------------------------------
+.form__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // TODO: Verify gap between form fields
+
+  @include tablet {
+    gap: 20px; // TODO: Verify
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Label
+// -----------------------------------------------------------------------------
+.form__label {
+  display: block;
+  margin-bottom: 8px; // TODO: Verify spacing between label and input
+  font-size: 12px; // TODO: Verify
+  line-height: 14px; // TODO: Verify
+  font-weight: $font-weight-medium;
+  color: $color-button-on-dark;
+
+  @include tablet {
+    font-size: 14px; // TODO: Verify
+    line-height: 16px; // TODO: Verify
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Input Fields (text, tel)
+// -----------------------------------------------------------------------------
+.form__input {
+  width: 100%;
+  padding: 16px; // TODO: Verify padding
+  font-family: inherit;
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-button-on-dark;
+  background-color: transparent;
+  border: 1px solid $color-button-on-dark;
+  border-radius: 8px; // TODO: Verify
+  transition: border-color $transition-normal, outline $transition-normal;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+
+  // No placeholder styles (per spec)
+
+  &:hover {
+    border-color: rgba($color-button-on-dark, 0.8);
+  }
+
+  &:focus {
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
+    border-color: $color-button-on-dark;
+  }
+
+  &:invalid:not(:placeholder-shown) {
+    border-color: $color-error; // TODO: Add error color variable if needed
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Textarea
+// -----------------------------------------------------------------------------
+.form__textarea {
+  width: 100%;
+  min-height: 120px; // TODO: Verify minimum height
+  padding: 16px; // TODO: Verify
+  font-family: inherit;
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-button-on-dark;
+  background-color: transparent;
+  border: 1px solid $color-button-on-dark;
+  border-radius: 8px; // TODO: Verify
+  resize: vertical;
+  transition: border-color $transition-normal, outline $transition-normal;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+    min-height: 140px; // TODO: Verify
+  }
+
+  &:hover {
+    border-color: rgba($color-button-on-dark, 0.8);
+  }
+
+  &:focus {
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
+    border-color: $color-button-on-dark;
+  }
+
+  &:invalid:not(:placeholder-shown) {
+    border-color: $color-error;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Select Wrapper (for custom icon positioning)
+// -----------------------------------------------------------------------------
+.form__select-wrapper {
+  position: relative;
+}
+
+// -----------------------------------------------------------------------------
+// Select
+// -----------------------------------------------------------------------------
+.form__select {
+  width: 100%;
+  padding: 16px; // TODO: Verify
+  padding-right: 40px; // Space for icon
+  font-family: inherit;
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-button-on-dark;
+  background-color: transparent;
+  border: 1px solid $color-button-on-dark;
+  border-radius: 8px; // TODO: Verify
+  appearance: none; // Remove native arrow
+  cursor: pointer;
+  transition: border-color $transition-normal, outline $transition-normal;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+
+  &:hover {
+    border-color: rgba($color-button-on-dark, 0.8);
+  }
+
+  &:focus {
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
+    border-color: $color-button-on-dark;
+  }
+
+  &:invalid {
+    border-color: $color-error;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // Hide empty option text
+  option[value=""] {
+    display: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Select Icon (chevron down)
+// -----------------------------------------------------------------------------
+.form__select-icon {
+  position: absolute;
+  right: 16px; // TODO: Verify
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; // Click passes through to select
+  color: $color-button-on-dark;
+}
+
+// -----------------------------------------------------------------------------
+// Checkbox Wrapper
+// -----------------------------------------------------------------------------
+.form__checkbox-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px; // TODO: Verify gap between checkbox and label
+}
+
+// -----------------------------------------------------------------------------
+// Checkbox (visually hidden, native input)
+// Styles inherited from .visually-hidden class in HTML
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Checkbox Label (with custom checkbox design)
+// -----------------------------------------------------------------------------
+.form__checkbox-label {
+  position: relative;
+  padding-left: 32px; // TODO: Verify space for custom checkbox
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-button-on-dark;
+  cursor: pointer;
+  user-select: none;
+
+  @include tablet {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  // Custom checkbox box
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px; // TODO: Verify checkbox size
+    height: 20px;
+    border: 2px solid $color-button-on-dark;
+    border-radius: 4px; // TODO: Verify
+    background-color: transparent;
+    transition: background-color $transition-normal, border-color $transition-normal;
+  }
+
+  // Custom checkmark
+  &::after {
+    content: "";
+    position: absolute;
+    left: 6px; // TODO: Verify checkmark position
+    top: 3px;
+    width: 8px; // TODO: Verify checkmark size
+    height: 12px;
+    border: solid $color-button-on-dark;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity $transition-normal;
+  }
+}
+
+// Checked state - show checkmark
+.form__checkbox:checked + .form__checkbox-label::after {
+  opacity: 1;
+}
+
+// Focus state - outline on checkbox
+.form__checkbox:focus-visible + .form__checkbox-label::before {
+  outline: 2px solid $color-button-on-dark;
+  outline-offset: 2px;
+}
+
+// Hover state
+.form__checkbox:hover:not(:disabled) + .form__checkbox-label::before {
+  border-color: rgba($color-button-on-dark, 0.8);
+}
+
+// Disabled state
+.form__checkbox:disabled + .form__checkbox-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+// -----------------------------------------------------------------------------
+// Submit Button
+// -----------------------------------------------------------------------------
+.form__submit {
+  margin-top: 24px; // TODO: Verify spacing above button
+
+  @include tablet {
+    margin-top: 30px; // TODO: Verify
+  }
+
+  @include desktop {
+    margin-top: 40px; // TODO: Verify
+  }
+}

@@ -16,6 +16,7 @@ import { initNavMenuNavigation } from './modules/nav-menu-navigation.js';
 import heroSlider from './sliders/hero-slider.js';
 import { initProgramsSlider } from './sliders/programs-slider.js';
 import { initNewsSlider } from './sliders/news-slider.js';
+import { initReviewsSlider } from './sliders/reviews-slider.js';
 
 // Initialize on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', async () => {
@@ -41,6 +42,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (programsSwiper) {
     initNavMenuNavigation(programsSwiper);
   }
+
+  // Initialize Reviews slider
+  initReviewsSlider();
 
   accordion.init();
   modal.init();

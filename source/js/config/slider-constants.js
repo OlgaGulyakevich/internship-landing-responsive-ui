@@ -74,7 +74,7 @@ export const NEWS_SLIDER = {
   },
 };
 
-// Reviews slider specific configuration (will be added later)
+// Reviews slider specific configuration
 export const REVIEWS_SLIDER = {
   SCROLLBAR: {
     TABLET: { WIDTH: 562, DRAG_WIDTH: 326 },
