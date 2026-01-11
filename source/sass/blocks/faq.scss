@@ -45,7 +45,7 @@
 .faq__list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 
   @include desktop {
     max-width: 1028px;
@@ -107,7 +107,7 @@
 // -----------------------------------------------------------------------------
 // FAQ Answer (Expandable Content)
 // -----------------------------------------------------------------------------
-// ANIMATION VARIANT 3: Slide + Fade combination (smoothest)
+// ANIMATION: Slide + Fade combination (smoothest)
 // - Answer slides down from slightly above
 // - Combines height + opacity + transform
 // - Most polished, fluid animation
@@ -125,11 +125,11 @@
   border-bottom-left-radius: $radius-faq-item;
   border-bottom-right-radius: $radius-faq-item;
 
-  // Animate height, opacity, and transform together
+  // Cascade animation: opacity fades out first, then container collapses
   transition:
-    grid-template-rows $transition-normal,
-    opacity $transition-normal,
-    transform $transition-normal,
+    grid-template-rows 0.15s ease 0.15s,
+    opacity 0.15s ease,
+    transform 0.15s ease 0.15s,
     background-color $transition-normal,
     border-color $transition-normal;
 }
@@ -146,6 +146,14 @@
   opacity: 1; // Fade in
   transform: translateY(0); // Slide to final position
   margin-top: -1px;
+
+  // Reverse cascade on open: container expands first, then text fades in
+  transition:
+    grid-template-rows 0.15s ease,
+    opacity 0.15s ease 0.15s,
+    transform 0.15s ease,
+    background-color $transition-normal,
+    border-color $transition-normal;
 }
 
 // Active state (open + pressed) - answer background and border change on button press
@@ -155,14 +163,15 @@
   border-color: $color-button-pressed;
 }
 
-// Answer content padding
+// Answer content
 .faq__answer p {
   padding: 0;
   font-size: $font-size-text-regular-mobile;
   line-height: $line-height-text-regular-mobile;
   color: $color-button-on-dark;
 
-  // No transition on padding to prevent layout shift
+  // Transition on padding with delay - starts after text fades out
+  transition: padding 0.15s ease 0.15s;
 
   @include tablet {
     font-size: $font-size-text-regular-tablet;
@@ -175,17 +184,16 @@
   }
 }
 
-// Активное состояние - возвращаем padding
+// Padding in open state with instant transition (no delay on opening)
 .faq__item--active .faq__answer p {
-  padding: 0 22px 20px 15px;
-
-  // margin-top: -3px;
+  padding: 0 15px 20px 14px;
+  transition: padding 0.15s ease;
 
   @include tablet {
-    padding: 0 52px 32px 30px;
+    padding: 0 30px 32px 30px;
   }
 
   @include desktop {
-    padding: 0 42px 42px;
+    padding: 0 40px 42px;
   }
 }
