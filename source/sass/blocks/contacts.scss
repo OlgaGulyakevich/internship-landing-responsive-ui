@@ -138,6 +138,7 @@
   text-decoration: none;
   transition: color $transition-normal;
   cursor: pointer;
+  white-space: nowrap;
 
   @include tablet {
     font-size: $font-size-text-small;

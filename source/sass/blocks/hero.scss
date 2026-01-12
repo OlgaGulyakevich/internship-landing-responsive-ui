@@ -27,6 +27,11 @@
   }
 }
 
+// Compensate for scrollbar when modal is open
+.scroll-lock .hero {
+  padding-right: var(--scrollbar-width, 0);
+}
+
 // -----------------------------------------------------------------------------
 // Swiper Container
 // -----------------------------------------------------------------------------

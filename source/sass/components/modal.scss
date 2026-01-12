@@ -82,7 +82,7 @@
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 40px; // 44px min touch target achieved with padding
+  height: 40px;
   padding: 10px;
   background-color: transparent;
   border: 1px solid transparent;
@@ -247,6 +247,16 @@
     color: transparent;
   }
 
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-text-primary;
+    box-shadow: 0 0 0 1000px $color-bg-secondary inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   // Hover and Active States
   &:hover,
   &:active {
@@ -279,6 +289,19 @@
   }
 }
 
+// Invalid state - triggered via JS class after form validation
+.modal__input.is-invalid {
+  border-color: $color-form-error;
+  background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-error;
+    background-color: $color-form-error-bg;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Select Dropdown (Custom Styled)
 // -----------------------------------------------------------------------------
@@ -299,6 +322,16 @@
   appearance: none;
   cursor: pointer;
   transition: border-color $transition-slow;
+
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-text-primary;
+    box-shadow: 0 0 0 1000px $color-bg-secondary inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 
   // Hover and Active States
   &:hover,
@@ -325,6 +358,13 @@
 .modal__select.is-invalid {
   border-color: $color-form-error;
   background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-error;
+    background-color: $color-form-error-bg;
+  }
 }
 
 // Custom arrow icon

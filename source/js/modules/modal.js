@@ -11,6 +11,7 @@
  * - Form submission via POST
  * - Close modal after successful submit
  * - Show notification on success/error
+ * - Visual validation errors (.is-invalid class)
  *
  * @module modal
  */
@@ -62,8 +63,7 @@ const modal = (() => {
       modalEl.setAttribute('aria-modal', 'false');
     }, 300);
 
-    // Remove padding and unlock scroll
-    document.body.style.paddingRight = '';
+    // Unlock scroll
     document.body.style.overflow = '';
 
     // Remove event listeners
@@ -73,7 +73,8 @@ const modal = (() => {
 
     // Reset form and clear validation errors
     form.reset();
-    clearValidationErrors();
+    const invalidElements = form.querySelectorAll('.is-invalid');
+    invalidElements.forEach((el) => el.classList.remove('is-invalid'));
   }
 
   /**
@@ -91,10 +92,6 @@ const modal = (() => {
       modalEl.classList.add('is-open');
     });
 
-    // Calculate scrollbar width and add padding to prevent layout shift
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
-
     // Lock scroll
     document.body.style.overflow = 'hidden';
 
@@ -111,36 +108,8 @@ const modal = (() => {
   }
 
   // =========================================================================
-  // Form Validation & Submission
+  // Form Submission
   // =========================================================================
-
-  /**
-   * Validates form using HTML5 validation
-   * @returns {boolean} True if form is valid
-   */
-  const validateForm = () => form.checkValidity();
-
-  /**
-   * Show validation errors visually
-   */
-  function showValidationErrors() {
-    const inputs = form.querySelectorAll('input[required], select[required]');
-    inputs.forEach((input) => {
-      if (!input.checkValidity()) {
-        input.classList.add('is-invalid');
-      } else {
-        input.classList.remove('is-invalid');
-      }
-    });
-  }
-
-  /**
-   * Clear validation errors
-   */
-  function clearValidationErrors() {
-    const invalidElements = form.querySelectorAll('.is-invalid');
-    invalidElements.forEach((el) => el.classList.remove('is-invalid'));
-  }
 
   /**
    * Handles form submission
@@ -148,18 +117,6 @@ const modal = (() => {
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validate form
-    if (!validateForm()) {
-      // Show visual validation errors
-      showValidationErrors();
-      // Show native validation messages
-      form.reportValidity();
-      return;
-    }
-
-    // Clear validation errors if form is valid
-    clearValidationErrors();
 
     // Get form data
     const formData = new FormData(form);
@@ -210,9 +167,17 @@ const modal = (() => {
     // Form submit
     form.addEventListener('submit', handleSubmit);
 
-    // Remove validation error on input
+    // Get all form inputs
     const formInputs = form.querySelectorAll('input, select');
+
+    // Add invalid event listener to show red border when browser validates
     formInputs.forEach((input) => {
+      // When browser finds invalid field, add visual error
+      input.addEventListener('invalid', () => {
+        input.classList.add('is-invalid');
+      });
+
+      // Remove validation error on input
       input.addEventListener('input', () => {
         if (input.classList.contains('is-invalid')) {
           input.classList.remove('is-invalid');

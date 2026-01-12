@@ -24,6 +24,12 @@
   opacity: 0;
   pointer-events: none;
   transition: visibility 0s $transition-slow, opacity $transition-slow;
+
+  // Limit width on large screens to match header container
+  @media (width >= 1441px) {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 }
 
 // Menu is visible when open
@@ -39,11 +45,19 @@
 // -----------------------------------------------------------------------------
 .nav-menu__overlay {
   position: absolute; // Height set by JS to cover full page
-  inset: 0;
+  top: 0;
+  bottom: 0;
   background-color: $color-overlay-menu;
   cursor: pointer;
   opacity: 0;
   transition: opacity $transition-slow 0.1s; // Delay 100ms
+
+  // Stretch to full viewport width (escape parent max-width)
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
 }
 
 // Show overlay when menu is open

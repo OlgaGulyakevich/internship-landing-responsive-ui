@@ -1,3 +1,11 @@
+// =============================================================================
+// CONTAINER LAYOUT
+// =============================================================================
+// Centered container with responsive horizontal padding
+// Max-width: 1440px (desktop breakpoint)
+// Padding: 15px (mobile) → 45px (tablet) → 100px (desktop)
+// =============================================================================
+
 .container {
   max-width: $container-desktop;
   margin: 0 auto;

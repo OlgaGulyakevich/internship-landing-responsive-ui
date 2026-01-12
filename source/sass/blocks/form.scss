@@ -541,6 +541,11 @@
   cursor: not-allowed;
 }
 
+// Invalid state - triggered via JS class after form validation
+.form__checkbox.is-invalid + .form__checkbox-label::before {
+  border-color: $color-form-error;
+}
+
 // -----------------------------------------------------------------------------
 // Submit Button
 // -----------------------------------------------------------------------------

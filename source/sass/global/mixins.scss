@@ -115,12 +115,6 @@
 // -----------------------------------------------------------------------------
 // Responsive Text Wrapping
 // -----------------------------------------------------------------------------
-// Manage white-space on different breakpoints
-// Когда использовать text-nowrap:
-//   - <span class="text-nowrap">+7 (999) 123-45-67</span> - телефон
-//   - <span class="text-nowrap">10 000 ₽</span> - цена
-//   - <span class="text-nowrap">2023 год</span> - дата
-
 
 // Nowrap на tablet, normal на mobile/desktop
 @mixin nowrap-tablet {

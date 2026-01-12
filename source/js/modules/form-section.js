@@ -95,6 +95,21 @@ const formSection = (() => {
     if (phoneInput) {
       applyPhoneMask(phoneInput);
     }
+
+    // Reset validation errors when form leaves viewport
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // When form leaves viewport, clear all validation errors
+        if (!entry.isIntersecting) {
+          const invalidElements = form.querySelectorAll('.is-invalid');
+          invalidElements.forEach((el) => el.classList.remove('is-invalid'));
+        }
+      });
+    }, {
+      threshold: 0, // Trigger when any part of form leaves viewport
+    });
+
+    observer.observe(form);
   };
 
   return {
