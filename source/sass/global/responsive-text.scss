@@ -28,10 +28,16 @@
   @include br-not-mobile;
 }
 
+// Show <br> on mobile and desktop (not tablet)
+.br-not-tablet {
+  @include br-not-tablet;
+}
+
 // Show <br> on mobile and tablet (not desktop)
 .br-not-desktop {
   @include br-not-desktop;
 }
+
 
 // -----------------------------------------------------------------------------
 // Text Wrapping
@@ -51,6 +57,15 @@
 // Nowrap on desktop
 .nowrap-desktop {
   @include nowrap-desktop;
+}
+
+// Nowrap on mobile and tablet
+.nowrap-mobile-tablet {
+  white-space: nowrap;
+
+  @include desktop {
+    white-space: normal;
+  }
 }
 
 // -----------------------------------------------------------------------------

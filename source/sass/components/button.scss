@@ -1,0 +1,492 @@
+// =============================================================================
+// BUTTON COMPONENT
+// =============================================================================
+// Reusable button component with different variants
+// Features:
+// - On light background: white bg → hover → blue bg + icon swap (up-right → right)
+// - On blue background: blue bg → hover → white bg + icon swap (up-right → right)
+// - All colors invert on hover (bg, text, icon)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Base Button
+// -----------------------------------------------------------------------------
+// Base styles for all buttons (mobile-first)
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 4px;
+  padding-left: 21px;
+  border: 1px solid transparent; // HTML1-TEST-08: prevent layout shift on hover
+  border-radius: 30px;
+  background-color: transparent;
+  font-family: $font-family;
+  font-size: $font-size-button-mobile; // 12px
+  font-weight: $font-weight-medium; // 500
+  line-height: $line-height-button-mobile; // 12px
+  letter-spacing: $letter-spacing-button-mobile; // 0.24px
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color $transition-slow, color $transition-slow, border-color $transition-slow;
+
+
+  // Tablet
+  @include tablet {
+    gap: 30px;
+    padding-left: 31px;
+    font-size: $font-size-button; // 14px
+    line-height: $line-height-button; // 14px
+    letter-spacing: $letter-spacing-button; // 0.28px
+  }
+
+
+  // Disable text selection
+  -webkit-tap-highlight-color: transparent;
+
+  // Icon wrapper (span.button__icon contains SVG)
+  .button__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: visible;
+    transition: background-color $transition-slow;
+
+    // Tablet
+    @include tablet {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 1; // Keep full opacity, use colors instead
+  }
+}
+
+// SVG inside button icon wrapper
+.button--primary .button__icon svg {
+  flex-shrink: 0;
+  display: block;
+  width: 8px;
+  height: 8px;
+  fill: none;
+  color: inherit;
+  transition: color $transition-slow, transform $transition-slow;
+}
+
+// Disabled state icon
+.button:disabled .button__icon,
+.button.is-disabled .button__icon {
+  color: $color-button-disabled;
+  background-color: $color-disabled;
+}
+
+// -----------------------------------------------------------------------------
+// Primary Button (Transparent Background)
+// -----------------------------------------------------------------------------
+.button--primary {
+  width: fit-content;
+  background-color: transparent;
+  color: $color-button-primary;
+  border-color: $color-button-primary;
+
+  .button__icon {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+  }
+
+  // Hover state - full inversion + icon rotation
+  &:hover {
+    background-color: $color-button-primary; // Blue bg
+    color: $color-button-on-dark; // White text
+  }
+
+  &:hover .button__icon {
+    background-color: $color-button-on-dark; // White circle
+    color: $color-button-primary; // Blue icon
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-primary-blue;
+    color: $color-button-on-dark-active;
+  }
+
+  &:active .button__icon {
+    background-color: $color-bg-secondary;
+    color: $color-button-on-light-active;
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: transparent;
+    color: $color-disabled;
+    border-color: $color-disabled;
+  }
+}
+
+// Primary button disabled state icon
+.button--primary:disabled .button__icon,
+.button--primary.is-disabled .button__icon {
+  background-color: $color-disabled;
+  color: $color-button-icon-disabled;
+}
+
+// SVG transformations for interactive states
+.button--primary:hover .button__icon svg,
+.button--primary:focus .button__icon svg,
+.button--primary:active .button__icon svg {
+  transform: rotate(45deg);
+}
+
+// -----------------------------------------------------------------------------
+// Primary Button (Blue Background)
+// -----------------------------------------------------------------------------
+.button--primary-on-blue {
+  width: fit-content;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  border-color: $color-button-on-dark;
+
+  .button__icon {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+  // Hover state - full inversion + icon rotation
+  &:hover {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+  &:hover .button__icon {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+  }
+
+  &:active .button__icon {
+    background-color: $color-primary-blue;
+    color: $color-button-on-dark-active;
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: $color-button-primary;
+    color: $color-disabled;
+    border-color: $color-disabled;
+  }
+}
+
+// Primary button on blue disabled state icon
+.button--primary-on-blue:disabled .button__icon,
+.button--primary-on-blue.is-disabled .button__icon {
+  background-color: $color-disabled;
+  color: $color-button-icon-disabled;
+}
+
+// SVG transformations for interactive states
+.button--primary-on-blue:hover .button__icon svg,
+.button--primary-on-blue:focus .button__icon svg,
+.button--primary-on-blue:active .button__icon svg {
+  transform: rotate(45deg);
+}
+
+// -----------------------------------------------------------------------------
+// Secondary Button (Icon Only)
+// -----------------------------------------------------------------------------
+.button--icon-only {
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent; // HTML1-TEST-08: prevent layout shift
+  border-radius: 50%;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+
+  // Hover state
+  &:hover {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+    border-color: $color-button-on-dark;
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+    border-color: $color-button-on-dark;
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: $color-disabled;
+    color: $color-button-icon-disabled;
+    border-color: $color-disabled;
+  }
+}
+
+.button--icon-only svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+  transition: transform $transition-slow;
+}
+
+.button--icon-only:hover svg,
+.button--icon-only:focus svg,
+.button--icon-only:active svg {
+  transform: rotate(45deg);
+}
+
+// -----------------------------------------------------------------------------
+// Slider Control Buttons (Arrows Left/Right)
+// -----------------------------------------------------------------------------
+// Navigation arrows for sliders (programs, news, reviews)
+.button--slider-arrow {
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background-color: transparent;
+  color: $color-button-primary;
+
+  // Hover state
+  &:hover {
+    color: $color-button-on-light-active;
+  }
+
+  // Focus state
+  &:focus {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+  // Active state
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: transparent;
+    color: $color-disabled;
+  }
+}
+
+.button--slider-arrow svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+  transition: transform $transition-slow;
+}
+
+// -----------------------------------------------------------------------------
+// FAQ Accordion Buttons (Plus/Minus)
+// -----------------------------------------------------------------------------
+
+.button__faq {
+  flex-shrink: 0;
+  display: block;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent; // HTML1-TEST-08: prevent layout shift
+  border-radius: 50%;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  transition: background-color $transition-slow, color $transition-slow, transform $transition-slow;
+}
+
+.button--accordion {
+  gap: 10px;
+  justify-content: space-between;
+  padding: 22px 17px;
+  border-radius: 14px;
+  border-width: 2px;
+  background-color: transparent;
+  color: $color-button-primary;
+  border-color: $color-button-primary;
+
+  // Smooth transitions for open/close states
+  transition:
+    background-color $transition-normal,
+    color $transition-normal,
+    border-color $transition-normal,
+    border-radius $transition-normal;
+
+  // Default closed state - hide minus icon
+  .button__faq--minus {
+    display: none;
+  }
+
+  // Hover and focus states (closed)
+  &:hover,
+  &:focus {
+    background-color: $color-button-on-dark;
+
+    .button__faq--plus {
+      background-color: $color-button-on-dark;
+      color: $color-button-primary;
+      border-color: $color-button-primary;
+    }
+  }
+
+  // Active state (closed)
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-pressed;
+
+    .button__faq--plus {
+      background-color: $color-button-pressed;
+      color: $color-button-on-dark-active;
+      border-color: $color-button-pressed;
+    }
+  }
+
+  // Open state (using aria-expanded attribute)
+  &[aria-expanded="true"] {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+  }
+
+  // Hover and focus states (open)
+  &[aria-expanded="true"]:hover,
+  &[aria-expanded="true"]:focus {
+    background-color: $color-button-primary;
+  }
+
+  // Active state (open)
+  &[aria-expanded="true"]:active {
+    background-color: $color-button-pressed;
+    color: $color-button-on-dark;
+    border-color: $color-button-pressed;
+  }
+
+  // Disabled state
+  &:disabled,
+  &.is-disabled {
+    background-color: transparent;
+    color: $color-disabled;
+    border-color: $color-disabled;
+  }
+}
+
+// Accordion button FAQ icons - hide plus, show minus when open
+.button--accordion[aria-expanded="true"] .button__faq--plus {
+  display: none;
+}
+
+.button--accordion[aria-expanded="true"] .button__faq--minus {
+  display: block;
+  background-color: $color-button-on-dark;
+  color: $color-button-primary;
+  border-color: $color-button-on-dark;
+}
+
+// Accordion button FAQ minus icon - hover/focus state when open
+.button--accordion[aria-expanded="true"]:hover .button__faq--minus,
+.button--accordion[aria-expanded="true"]:focus .button__faq--minus {
+  background-color: transparent;
+  color: $color-button-on-dark;
+  border-color: $color-button-on-dark;
+}
+
+// Accordion button FAQ minus icon - active state when open
+.button--accordion[aria-expanded="true"]:active .button__faq--minus {
+  background-color: $color-button-on-dark;
+  color: $color-button-pressed;
+  border-color: $color-button-on-dark;
+}
+
+// Accordion button disabled state icon
+.button--accordion:disabled .button__faq--plus,
+.button--accordion.is-disabled .button__faq--plus {
+  background-color: $color-disabled;
+  color: $color-button-icon-disabled;
+  border-color: $color-disabled;
+}
+
+
+// -----------------------------------------------------------------------------
+// Pagination Buttons (Numbered navigation)
+// -----------------------------------------------------------------------------
+// Numbered page navigation buttons (1, 2, 3, 4) in News section
+.button--pagination {
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  border: 2px solid transparent; // HTML1-TEST-08: prevent layout shift on hover
+  border-radius: 50%;
+  background-color: transparent;
+  color: $color-button-pagination;
+  font-weight: $font-weight-regular;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: normal;
+
+  // Tablet
+  @include tablet {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+
+  // Hover state
+  &:hover {
+    font-weight: $font-weight-medium;
+    background-color: transparent;
+    color: $color-button-primary;
+    border-color: $color-button-primary;
+  }
+
+  // Focus state
+  &:focus {
+    font-weight: $font-weight-medium;
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+    border-color: $color-button-primary;
+  }
+
+  // Active state
+  &:active {
+    font-weight: $font-weight-medium;
+    background-color: $color-button-pressed;
+    color: $color-button-on-dark;
+    border-color: $color-button-pressed;
+  }
+}
+
+// Pagination button active state (current page)
+.button--pagination.is-active {
+  font-weight: $font-weight-medium;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  border-color: $color-button-primary;
+}

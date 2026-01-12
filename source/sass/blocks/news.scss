@@ -1,0 +1,310 @@
+// =============================================================================
+// NEWS SECTION
+// =============================================================================
+// SLIDER:
+// - Mobile: 2 cards vertical (grid 2 rows)
+// - Tablet: 2x2 cards vertical (grid 2 rows)
+// - Desktop: 3 cards horizontal row (no grid)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.news {
+  padding-top: $section-padding-md;
+  padding-bottom: $section-padding-md;
+
+  @include desktop {
+    padding-top: $section-padding-lg;
+    padding-bottom: $section-padding-lg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Title
+// -----------------------------------------------------------------------------
+.news__title {
+  @include heading-2;
+
+  margin-bottom: 20px;
+  color: $color-text-accent;
+  text-align: center;
+
+  @include tablet {
+    margin-bottom: 30px;
+  }
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Slider Container
+// -----------------------------------------------------------------------------
+.news__slider.swiper {
+  margin-bottom: 24px;
+  overflow: hidden;
+
+  @include tablet {
+    margin-bottom: 30px;
+  }
+
+  @include desktop {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+}
+
+// Swiper wrapper
+// CRITICAL: Swiper Grid mode REQUIRES fixed height on .swiper-wrapper
+// Without it, Grid mode won't work and slides display in a single column
+.news__list {
+  // Mobile Grid: 2 rows
+  // Row 1: 330px (large card) + Row 2: 240px (small card) + gap 20px = 590px
+  height: 590px;
+
+  @include tablet {
+    // Tablet Grid: 2 rows × 350px + 30px gap = 730px
+    height: 730px;
+  }
+
+  @include desktop {
+    // Desktop: horizontal row, no grid
+    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+}
+
+// Slide dimensions
+// Swiper Grid mode calculates slide height from wrapper height / rows
+// We only set width; height is managed by Swiper
+.news__item {
+  width: 100%;
+
+  @include tablet {
+    width: 324px;
+  }
+}
+
+// Desktop: Override Swiper inline styles with higher specificity
+.news__slider.swiper .news__item {
+  @include desktop {
+    // Standard card width - higher specificity overrides Swiper inline styles
+    width: 286px;
+    flex-shrink: 0;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// CARD SIZES: Controlled by viewport and JS class
+// -----------------------------------------------------------------------------
+// MOBILE: .news__item--large class added by JS (news-card-generator.js)
+//   - With Grid fill:'row', first half = top row (large), second half = bottom row (small)
+// TABLET: All cards same size (350px height)
+// DESKTOP: Every 3n+1 card is large (604px width), others are small (286px width)
+// -----------------------------------------------------------------------------
+
+// Default card heights
+.news__item .news-card {
+  height: 240px;
+
+  @include tablet {
+    height: 350px;
+  }
+
+  @include desktop {
+    height: 400px;
+  }
+}
+
+.news__item .news-card__content {
+  min-height: 130px;
+  mask-image: url("/img/masks/news-card-mask-mobile.svg");
+
+  @include tablet {
+    min-height: 177px;
+    mask-image: url("/img/masks/news-card-mask-tablet.svg");
+  }
+
+  @include desktop {
+    min-height: 175px;
+    mask-image: url("/img/masks/news-card-mask-desktop.svg");
+  }
+}
+
+// -----------------------------------------------------------------------------
+// MOBILE: Large card variant (top row)
+// Applied via .news__item--large class added by news-card-generator.js
+// -----------------------------------------------------------------------------
+.news__item--large .news-card {
+  height: 330px;
+
+  @include tablet {
+    height: 350px;
+  }
+
+  @include desktop {
+    height: 400px;
+  }
+}
+
+.news__item--large .news-card__content {
+  max-width: 279px;
+  min-height: 160px;
+  mask-image: url("/img/masks/news-card-mask-mobile-large.svg");
+
+  @include tablet {
+    max-width: 256px;
+    min-height: 177px;
+    mask-image: url("/img/masks/news-card-mask-tablet.svg");
+  }
+
+  @include desktop {
+    min-height: 185px;
+    mask-image: url("/img/masks/news-card-mask-desktop.svg");
+  }
+}
+
+// -----------------------------------------------------------------------------
+// TABLET: First card uses special large mask
+// -----------------------------------------------------------------------------
+.news__item:first-child .news-card__content {
+  @include tablet {
+    mask-image: url("/img/masks/news-card-mask-tablet-large.svg");
+  }
+}
+
+// -----------------------------------------------------------------------------
+// DESKTOP: Large card pattern (every 3n+1)
+// Formula: nth-child(3n+1) → indices 1, 4, 7, 10... (first card in each 3-card row)
+// Higher specificity selector (.news__slider.swiper) overrides Swiper inline styles
+// -----------------------------------------------------------------------------
+.news__slider.swiper .news__item:nth-child(3n+1) {
+  @include desktop {
+    // Large card width - higher specificity overrides Swiper inline styles
+    width: 604px;
+    flex-shrink: 0;
+  }
+}
+
+.news__item:nth-child(3n+1) .news-card {
+  @include desktop {
+    max-width: 604px;
+    height: 400px;
+  }
+}
+
+.news__item:nth-child(3n+1) .news-card__content {
+  @include desktop {
+    max-width: 484px;
+    min-height: 185px;
+    mask-image: url("/img/masks/news-card-mask-desktop-large.svg");
+  }
+}
+
+.news__item:nth-child(3n+1) .news-card__content .news-card__title {
+  @include desktop {
+    max-width: 410px;
+  }
+}
+
+.news__item:nth-child(3n+1) .news-card__content p {
+  @include desktop {
+    max-width: 100%;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// DESKTOP: Pixel Perfect fixes
+// -----------------------------------------------------------------------------
+.news__item:nth-child(3n+2) .news-card__content {
+  @include desktop {
+    mask-image: url("/img/masks/news-card-mask-desktop-second.svg");
+  }
+}
+
+.news__item:nth-child(3) .news-card__content {
+  @include desktop {
+    padding-right: 33px;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Controls (arrows + pagination)
+// -----------------------------------------------------------------------------
+.news__controls {
+  display: flex;
+
+  @include flex-no-overflow;
+
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  @include desktop {
+    gap: 40px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation Arrows
+// -----------------------------------------------------------------------------
+.news__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: $color-button-primary;
+  cursor: pointer;
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  &:hover {
+    color: $color-button-on-light-active;
+  }
+
+  &:focus {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+  &:focus-visible {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+  }
+
+  &:disabled,
+  &.swiper-button-disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-button-disabled;
+    cursor: not-allowed;
+  }
+}

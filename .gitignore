@@ -31,6 +31,10 @@ coverage/
 backstop_data/
 .cache/
 
+# Testing
+chrome/
+pp.config.local.cjs
+
 # Logs
 logs
 *.log

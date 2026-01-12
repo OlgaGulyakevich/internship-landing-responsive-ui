@@ -1,0 +1,199 @@
+// =============================================================================
+// FAQ SECTION
+// =============================================================================
+// Accordion component with expandable Q&A items
+// ANIMATION:
+// - Max 300ms transition
+// - Grid-based height animation for smooth expand/collapse
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.faq {
+  padding-top: $section-padding-md;
+  padding-bottom: $section-padding-md;
+
+  @include desktop {
+    padding-top: $section-padding-lg;
+    padding-bottom: $section-padding-lg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Title
+// -----------------------------------------------------------------------------
+.faq__title {
+  @include heading-2;
+
+  margin-bottom: 30px;
+  color: $color-text-accent;
+  text-align: center;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 71px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FAQ List
+// -----------------------------------------------------------------------------
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  @include desktop {
+    max-width: 1028px;
+    margin: 0 auto;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FAQ Item (Accordion Card)
+// -----------------------------------------------------------------------------
+.faq__item {
+  border-radius: $radius-faq-item;
+  overflow: hidden; // Ensure border-radius applies to children
+}
+
+// -----------------------------------------------------------------------------
+// FAQ Question Button
+// -----------------------------------------------------------------------------
+// Button styles defined in button.scss (.button--accordion)
+// Layout-specific styles here
+.faq__question {
+  width: 100%;
+  text-align: left;
+  font-size: $font-size-h4-mobile;
+  line-height: $line-height-h4-mobile;
+  text-transform: none;
+  padding: 22px 15px 20px 14px;
+  letter-spacing: normal;
+
+  @include tablet {
+    font-size: $font-size-h4-tablet;
+    line-height: $line-height-h4-tablet;
+    padding: 30px;
+  }
+
+  @include desktop {
+    font-size: $font-size-h4-desktop;
+    line-height: $line-height-h4-desktop;
+    padding: 40px;
+  }
+}
+
+// Open state - remove bottom border-radius (button connects to answer)
+.faq__item--active .faq__question {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  // Padding stays the same to prevent layout shift
+}
+
+// Icon container (plus/minus wrapper)
+.faq__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// -----------------------------------------------------------------------------
+// FAQ Answer (Expandable Content)
+// -----------------------------------------------------------------------------
+// ANIMATION: Slide + Fade combination (smoothest)
+// - Answer slides down from slightly above
+// - Combines height + opacity + transform
+// - Most polished, fluid animation
+// -----------------------------------------------------------------------------
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr; // Collapsed state
+  opacity: 0; // Start invisible
+  transform: translateY(-10px); // Start slightly above
+  overflow: hidden;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  border: 2px solid transparent;
+  border-top: none;
+  border-bottom-left-radius: $radius-faq-item;
+  border-bottom-right-radius: $radius-faq-item;
+
+  // Cascade animation: opacity fades out first, then container collapses
+  transition:
+    grid-template-rows 0.15s ease 0.15s,
+    opacity 0.15s ease,
+    transform 0.15s ease 0.15s,
+    background-color $transition-normal,
+    border-color $transition-normal;
+}
+
+// Inner wrapper for grid animation
+.faq__answer > * {
+  min-height: 0; // Required for grid animation
+  overflow: hidden;
+}
+
+// Open state - expand answer
+.faq__item--active .faq__answer {
+  grid-template-rows: 1fr; // Expanded state
+  opacity: 1; // Fade in
+  transform: translateY(0); // Slide to final position
+  margin-top: -1px;
+
+  // Reverse cascade on open: container expands first, then text fades in
+  transition:
+    grid-template-rows 0.15s ease,
+    opacity 0.15s ease 0.15s,
+    transform 0.15s ease,
+    background-color $transition-normal,
+    border-color $transition-normal;
+}
+
+// Active state (open + pressed) - answer background and border change on button press
+// Matches when open button is pressed (aria-expanded="true" + :active)
+.faq__question[aria-expanded="true"]:active ~ .faq__answer {
+  background-color: $color-button-pressed;
+  border-color: $color-button-pressed;
+}
+
+// Answer content
+.faq__answer p {
+  padding: 0;
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-button-on-dark;
+
+  // Transition on padding with delay - starts after text fades out
+  transition: padding 0.15s ease 0.15s;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+
+  @include desktop {
+    font-size: $font-size-text-regular;
+    line-height: $line-height-text-regular;
+  }
+}
+
+// Padding in open state with instant transition (no delay on opening)
+.faq__item--active .faq__answer p {
+  padding: 0 15px 20px 14px;
+  transition: padding 0.15s ease;
+
+  @include tablet {
+    padding: 0 30px 32px;
+  }
+
+  @include desktop {
+    padding: 0 40px 42px;
+  }
+}

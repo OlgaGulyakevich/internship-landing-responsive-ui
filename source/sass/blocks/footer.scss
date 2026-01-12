@@ -1,0 +1,284 @@
+// =============================================================================
+// FOOTER
+// =============================================================================
+// Footer with logo, navigation, privacy link, copyright, and social links
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Footer Container
+// -----------------------------------------------------------------------------
+.footer {
+  padding-top: 40px;
+  padding-bottom: 41px;
+
+  @include desktop {
+    padding-top: 60px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Grid Container (Adaptive Layout)
+// -----------------------------------------------------------------------------
+.footer .container {
+  display: grid;
+  gap: 20px;
+
+  @include grid-no-overflow;
+
+  grid-template-areas:
+    "logo"
+    "nav"
+    "privacy"
+    "copyright"
+    "social";
+
+  @include tablet {
+    grid-template-columns: auto 1fr auto;
+    gap: 30px 60px;
+    grid-template-areas:
+      "logo      nav       nav"
+      "privacy   privacy   social"
+      "copyright copyright social";
+  }
+
+  @include desktop {
+    grid-template-columns: auto 1fr auto;
+    gap: 26px 52px;
+    grid-template-areas:
+      "logo      nav social"
+      "copyright .   privacy";
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Logo (div, not a link)
+// -----------------------------------------------------------------------------
+.footer__logo {
+  grid-area: logo;
+  flex-shrink: 0;
+  justify-self: center;
+
+  img {
+    display: block;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto;
+  }
+
+  @include tablet {
+    justify-self: start;
+  }
+
+  @include desktop {
+    justify-self: start;
+    align-self: center;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation
+// -----------------------------------------------------------------------------
+.footer__nav {
+  grid-area: nav;
+
+  @include tablet {
+    align-self: center;
+    justify-self: end;
+  }
+
+  @include desktop {
+    align-self: center;
+    justify-self: start;
+  }
+}
+
+.footer__nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 30px;
+
+  @include flex-no-overflow;
+
+
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+
+  @include desktop {
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 30px;
+  }
+}
+
+
+.footer__nav-link {
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  text-decoration: none;
+  transition: color $transition-normal;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+  }
+
+  @include desktop {
+    font-size: $font-size-text-regular;
+    line-height: $line-height-text-regular;
+  }
+
+  &:hover {
+    color: $color-primary-blue;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Privacy Policy Link
+// -----------------------------------------------------------------------------
+.footer__privacy-link {
+  grid-area: privacy;
+  justify-self: center;
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-text-primary;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color $transition-normal;
+  white-space: nowrap;
+
+  @include tablet {
+    justify-self: start;
+    text-align: left;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  @include desktop {
+    justify-self: end;
+    text-align: right;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &:hover {
+    color: $color-primary-blue;
+    text-decoration-color: $color-primary-blue;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Copyright
+// -----------------------------------------------------------------------------
+.footer__copyright {
+  grid-area: copyright;
+  margin: 0;
+  justify-self: center;
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-text-copyright;
+  white-space: nowrap;
+  margin-top: -10px;
+
+  @include tablet {
+    justify-self: start;
+    text-align: left;
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: -20px;
+  }
+
+  @include desktop {
+    justify-self: start;
+    text-align: left;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Social Links
+// -----------------------------------------------------------------------------
+.footer__social {
+  grid-area: social;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  gap: 10px;
+
+  @include flex-no-overflow;
+
+
+  @include tablet {
+    justify-self: end;
+  }
+
+  @include desktop {
+    justify-self: end;
+    align-self: center;
+    gap: 20px;
+  }
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: $color-button-primary;
+  border: 1px solid $color-button-primary;
+  color: $color-button-on-dark;
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background-color: $color-button-primary;
+    border-color: $color-button-primary;
+    color: $color-button-on-dark-active;
+  }
+
+  &:focus {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+
+  &:active {
+    background-color: $color-button-pressed;
+    border-color: $color-button-pressed;
+    color: $color-button-on-dark;
+  }
+}

@@ -1,0 +1,259 @@
+// =============================================================================
+// REVIEW CARD COMPONENT
+// =============================================================================
+// Features:
+// - Grid Area Layout for responsive design
+// - Mobile: horizontal header (avatar + name) + vertical content (info, quote, text)
+// - Tablet+: horizontal header (avatar + name + info) + vertical content (quote, text)
+// - Cascading styling for blockquote and p (CMS-ready)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Card Container (Grid Layout)
+// -----------------------------------------------------------------------------
+.review-card {
+  display: grid;
+
+  @include grid-no-overflow;
+
+  height: 100%; // Stretch to full slide height (equal height cards)
+  gap: 16px 10px;
+  padding: 30px 15px 31px;
+
+  border: 2px solid $color-button-primary;
+  border-radius: $radius-review-card;
+  background-color: transparent;
+
+  grid-template-areas:
+    "avatar name"
+    "info   info"
+    "quote  quote"
+    "text   text";
+  grid-template-columns: 60px 1fr;
+
+  @include tablet {
+    gap: 30px 15px;
+    padding: 51px 50px 50px;
+
+    grid-template-areas:
+      "avatar name  info"
+      "quote  quote quote"
+      "text   text  text";
+    grid-template-columns: 90px auto 1fr;
+  }
+
+  @include desktop {
+    gap: 5px 15px;
+    padding: 50px 47px 50px 50px;
+    min-height: 483px;
+  }
+}
+
+// Styles for the second card (pixel perfect fix)
+.reviews__item:nth-child(2) .review-card {
+  @include desktop {
+    gap: 30px 15px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Avatar (picture element)
+// -----------------------------------------------------------------------------
+.review-card__avatar {
+  grid-area: avatar;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  @include tablet {
+    width: 90px;
+    height: 90px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Info Block (meta: program + date)
+// -----------------------------------------------------------------------------
+.review-card__info {
+  grid-area: info;
+  display: flex;
+
+  @include flex-no-overflow;
+
+  gap: 26px;
+
+  @include tablet {
+    margin-top: -1px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 27px;
+  }
+
+  @include desktop {
+    margin-top: 0;
+    gap: 26px;
+  }
+}
+
+// Styles for the first card (pixel perfect fix)
+.reviews__item:first-child .review-card__info {
+  @include desktop {
+    margin-top: -25px;
+  }
+}
+
+.reviews__item:nth-child(3) .review-card__info {
+  @include desktop {
+    margin-top: -15px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Name (h3 with <br>)
+// -----------------------------------------------------------------------------
+// CRITICAL: max-width prevents empty space to the right when <br> is used
+.review-card__name {
+  margin-top: 12px;
+  grid-area: name;
+  max-width: 180px;
+  line-height: $line-height-text-xsmall;
+  color: $color-text-accent;
+
+  @include tablet {
+    margin-top: 2px;
+    align-self: center;
+    font-size: $font-size-h6-tablet;
+    line-height: $line-height-h6-tablet;
+  }
+
+  @include desktop {
+    font-size: $line-height-text-xsmall;
+    margin-top: -25px;
+  }
+}
+
+// Styles for the second card (pixel perfect fix)
+.reviews__item:nth-child(2) .review-card__name {
+  @include desktop {
+    margin-top: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Meta Item (program or date)
+// -----------------------------------------------------------------------------
+.review-card__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include tablet {
+    gap: 10px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Label (Program, Date)
+// -----------------------------------------------------------------------------
+.review-card__label {
+  font-size: $font-size-text-xxsmall;
+  line-height: $line-height-text-xxsmall;
+  letter-spacing: $letter-spacing-caption;
+  text-transform: uppercase;
+  color: $color-text-accent;
+}
+
+// -----------------------------------------------------------------------------
+// Program Name
+// -----------------------------------------------------------------------------
+.review-card__program {
+  font-size: $font-size-text-xsmall-mobile;
+  line-height: $line-height-text-xsmall-mobile;
+  color: $color-text-review-card;
+
+  @include tablet {
+    font-size: $font-size-text-xsmall-tablet;
+    line-height: $line-height-text-xsmall-tablet;
+    color: $color-text-primary;
+  }
+
+  @include desktop {
+    line-height: $line-height-text-xsmall;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Date (time element)
+// -----------------------------------------------------------------------------
+.review-card__date {
+  font-size: $font-size-text-xsmall-mobile;
+  line-height: $line-height-text-xsmall-mobile;
+  color: $color-text-review-card;
+
+  @include tablet {
+    font-size: $font-size-text-xsmall-tablet;
+    line-height: $line-height-text-xsmall-tablet;
+    color: $color-text-primary;
+  }
+
+  @include desktop {
+    line-height: $line-height-text-xsmall;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Blockquote (main quote) - CMS-ready cascading styling
+// -----------------------------------------------------------------------------
+.review-card blockquote {
+  grid-area: quote;
+  margin-top: 8px;
+  font-size: $font-size-h6-mobile;
+  line-height: $line-height-h6-mobile;
+  color: $color-primary-blue;
+
+  @include tablet {
+    margin-top: 0;
+    font-size: $font-size-h6-tablet;
+    line-height: $line-height-h6-tablet;
+  }
+
+  @include desktop {
+    font-size: $font-size-h6-desktop;
+    line-height: $line-height-h6-desktop;
+  }
+}
+
+// Styles for the first card (pixel perfect fix)
+.reviews__item:first-child .review-card blockquote {
+  @include desktop {
+    margin-top: 0;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Paragraph (detailed review text) - CMS-ready cascading styling
+// -----------------------------------------------------------------------------
+.review-card p {
+  margin-top: 3px;
+  grid-area: text;
+  color: $color-text-primary;
+
+  @include tablet {
+    margin-top: -6px;
+    font-size: $font-size-text-small;
+  }
+
+  @include desktop {
+    line-height: $line-height-text-regular;
+  }
+}

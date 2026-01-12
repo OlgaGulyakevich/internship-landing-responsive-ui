@@ -2,14 +2,14 @@
   "general": [
     {
       "date": "23/03/2023",
-      "title": "Интервью с участницей программы стажировки",
-      "description": "Саша рассказывает, как попала в программу и как прошла 6-месячная стажировка в ISOFound",
+      "title": "Интервью с\u00A0участницей программы стажировки",
+      "description": "Саша рассказывает, как\u00A0попала в\u00A0программу и\u00A0как\u00A0прошла 6-месячная стажировка в ISOFound",
       "image": "news/tab-general/01-internship-interview",
       "link": "#"
     },
     {
       "date": "20/03/2023",
-      "title": "Путешествуем по миру",
+      "title": "Путешествуем по\u00A0миру",
       "description": "Какие места посещают наши студенты весной",
       "image": "news/tab-general/02-travel-spring",
       "link": "#"
@@ -27,27 +27,111 @@
       "description": "Ведущие компании готовы трудоустроить выпускников стажировки",
       "image": "news/tab-general/04-career-opportunities",
       "link": "#"
+    },
+    {
+      "date": "07/03/2023",
+      "title": "Летняя программа в\u00A0Италии",
+      "description": "Изучение языка и\u00A0культуры в\u00A0солнечной Италии",
+      "image": "news/tab-general/07-italy-summer",
+      "link": "#"
+    },
+    {
+      "date": "05/03/2023",
+      "title": "Экологический проект в\u00A0горах",
+      "description": "Волонтёры очистили горные тропы от\u00A0мусора",
+      "image": "news/tab-general/08-eco-mountains",
+      "link": "#"
+    },
+    {
+      "date": "03/03/2023",
+      "title": "Культурный обмен в\u00A0Испании",
+      "description": "Студенты провели две\u00A0недели в\u00A0Барселоне",
+      "image": "news/tab-general/09-spain-exchange",
+      "link": "#"
+    },
+    {
+      "date": "01/03/2023",
+      "title": "Стажировка в\u00A0IT\u2011компании",
+      "description": "Опыт работы в\u00A0технологической компании",
+      "image": "news/tab-general/10-it-company",
+      "link": "#"
+    },
+    {
+      "date": "28/02/2023",
+      "title": "Карьерные консультации",
+      "description": "Как подготовиться к\u00A0собеседованиям",
+      "image": "news/tab-general/11-career-consulting",
+      "link": "#"
+    },
+    {
+      "date": "26/02/2023",
+      "title": "Волонтёры в\u00A0приюте для\u00A0животных",
+      "description": "Наши студенты помогают ухаживать за\u00A0бездомными животными",
+      "image": "news/tab-general/12-animal-shelter",
+      "link": "#"
+    },
+    {
+      "date": "24/02/2023",
+      "title": "Приключения в\u00A0Азии",
+      "description": "Группа студентов посетила Таиланд и\u00A0Вьетнам",
+      "image": "news/tab-general/13-asia-adventure",
+      "link": "#"
+    },
+    {
+      "date": "22/02/2023",
+      "title": "Помощь пожилым людям",
+      "description": "Волонтёрская программа поддержки одиноких пенсионеров",
+      "image": "news/tab-general/14-elderly-care",
+      "link": "#"
+    },
+    {
+      "date": "20/02/2023",
+      "title": "Финансовый сектор открывает свои\u00A0двери",
+      "description": "Стажировка в\u00A0ведущем банке страны",
+      "image": "news/tab-general/15-finance-sector",
+      "link": "#"
+    },
+    {
+      "date": "18/02/2023",
+      "title": "Истории успеха выпускников",
+      "description": "Как построить успешную карьеру",
+      "image": "news/tab-general/16-success-stories",
+      "link": "#"
+    },
+    {
+      "date": "14/02/2023",
+      "title": "Маркетинг и\u00A0аналитика",
+      "description": "Студенты стажировались в\u00A0отделе маркетинга",
+      "image": "news/tab-general/18-marketing-analytics",
+      "link": "#"
+    },
+    {
+      "date": "16/02/2023",
+      "title": "Networking с\u00A0лидерами рынка",
+      "description": "Знакомство с\u00A0представителями топовых компаний",
+      "image": "news/tab-general/17-networking-event",
+      "link": "#"
     }
   ],
   "volunteer": [
     {
       "date": "17/03/2023",
       "title": "Новая программа волонтёрства",
-      "description": "Программа помощи детям длительностью 4 месяца",
+      "description": "Программа помощи детям длительностью 4\u00A0месяца",
       "image": "news/tab-volunteer/01-volunteer-program",
       "link": "#"
     },
     {
       "date": "12/03/2023",
-      "title": "Волонтёры в приюте для животных",
-      "description": "Наши студенты помогают ухаживать за бездомными животными",
+      "title": "Волонтёры в\u00A0приюте для\u00A0животных",
+      "description": "Наши студенты помогают ухаживать за\u00A0бездомными животными",
       "image": "news/tab-volunteer/02-animal-shelter",
       "link": "#"
     },
     {
       "date": "05/03/2023",
-      "title": "Экологический проект в горах",
-      "description": "Команда волонтёров очистила горные тропы от мусора",
+      "title": "Экологический проект в\u00A0горах",
+      "description": "Команда волонтёров очистила горные тропы от\u00A0мусора",
       "image": "news/tab-volunteer/03-eco-mountains",
       "link": "#"
     },
@@ -62,29 +146,29 @@
   "internship": [
     {
       "date": "23/03/2023",
-      "title": "Интервью с участницей программы стажировки",
-      "description": "Саша рассказывает, как попала в программу и как прошла 6-месячная стажировка в ISOFound",
+      "title": "Интервью с\u00A0участницей программы стажировки",
+      "description": "Саша рассказывает, как\u00A0попала в\u00A0программу и\u00A0как\u00A0прошла 6-месячная стажировка в\u00A0ISOFound",
       "image": "news/tab-internship/01-internship-interview",
       "link": "#"
     },
     {
       "date": "15/03/2023",
-      "title": "Стажировка в IT-компании",
-      "description": "Опыт работы в международной технологической компании",
+      "title": "Стажировка в\u00A0IT\u2011компании",
+      "description": "Опыт работы в\u00A0технологической компании",
       "image": "news/tab-internship/02-it-company",
       "link": "#"
     },
     {
       "date": "08/03/2023",
-      "title": "Маркетинг и аналитика",
-      "description": "Студенты прошли стажировку в отделе маркетинга",
+      "title": "Маркетинг и\u00A0аналитика",
+      "description": "Студенты стажировались в\u00A0отделе маркетинга",
       "image": "news/tab-internship/03-marketing-analytics",
       "link": "#"
     },
     {
       "date": "01/03/2023",
-      "title": "Финансовый сектор открывает двери",
-      "description": "Стажировка в ведущем банке страны",
+      "title": "Финансовый сектор открывает свои\u00A0двери",
+      "description": "Стажировка в\u00A0ведущем банке страны",
       "image": "news/tab-internship/04-finance-sector",
       "link": "#"
     }
@@ -100,21 +184,21 @@
     {
       "date": "06/03/2023",
       "title": "Карьерные консультации",
-      "description": "Эксперты помогут составить резюме и подготовиться к собеседованию",
+      "description": "Как подготовиться к\u00A0собеседованиям",
       "image": "news/tab-career/02-career-consulting",
       "link": "#"
     },
     {
       "date": "02/03/2023",
-      "title": "Networking-встреча с работодателями",
-      "description": "Знакомство с представителями топовых компаний",
+      "title": "Networking с\u00A0лидерами рынка",
+      "description": "Знакомство с\u00A0представителями топовых компаний",
       "image": "news/tab-career/03-networking-event",
       "link": "#"
     },
     {
       "date": "25/02/2023",
       "title": "Истории успеха выпускников",
-      "description": "Как стажировка помогла построить успешную карьеру",
+      "description": "Как построить успешную карьеру",
       "image": "news/tab-career/04-success-stories",
       "link": "#"
     }
@@ -122,29 +206,29 @@
   "travel": [
     {
       "date": "20/03/2023",
-      "title": "Путешествуем по миру",
-      "description": "Какие места посещают наши студенты весной",
+      "title": "Путешествуем по\u00A0миру",
+      "description": "Какие места посещают наши\u00A0студенты весной",
       "image": "news/tab-travel/01-travel-spring",
       "link": "#"
     },
     {
       "date": "13/03/2023",
-      "title": "Культурный обмен в Испании",
-      "description": "Студенты провели две недели в Барселоне",
+      "title": "Культурный обмен в\u00A0Испании",
+      "description": "Студенты провели две недели в\u00A0Барселоне",
       "image": "news/tab-travel/02-spain-exchange",
       "link": "#"
     },
     {
       "date": "07/03/2023",
-      "title": "Летняя программа в Италии",
-      "description": "Изучение языка и культуры в солнечной Италии",
+      "title": "Летняя программа в\u00A0Италии",
+      "description": "Изучение языка и\u00A0культуры в\u00A0солнечной Италии",
       "image": "news/tab-travel/03-italy-summer",
       "link": "#"
     },
     {
       "date": "27/02/2023",
-      "title": "Приключения в Азии",
-      "description": "Группа студентов посетила Таиланд и Вьетнам",
+      "title": "Приключения в\u00A0Азии",
+      "description": "Группа студентов посетила Таиланд и\u00A0Вьетнам",
       "image": "news/tab-travel/04-asia-adventure",
       "link": "#"
     }

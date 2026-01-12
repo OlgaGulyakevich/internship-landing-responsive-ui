@@ -12,13 +12,26 @@ $color-text-primary: #484848;
 $color-text-on-dark: #ffffff;
 $color-text-secondary-dark: #f0efe9;
 $color-text-accent: #316dc2;
+$color-text-label: rgb(109, 109, 109);
+$color-text-review-card: rgb(72, 72, 72, 0.9);
+$color-text-contacts-label: rgb(240, 239, 233, 0.8);
+$color-text-decorative: rgb(255, 255, 255, 0.2);
+$color-text-copyright: rgb(72, 72, 72, 0.6);
 
 // Button Colors
 // -----------------------------------------------------------------------------
 $color-button-primary: #316dc2;
 $color-button-on-dark: #ffffff;
+$color-button-on-dark-active: rgb(255, 255, 255, 0.7);
+$color-button-on-light-active: rgb(49, 109, 194, 0.7);
 $color-button-pressed: #275699;
 $color-button-disabled: #a9afb7;
+$color-button-icon-disabled: rgb(255, 255, 255, 0.7);
+$color-button-scrollbar: rgb(49, 109, 194, 0.2);
+$color-button-pagination: rgb(49, 109, 194, 0.5);
+$color-button-select: #484848;
+$color-button-tab: rgb(49, 109, 194, 0.6);
+
 
 // Background Colors
 // -----------------------------------------------------------------------------
@@ -26,22 +39,21 @@ $color-bg-primary: #f0efe9;
 $color-bg-secondary: #ffffff;
 $color-bg-accent: #316dc2;
 
-// Icon Colors
-// -----------------------------------------------------------------------------
-$color-icon-primary: #316dc2;
-$color-icon-on-blue: #ffffff;
-
 // Form Colors
 // -----------------------------------------------------------------------------
 $color-form-on-dark: #ffffff;
 $color-form-on-light: #484848;
 $color-form-error: #ff5e66;
+$color-form-error-bg: rgb(255, 94, 102, 0.2);
 $color-form-disabled: #a9afb7;
 
 // Border Colors
 // -----------------------------------------------------------------------------
 $border-color-default: $color-text-on-dark; // #FFFFFF
 $border-color-error: $color-form-error; // #FF5E66
+$border-color-scrollbar: #316dc2;
+$border-input: rgb(72, 72, 72, 0.3);
+$border-input-on-dark: rgb(255, 255, 255, 0.3);
 
 // States Colors
 // -----------------------------------------------------------------------------
@@ -75,6 +87,9 @@ $padding-lg: 52px;
 // -----------------------------------------------------------------------------
 $gap-xs: 10px;
 $gap-sm: 15px;
+$gap-md: 20px;
+$gap-lg: 25px;
+$gap-xl: 30px;
 
 // Container Spacing
 // -----------------------------------------------------------------------------
@@ -96,24 +111,24 @@ $section-padding-xs: 20px;
 $section-padding-sm: 30px;
 $section-padding-md: 50px;
 $section-padding-lg: 60px;
-$section-padding-xl: 80px;
+$section-padding-xl: 70px;
+$section-padding-xxl: 100px;
+$section-padding-xxxl: 120px;
+
 
 // =============================================================================
 // BORDER RADIUS
 // =============================================================================
 
-// Components
-// -----------------------------------------------------------------------------
-$radius-input: 8px;
-$radius-button-faq: 30px;
-$radius-button-icon: 44px;
-$radius-button-round: 50px; // Полностью круглые элементы
+$radius-base: 30px;
+$radius-nav-menu: 16px;
+$radius-news-card: 12px;
+$radius-news-tab: 20px;
+$radius-faq-item: 14px;
+$radius-review-card: 16px;
+$radius-contacts-map: 16px;
+$radius-form: 16px;
 
-// Cards & Containers
-// -----------------------------------------------------------------------------
-$radius-sm: 5px;
-$radius-md: 8px;
-$radius-lg: 44px;
 
 // =============================================================================
 // OPACITY
@@ -146,50 +161,10 @@ $shadow-focus: 0 0 0 3px rgb(49, 109, 194, 0.3);
 
 $z-index-dropdown: 100;
 $z-index-overlay: 200;
-$z-index-modal: 300;
+$z-index-header: 300;
+$z-index-modal: 350;
 $z-index-toast: 400;
 
-// =============================================================================
-// WIDTHS & HEIGHTS
-// =============================================================================
-
-// Icons
-// -----------------------------------------------------------------------------
-$icon-xs: 12px;
-$icon-sm: 20px;
-$icon-md: 22px;
-$icon-lg: 30px;
-$icon-xl: 36px;
-$icon-xxl: 40px;
-
-// Buttons
-// -----------------------------------------------------------------------------
-$btn-height-sm: 30px;
-$btn-height-md: 46px;
-$btn-height-lg: 54px;
-
-// Inputs
-// -----------------------------------------------------------------------------
-$input-height: 76px;
-$input-width-default: 350px;
-
-// Checkbox
-// -----------------------------------------------------------------------------
-$checkbox-size: 20px;
-
-// Pagination
-// -----------------------------------------------------------------------------
-$pagination-size: 32px;
-
-// Social Icons
-// -----------------------------------------------------------------------------
-$social-icon-size: 36px;
-
-// =============================================================================
-// BORDERS
-// =============================================================================
-
-$border-width: 1px;
 
 // =============================================================================
 // BREAKPOINTS
@@ -205,22 +180,3 @@ $desktop-min: 1440px;
 // -----------------------------------------------------------------------------
 $tablet: $tablet-min;
 $desktop: $desktop-min;
-
-// =============================================================================
-// GRID
-// =============================================================================
-
-// Mobile Grid
-// -----------------------------------------------------------------------------
-$grid-columns-mobile: 4;
-$grid-gap-mobile: 16px;
-
-// Tablet Grid
-// -----------------------------------------------------------------------------
-$grid-columns-tablet: 8;
-$grid-gap-tablet: 24px;
-
-// Desktop Grid
-// -----------------------------------------------------------------------------
-$grid-columns-desktop: 12;
-$grid-gap-desktop: 32px;

@@ -1,0 +1,567 @@
+// =============================================================================
+// FORM SECTION
+// =============================================================================
+// Contact form with background image (art direction)
+// FEATURES:
+// - Mobile: background on section
+// - Tablet/Desktop: background on wrapper with border-radius
+// - Custom select with icon
+// - Custom checkbox
+// - Form validation (required, pattern, minlength, etc.)
+// - No placeholders (per spec)
+// - Phone mask (JS controlled via data-phone-mask)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.form {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @include tablet {
+    padding-top: $section-padding-md;
+    padding-bottom: $section-padding-md;
+  }
+
+  @include desktop {
+    padding-top: $section-padding-lg;
+    padding-bottom: $section-padding-lg;
+  }
+}
+
+.form .container {
+  @include tablet {
+    padding: 0 58px;
+  }
+
+  @include desktop {
+    padding: 0 100px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Wrapper (background container)
+// -----------------------------------------------------------------------------
+.form__wrapper {
+  padding: 42px 0 40px;
+  margin-left: -15px;
+  margin-right: -15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  // Mobile: WebP with JPG fallback
+  background-image:
+    image-set(
+      url("/img/form/form-mobile@1x.webp") type("image/webp") 1x,
+      url("/img/form/form-mobile@2x.webp") type("image/webp") 2x,
+      url("/img/form/form-mobile@1x.jpg") type("image/jpeg") 1x,
+      url("/img/form/form-mobile@2x.jpg") type("image/jpeg") 2x
+    );
+
+  @include tablet {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: $radius-form;
+
+    // Tablet: WebP with JPG fallback
+    background-image:
+      image-set(
+        url("/img/form/form-tablet@1x.webp") type("image/webp") 1x,
+        url("/img/form/form-tablet@2x.webp") type("image/webp") 2x,
+        url("/img/form/form-tablet@1x.jpg") type("image/jpeg") 1x,
+        url("/img/form/form-tablet@2x.jpg") type("image/jpeg") 2x
+      );
+  }
+
+  @include desktop {
+    // Desktop: WebP with JPG fallback
+    background-image:
+      image-set(
+        url("/img/form/form-desktop@1x.webp") type("image/webp") 1x,
+        url("/img/form/form-desktop@2x.webp") type("image/webp") 2x,
+        url("/img/form/form-desktop@1x.jpg") type("image/jpeg") 1x,
+        url("/img/form/form-desktop@2x.jpg") type("image/jpeg") 2x
+      );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Content Container
+// -----------------------------------------------------------------------------
+.form__content {
+  max-width: 300px;
+  padding: 16px 15px 27px;
+  background-color: $color-primary-blue;
+  border-radius: $radius-form;
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 442px;
+    height: 780px;
+    padding: 40px;
+    margin: 0;
+    margin-right: auto;
+  }
+
+  @include desktop {
+    max-width: 490px;
+    height: 800px;
+    padding: 44px 70px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Title
+// -----------------------------------------------------------------------------
+.form__title {
+  font-size: 18px;
+  line-height: 22px;
+
+  margin-bottom: 10px;
+  color: $color-text-on-dark;
+
+  @include tablet {
+    font-size: 28px;
+    line-height: 28px;
+    margin-bottom: 30px;
+  }
+
+  @include desktop {
+    font-size: 32px;
+    line-height: 36px;
+    margin-bottom: 34px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Form Description
+// -----------------------------------------------------------------------------
+.form__description {
+  margin-bottom: 21px;
+  color: $color-text-secondary-dark;
+
+  @include tablet {
+    margin-bottom: 41px;
+    font-size: $font-size-text-small;
+  }
+
+  @include desktop {
+    line-height: $line-height-text-regular;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Fieldset
+// -----------------------------------------------------------------------------
+.form__fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+// -----------------------------------------------------------------------------
+// Field Wrapper (label + input/textarea/select)
+// -----------------------------------------------------------------------------
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+// -----------------------------------------------------------------------------
+// Label
+// -----------------------------------------------------------------------------
+.form__label {
+  display: block;
+  font-size: $font-size-text-xxsmall;
+  line-height: 14px;
+  color: $color-text-contacts-label;
+
+  @include tablet {
+    font-size: $font-size-text-xsmall;
+    line-height: $line-height-text-small;
+  }
+
+  @include desktop {
+    line-height: $line-height-text-xsmall;
+  }
+}
+
+// Pixel Perfect fix
+.form__field:nth-child(5) .form__label {
+  @include tablet {
+    margin-top: -2px;
+  }
+
+  @include desktop {
+    margin-top: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Input Fields (text, tel)
+// -----------------------------------------------------------------------------
+.form__input {
+  width: 100%;
+  min-height: 50px;
+  padding: 15px 20px;
+  font-size: 14px;
+  line-height: 14px;
+  color: $color-button-on-dark;
+  background-color: transparent;
+  border: 1px solid $border-input-on-dark;
+  border-radius: 8px;
+  transition: border-color $transition-normal, outline $transition-normal;
+
+  // No placeholder styles
+
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-button-on-dark;
+    box-shadow: 0 0 0 1000px $color-primary-blue inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  // States
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: none;
+  }
+
+
+  // Disabled state
+  &:disabled {
+    background-color: rgb(255, 255, 255, 0.2);
+    border-color: rgb(255, 255, 255, 0.4);
+    color: $color-form-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Invalid state - triggered via JS class after form submission
+.form__input.is-invalid {
+  border-color: $color-form-error;
+  background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-error;
+    background-color: $color-form-error-bg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Textarea
+// -----------------------------------------------------------------------------
+.form__textarea {
+  width: 100%;
+  height: 94px;
+  padding: 15px 20px;
+  font-size: 14px;
+  line-height: 14px;
+  color: $color-button-on-dark;
+  background-color: transparent;
+  border: 1px solid $border-input-on-dark;
+  border-radius: 8px;
+  resize: none;
+  overflow-y: auto;
+  transition: border-color $transition-normal, outline $transition-normal;
+
+  @include tablet {
+    height: 90px;
+  }
+
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-button-on-dark;
+    box-shadow: 0 0 0 1000px $color-primary-blue inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: rgb(255, 255, 255, 0.2);
+    border-color: rgb(255, 255, 255, 0.4);
+    color: $color-form-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Invalid state for textarea
+.form__textarea.is-invalid {
+  border-color: $color-error;
+  background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-error;
+    background-color: $color-form-error-bg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Select Wrapper (for custom icon positioning)
+// -----------------------------------------------------------------------------
+.form__select-wrapper {
+  position: relative;
+}
+
+// -----------------------------------------------------------------------------
+// Select
+// -----------------------------------------------------------------------------
+.form__select {
+  width: 260px;
+  min-height: 52px;
+  padding: 15px 20px;
+  padding-right: 40px; // Space for icon
+  font-size: 14px;
+  line-height: 14px;
+  color: $color-button-on-dark;
+  background-color: transparent;
+  border: 1px solid $border-input-on-dark;
+  border-radius: 8px;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color $transition-normal, outline $transition-normal;
+
+  @include tablet {
+    width: 100%;
+  }
+
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-button-on-dark;
+    box-shadow: 0 0 0 1000px $color-primary-blue inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: rgb(255, 255, 255, 0.2);
+    border-color: rgb(255, 255, 255, 0.4);
+    color: $color-form-disabled;
+    cursor: not-allowed;
+  }
+
+  // Hide empty option text
+  [value=""] {
+    display: none;
+  }
+}
+
+// Invalid state for select
+.form__select.is-invalid {
+  border-color: $color-error;
+  background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-error;
+    background-color: $color-form-error-bg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Select Icon (chevron down)
+// -----------------------------------------------------------------------------
+.form__select-icon {
+  position: absolute;
+  right: 31px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: $color-button-on-dark;
+  transition: transform $transition-slow, color $transition-slow;
+
+  @include tablet {
+    right: 21px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  // Change icon color when select is hovered or active
+  .form__select:hover + &,
+  .form__select:active + & {
+    color: $color-button-on-dark;
+  }
+
+  // Rotate on focus (optional enhancement)
+  .form__select:focus + & {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Checkbox Wrapper
+// -----------------------------------------------------------------------------
+.form__checkbox-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  @include tablet {
+    margin-top: 4px;
+  }
+
+  @include desktop {
+    margin-top: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Checkbox (visually hidden, native input)
+// Styles inherited from .visually-hidden class in HTML
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Checkbox Label (with custom checkbox design)
+// -----------------------------------------------------------------------------
+.form__checkbox-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  font-size: 12px;
+  line-height: 14px;
+  color: $color-text-contacts-label;
+  cursor: pointer;
+  user-select: none;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  // Custom checkbox box
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $color-bg-secondary;
+    border-radius: 2px;
+    background-color: $color-bg-secondary;
+    transition: background-color $transition-normal, border-color $transition-normal;
+  }
+
+  // Custom checkmark
+  &::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 7px;
+    height: 11px;
+    border: 2px solid $color-button-primary;
+    border-width: 0 2px 2px 0;
+    opacity: 0;
+    transition: opacity $transition-normal, border-color $transition-normal background-color $transition-normal;
+  }
+}
+
+// Checked state - show checkmark
+.form__checkbox:checked + .form__checkbox-label::after {
+  opacity: 1;
+}
+
+// Focus state - outline on checkbox
+.form__checkbox:focus-visible + .form__checkbox-label::before {
+  outline: 2px solid $color-button-on-dark;
+  outline-offset: 2px;
+}
+
+// Hover state
+.form__checkbox:hover:not(:disabled) + .form__checkbox-label::before {
+  background-color: transparent;
+  opacity: 1;
+}
+
+// Hover state on checked - white checkmark
+.form__checkbox:checked:hover:not(:disabled) + .form__checkbox-label::after {
+  border-color: $color-button-on-dark;
+}
+
+// Focus state on checked - white checkmark
+.form__checkbox:checked:focus-visible + .form__checkbox-label::after {
+  border-color: $color-button-on-dark;
+}
+
+// Disabled state
+.form__checkbox:disabled + .form__checkbox-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+// Invalid state - triggered via JS class after form validation
+.form__checkbox.is-invalid + .form__checkbox-label::before {
+  border-color: $color-form-error;
+}
+
+// -----------------------------------------------------------------------------
+// Submit Button
+// -----------------------------------------------------------------------------
+.form__submit {
+  justify-content: space-between;
+  width: 260px;
+  padding-left: 74px;
+  margin-top: 19px;
+
+  @include tablet {
+    width: 352px;
+    padding-left: 108px;
+    margin-top: 44px;
+  }
+
+  @include desktop {
+    margin-top: 45px;
+  }
+}

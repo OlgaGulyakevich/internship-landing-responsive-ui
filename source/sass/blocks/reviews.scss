@@ -1,0 +1,221 @@
+// =============================================================================
+// REVIEWS SECTION
+// =============================================================================
+// SLIDER:
+// - Swiper.js with scrollbar pagination
+// - Mobile: 1 slide visible (auto width)
+// - Tablet: auto width (shows partial next slide)
+// - Desktop: 2 slides visible
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.reviews {
+  padding-top: 56px;
+  padding-bottom: 50px;
+
+  @include tablet {
+    padding-top: $section-padding-md;
+    padding-bottom: $section-padding-md;
+  }
+
+  @include desktop {
+    padding-top: 65px;
+    padding-bottom: 70px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Header (title + mobile arrows)
+// -----------------------------------------------------------------------------
+.reviews__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 33px;
+
+  @include tablet {
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    margin-bottom: 45px;
+    margin-left: 3px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Title
+// -----------------------------------------------------------------------------
+.reviews__title {
+  @include heading-2;
+
+  color: $color-text-accent;
+}
+
+// -----------------------------------------------------------------------------
+// Mobile Navigation Arrows (visible only on mobile)
+// -----------------------------------------------------------------------------
+.reviews__arrows {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+// Mobile arrow styles delegated to .button--slider-arrow in button.scss
+
+// -----------------------------------------------------------------------------
+// Slider Container
+// -----------------------------------------------------------------------------
+// High specificity to override Swiper and container defaults
+.reviews .reviews__slider.swiper.swiper-horizontal {
+  @include grid-no-overflow;
+
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: visible; // Show partial next slide on mobile/tablet
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include desktop {
+    // margin-bottom: 50px;
+    overflow: hidden;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Swiper Slide - fixed widths for slidesPerView: 'auto'
+// -----------------------------------------------------------------------------
+// High specificity using Swiper class
+.reviews__slider .reviews__item.swiper-slide {
+  width: 290px;
+  height: auto;
+
+  @include tablet {
+    width: 560px;
+  }
+
+  @include desktop {
+    width: 604px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Slider Controls (scrollbar + arrows, tablet/desktop only)
+// -----------------------------------------------------------------------------
+.reviews__controls {
+  display: none; // Hidden on mobile
+
+  @include tablet {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    @include grid-no-overflow;
+  }
+
+  @include desktop {
+    gap: 30px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Scrollbar (using mixin from mixins.scss)
+// -----------------------------------------------------------------------------
+// High specificity using Swiper classes to override defaults
+.reviews__scrollbar.swiper-scrollbar.swiper-scrollbar-horizontal {
+  @include slider-scrollbar;
+
+  position: static; // Override for flex layout
+  flex: 1;
+  display: block;
+
+  // Fixed width on tablet/desktop (same as programs)
+  @include tablet {
+    width: 562px;
+    max-width: 562px;
+  }
+
+  @include desktop {
+    width: 1136px;
+    max-width: 1136px;
+  }
+}
+
+// Draggable element (active part of progress bar)
+// Width set dynamically via JS (reviews-slider.js setTranslate event)
+
+// -----------------------------------------------------------------------------
+// Navigation Arrows (tablet/desktop)
+// -----------------------------------------------------------------------------
+.reviews__nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+// Arrow styles matching Programs section
+.reviews__nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: $color-button-primary;
+  cursor: pointer;
+  transition: background-color $transition-normal, border-color $transition-normal, color $transition-normal;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  &:hover {
+    color: $color-button-on-light-active;
+  }
+
+  &:focus {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
+
+  &:focus-visible {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-primary;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    background-color: $color-button-on-dark;
+    border-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-button-disabled;
+    cursor: not-allowed;
+  }
+}

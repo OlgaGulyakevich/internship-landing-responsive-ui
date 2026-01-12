@@ -1,0 +1,261 @@
+// =============================================================================
+// GRANT SECTION
+// =============================================================================
+// FEATURES:
+// - CSS Counters for auto-numbering (quantity can change from CMS)
+// - Flexible image sizing (can be any dimensions)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.grant {
+  padding-top: $section-padding-xl;
+  padding-bottom: $section-padding-xl;
+  background-color: $color-bg-accent;
+
+  @include tablet {
+    padding-top: $section-padding-xxl;
+    padding-bottom: $section-padding-xxl;
+  }
+
+  @include desktop {
+    padding-top: $section-padding-xxxl;
+    padding-bottom: $section-padding-xxxl;
+  }
+}
+
+// Desktop: Create 2-column grid in container (title moves to left column)
+.grant .container {
+  @include desktop {
+    display: grid;
+
+    @include grid-no-overflow;
+
+    grid-template-columns: repeat(2, 498px);
+    gap: 0 138px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Title
+// -----------------------------------------------------------------------------
+.grant__title {
+  @include heading-2;
+
+  color: $color-text-on-dark;
+  margin-bottom: 15px;
+
+  @include tablet {
+    margin-bottom: 30px;
+  }
+
+  @include desktop {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Content Wrapper (responsive layout)
+// -----------------------------------------------------------------------------
+.grant__content {
+  display: flex;
+
+  @include flex-no-overflow;
+
+  flex-direction: column;
+  gap: 40px;
+
+  @include tablet {
+    gap: 50px;
+  }
+
+  @include desktop {
+    // Remove wrapper from layout - children become direct grid items
+    display: contents;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Column 1: Intro + Image
+// -----------------------------------------------------------------------------
+.grant__intro {
+  display: flex;
+
+  @include flex-no-overflow;
+
+  flex-direction: column;
+  gap: 30px;
+
+  @include tablet {
+    gap: 40px;
+  }
+
+  @include desktop {
+    grid-column: 1;
+    grid-row: 2;
+    gap: 40px;
+  }
+}
+
+// Paragraph (cascading, no class - CMS content)
+.grant__intro p {
+  font-size: $font-size-text-regular-mobile;
+  line-height: $line-height-text-regular-mobile;
+  color: $color-text-on-dark;
+  margin: 0;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    line-height: $line-height-text-regular-tablet;
+    max-width: 498px;
+  }
+
+  @include desktop {
+    font-size: $font-size-text-regular;
+    line-height: $line-height-text-regular;
+  }
+}
+
+// Adaptive image (can be any size, changed from admin panel)
+.grant__image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+
+// -----------------------------------------------------------------------------
+// Column 2: Requirements (Subtitle + List)
+// -----------------------------------------------------------------------------
+.grant__requirements {
+  display: flex;
+
+  @include flex-no-overflow;
+
+  flex-direction: column;
+  gap: 30px;
+
+  @include tablet {
+    gap: 45px;
+  }
+
+  @include desktop {
+    grid-column: 2;
+    grid-row: 2; // Start from row 2 (align with intro, not title)
+    gap: 55px;
+  }
+}
+
+.grant__subtitle {
+  font-size: $font-size-h3-mobile;
+  line-height: $line-height-h3-mobile;
+  color: $color-text-on-dark;
+  max-width: 498px;
+
+  @include tablet {
+    font-size: $font-size-h3-tablet;
+    line-height: $line-height-h3-tablet;
+    white-space: nowrap;
+  }
+
+  @include desktop {
+    font-size: $font-size-h3-desktop;
+    line-height: $line-height-h3-desktop;
+    margin-top: -70px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// List with CSS Counters (auto-numbering)
+// -----------------------------------------------------------------------------
+.grant__list {
+  counter-reset: grant-counter;
+  display: flex;
+
+  @include flex-no-overflow;
+
+  flex-direction: column;
+  margin-left: auto;
+  gap: 15px;
+  max-width: 275px;
+
+  @include tablet {
+    display: grid;
+
+    @include grid-no-overflow;
+
+    grid-template-columns: repeat(2, 305px);
+    justify-content: flex-end;
+    gap: 25px 48px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  @media (width >= 430px) and (width <= 767px) {
+    margin-right: auto;
+  }
+
+  @include desktop {
+    display: flex;
+
+    @include flex-no-overflow;
+
+    flex-direction: column;
+    gap: 23px;
+    max-width: 478px;
+    margin-left: auto;
+  }
+}
+
+.grant__list-item {
+  counter-increment: grant-counter;
+  position: relative;
+  padding: 24px 25px;
+  min-height: 70px;
+  border: 1px solid $border-color-default;
+  border-radius: 16px;
+  color: $color-text-on-dark;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+    padding: 30px 25px;
+  }
+
+  @include desktop {
+    font-size: $font-size-text-regular;
+    line-height: $line-height-text-regular;
+  }
+
+  // Counter number (positioned like star decoration in about section)
+  &::before {
+    position: absolute;
+    top: -6px;
+    left: -16px;
+    content: counter(grant-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: $font-weight-medium;
+    color: $color-text-on-dark;
+    background-color: $color-bg-accent;
+    border-radius: 50%;
+
+    @include tablet {
+      width: 42px;
+      height: 42px;
+      top: -18px;
+      left: -21px;
+      font-size: 22px;
+      letter-spacing: 0.22px;
+    }
+  }
+}

@@ -1,0 +1,230 @@
+// =============================================================================
+// NAV MENU BLOCK (Burger Menu)
+// =============================================================================
+// Dropdown navigation menu positioned under burger button
+// Features:
+// - Overlay with dark background (fullscreen)
+// - Blue content container appears below burger button with 4px gap
+// - Border radius 16px
+// - Expandable items (ПРОГРАММЫ, НОВОСТИ) with arrow icons
+// - Arrow rotates 180deg when expanded
+// - Multiple items can be expanded simultaneously
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Nav Menu Container (Hidden by default)
+// -----------------------------------------------------------------------------
+.nav-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 250; // Same as header - overlay will cover logo
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s $transition-slow, opacity $transition-slow;
+
+  // Limit width on large screens to match header container
+  @media (width >= 1441px) {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+// Menu is visible when open
+.nav-menu.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: visibility 0s, opacity $transition-slow;
+}
+
+// -----------------------------------------------------------------------------
+// Overlay (Dark Background - fullscreen)
+// -----------------------------------------------------------------------------
+.nav-menu__overlay {
+  position: absolute; // Height set by JS to cover full page
+  top: 0;
+  bottom: 0;
+  background-color: $color-overlay-menu;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity $transition-slow 0.1s; // Delay 100ms
+
+  // Stretch to full viewport width (escape parent max-width)
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+// Show overlay when menu is open
+.nav-menu.is-open .nav-menu__overlay {
+  opacity: 1;
+}
+
+// -----------------------------------------------------------------------------
+// Content Container (Blue Box - positioned under burger button)
+// -----------------------------------------------------------------------------
+.nav-menu__content {
+  position: absolute;
+  top: calc(25px + 54px + 4px); // header padding-top + burger height + gap
+  right: $container-padding-mobile;
+  width: 290px;
+  min-height: 282px;
+  padding: 35px 25px;
+  background-color: $color-button-primary;
+  border-radius: 16px;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity $transition-slow, transform $transition-slow;
+
+  @include tablet {
+    top: calc(35px + 54px + 4px); // header padding-top + burger height + gap
+    right: $container-padding-tablet;
+  }
+
+  @include desktop {
+    right: $container-padding-desktop;
+  }
+}
+
+// Show content when menu is open
+.nav-menu.is-open .nav-menu__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// -----------------------------------------------------------------------------
+// Navigation List
+// -----------------------------------------------------------------------------
+// Resets already in page.scss
+.nav-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  @include flex-no-overflow;
+}
+
+// -----------------------------------------------------------------------------
+// Navigation Items
+// -----------------------------------------------------------------------------
+
+// Navigation link (regular items)
+.nav-menu__link {
+  display: block;
+  max-width: 100%;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  line-height: 16px;
+  color: $color-button-on-dark-active;
+  text-transform: uppercase;
+  transition: opacity $transition-normal;
+
+  &:hover,
+  &:focus {
+    color: $color-button-on-dark;
+  }
+
+  &:active {
+    color: $color-button-pressed;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Expandable Items (ПРОГРАММЫ, НОВОСТИ)
+// -----------------------------------------------------------------------------
+// Expandable toggle button
+.nav-menu__toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  @include flex-no-overflow;
+
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  line-height: 16px;
+  color: $color-button-on-dark-active;
+  text-align: left;
+  text-transform: uppercase;
+  transition: opacity $transition-normal;
+
+  &:hover,
+  &:focus {
+    color: $color-button-on-dark;
+  }
+
+  &:active {
+    color: $color-button-pressed;
+  }
+}
+
+// Arrow icon in expandable toggle
+.nav-menu__icon {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 2px;
+  transition: transform $transition-slow;
+}
+
+// Rotate arrow 180deg when expanded
+.nav-menu__toggle[aria-expanded="true"] .nav-menu__icon {
+  transform: rotate(180deg);
+}
+
+// -----------------------------------------------------------------------------
+// Submenu (Nested List)
+// -----------------------------------------------------------------------------
+.nav-menu__submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include flex-no-overflow;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height $transition-slow;
+}
+
+// Expand submenu when parent is open
+.nav-menu__toggle[aria-expanded="true"] + .nav-menu__submenu {
+  max-height: 500px;
+}
+
+// Submenu items
+.nav-menu__subitem {
+  padding-left: 16px;
+
+  &:first-child {
+    padding-top: 20px;
+  }
+}
+
+// Submenu links
+.nav-menu__sublink {
+  display: block;
+  max-width: 100%;
+  font-size: 16px;
+  font-weight: $font-weight-regular;
+  line-height: 16px;
+  color: rgb(255, 255, 255, 0.6);
+  transition: opacity $transition-normal;
+
+  &:hover,
+  &:focus {
+    color: rgb(255, 255, 255, 0.9);
+  }
+
+  &:active {
+    color: $color-button-pressed;
+  }
+}

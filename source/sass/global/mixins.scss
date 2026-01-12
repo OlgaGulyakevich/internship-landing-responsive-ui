@@ -90,6 +90,19 @@
   }
 }
 
+// Show <br> on mobile and desktop (hide on tablet)
+@mixin br-not-tablet {
+  display: block;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: block;
+  }
+}
+
 // Show <br> on mobile and tablet (hide on desktop)
 @mixin br-not-desktop {
   display: block;
@@ -102,7 +115,6 @@
 // -----------------------------------------------------------------------------
 // Responsive Text Wrapping
 // -----------------------------------------------------------------------------
-// Manage white-space on different breakpoints
 
 // Nowrap на tablet, normal на mobile/desktop
 @mixin nowrap-tablet {
@@ -169,27 +181,28 @@
   }
 }
 
-// -----------------------------------------------------------------------------
-// Overlay Pattern (for modals and menus)
-// -----------------------------------------------------------------------------
-
-// Full-screen overlay with dark background
-// Used for modal windows and navigation menu
-@mixin overlay {
-  position: fixed;
-  inset: 0;
-  background-color: $color-overlay-menu;
-  z-index: $z-index-overlay;
-}
 
 // -----------------------------------------------------------------------------
-// Slide-in Animations
+// Slider Scrollbar (Progress Bar)
 // -----------------------------------------------------------------------------
+// Base styles for progress bar in sliders
+@mixin slider-scrollbar {
+  position: static;
+  width: 100%;
+  height: 2px;
+  border-radius: 0;
+  background-color: $color-button-scrollbar;
+  opacity: 1;
 
-// Slide in from right (for navigation menu)
-// Element slides in from right side of screen
-// Note: Apply .is-open class to trigger the slide-in animation
-@mixin slide-in-right {
-  transform: translateX(100%);
-  transition: transform $transition-normal;
+  // Draggable element (active part of progress bar)
+  .swiper-scrollbar-drag {
+    border-radius: 0;
+    background-color: $border-color-scrollbar;
+    cursor: grab;
+    opacity: 1;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
 }

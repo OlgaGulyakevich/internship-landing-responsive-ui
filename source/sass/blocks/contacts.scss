@@ -1,0 +1,218 @@
+// =============================================================================
+// CONTACTS SECTION
+// =============================================================================
+// Contact information with address, phone, email and map
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section Container
+// -----------------------------------------------------------------------------
+.contacts {
+  padding-top: 75px;
+  padding-bottom: 70px;
+  background-color: $color-primary-blue;
+  color: $color-text-on-dark;
+
+  @include tablet {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @include desktop {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Header (title + contact info)
+// -----------------------------------------------------------------------------
+.contacts__header {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-bottom: 62px;
+
+  @include flex-no-overflow;
+
+  @include tablet {
+    gap: 30px;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 82px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section Title
+// -----------------------------------------------------------------------------
+.contacts__title {
+  @include heading-2;
+
+  color: $color-text-on-dark;
+
+  @include desktop {
+    flex-shrink: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Contact Info List
+// -----------------------------------------------------------------------------
+.contacts__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include flex-no-overflow;
+
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 21px;
+  }
+
+  @include desktop {
+    gap: 53px;
+    justify-content: flex-end;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Contact Info Item
+// -----------------------------------------------------------------------------
+.contacts__info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  @include tablet {
+    flex: 0 0 auto;
+    gap: 24px;
+  }
+
+  @include desktop {
+    flex: 0 0 auto;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Contact Label (Address, Phone, Email)
+// -----------------------------------------------------------------------------
+.contacts__label {
+  font-size: $font-size-caption;
+  line-height: $line-height-caption;
+  letter-spacing: $letter-spacing-caption;
+  text-transform: uppercase;
+  color: $color-text-contacts-label;
+}
+
+// -----------------------------------------------------------------------------
+// Address
+// -----------------------------------------------------------------------------
+.contacts__address {
+  font-style: normal;
+
+  @include tablet {
+    font-size: $font-size-text-regular-tablet;
+  }
+
+  @include desktop {
+    line-height: $line-height-text-regular;
+    max-width: 263px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Phone & Email Links
+// -----------------------------------------------------------------------------
+.contacts__phone,
+.contacts__email {
+  display: inline-block;
+  color: $color-text-on-dark;
+  text-decoration: none;
+  transition: color $transition-normal;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @include tablet {
+    font-size: $font-size-text-small;
+  }
+
+  @include desktop {
+    line-height: 17px;
+  }
+
+  &:hover {
+    color: $color-button-on-dark-active;
+  }
+
+  &:focus {
+    color: $color-text-primary;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  &:active {
+    color: $color-text-on-dark;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Map Container
+// -----------------------------------------------------------------------------
+.contacts__map {
+  position: relative;
+  width: 100%;
+
+  // margin-top: 30px;
+  border-radius: $radius-contacts-map;
+
+  // Decorative line above map
+  &::before {
+    content: "";
+    position: absolute;
+    top: -32px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color-text-decorative;
+  }
+
+  @include desktop {
+    &::before {
+      top: -42px;
+    }
+  }
+
+  picture {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: $radius-contacts-map;
+    aspect-ratio: 290 / 240;
+
+    @include tablet {
+      aspect-ratio: 678 / 500;
+    }
+
+    @include desktop {
+      aspect-ratio: 1240 / 486;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+}

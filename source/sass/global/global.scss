@@ -14,13 +14,11 @@
 
 html {
   height: 100%;
+
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-// HTML1-TEST-03: Minimum width of the page
-// - min-width: minimum width of the frame
-// - margin/padding: 0 for resetting margins and paddings
-// - Centering the content through .container (margin: 0 auto)
 body {
   display: flex;
   flex-direction: column;
@@ -28,13 +26,13 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   font-family: $font-family;
   font-size: $font-size-text-regular-mobile;
   font-weight: $font-weight-regular;
   line-height: $line-height-text-regular-mobile;
   color: $color-text-primary;
   background-color: $color-bg-primary;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
