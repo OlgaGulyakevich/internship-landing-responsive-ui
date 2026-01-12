@@ -1401,69 +1401,78 @@
               <fieldset class="form__fieldset">
                 <legend class="visually-hidden">Контактная форма</legend>
 
-                <label class="form__label" for="form-name">Имя</label>
-                <input
-                  class="form__input"
-                  type="text"
-                  id="form-name"
-                  name="name"
-                  minlength="2"
-                  maxlength="50"
-                  autocomplete="name"
-                  required>
+                <div class="form__field">
+                  <label class="form__label" for="form-name">Имя</label>
+                  <input
+                    class="form__input"
+                    type="text"
+                    id="form-name"
+                    name="name"
+                    minlength="2"
+                    maxlength="50"
+                    autocomplete="name"
+                    required>
+                </div>
 
-                <label class="form__label" for="form-phone">Телефон</label>
-                <input
-                  class="form__input"
-                  type="tel"
-                  id="form-phone"
-                  name="phone"
-                  pattern="^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$"
-                  autocomplete="tel"
-                  data-phone-mask="true"
-                  required>
+                <div class="form__field">
+                  <label class="form__label" for="form-phone">Телефон</label>
+                  <input
+                    class="form__input"
+                    type="tel"
+                    id="form-phone"
+                    name="phone"
+                    pattern="^[\d+\s]{10,}$"
+                    title="Введите корректный номер телефона (минимум 10 символов)"
+                    autocomplete="tel"
+                    data-phone-mask="true"
+                    required>
+                </div>
 
-                <label class="form__label" for="form-message">Ваше сообщение</label>
-                <textarea
-                  class="form__textarea"
-                  id="form-message"
-                  name="message"
-                  minlength="2"
-                  maxlength="1000"
-                  rows="5"
-                  required
-                ></textarea>
+                <div class="form__field">
+                  <label class="form__label" for="form-message">Ваше сообщение</label>
+                  <textarea
+                    class="form__textarea"
+                    id="form-message"
+                    name="message"
+                    minlength="2"
+                    maxlength="1000"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
 
-                <label class="form__label" for="form-city">Выберите город</label>
-                <div class="form__select-wrapper">
-                  <select class="form__select" id="form-city" name="city" required>
-                    <option value="" hidden>&nbsp;</option>
-                    <option value="moscow">Москва</option>
-                    <option value="saint-petersburg">Санкт-Петербург</option>
-                    <option value="novosibirsk">Новосибирск</option>
-                    <option value="yekaterinburg">Екатеринбург</option>
-                    <option value="kazan">Казань</option>
-                    <option value="nizhny-novgorod">Нижний Новгород</option>
-                    <option value="chelyabinsk">Челябинск</option>
-                    <option value="samara">Самара</option>
-                    <option value="omsk">Омск</option>
-                    <option value="rostov-on-don">Ростов-на-Дону</option>
-                    <option value="ufa">Уфа</option>
-                    <option value="krasnoyarsk">Красноярск</option>
-                    <option value="voronezh">Воронеж</option>
-                    <option value="perm">Пермь</option>
-                    <option value="volgograd">Волгоград</option>
-                    <option value="krasnodar">Краснодар</option>
-                    <option value="saratov">Саратов</option>
-                    <option value="tyumen">Тюмень</option>
-                    <option value="tolyatti">Тольятти</option>
-                    <option value="izhevsk">Ижевск</option>
-                    <option value="barnaul">Барнаул</option>
-                    <option value="other">Другой город</option>
-                  </select>
-                  <svg class="form__select-icon" width="16" height="16" aria-hidden="true">
-                    <use href="/__spritemap#sprite-arrow-down"></use>
-                  </svg>
+                <div class="form__field">
+                  <label class="form__label" for="form-city">Выберите город</label>
+                  <div class="form__select-wrapper">
+                    <select class="form__select" id="form-city" name="city" required>
+                      <option value="" hidden>&nbsp;</option>
+                      <option value="moscow">Москва</option>
+                      <option value="saint-petersburg">Санкт-Петербург</option>
+                      <option value="novosibirsk">Новосибирск</option>
+                      <option value="yekaterinburg">Екатеринбург</option>
+                      <option value="kazan">Казань</option>
+                      <option value="nizhny-novgorod">Нижний Новгород</option>
+                      <option value="chelyabinsk">Челябинск</option>
+                      <option value="samara">Самара</option>
+                      <option value="omsk">Омск</option>
+                      <option value="rostov-on-don">Ростов-на-Дону</option>
+                      <option value="ufa">Уфа</option>
+                      <option value="krasnoyarsk">Красноярск</option>
+                      <option value="voronezh">Воронеж</option>
+                      <option value="perm">Пермь</option>
+                      <option value="volgograd">Волгоград</option>
+                      <option value="krasnodar">Краснодар</option>
+                      <option value="saratov">Саратов</option>
+                      <option value="tyumen">Тюмень</option>
+                      <option value="tolyatti">Тольятти</option>
+                      <option value="izhevsk">Ижевск</option>
+                      <option value="barnaul">Барнаул</option>
+                      <option value="other">Другой город</option>
+                    </select>
+                    <svg class="form__select-icon" width="16" height="16" aria-hidden="true">
+                      <use href="/__spritemap#sprite-arrow-down"></use>
+                    </svg>
+                  </div>
                 </div>
 
                 <div class="form__checkbox-wrapper">
@@ -1474,7 +1483,7 @@
                     name="agreement"
                     required>
                   <label class="form__checkbox-label" for="form-agreement">
-                    Я согласен на обработку моих персональных данных
+                    Я согласен на обработку моих персональных<br class="br-mobile"> данных
                   </label>
                 </div>
               </fieldset>

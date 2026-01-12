@@ -52,6 +52,7 @@ $border-color-default: $color-text-on-dark; // #FFFFFF
 $border-color-error: $color-form-error; // #FF5E66
 $border-color-scrollbar: #316dc2;
 $border-input: rgb(72, 72, 72, 0.3);
+$border-input-on-dark: rgb(255, 255, 255, 0.3);
 
 // States Colors
 // -----------------------------------------------------------------------------
@@ -125,6 +126,7 @@ $radius-news-tab: 20px;
 $radius-faq-item: 14px;
 $radius-review-card: 16px;
 $radius-contacts-map: 16px;
+$radius-form: 16px;
 
 
 // =============================================================================

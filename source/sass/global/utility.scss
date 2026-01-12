@@ -76,6 +76,7 @@
 // Increased specificity to override .input styles
 .input.is-invalid {
   border-color: $color-error;
+  background-color: $color-form-error-bg;
 
   // Keep error border even when focused
   &:focus,

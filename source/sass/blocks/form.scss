@@ -1,5 +1,5 @@
 // =============================================================================
-// FORM SECTION (Напишите нам)
+// FORM SECTION
 // =============================================================================
 // Contact form with background image (art direction)
 // FEATURES:
@@ -12,77 +12,79 @@
 // - Phone mask (JS controlled via data-phone-mask)
 // =============================================================================
 
-// TODO: Check in Figma:
-// - Section padding per breakpoint
-// - Wrapper border-radius
-// - Content padding
-// - Title margin-bottom
-// - Description margin-bottom
-// - Fieldset gap between fields
-// - Label font-size, letter-spacing, color, margin-bottom
-// - Input/textarea/select padding, border-radius, font-size
-// - Input heights
-// - Textarea rows/height
-// - Select icon size and position
-// - Checkbox size and position
-// - Checkbox label padding-left
-// - Submit button margin-top
-// - Focus/invalid/disabled colors
-
 // -----------------------------------------------------------------------------
 // Section Container
 // -----------------------------------------------------------------------------
 .form {
-  padding-top: $section-padding-md; // TODO: Verify
-  padding-bottom: $section-padding-md;
-
-  // Light gray background
-  background-color: #f0efed;
-
-  // Mobile: background image on section
-  background-image: url("/img/form/form-mobile@1x.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  @media (resolution >= 2dppx) {
-    background-image: url("/img/form/form-mobile@2x.jpg");
-  }
+  padding-top: 40px;
+  padding-bottom: 40px;
 
   @include tablet {
-    padding-top: $section-padding-lg; // TODO: Verify
-    padding-bottom: $section-padding-lg;
+    padding-top: $section-padding-md;
+    padding-bottom: $section-padding-md;
+  }
 
-    // Tablet+: remove background image from section (moves to wrapper)
-    background-image: none;
+  @include desktop {
+    padding-top: $section-padding-lg;
+    padding-bottom: $section-padding-lg;
+  }
+}
+
+.form .container {
+  @include tablet {
+    padding: 0 58px;
+  }
+
+  @include desktop {
+    padding: 0 100px;
   }
 }
 
 // -----------------------------------------------------------------------------
-// Form Wrapper (background container on tablet/desktop)
+// Form Wrapper (background container)
 // -----------------------------------------------------------------------------
 .form__wrapper {
-  @include tablet {
-    // Tablet/Desktop: background image on wrapper
-    background-image: url("/img/form/form-tablet@1x.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 16px; // TODO: Verify
-    padding: 50px; // TODO: Verify padding
+  padding: 42px 0 40px;
+  margin-left: -15px;
+  margin-right: -15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    @media (resolution >= 2dppx) {
-      background-image: url("/img/form/form-tablet@2x.jpg");
-    }
+  // Mobile: WebP with JPG fallback
+  background-image:
+    image-set(
+      url("/img/form/form-mobile@1x.webp") type("image/webp") 1x,
+      url("/img/form/form-mobile@2x.webp") type("image/webp") 2x,
+      url("/img/form/form-mobile@1x.jpg") type("image/jpeg") 1x,
+      url("/img/form/form-mobile@2x.jpg") type("image/jpeg") 2x
+    );
+
+  @include tablet {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: $radius-form;
+
+    // Tablet: WebP with JPG fallback
+    background-image:
+      image-set(
+        url("/img/form/form-tablet@1x.webp") type("image/webp") 1x,
+        url("/img/form/form-tablet@2x.webp") type("image/webp") 2x,
+        url("/img/form/form-tablet@1x.jpg") type("image/jpeg") 1x,
+        url("/img/form/form-tablet@2x.jpg") type("image/jpeg") 2x
+      );
   }
 
   @include desktop {
-    background-image: url("/img/form/form-desktop@1x.jpg");
-    padding: 60px; // TODO: Verify
-
-    @media (resolution >= 2dppx) {
-      background-image: url("/img/form/form-desktop@2x.jpg");
-    }
+    // Desktop: WebP with JPG fallback
+    background-image:
+      image-set(
+        url("/img/form/form-desktop@1x.webp") type("image/webp") 1x,
+        url("/img/form/form-desktop@2x.webp") type("image/webp") 2x,
+        url("/img/form/form-desktop@1x.jpg") type("image/jpeg") 1x,
+        url("/img/form/form-desktop@2x.jpg") type("image/jpeg") 2x
+      );
   }
 }
 
@@ -90,14 +92,24 @@
 // Form Content Container
 // -----------------------------------------------------------------------------
 .form__content {
-  max-width: 500px; // TODO: Verify max width of form
+  max-width: 300px;
+  padding: 16px 15px 27px;
+  background-color: $color-primary-blue;
+  border-radius: $radius-form;
+  margin: 0 auto;
 
   @include tablet {
-    max-width: 350px; // TODO: Verify
+    max-width: 442px;
+    height: 780px;
+    padding: 40px;
+    margin: 0;
+    margin-right: auto;
   }
 
   @include desktop {
-    max-width: 400px; // TODO: Verify
+    max-width: 490px;
+    height: 800px;
+    padding: 44px 70px;
   }
 }
 
@@ -105,17 +117,22 @@
 // Form Title
 // -----------------------------------------------------------------------------
 .form__title {
-  @include heading-2;
+  font-size: 18px;
+  line-height: 22px;
 
-  margin-bottom: 16px; // TODO: Verify
-  color: $color-button-on-dark;
+  margin-bottom: 10px;
+  color: $color-text-on-dark;
 
   @include tablet {
-    margin-bottom: 20px; // TODO: Verify
+    font-size: 28px;
+    line-height: 28px;
+    margin-bottom: 30px;
   }
 
   @include desktop {
-    margin-bottom: 24px; // TODO: Verify
+    font-size: 32px;
+    line-height: 36px;
+    margin-bottom: 34px;
   }
 }
 
@@ -123,20 +140,15 @@
 // Form Description
 // -----------------------------------------------------------------------------
 .form__description {
-  margin-bottom: 24px; // TODO: Verify
-  font-size: $font-size-text-regular-mobile;
-  line-height: $line-height-text-regular-mobile;
-  color: $color-button-on-dark;
+  margin-bottom: 21px;
+  color: $color-text-secondary-dark;
 
   @include tablet {
-    margin-bottom: 30px; // TODO: Verify
-    font-size: $font-size-text-regular-tablet;
-    line-height: $line-height-text-regular-tablet;
+    margin-bottom: 41px;
+    font-size: $font-size-text-small;
   }
 
   @include desktop {
-    margin-bottom: 40px; // TODO: Verify
-    font-size: $font-size-text-regular;
     line-height: $line-height-text-regular;
   }
 }
@@ -145,16 +157,18 @@
 // Fieldset
 // -----------------------------------------------------------------------------
 .form__fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
   display: flex;
   flex-direction: column;
-  gap: 16px; // TODO: Verify gap between form fields
+  gap: 21px;
+}
 
-  @include tablet {
-    gap: 20px; // TODO: Verify
-  }
+// -----------------------------------------------------------------------------
+// Field Wrapper (label + input/textarea/select)
+// -----------------------------------------------------------------------------
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
 }
 
 // -----------------------------------------------------------------------------
@@ -162,15 +176,28 @@
 // -----------------------------------------------------------------------------
 .form__label {
   display: block;
-  margin-bottom: 8px; // TODO: Verify spacing between label and input
-  font-size: 12px; // TODO: Verify
-  line-height: 14px; // TODO: Verify
-  font-weight: $font-weight-medium;
-  color: $color-button-on-dark;
+  font-size: $font-size-text-xxsmall;
+  line-height: 14px;
+  color: $color-text-contacts-label;
 
   @include tablet {
-    font-size: 14px; // TODO: Verify
-    line-height: 16px; // TODO: Verify
+    font-size: $font-size-text-xsmall;
+    line-height: $line-height-text-small;
+  }
+
+  @include desktop {
+    line-height: $line-height-text-xsmall;
+  }
+}
+
+// Pixel Perfect fix
+.form__field:nth-child(5) .form__label {
+  @include tablet {
+    margin-top: -2px;
+  }
+
+  @include desktop {
+    margin-top: 0;
   }
 }
 
@@ -179,40 +206,58 @@
 // -----------------------------------------------------------------------------
 .form__input {
   width: 100%;
-  padding: 16px; // TODO: Verify padding
-  font-family: inherit;
-  font-size: $font-size-text-regular-mobile;
-  line-height: $line-height-text-regular-mobile;
+  min-height: 50px;
+  padding: 15px 20px;
+  font-size: 14px;
+  line-height: 14px;
   color: $color-button-on-dark;
   background-color: transparent;
-  border: 1px solid $color-button-on-dark;
-  border-radius: 8px; // TODO: Verify
+  border: 1px solid $border-input-on-dark;
+  border-radius: 8px;
   transition: border-color $transition-normal, outline $transition-normal;
 
-  @include tablet {
-    font-size: $font-size-text-regular-tablet;
-    line-height: $line-height-text-regular-tablet;
+  // No placeholder styles
+
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-button-on-dark;
+    box-shadow: 0 0 0 1000px $color-primary-blue inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 
-  // No placeholder styles (per spec)
-
-  &:hover {
-    border-color: rgba($color-button-on-dark, 0.8);
+  // States
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: none;
   }
 
-  &:focus {
-    outline: 2px solid $color-button-on-dark;
-    outline-offset: 2px;
-    border-color: $color-button-on-dark;
-  }
 
-  &:invalid:not(:placeholder-shown) {
-    border-color: $color-error; // TODO: Add error color variable if needed
-  }
-
+  // Disabled state
   &:disabled {
-    opacity: 0.5;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-color: rgb(255, 255, 255, 0.4);
+    color: $color-form-disabled;
     cursor: not-allowed;
+  }
+}
+
+// Invalid state - triggered via JS class after form submission
+.form__input.is-invalid {
+  border-color: $color-form-error;
+  background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-error;
+    background-color: $color-form-error-bg;
   }
 }
 
@@ -221,41 +266,59 @@
 // -----------------------------------------------------------------------------
 .form__textarea {
   width: 100%;
-  min-height: 120px; // TODO: Verify minimum height
-  padding: 16px; // TODO: Verify
-  font-family: inherit;
-  font-size: $font-size-text-regular-mobile;
-  line-height: $line-height-text-regular-mobile;
+  height: 94px;
+  padding: 15px 20px;
+  font-size: 14px;
+  line-height: 14px;
   color: $color-button-on-dark;
   background-color: transparent;
-  border: 1px solid $color-button-on-dark;
-  border-radius: 8px; // TODO: Verify
-  resize: vertical;
+  border: 1px solid $border-input-on-dark;
+  border-radius: 8px;
+  resize: none;
+  overflow-y: auto;
   transition: border-color $transition-normal, outline $transition-normal;
 
   @include tablet {
-    font-size: $font-size-text-regular-tablet;
-    line-height: $line-height-text-regular-tablet;
-    min-height: 140px; // TODO: Verify
+    height: 90px;
   }
 
-  &:hover {
-    border-color: rgba($color-button-on-dark, 0.8);
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-button-on-dark;
+    box-shadow: 0 0 0 1000px $color-primary-blue inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 
-  &:focus {
-    outline: 2px solid $color-button-on-dark;
-    outline-offset: 2px;
-    border-color: $color-button-on-dark;
-  }
-
-  &:invalid:not(:placeholder-shown) {
-    border-color: $color-error;
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: none;
   }
 
   &:disabled {
-    opacity: 0.5;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-color: rgb(255, 255, 255, 0.4);
+    color: $color-form-disabled;
     cursor: not-allowed;
+  }
+}
+
+// Invalid state for textarea
+.form__textarea.is-invalid {
+  border-color: $color-error;
+  background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-error;
+    background-color: $color-form-error-bg;
   }
 }
 
@@ -270,41 +333,47 @@
 // Select
 // -----------------------------------------------------------------------------
 .form__select {
-  width: 100%;
-  padding: 16px; // TODO: Verify
+  width: 260px;
+  min-height: 52px;
+  padding: 15px 20px;
   padding-right: 40px; // Space for icon
-  font-family: inherit;
-  font-size: $font-size-text-regular-mobile;
-  line-height: $line-height-text-regular-mobile;
+  font-size: 14px;
+  line-height: 14px;
   color: $color-button-on-dark;
   background-color: transparent;
-  border: 1px solid $color-button-on-dark;
-  border-radius: 8px; // TODO: Verify
-  appearance: none; // Remove native arrow
+  border: 1px solid $border-input-on-dark;
+  border-radius: 8px;
+  appearance: none;
   cursor: pointer;
   transition: border-color $transition-normal, outline $transition-normal;
 
   @include tablet {
-    font-size: $font-size-text-regular-tablet;
-    line-height: $line-height-text-regular-tablet;
+    width: 100%;
   }
 
-  &:hover {
-    border-color: rgba($color-button-on-dark, 0.8);
+  // Autofill styles - override browser defaults
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: $color-button-on-dark;
+    box-shadow: 0 0 0 1000px $color-primary-blue inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 
-  &:focus {
-    outline: 2px solid $color-button-on-dark;
-    outline-offset: 2px;
-    border-color: $color-button-on-dark;
-  }
-
-  &:invalid {
-    border-color: $color-error;
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: none;
   }
 
   &:disabled {
-    opacity: 0.5;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-color: rgb(255, 255, 255, 0.4);
+    color: $color-form-disabled;
     cursor: not-allowed;
   }
 
@@ -314,17 +383,57 @@
   }
 }
 
+// Invalid state for select
+.form__select.is-invalid {
+  border-color: $color-error;
+  background-color: $color-form-error-bg;
+
+  // Keep error border even when focused
+  &:focus,
+  &:focus-visible {
+    border-color: $color-error;
+    background-color: $color-form-error-bg;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Select Icon (chevron down)
 // -----------------------------------------------------------------------------
 .form__select-icon {
   position: absolute;
-  right: 16px; // TODO: Verify
+  right: 31px;
   top: 50%;
+  width: 16px;
+  height: 16px;
   transform: translateY(-50%);
-  pointer-events: none; // Click passes through to select
+  pointer-events: none;
   color: $color-button-on-dark;
+  transition: transform $transition-slow, color $transition-slow;
+
+  @include tablet {
+    right: 21px;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  // Change icon color when select is hovered or active
+  .form__select:hover + &,
+  .form__select:active + & {
+    color: $color-button-on-dark;
+  }
+
+  // Rotate on focus (optional enhancement)
+  .form__select:focus + & {
+    transform: translateY(-50%) rotate(180deg);
+  }
 }
+
 
 // -----------------------------------------------------------------------------
 // Checkbox Wrapper
@@ -332,7 +441,15 @@
 .form__checkbox-wrapper {
   display: flex;
   align-items: flex-start;
-  gap: 12px; // TODO: Verify gap between checkbox and label
+  gap: 10px;
+
+  @include tablet {
+    margin-top: 4px;
+  }
+
+  @include desktop {
+    margin-top: 0;
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -345,16 +462,18 @@
 // -----------------------------------------------------------------------------
 .form__checkbox-label {
   position: relative;
-  padding-left: 32px; // TODO: Verify space for custom checkbox
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
   font-size: 12px;
   line-height: 14px;
-  color: $color-button-on-dark;
+  color: $color-text-contacts-label;
   cursor: pointer;
   user-select: none;
 
   @include tablet {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 12px;
+    line-height: 12px;
   }
 
   // Custom checkbox box
@@ -362,12 +481,14 @@
     content: "";
     position: absolute;
     left: 0;
-    top: 0;
-    width: 20px; // TODO: Verify checkbox size
+    top: 50%;
+    transform: translateY(-50%);
+    flex-shrink: 0;
+    width: 20px;
     height: 20px;
-    border: 2px solid $color-button-on-dark;
-    border-radius: 4px; // TODO: Verify
-    background-color: transparent;
+    border: 1px solid $color-bg-secondary;
+    border-radius: 2px;
+    background-color: $color-bg-secondary;
     transition: background-color $transition-normal, border-color $transition-normal;
   }
 
@@ -375,15 +496,15 @@
   &::after {
     content: "";
     position: absolute;
-    left: 6px; // TODO: Verify checkmark position
-    top: 3px;
-    width: 8px; // TODO: Verify checkmark size
-    height: 12px;
-    border: solid $color-button-on-dark;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 7px;
+    height: 11px;
+    border: 2px solid $color-button-primary;
     border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
     opacity: 0;
-    transition: opacity $transition-normal;
+    transition: opacity $transition-normal, border-color $transition-normal background-color $transition-normal;
   }
 }
 
@@ -400,7 +521,18 @@
 
 // Hover state
 .form__checkbox:hover:not(:disabled) + .form__checkbox-label::before {
-  border-color: rgba($color-button-on-dark, 0.8);
+  background-color: transparent;
+  opacity: 1;
+}
+
+// Hover state on checked - white checkmark
+.form__checkbox:checked:hover:not(:disabled) + .form__checkbox-label::after {
+  border-color: $color-button-on-dark;
+}
+
+// Focus state on checked - white checkmark
+.form__checkbox:checked:focus-visible + .form__checkbox-label::after {
+  border-color: $color-button-on-dark;
 }
 
 // Disabled state
@@ -413,13 +545,18 @@
 // Submit Button
 // -----------------------------------------------------------------------------
 .form__submit {
-  margin-top: 24px; // TODO: Verify spacing above button
+  justify-content: space-between;
+  width: 260px;
+  padding-left: 74px;
+  margin-top: 19px;
 
   @include tablet {
-    margin-top: 30px; // TODO: Verify
+    width: 352px;
+    padding-left: 108px;
+    margin-top: 44px;
   }
 
   @include desktop {
-    margin-top: 40px; // TODO: Verify
+    margin-top: 45px;
   }
 }

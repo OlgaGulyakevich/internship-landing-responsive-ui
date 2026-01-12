@@ -16,6 +16,7 @@
  */
 
 import notificationModal from './notification-modal.js';
+import { applyPhoneMask } from './phone-mask.js';
 
 const modal = (() => {
   // =========================================================================
@@ -33,53 +34,6 @@ const modal = (() => {
   const phoneInput = modalEl.querySelector('input[type="tel"]');
   const triggers = document.querySelectorAll('[data-modal-target="feedback"]');
 
-  // =========================================================================
-  // Phone Mask Implementation (Simplified)
-  // =========================================================================
-
-  /**
-   * Initialize phone mask
-   * - On focus: show "+7 " if field is empty
-   * - Allow deleting +7 (user can clear field)
-   * - Only digits allowed (no letters)
-   * - On blur: clear if only "+7" remains
-   */
-  const initPhoneMask = () => {
-    if (!phoneInput) {
-      return;
-    }
-
-    // Show "+7 " on focus if field is empty
-    phoneInput.addEventListener('focus', (e) => {
-      if (!e.target.value || e.target.value.trim() === '') {
-        e.target.value = '+7 ';
-        e.target.setSelectionRange(3, 3); // Cursor after "+7 "
-      }
-    });
-
-    // Filter input - only allow digits, +, and spaces
-    phoneInput.addEventListener('input', (e) => {
-      const cursorPos = e.target.selectionStart;
-      const oldValue = e.target.value;
-
-      // Remove all characters except digits, +, and spaces
-      const filtered = oldValue.replace(/[^\d+\s]/g, '');
-
-      if (filtered !== oldValue) {
-        e.target.value = filtered;
-        // Restore cursor position
-        e.target.setSelectionRange(cursorPos - 1, cursorPos - 1);
-      }
-    });
-
-    // Clear field on blur if only "+7" remains
-    phoneInput.addEventListener('blur', (e) => {
-      const value = e.target.value.trim();
-      if (value === '+7' || value === '+7 ' || value === '') {
-        e.target.value = '';
-      }
-    });
-  };
 
   // =========================================================================
   // Modal Open/Close
@@ -266,8 +220,10 @@ const modal = (() => {
       });
     });
 
-    // Phone mask (simplified - shows +7 on focus)
-    initPhoneMask();
+    // Apply phone mask
+    if (phoneInput) {
+      applyPhoneMask(phoneInput);
+    }
 
     // Set initial hidden state
     modalEl.setAttribute('hidden', '');

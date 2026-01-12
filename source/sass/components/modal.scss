@@ -229,7 +229,6 @@
   width: 100%;
   padding: 15px 20px;
   max-height: 44px;
-  font-family: $font-family;
   font-size: 14px;
   line-height: 14px;
   color: $color-text-primary;
@@ -243,7 +242,7 @@
     max-height: 66px;
   }
 
-  // Without placeholder (per spec)
+  // Without placeholder
   &::placeholder {
     color: transparent;
   }
