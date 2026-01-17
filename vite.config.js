@@ -1,5 +1,6 @@
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 /** @type {import('vite').UserConfig} */
 export default ({ command }) => ({
@@ -7,6 +8,17 @@ export default ({ command }) => ({
     VitePluginSvgSpritemap('img/sprite/*.svg', {
       styles: false,
       injectSVGOnDev: true,
+      output: {
+        filename: '__spritemap.svg',
+      },
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'img/**/*',
+          dest: 'img'
+        }
+      ]
     }),
     ViteImageOptimizer({
       test: /\.(jpe?g|png|svg)$/i,

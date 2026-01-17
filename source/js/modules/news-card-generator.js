@@ -215,7 +215,7 @@ export function generateCardHTML(newsItem, index, category, totalCards) {
                     </p>
                     <a class="news-card__link button button--icon-only" href="${link}" aria-label="Читать полностью">
                       <svg width="8" height="8" aria-hidden="true">
-                        <use href="${import.meta.env.BASE_URL}__spritemap#sprite-arrow-up-right"></use>
+                        <use href="/__spritemap#sprite-arrow-up-right"></use>
                       </svg>
                     </a>
                   </div>
