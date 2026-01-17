@@ -44,7 +44,7 @@
    - **Arrows**: Fast browsing - moves by 1 full page/group
    - **Custom Pagination**: Sliding window (max 4 visible buttons)
    - **Responsive Grid**: 2 cards (mobile) → 4 cards (tablet) → 3 cards (desktop)
-4. **Reviews Slider**: Testimonial cards with navigation arrows and custom scrollbar integration
+4. **Reviews Slider**: Testimonial cards with navigation arrows and custom scrollbar
 
 ### 📱 Responsive Architecture
 - **Mobile-First Approach**: Base styles at 320px, progressive enhancement via mixins
@@ -58,7 +58,7 @@
 - **Modal System**: Form modal + notification modal with backdrop click handling and scroll lock
 - **Accordion (FAQ)**: Multiple items can be expanded simultaneously with smooth transitions
 - **Form Validation & Submission**: Phone mask (+7), consent checkbox, async POST to `https://echo.htmlacademy.ru` with error handling
-- **Custom Scrollbar**: Styled scrollbar for Reviews slider with hover effects and smooth scrolling integration
+- **Custom Scrollbars**: Styled scrollbars for Programs and Reviews sliders with hover effects and smooth scrolling integration
 
 ### 🏗️ Architecture & Code Quality
 - **BEM Methodology**: Strict flat selectors (max nesting depth: 1), no `&__element` nesting
@@ -171,13 +171,18 @@ source/
 
 ## 🎨 Component Showcase
 
-### SVG Mask Shapes (Hero Content Block)
-Three responsive variants with inverted rounded corners:
+### SVG Mask Shapes
+Custom decorative masks with inverted rounded corners used across multiple components:
+
+**Hero Content Block** - Three responsive variants:
 - **Mobile** (320px–767px): Compact mask for vertical layout
 - **Tablet** (768px–1439px): Medium mask (659px width)
 - **Desktop** (1440px+): Wide mask (968px width)
 
-Implementation: `mask-image: url("/img/masks/hero-content-mask-*.svg")`
+**News Cards** - Responsive image masks for card thumbnails
+**Program Cards** - Decorative masks for program images
+
+Implementation: `mask-image: url("/img/masks/[component]-mask-*.svg")`
 
 ### Custom Swiper Pagination (News Slider)
 **Sliding Window Algorithm**:
@@ -196,6 +201,20 @@ Implementation: `mask-image: url("/img/masks/hero-content-mask-*.svg")`
 - **Expandable submenus** with rotating arrow icons (180deg)
 - **Deep linking**: Submenu items scroll to sections and switch slider slides/tabs
 
+### Form Validation & Modal System
+**Form Handling:**
+- **Phone Input Mask**: Auto-format to +7 (XXX) XXX-XX-XX pattern on input
+- **Validation on Submit**: Error highlighting appears after clicking submit button
+- **Required Fields**: Name, phone, and data consent checkbox
+- **Async POST Submission**: Sends data to `https://echo.htmlacademy.ru`
+- **Error Handling**: Network failures and validation errors with user-friendly messages
+
+**Modal Flow:**
+- **Form Modal**: Opens via "Оставить заявку" button with backdrop and scroll lock
+- **Success Modal**: Displays confirmation message after successful submission
+- **Dismiss Options**: Backdrop click, close button (×), or ESC key
+- **Focus Management**: Keyboard navigation trapped within active modal
+
 ---
 
 ## 📸 Screenshots
@@ -203,17 +222,22 @@ Implementation: `mask-image: url("/img/masks/hero-content-mask-*.svg")`
 ### News Section - Complex Interactive Component
 The most technically advanced section featuring tabs, grid slider, dual navigation, and custom pagination.
 
-<div align="center">
-
 **Desktop (1440px)** - 3 cards per page, horizontal pagination
-![News Desktop](./source/public/previews/news-section-desktop.png)
+
+<div align="center">
+  <img src="./source/public/previews/news-section-desktop.png" alt="News Desktop" width="100%">
+</div>
 
 **Tablet (768px)** - 4 cards per page (2×2 grid)
-![News Tablet](./source/public/previews/news-section-tablet.png)
+
+<div align="center">
+  <img src="./source/public/previews/news-section-tablet.png" alt="News Tablet" width="80%">
+</div>
 
 **Mobile (320px)** - 2 cards per page (1×2 grid)
-![News Mobile](./source/public/previews/news-section-mobile.png)
 
+<div align="center">
+  <img src="./source/public/previews/news-section-mobile.png" alt="News Mobile" width="40%">
 </div>
 
 **Technologies shown:**

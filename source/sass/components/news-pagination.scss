@@ -10,19 +10,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-// Direct bullets (≤4 slides)
-.news__pagination > .swiper-pagination-bullet {
-  margin: 0 8px;
+  gap: 16px;
 
   @include tablet {
-    margin: 0 10px;
+    gap: 20px;
   }
 }
 
+// Direct bullets (≤4 slides, no wrapper)
+.news__pagination > .swiper-pagination-bullet {
+  margin: 0;
+}
+
 // Sliding wrapper (>4 slides, created by JS)
-.news__pagination-wrapper {
+.news__pagination-wrapper  {
   display: flex;
   flex-shrink: 0;
   gap: 16px;
