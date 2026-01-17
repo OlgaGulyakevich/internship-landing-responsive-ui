@@ -63,8 +63,12 @@ const modal = (() => {
       modalEl.setAttribute('aria-modal', 'false');
     }, 300);
 
-    // Unlock scroll
-    document.body.style.overflow = '';
+    // Unlock scroll (iOS Safari compatible)
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
 
     // Remove event listeners
     overlay.removeEventListener('click', closeModal);
@@ -92,8 +96,11 @@ const modal = (() => {
       modalEl.classList.add('is-open');
     });
 
-    // Lock scroll
-    document.body.style.overflow = 'hidden';
+    // Lock scroll (iOS Safari compatible)
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
 
     // Focus first input (after animation)
     setTimeout(() => {
