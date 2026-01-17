@@ -28,11 +28,6 @@ export const PROGRAMS_SLIDER = {
   },
 };
 
-// Hero slider specific configuration
-export const HERO_SLIDER = {
-  INIT_DELAY: 100,
-};
-
 // News slider specific configuration
 export const NEWS_SLIDER = {
   SPACING: {

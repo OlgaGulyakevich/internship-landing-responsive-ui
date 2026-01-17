@@ -16,7 +16,7 @@ import { Pagination, Keyboard, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import { BREAKPOINTS, SLIDER_DEFAULTS, HERO_SLIDER } from '../config/slider-constants.js';
+import { BREAKPOINTS, SLIDER_DEFAULTS } from '../config/slider-constants.js';
 
 const heroSlider = (() => {
   const swiperContainer = document.querySelector('.hero__swiper');
@@ -72,7 +72,8 @@ const heroSlider = (() => {
       // Callbacks
       on: {
         init: function() {
-          setTimeout(() => {
+          // Use requestAnimationFrame for better performance and synchronization with browser rendering
+          requestAnimationFrame(() => {
             // Get original pagination and all slide wrappers (excluding clones)
             const paginationEl = document.querySelector('.hero__pagination');
             const allWrappers = document.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate) .hero__pagination-wrapper');
@@ -115,7 +116,7 @@ const heroSlider = (() => {
                 });
               });
             });
-          }, HERO_SLIDER.INIT_DELAY);
+          });
         },
 
         slideChange: function(swiperInstance) {

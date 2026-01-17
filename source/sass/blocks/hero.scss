@@ -94,6 +94,7 @@
 // -----------------------------------------------------------------------------
 // Content Container (White Block with SVG Mask)
 // -----------------------------------------------------------------------------
+
 .hero__content {
   position: absolute;
   bottom: $section-padding-xs;
@@ -185,6 +186,7 @@
   align-items: center;
   margin-left: 1px;
   padding-bottom: 10px;
+  min-height: 18px;
 
   @include tablet {
     margin-left: -20px;
