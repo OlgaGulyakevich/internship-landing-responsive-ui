@@ -110,34 +110,34 @@ export function generatePictureHTML(imagePath, title, isLarge) {
                     height="${IMAGE_SIZES.DESKTOP.HEIGHT}"
                     type="image/webp"
                     media="(min-width: 1440px)"
-                    srcset="img/${imagePath}-${desktopSize}@1x.webp 1x, img/${imagePath}-${desktopSize}@2x.webp 2x">
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}-${desktopSize}@1x.webp 1x, ${import.meta.env.BASE_URL}img/${imagePath}-${desktopSize}@2x.webp 2x">
                   <source
                     width="${IMAGE_SIZES.TABLET.WIDTH}"
                     height="${IMAGE_SIZES.TABLET.HEIGHT}"
                     type="image/webp"
                     media="(min-width: 768px)"
-                    srcset="img/${imagePath}-tablet@1x.webp 1x, img/${imagePath}-tablet@2x.webp 2x">
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}-tablet@1x.webp 1x, ${import.meta.env.BASE_URL}img/${imagePath}-tablet@2x.webp 2x">
                   <source
                     width="${IMAGE_SIZES.MOBILE.WIDTH}"
                     height="${mobileHeight}"
                     type="image/webp"
-                    srcset="img/${imagePath}-${mobileSize}@1x.webp 1x, img/${imagePath}-${mobileSize}@2x.webp 2x">
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}-${mobileSize}@1x.webp 1x, ${import.meta.env.BASE_URL}img/${imagePath}-${mobileSize}@2x.webp 2x">
                   <source
                     type="image/jpeg"
                     width="${desktopWidth}"
                     height="${IMAGE_SIZES.DESKTOP.HEIGHT}"
                     media="(min-width: 1440px)"
-                    srcset="img/${imagePath}-${desktopSize}@1x.jpg 1x, img/${imagePath}-${desktopSize}@2x.jpg 2x">
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}-${desktopSize}@1x.jpg 1x, ${import.meta.env.BASE_URL}img/${imagePath}-${desktopSize}@2x.jpg 2x">
                   <source
                     type="image/jpeg"
                     width="${IMAGE_SIZES.TABLET.WIDTH}"
                     height="${IMAGE_SIZES.TABLET.HEIGHT}"
                     media="(min-width: 768px)"
-                    srcset="img/${imagePath}-tablet@1x.jpg 1x, img/${imagePath}-tablet@2x.jpg 2x">
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}-tablet@1x.jpg 1x, ${import.meta.env.BASE_URL}img/${imagePath}-tablet@2x.jpg 2x">
                   <img
                     class="news-card__image"
-                    src="img/${imagePath}-${mobileSize}@1x.jpg"
-                    srcset="img/${imagePath}-${mobileSize}@2x.jpg 2x"
+                    src="${import.meta.env.BASE_URL}img/${imagePath}-${mobileSize}@1x.jpg"
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}-${mobileSize}@2x.jpg 2x"
                     width="${IMAGE_SIZES.MOBILE.WIDTH}"
                     height="${mobileHeight}"
                     alt="${title}">
@@ -152,11 +152,11 @@ export function generatePictureHTML(imagePath, title, isLarge) {
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="img/${imagePath}@1x.webp 1x, img/${imagePath}@2x.webp 2x">
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}@1x.webp 1x, ${import.meta.env.BASE_URL}img/${imagePath}@2x.webp 2x">
                   <img
                     class="news-card__image"
-                    src="img/${imagePath}@1x.jpg"
-                    srcset="img/${imagePath}@2x.jpg 2x"
+                    src="${import.meta.env.BASE_URL}img/${imagePath}@1x.jpg"
+                    srcset="${import.meta.env.BASE_URL}img/${imagePath}@2x.jpg 2x"
                     width="${IMAGE_SIZES.MOBILE.WIDTH}"
                     height="${simpleMobileHeight}"
                     alt="${title}">
@@ -215,7 +215,7 @@ export function generateCardHTML(newsItem, index, category, totalCards) {
                     </p>
                     <a class="news-card__link button button--icon-only" href="${link}" aria-label="Читать полностью">
                       <svg width="8" height="8" aria-hidden="true">
-                        <use href="/__spritemap#sprite-arrow-up-right"></use>
+                        <use href="${import.meta.env.BASE_URL}__spritemap#sprite-arrow-up-right"></use>
                       </svg>
                     </a>
                   </div>

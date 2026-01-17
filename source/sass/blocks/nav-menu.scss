@@ -53,6 +53,8 @@
   transition: opacity $transition-slow 0.1s; // Delay 100ms
 
   // Stretch to full viewport width (escape parent max-width)
+  // Note: 100vw may include scrollbar width on Windows/Linux (~17px),
+  // but overflow-x: hidden on html/body prevents horizontal scroll
   left: 50%;
   right: 50%;
   margin-left: -50vw;

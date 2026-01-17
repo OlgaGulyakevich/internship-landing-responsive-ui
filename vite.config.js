@@ -1,16 +1,13 @@
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap';
-// import { ViteMinifyPlugin } from 'vite-plugin-minify';
 
 /** @type {import('vite').UserConfig} */
-export default {
+export default ({ command }) => ({
   plugins: [
     VitePluginSvgSpritemap('img/sprite/*.svg', {
       styles: false,
       injectSVGOnDev: true,
     }),
-    // input https://www.npmjs.com/package/html-minifier-terser options
-    // ViteMinifyPlugin({}),
     ViteImageOptimizer({
       test: /\.(jpe?g|png|svg)$/i,
       includePublic: false,
@@ -65,8 +62,8 @@ export default {
   build: {
     outDir: '../dist',
   },
-  base: './',
+  base: command === 'serve' ? '/' : '/internship-landing-responsive-ui/',
   server: {
     port: 3000,
   }
-};
+});

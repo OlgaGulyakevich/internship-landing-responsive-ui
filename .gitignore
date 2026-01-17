@@ -33,7 +33,6 @@ backstop_data/
 
 # Testing
 chrome/
-pp.config.local.cjs
 
 # Logs
 logs
