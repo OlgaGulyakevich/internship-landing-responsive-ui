@@ -27,10 +27,9 @@ export function initNavMenuNavigation(programsSwiper) {
   // Add click handler to each link
   sublinks.forEach((link) => {
     link.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent default anchor behavior
-
       // Check for data-slide (Programs slider)
       if (link.hasAttribute('data-slide')) {
+        event.preventDefault(); // Prevent default anchor behavior
         const slideIndex = parseInt(link.getAttribute('data-slide'), 10);
 
         if (!programsSwiper) {
@@ -57,6 +56,7 @@ export function initNavMenuNavigation(programsSwiper) {
 
       // Check for data-tab (News tabs)
       if (link.hasAttribute('data-tab')) {
+        event.preventDefault(); // Prevent default anchor behavior
         const tabValue = link.getAttribute('data-tab');
 
         // Find corresponding news tab button

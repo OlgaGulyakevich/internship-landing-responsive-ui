@@ -125,11 +125,16 @@
   line-height: 16px;
   color: $color-button-on-dark-active;
   text-transform: uppercase;
-  transition: opacity $transition-normal;
+  transition: opacity $transition-normal, color $transition-normal;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: $color-button-on-dark;
+  }
+
+  &:focus-visible {
+    color: $color-button-on-dark;
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
   }
 
   &:active {
@@ -155,11 +160,17 @@
   color: $color-button-on-dark-active;
   text-align: left;
   text-transform: uppercase;
-  transition: opacity $transition-normal;
+  cursor: pointer;
+  transition: opacity $transition-normal, color $transition-normal;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: $color-button-on-dark;
+  }
+
+  &:focus-visible {
+    color: $color-button-on-dark;
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
   }
 
   &:active {
@@ -200,6 +211,7 @@
 // Expand submenu when parent is open
 .nav-menu__toggle[aria-expanded="true"] + .nav-menu__submenu {
   max-height: 500px;
+  padding-bottom: 5px;
 }
 
 // Submenu items
@@ -213,17 +225,22 @@
 
 // Submenu links
 .nav-menu__sublink {
-  display: block;
+  display: inline-flex;
   max-width: 100%;
   font-size: 16px;
   font-weight: $font-weight-regular;
   line-height: 16px;
   color: rgb(255, 255, 255, 0.6);
-  transition: opacity $transition-normal;
+  transition: opacity $transition-normal, color $transition-normal;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: rgb(255, 255, 255, 0.9);
+  }
+
+  &:focus-visible {
+    color: rgb(255, 255, 255, 0.9);
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
   }
 
   &:active {

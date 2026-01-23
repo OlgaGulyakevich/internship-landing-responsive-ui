@@ -269,6 +269,13 @@
     outline: none;
   }
 
+  // Focus visible state (keyboard navigation)
+  &:focus-visible {
+    border-color: $color-form-on-light;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+
   // Valid state (after user interaction)
   &:valid:not(:placeholder-shown) {
     border-color: $color-button-primary;
@@ -343,6 +350,13 @@
   &:focus {
     border-color: $color-form-on-light;
     outline: none;
+  }
+
+  // Focus visible state (keyboard navigation)
+  &:focus-visible {
+    border-color: $color-form-on-light;
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
   }
 
   // Disabled state

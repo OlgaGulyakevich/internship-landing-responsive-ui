@@ -26,6 +26,50 @@ const burgerMenu = (() => {
     }
   }
 
+  // Handle arrow keys for menu navigation
+  function handleArrowKeys(evt) {
+    if (!menu.classList.contains('is-open')) {
+      return;
+    }
+
+    // Only handle arrow up/down
+    if (evt.key !== 'ArrowDown' && evt.key !== 'ArrowUp') {
+      return;
+    }
+
+    evt.preventDefault(); // Prevent page scroll
+
+    // Get all focusable elements in menu (excluding those with tabindex="-1")
+    const focusableElements = Array.from(
+      menu.querySelectorAll('a:not([tabindex="-1"]), button')
+    );
+
+    if (focusableElements.length === 0) {
+      return;
+    }
+
+    // Find current focused element index
+    const currentIndex = focusableElements.indexOf(document.activeElement);
+
+    let nextIndex;
+    if (evt.key === 'ArrowDown') {
+      // Move to next element (circular)
+      nextIndex = currentIndex + 1;
+      if (nextIndex >= focusableElements.length) {
+        nextIndex = 0; // Wrap to first
+      }
+    } else {
+      // ArrowUp - move to previous element (circular)
+      nextIndex = currentIndex - 1;
+      if (nextIndex < 0) {
+        nextIndex = focusableElements.length - 1; // Wrap to last
+      }
+    }
+
+    // Focus next/previous element
+    focusableElements[nextIndex].focus();
+  }
+
   // Handle click outside menu
   function handleOutsideClick(evt) {
     // Close if clicked outside menu and burger button
@@ -45,6 +89,9 @@ const burgerMenu = (() => {
       const submenu = button.nextElementSibling;
       if (submenu && submenu.classList.contains('nav-menu__submenu')) {
         submenu.setAttribute('hidden', '');
+        // Remove submenu links from tab order
+        const submenuLinks = submenu.querySelectorAll('a');
+        submenuLinks.forEach((link) => link.setAttribute('tabindex', '-1'));
       }
     });
 
@@ -54,9 +101,14 @@ const burgerMenu = (() => {
       menu.style.height = ''; // Reset height
     }, 400);
 
+    // Return focus to burger button (for keyboard navigation)
+    // Use preventScroll to avoid jumping back when closing menu after anchor link click
+    burger.focus({ preventScroll: true });
+
     // Remove event listeners
     overlay.removeEventListener('click', closeMenu);
     document.removeEventListener('keydown', handleEscKey);
+    document.removeEventListener('keydown', handleArrowKeys);
     document.removeEventListener('click', handleOutsideClick);
   }
 
@@ -81,9 +133,19 @@ const burgerMenu = (() => {
 
     // No scroll lock - allows page scrolling for better UX
 
+    // Step 4: Move focus to first interactive element in menu (after animation)
+    setTimeout(() => {
+      // Find first focusable element in menu list (excluding hidden submenu items)
+      const firstFocusableElement = menu.querySelector('.nav-menu__list > .nav-menu__item > a, .nav-menu__list > .nav-menu__item > button');
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+      }
+    }, 300); // Wait for menu animation to complete
+
     // Add event listeners
     overlay.addEventListener('click', closeMenu);
     document.addEventListener('keydown', handleEscKey);
+    document.addEventListener('keydown', handleArrowKeys);
     document.addEventListener('click', handleOutsideClick);
   }
 
@@ -110,11 +172,18 @@ const burgerMenu = (() => {
     // Toggle aria-expanded
     button.setAttribute('aria-expanded', !isExpanded);
 
-    // Toggle hidden attribute
+    // Toggle hidden attribute and tabindex for submenu links
+    const submenuLinks = submenu.querySelectorAll('a');
     if (isExpanded) {
+      // Closing submenu
       submenu.setAttribute('hidden', '');
+      // Remove submenu links from tab order
+      submenuLinks.forEach((link) => link.setAttribute('tabindex', '-1'));
     } else {
+      // Opening submenu
       submenu.removeAttribute('hidden');
+      // Add submenu links to tab order
+      submenuLinks.forEach((link) => link.removeAttribute('tabindex'));
     }
   }
 
@@ -123,9 +192,25 @@ const burgerMenu = (() => {
     // Burger button click
     burger.addEventListener('click', toggleMenu);
 
+    // Initialize submenu links with tabindex="-1" (submenus closed by default)
+    const allSubmenus = document.querySelectorAll('.nav-menu__submenu');
+    allSubmenus.forEach((submenu) => {
+      const submenuLinks = submenu.querySelectorAll('a');
+      submenuLinks.forEach((link) => link.setAttribute('tabindex', '-1'));
+    });
+
     // Submenu toggle buttons
     toggleButtons.forEach((button) => {
+      // Click handler
       button.addEventListener('click', () => toggleSubmenu(button));
+
+      // Keyboard handler (Enter/Space)
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault(); // Prevent page scroll on Space
+          toggleSubmenu(button);
+        }
+      });
     });
 
     // Close menu when clicking on links (anchor navigation)

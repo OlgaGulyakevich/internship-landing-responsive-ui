@@ -230,12 +230,22 @@
 
   // States
   &:hover,
-  &:active,
-  &:focus,
-  &:focus-visible {
+  &:active {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+  }
+
+  &:focus {
     border-color: $color-form-on-dark;
     background-color: transparent;
     outline: none;
+  }
+
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
   }
 
 
@@ -293,12 +303,22 @@
   }
 
   &:hover,
-  &:active,
-  &:focus,
-  &:focus-visible {
+  &:active {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+  }
+
+  &:focus {
     border-color: $color-form-on-dark;
     background-color: transparent;
     outline: none;
+  }
+
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
   }
 
   &:disabled {
@@ -362,12 +382,22 @@
   }
 
   &:hover,
-  &:active,
-  &:focus,
-  &:focus-visible {
+  &:active {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+  }
+
+  &:focus {
     border-color: $color-form-on-dark;
     background-color: transparent;
     outline: none;
+  }
+
+  &:focus-visible {
+    border-color: $color-form-on-dark;
+    background-color: transparent;
+    outline: 2px solid $color-button-on-dark;
+    outline-offset: 2px;
   }
 
   &:disabled {
