@@ -137,51 +137,51 @@ $container-padding-desktop: 120px;
 #### Critical Rules:
 
 1. **Flat Selectors Only** - No nesting with `&__element`
-   ```scss
-   // ✅ CORRECT - Flat structure
-   .header {
-     background: $color-primary;
-   }
+    ```scss
+    // ✅ CORRECT - Flat structure
+    .header {
+      background: $color-primary;
+    }
 
-   .header__logo {
-     width: 142px;
-   }
+    .header__logo {
+      width: 142px;
+    }
 
-   .header__logo:hover {
-     opacity: 0.8;
-   }
+    .header__logo:hover {
+      opacity: 0.8;
+    }
 
-   // ❌ WRONG - Nesting depth > 1
-   .header {
-     &__logo {           // Creates nesting
-       &:hover { }       // Further nesting
-     }
-   }
-   ```
+    // ❌ WRONG - Nesting depth > 1
+    .header {
+      &__logo {           // Creates nesting
+        &:hover { }       // Further nesting
+      }
+    }
+    ```
 
 2. **Max Nesting Depth: 1** - Only pseudo-classes/elements allowed
-   ```scss
-   .button {
-     // Depth 0
+    ```scss
+    .button {
+      // Depth 0
 
-     &:hover { }           // ✅ Depth 1 - OK
-     &:focus-visible { }   // ✅ Depth 1 - OK
-     &::before { }         // ✅ Depth 1 - OK
-     &--primary { }        // ✅ Depth 1 - OK (modifier)
-   }
-   ```
+      &:hover { }           // ✅ Depth 1 - OK
+      &:focus-visible { }   // ✅ Depth 1 - OK
+      &::before { }         // ✅ Depth 1 - OK
+      &--primary { }        // ✅ Depth 1 - OK (modifier)
+    }
+    ```
 
 3. **Ampersand Usage** - ONLY for:
-   - Pseudo-classes: `:hover`, `:focus`, `:active`, `:disabled`
-   - Pseudo-elements: `::before`, `::after`
-   - State classes: `.is-active`, `.is-open`
-   - Modifiers: `--modifier`
+    - Pseudo-classes: `:hover`, `:focus`, `:active`, `:disabled`
+    - Pseudo-elements: `::before`, `::after`
+    - State classes: `.is-active`, `.is-open`
+    - Modifiers: `--modifier`
 
 4. **File Organization**
-   - One BEM block = one `.scss` file
-   - File name = block name (e.g., `header.scss` → `.header`)
-   - Components: reusable across pages
-   - Blocks: page-specific sections
+    - One BEM block = one `.scss` file
+    - File name = block name (e.g., `header.scss` → `.header`)
+    - Components: reusable across pages
+    - Blocks: page-specific sections
 
 ---
 

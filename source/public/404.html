@@ -4,288 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Страница в разработке | Internship</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    @font-face {
-      font-family: "Manrope";
-      src: url("fonts/Manrope-Medium.woff2") format("woff2"),
-           url("fonts/Manrope-Medium.woff") format("woff");
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Manrope";
-      src: url("fonts/Manrope-Regular.woff2") format("woff2"),
-           url("fonts/Manrope-Regular.woff") format("woff");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    body {
-      font-family: "Manrope", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f0efe9 0%, #e8e6dc 100%);
-      color: #484848;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      overflow: hidden;
-    }
-
-    .container {
-      max-width: 600px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      animation: fadeIn 0.8s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .logo {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 40px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .error-code {
-      font-size: clamp(80px, 15vw, 160px);
-      font-weight: 800;
-      line-height: 1;
-      background: linear-gradient(135deg, #316dc2 0%, #275699 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-      animation: slideDown 0.6s ease-out 0.2s both;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .title {
-      font-size: clamp(24px, 5vw, 36px);
-      font-weight: 600;
-      color: #484848;
-      margin-bottom: 16px;
-      animation: slideDown 0.6s ease-out 0.4s both;
-    }
-
-    .description {
-      font-size: clamp(16px, 3vw, 18px);
-      color: #6d6d6d;
-      line-height: 1.6;
-      margin-bottom: 40px;
-      animation: slideDown 0.6s ease-out 0.6s both;
-    }
-
-    /* Button styles from project */
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      padding: 4px;
-      padding-left: 21px;
-      border: 1px solid #ffffff;
-      border-radius: 30px;
-      background-color: #316dc2;
-      color: #ffffff;
-      font-family: "Manrope", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 12px;
-      letter-spacing: 0.24px;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-      animation: slideDown 0.6s ease-out 0.8s both;
-    }
-
-    .button:hover {
-      background-color: #ffffff;
-      color: #316dc2;
-      border-color: #316dc2;
-    }
-
-    .button:hover .button__icon {
-      background-color: #316dc2;
-      color: #ffffff;
-    }
-
-    .button:active {
-      background-color: #ffffff;
-      color: rgba(49, 109, 194, 0.7);
-    }
-
-    .button__icon {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background-color: #ffffff;
-      color: #316dc2;
-      overflow: visible;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .button__icon svg {
-      width: 8px;
-      height: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .button:hover .button__icon svg,
-    .button:focus .button__icon svg,
-    .button:active .button__icon svg {
-      transform: rotate(45deg);
-    }
-
-    @media (min-width: 768px) {
-      .button {
-        gap: 30px;
-        padding-left: 31px;
-        font-size: 14px;
-        line-height: 14px;
-        letter-spacing: 0.28px;
-      }
-
-      .button__icon {
-        width: 46px;
-        height: 46px;
-      }
-
-      .button__icon svg {
-        width: 10px;
-        height: 10px;
-      }
-    }
-
-
-    .particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #316dc2;
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: float-particle linear infinite;
-    }
-
-    @keyframes float-particle {
-      0% {
-        transform: translateY(100vh) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.3;
-      }
-      90% {
-        opacity: 0.3;
-      }
-      100% {
-        transform: translateY(-100px) translateX(100px);
-        opacity: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px;
-      }
-
-      .logo {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 30px;
-      }
-
-      .button {
-        font-size: 15px;
-      }
-    }
-  </style>
+  <link rel="preload" href="../fonts/Manrope-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="../fonts/Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="../sass/style.scss">
 </head>
-<body>
+<body class="page-404">
   <!-- Animated particles -->
-  <div class="particles" id="particles"></div>
+  <div class="page-404__particles" id="particles"></div>
 
-  <div class="container">
+  <main class="page-404__container">
     <!-- Logo -->
-    <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="none" viewBox="0 0 52 52">
+    <svg class="page-404__logo" xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="none" viewBox="0 0 52 52">
       <rect width="52" height="52" fill="#fff" rx="26"/>
       <path fill="#316dc2" d="M11.918 19.8c-.851.607-1.35 1.892-.41 3.428.942 1.537 14.385 11.906 14.878 12.194s.986.336 2.24-.672 11.74-8.884 12.01-9.121c.43-.377.537-1.297 0-1.729 0 0-12.701 9.505-13.117 9.89-.416.383-1.063-.24-.941-1.056s.211-.913 1.825-2.16a2566 2566 0 0 1 11.174-8.488c.47-.347.481-.96-.288-1.503a5178 5178 0 0 1-13.022-9.266c-.388-.288-.925-.55-1.731.026-.807.576-11.053 7.343-12.618 8.458"/>
       <path fill="#316dc2" d="M26.386 36.433c-.324-.189-6.222-4.718-10.506-8.244v7.352c-.004 5.367 15.117 8.235 20.126 1.637v-7.027c-3.077 2.325-6.677 5.046-7.38 5.61-1.254 1.008-1.747.96-2.24.672"/>
       <path fill="#98b8e6" d="M32.785 28.372s2.248 1.13 2.408 5.679l-1.09-.3-.871 1.85c-.369-4.98-2.376-5.703-2.376-5.703z"/>
     </svg>
 
-    <div class="error-code">404</div>
-    <h1 class="title">Страница в разработке</h1>
-    <p class="description">
-      Раздел «Все программы» находится в процессе разработки.<br>
-      Вернитесь на главную страницу, чтобы узнать больше о наших программах обмена.
+    <div class="page-404__code">404</div>
+    <h1 class="page-404__title">Страница в разработке</h1>
+    <p class="page-404__description">
+      Раздел находится в процессе разработки.<br>
+      Вернитесь на главную страницу, чтобы узнать больше о&nbsp;наших программах обмена.
     </p>
-    <a href="./index.html" class="button">
+    <a class="page-404__button" href="../index.html">
       На главную
-      <span class="button__icon">
+      <span class="page-404__button-icon">
         <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0.800781 7.20078L7.20078 0.800781M7.20078 0.800781H0.843165M7.20078 0.800781V7.1584" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/>
         </svg>
       </span>
     </a>
-  </div>
+  </main>
 
   <script>
     // Generate floating particles
@@ -294,7 +44,7 @@
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
-      particle.className = 'particle';
+      particle.className = 'page-404__particle';
       particle.style.left = Math.random() * 100 + '%';
       particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
       particle.style.animationDelay = Math.random() * 5 + 's';

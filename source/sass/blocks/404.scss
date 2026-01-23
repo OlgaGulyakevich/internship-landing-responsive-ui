@@ -1,0 +1,263 @@
+// =============================================================================
+// 404 PAGE STYLES
+// =============================================================================
+// Standalone 404 error page with animated particles
+// Features:
+// - Gradient background
+// - Floating logo animation
+// - Slide-in content animations
+// - Animated particle background
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Body (404 page only)
+// -----------------------------------------------------------------------------
+.page-404 {
+  font-family: $font-family;
+  background: linear-gradient(135deg, $color-bg-primary 0%, $color-bg-404 100%);
+  color: $color-text-primary;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+// -----------------------------------------------------------------------------
+// Main Container
+// -----------------------------------------------------------------------------
+.page-404__container {
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fade-in 0.8s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Logo
+// -----------------------------------------------------------------------------
+.page-404__logo {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 40px;
+  animation: float 3s ease-in-out infinite;
+
+  @include tablet {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Error Code
+// -----------------------------------------------------------------------------
+.page-404__code {
+  font-size: clamp(80px, 15vw, 160px);
+  font-weight: 600;
+  line-height: 1;
+  background: linear-gradient(135deg, $color-bg-accent 0%, $color-button-pressed 100%);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  animation: slide-down 0.6s ease-out 0.2s both;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Title
+// -----------------------------------------------------------------------------
+.page-404__title {
+  @include heading-2;
+
+  font-weight: 600;
+  color: $color-text-primary;
+  margin-bottom: 16px;
+  animation: slide-down 0.6s ease-out 0.4s both;
+}
+
+// -----------------------------------------------------------------------------
+// Description
+// -----------------------------------------------------------------------------
+.page-404__description {
+  font-size: clamp(16px, 3vw, 18px);
+  color: $color-text-label;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  animation: slide-down 0.6s ease-out 0.6s both;
+}
+
+// -----------------------------------------------------------------------------
+// Button
+// -----------------------------------------------------------------------------
+.page-404__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 4px;
+  padding-left: 21px;
+  border: 1px solid $color-button-on-dark;
+  border-radius: $radius-base;
+  background-color: $color-button-primary;
+  color: $color-button-on-dark;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: $font-weight-medium;
+  line-height: 12px;
+  letter-spacing: 0.24px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color $transition-slow, color $transition-slow, border-color $transition-slow;
+  animation: slide-down 0.6s ease-out 0.8s both;
+
+  @include tablet {
+    gap: 30px;
+    padding-left: 31px;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0.28px;
+  }
+
+  &:hover {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+    border-color: $color-button-primary;
+  }
+
+  &:hover .page-404__button-icon {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+  }
+
+  &:active {
+    background-color: $color-button-on-dark;
+    color: $color-button-on-light-active;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-button-primary;
+    outline-offset: 2px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Button Icon
+// -----------------------------------------------------------------------------
+.page-404__button-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: $color-button-on-dark;
+  color: $color-button-primary;
+  overflow: visible;
+  transition: background-color $transition-slow, color $transition-slow;
+
+  @include tablet {
+    width: 46px;
+    height: 46px;
+  }
+
+  svg {
+    width: 8px;
+    height: 8px;
+    transition: transform $transition-slow;
+
+    @include tablet {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+.page-404__button:hover .page-404__button-icon svg,
+.page-404__button:focus .page-404__button-icon svg,
+.page-404__button:active .page-404__button-icon svg {
+  transform: rotate(45deg);
+}
+
+// -----------------------------------------------------------------------------
+// Particles Background
+// -----------------------------------------------------------------------------
+.page-404__particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.page-404__particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: $color-button-primary;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float-particle linear infinite;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.3;
+  }
+
+  90% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}

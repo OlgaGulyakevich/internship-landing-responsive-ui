@@ -40,10 +40,10 @@
 1. **Hero Slider**: Loop-enabled fullscreen slider with custom pagination bullets
 2. **Programs Slider**: Card-based slider with navigation arrows, linked to burger menu submenu
 3. **News Slider**: Advanced grid-based slider with dual navigation:
-   - **Pagination (numbers)**: Fine control - moves by 1 slide
-   - **Arrows**: Fast browsing - moves by 1 full page/group
-   - **Custom Pagination**: Sliding window (max 4 visible buttons)
-   - **Responsive Grid**: 2 cards (mobile) → 4 cards (tablet) → 3 cards (desktop)
+    - **Pagination (numbers)**: Fine control - moves by 1 slide
+    - **Arrows**: Fast browsing - moves by 1 full page/group
+    - **Custom Pagination**: Sliding window (max 4 visible buttons)
+    - **Responsive Grid**: 2 cards (mobile) → 4 cards (tablet) → 3 cards (desktop)
 4. **Reviews Slider**: Testimonial cards with navigation arrows and custom scrollbar
 
 ### 📱 Responsive Architecture
@@ -132,7 +132,7 @@ npm run editorconfig     # EditorConfig compliance
 #### Testing
 ```bash
 npm run test             # Pixel Perfect tests (BackstopJS)
-                         # ⚠️ Requires dev server running in separate terminal
+                          # ⚠️ Requires dev server running in separate terminal
 
 npm run test:local       # Local BackstopJS config
 npm run test-content     # Content validation (Vitest UI)

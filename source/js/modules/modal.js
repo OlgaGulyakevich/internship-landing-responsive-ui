@@ -69,7 +69,7 @@ const modal = (() => {
     // Unlock scroll (iOS Safari compatible)
     // Use requestAnimationFrame to prevent visible jump
     const scrollY = document.body.style.top;
-    const scrollPosition = parseInt(scrollY || '0') * -1;
+    const scrollPosition = parseInt(scrollY || '0', 10) * -1;
 
     // Remove fixed positioning
     document.body.style.position = '';
