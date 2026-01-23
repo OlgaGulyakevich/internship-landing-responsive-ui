@@ -84,13 +84,11 @@
   text-transform: uppercase;
   cursor: pointer;
   user-select: none;
-  transition: background-color $transition-slow, color $transition-slow, border-color $transition-slow, width $transition-slow, margin-left $transition-slow;
+  -webkit-tap-highlight-color: transparent; // Disable iOS tap highlight
 
-  // Hover state - invert colors (like button--primary, but no rotation)
-  &:hover {
-    background-color: $color-button-primary;
-    color: $color-button-on-dark;
-    border-color: $color-button-primary;
+  // Transitions only on devices with mouse (prevents flickering on touch devices)
+  @media (hover: hover) {
+    transition: background-color $transition-slow, color $transition-slow, border-color $transition-slow, width $transition-slow, margin-left $transition-slow;
   }
 
   // Focus visible state (keyboard navigation)
@@ -107,6 +105,16 @@
     background-color: $color-primary-blue;
     color: $color-button-on-dark-active;
     border-color: $color-primary-blue;
+  }
+}
+
+// Hover state - invert colors (like button--primary, but no rotation)
+// Only on devices with mouse
+@media (hover: hover) {
+  .header__burger:hover {
+    background-color: $color-button-primary;
+    color: $color-button-on-dark;
+    border-color: $color-button-primary;
   }
 }
 
@@ -136,14 +144,25 @@
   color: $color-bg-secondary;
   fill: none;
   overflow: visible;
-  transition: background-color $transition-slow, color $transition-slow;
+
+  // Transitions only on devices with mouse (prevents flickering on touch devices)
+  @media (hover: hover) {
+    transition: background-color $transition-slow, color $transition-slow;
+  }
 }
 
-// Icon color inversion on hover/focus-visible
-.header__burger:hover .header__burger-icon,
+// Icon color on focus-visible (always)
 .header__burger:focus-visible .header__burger-icon {
   background-color: $color-button-on-dark;
   color: $color-button-primary;
+}
+
+// Icon color inversion on hover (only on devices with mouse)
+@media (hover: hover) {
+  .header__burger:hover .header__burger-icon {
+    background-color: $color-button-on-dark;
+    color: $color-button-primary;
+  }
 }
 
 // Icon color on active (pressed)

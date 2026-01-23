@@ -134,11 +134,14 @@ const burgerMenu = (() => {
     // No scroll lock - allows page scrolling for better UX
 
     // Step 4: Move focus to first interactive element in menu (after animation)
+    // Only on devices with mouse (keyboard navigation) - prevents unwanted outline on mobile
     setTimeout(() => {
-      // Find first focusable element in menu list (excluding hidden submenu items)
-      const firstFocusableElement = menu.querySelector('.nav-menu__list > .nav-menu__item > a, .nav-menu__list > .nav-menu__item > button');
-      if (firstFocusableElement) {
-        firstFocusableElement.focus();
+      if (window.matchMedia('(hover: hover)').matches) {
+        // Find first focusable element in menu list (excluding hidden submenu items)
+        const firstFocusableElement = menu.querySelector('.nav-menu__list > .nav-menu__item > a, .nav-menu__list > .nav-menu__item > button');
+        if (firstFocusableElement) {
+          firstFocusableElement.focus();
+        }
       }
     }, 300); // Wait for menu animation to complete
 

@@ -359,6 +359,11 @@
     outline-offset: 2px;
   }
 
+  // Valid state (after user selects a value)
+  &:valid {
+    border-color: $color-button-primary;
+  }
+
   // Disabled state
   &:disabled {
     background-color: $color-disabled;
@@ -436,6 +441,7 @@
   padding-left: 32px; // Space for custom checkbox
   color: $color-text-label;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent; // Disable iOS tap highlight
 
   @include tablet {
     line-height: 18px;
@@ -453,7 +459,11 @@
     background-color: $color-button-primary;
     border: 2px solid $color-button-primary;
     border-radius: 2px;
-    transition: background-color $transition-slow, border-color $transition-slow;
+
+    // Transitions only on devices with mouse (prevents flickering on touch devices)
+    @media (hover: hover) {
+      transition: background-color $transition-slow, border-color $transition-slow;
+    }
   }
 
   // Checkmark (::after) - CSS галочка
@@ -468,13 +478,19 @@
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
     opacity: 0;
-    transition: opacity $transition-slow, border-color $transition-slow, background-color $transition-slow;
+
+    // Transitions only on devices with mouse (prevents flickering on touch devices)
+    @media (hover: hover) {
+      transition: opacity $transition-slow, border-color $transition-slow, background-color $transition-slow;
+    }
   }
 }
 
-// Hover state
-.modal__checkbox:hover:not(:disabled) + .modal__checkbox-label::before {
-  border-color: $color-button-primary;
+// Hover state (only on devices with mouse - prevents flickering on mobile)
+@media (hover: hover) {
+  .modal__checkbox:hover:not(:disabled) + .modal__checkbox-label::before {
+    border-color: $color-button-primary;
+  }
 }
 
 

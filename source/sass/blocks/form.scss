@@ -500,6 +500,7 @@
   color: $color-text-contacts-label;
   cursor: pointer;
   user-select: none;
+  -webkit-tap-highlight-color: transparent; // Disable iOS tap highlight
 
   @include tablet {
     font-size: 12px;
@@ -519,7 +520,11 @@
     border: 1px solid $color-bg-secondary;
     border-radius: 2px;
     background-color: $color-bg-secondary;
-    transition: background-color $transition-normal, border-color $transition-normal;
+
+    // Transitions only on devices with mouse (prevents flickering on touch devices)
+    @media (hover: hover) {
+      transition: background-color $transition-normal, border-color $transition-normal;
+    }
   }
 
   // Custom checkmark
@@ -534,7 +539,11 @@
     border: 2px solid $color-button-primary;
     border-width: 0 2px 2px 0;
     opacity: 0;
-    transition: opacity $transition-normal, border-color $transition-normal background-color $transition-normal;
+
+    // Transitions only on devices with mouse (prevents flickering on touch devices)
+    @media (hover: hover) {
+      transition: opacity $transition-normal, border-color $transition-normal, background-color $transition-normal;
+    }
   }
 }
 
@@ -549,15 +558,17 @@
   outline-offset: 2px;
 }
 
-// Hover state
-.form__checkbox:hover:not(:disabled) + .form__checkbox-label::before {
-  background-color: transparent;
-  opacity: 1;
-}
+// Hover state (only on devices with mouse - prevents flickering on mobile)
+@media (hover: hover) {
+  .form__checkbox:hover:not(:disabled) + .form__checkbox-label::before {
+    background-color: transparent;
+    opacity: 1;
+  }
 
-// Hover state on checked - white checkmark
-.form__checkbox:checked:hover:not(:disabled) + .form__checkbox-label::after {
-  border-color: $color-button-on-dark;
+  // Hover state on checked - white checkmark
+  .form__checkbox:checked:hover:not(:disabled) + .form__checkbox-label::after {
+    border-color: $color-button-on-dark;
+  }
 }
 
 // Focus state on checked - white checkmark
