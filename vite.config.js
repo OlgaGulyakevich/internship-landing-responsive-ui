@@ -73,6 +73,12 @@ export default ({ command }) => ({
   root: './source',
   build: {
     outDir: '../dist',
+    rollupOptions: {
+      input: {
+        main: './source/index.html',
+        '404': './source/404.html'
+      }
+    }
   },
   // Base path: dev uses root, production uses GitHub Pages subdirectory
   base: command === 'serve' ? '/' : '/internship-landing-responsive-ui/',
