@@ -146,3 +146,15 @@
   max-width: 100%;
   height: auto;
 }
+
+// Swiper container and slides
+// Remove default outline - focus should be on interactive elements inside (buttons, links)
+:where(.page) .swiper,
+:where(.page) .swiper-slide {
+  outline: none;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
