@@ -137,6 +137,11 @@
     padding: 14px 50px 35px;
     mask-image: url("/img/masks/hero-content-mask-desktop.svg");
   }
+
+  @media (width >= 1441px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -198,7 +203,7 @@
   @include tablet {
     margin-left: -20px;
     padding-bottom: 13px;
-    min-height: 29px;  
+    min-height: 29px;
   }
 
   @include desktop {
@@ -246,6 +251,7 @@
 // -----------------------------------------------------------------------------
 .hero__button {
   flex-shrink: 0;
+  width: min-content;
 
   @include tablet {
     align-self: flex-start;

@@ -110,8 +110,8 @@
 
   @include desktop {
     justify-content: center;
-    flex-wrap: nowrap;
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 15px 30px;
     margin-left: -230px;
   }
 }

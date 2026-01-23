@@ -74,6 +74,7 @@
   text-transform: none;
   padding: 22px 15px 20px 14px;
   letter-spacing: normal;
+  align-items: flex-start;
 
   @include tablet {
     font-size: $font-size-h4-tablet;
