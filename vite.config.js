@@ -3,7 +3,7 @@ import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 /** @type {import('vite').UserConfig} */
-export default ({ command }) => ({
+export default () => ({
   plugins: [
     VitePluginSvgSpritemap('img/sprite/*.svg', {
       styles: false,
@@ -74,7 +74,8 @@ export default ({ command }) => ({
   build: {
     outDir: '../dist',
   },
-  base: command === 'serve' ? '/' : '/internship-landing-responsive-ui/',
+  // Use root path for dev and preview, use subdirectory only for production deployment
+  base: process.env.GITHUB_PAGES ? '/internship-landing-responsive-ui/' : '/',
   server: {
     port: 3000,
   }

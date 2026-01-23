@@ -26,6 +26,13 @@ const heroSlider = (() => {
   }
 
   const initSlider = () => {
+    const heroElement = document.querySelector('.hero');
+
+    // Add loading class to hide hero until initialization is complete
+    if (heroElement) {
+      heroElement.classList.add('hero--loading');
+    }
+
     const swiper = new Swiper('.hero__swiper', {
       modules: [Pagination, Keyboard, EffectFade],
 
@@ -116,6 +123,14 @@ const heroSlider = (() => {
                 });
               });
             });
+
+            // 4. Show hero after pagination is rendered and fonts are loaded
+            if (heroElement) {
+              // Wait for fonts to be ready before showing hero
+              document.fonts.ready.then(() => {
+                heroElement.classList.remove('hero--loading');
+              });
+            }
           });
         },
 

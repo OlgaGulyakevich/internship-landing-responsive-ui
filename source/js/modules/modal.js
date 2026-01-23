@@ -35,6 +35,9 @@ const modal = (() => {
   const phoneInput = modalEl.querySelector('input[type="tel"]');
   const triggers = document.querySelectorAll('[data-modal-target="feedback"]');
 
+  // Track which element opened the modal (for focus restoration)
+  let modalTrigger = null;
+
 
   // =========================================================================
   // Modal Open/Close
@@ -64,11 +67,28 @@ const modal = (() => {
     }, 300);
 
     // Unlock scroll (iOS Safari compatible)
+    // Use requestAnimationFrame to prevent visible jump
     const scrollY = document.body.style.top;
+    const scrollPosition = parseInt(scrollY || '0') * -1;
+
+    // Remove fixed positioning
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+
+    // Restore scroll position WITHOUT smooth scrolling (instant but no visible jump)
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'instant'
+      });
+
+      // Return focus to trigger element without scrolling to it
+      if (modalTrigger && typeof modalTrigger.focus === 'function') {
+        modalTrigger.focus({ preventScroll: true });
+        modalTrigger = null;
+      }
+    });
 
     // Remove event listeners
     overlay.removeEventListener('click', closeModal);
@@ -83,8 +103,12 @@ const modal = (() => {
 
   /**
    * Opens the modal window
+   * @param {HTMLElement} trigger - Element that triggered modal open (optional)
    */
-  function openModal() {
+  function openModal(trigger = null) {
+    // Save reference to trigger element for focus restoration
+    modalTrigger = trigger;
+
     // Remove hidden attribute
     modalEl.removeAttribute('hidden');
 
@@ -167,7 +191,7 @@ const modal = (() => {
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', (e) => {
         e.preventDefault(); // Prevent default button/link behavior
-        openModal();
+        openModal(trigger); // Pass trigger element for focus restoration
       });
     });
 

@@ -17,6 +17,8 @@
 .hero {
   position: relative;
   height: 568px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 
   @include tablet {
     height: 1024px;
@@ -25,6 +27,11 @@
   @include desktop {
     height: 800px;
   }
+}
+
+// Loading state - hide hero until fonts and pagination are ready
+.hero--loading {
+  opacity: 0;
 }
 
 // Compensate for scrollbar when modal is open
@@ -191,6 +198,7 @@
   @include tablet {
     margin-left: -20px;
     padding-bottom: 13px;
+    min-height: 29px;  
   }
 
   @include desktop {
