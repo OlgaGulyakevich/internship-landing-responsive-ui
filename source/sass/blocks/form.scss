@@ -526,11 +526,11 @@
   &::after {
     content: "";
     position: absolute;
-    left: 6px;
+    left: 7px;
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
-    width: 7px;
-    height: 11px;
+    width: 6px;
+    height: 9px;
     border: 2px solid $color-button-primary;
     border-width: 0 2px 2px 0;
     opacity: 0;
