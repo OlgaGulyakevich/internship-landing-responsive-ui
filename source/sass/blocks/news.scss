@@ -63,10 +63,12 @@
   // Mobile Grid: 2 rows
   // Row 1: 330px (large card) + Row 2: 240px (small card) + gap 20px = 590px
   height: 590px;
+  row-gap: 40px;
 
   @include tablet {
     // Tablet Grid: 2 rows × 350px + 30px gap = 730px
     height: 730px;
+    row-gap: 0;
   }
 
   @include desktop {
